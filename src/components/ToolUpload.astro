@@ -21,7 +21,7 @@ const translations = getTranslations(currentLang);
       <input
         type="file"
         id="file-input"
-        accept=".jpg,.jpeg,.png,.webp,.tiff,.heic,.heif"
+        accept=".jpg,.jpeg,.png,.webp,.tif,.tiff,.heic,.heif"
         multiple
         class="sr-only"
       />
@@ -270,6 +270,7 @@ const translations = getTranslations(currentLang);
 
 <script>
   import { trackEvent } from '../lib/analytics';
+  import { stripTiffMetadata } from '../lib/tiff';
 
   const MAX_CONCURRENT_STRIP = 3;
 
@@ -328,6 +329,13 @@ const translations = getTranslations(currentLang);
     return /\.(heic|heif)$/i.test(file.name);
   }
 
+  // TIFF cannot be decoded by Chromium (<img>/createImageBitmap), so it is
+  // detected by type or extension and handled by the byte-level TIFF path.
+  function isTiffFile(file: File): boolean {
+    if (file.type === 'image/tiff' || file.type === 'image/tif') return true;
+    return /\.(tif|tiff)$/i.test(file.name);
+  }
+
   async function isAvifFile(file: File): Promise<boolean> {
     try {
       const head = new Uint8Array(await withTimeout(file.slice(0, 16).arrayBuffer(), STRIP_TIMEOUT_MS));
@@ -370,7 +378,7 @@ const translations = getTranslations(currentLang);
   type UploadRejection = { name: string; reason: 'unsupported' | 'too-large' };
 
   function validateUploadFile(file: File): UploadRejection | null {
-    if (!VALID_TYPES.includes(file.type) && !isHeicFile(file)) {
+    if (!VALID_TYPES.includes(file.type) && !isHeicFile(file) && !isTiffFile(file)) {
       return { name: file.name, reason: 'unsupported' };
     }
     if (file.size > MAX_FILE_SIZE_BYTES) {
@@ -562,7 +570,7 @@ const translations = getTranslations(currentLang);
         file,
         metadata: {},
         cleanBlob: null,
-        cleanExt: isHeicFile(file) ? 'jpg' : extFromType(file.type),
+        cleanExt: isHeicFile(file) ? 'jpg' : isTiffFile(file) ? 'tiff' : extFromType(file.type),
         status: 'clean',
         error: false,
         busy: false,
@@ -624,6 +632,14 @@ const translations = getTranslations(currentLang);
           'w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-xl flex items-center justify-center bg-surface-strong border border-border text-[10.5px] font-mono font-medium text-text-muted tracking-wide';
         heicPlaceholder.textContent = 'HEIC';
         preview = heicPlaceholder;
+      } else if (isTiffFile(item.file)) {
+        // Chromium cannot render TIFF in an <img>, so show a format chip
+        // exactly like the existing HEIC placeholder.
+        const tiffPlaceholder = document.createElement('div');
+        tiffPlaceholder.className =
+          'w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-xl flex items-center justify-center bg-surface-strong border border-border text-[10.5px] font-mono font-medium text-text-muted tracking-wide';
+        tiffPlaceholder.textContent = 'TIFF';
+        preview = tiffPlaceholder;
       } else {
         const img = document.createElement('img');
         img.className = 'w-14 h-14 sm:w-16 sm:h-16 object-cover rounded-xl border border-border shrink-0';
@@ -1035,6 +1051,33 @@ const translations = getTranslations(currentLang);
             bitmap = null;
           }
         }
+      }
+
+      // TIFF: Chromium cannot decode TIFF with createImageBitmap, so the
+      // generic canvas path below can never produce an output. Strip the
+      // container instead (tags + thumbnail removed, pixels copied verbatim,
+      // ICC kept) and keep the file a real TIFF. Errors propagate to the
+      // outer handler, which resolves the busy state and shows the localized
+      // failure message.
+      if (isTiffFile(item.file)) {
+        const source = new Uint8Array(await withTimeout(item.file.arrayBuffer(), STRIP_TIMEOUT_MS));
+        const stripped = stripTiffMetadata(source);
+        const cleanTiff = new Blob([stripped.bytes], { type: 'image/tiff' });
+        if (cleanTiff.size === 0) {
+          throw new Error('TIFF stripping produced an empty image');
+        }
+        item.cleanBlob = cleanTiff;
+        item.cleanExt = 'tiff';
+        item.busy = false;
+        if (thisBatchId === batchId) {
+          busyCount--;
+          refreshActions();
+        }
+        reRenderItem(item);
+        if (countPrivacyFields(item.metadata) > 0) {
+          trackEvent('removal_complete');
+        }
+        return;
       }
 
       if (isHeicFile(item.file)) {
