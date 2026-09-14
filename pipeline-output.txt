@@ -1,0 +1,39 @@
+﻿=== COMPREHENSIVE PIPELINE VERIFICATION ===
+
+Created jpeg: 1508 bytes
+  -> detected 14 metadata field(s)
+  PASS: jpeg original HAS metadata (14 fields)
+Created png: 2631 bytes
+  -> detected 22 metadata field(s)
+  PASS: png original HAS metadata (22 fields)
+Created webp: 988 bytes
+  -> detected 13 metadata field(s)
+  PASS: webp original HAS metadata (13 fields)
+
+--- Scanning originals (post-drop simulation) ---
+  PASS: jpeg still has metadata after re-scan (14 fields)
+  PASS: png still has metadata after re-scan (22 fields)
+  PASS: webp still has metadata after re-scan (13 fields)
+
+--- Stripping metadata (canvas re-encode simulation) ---
+Stripped jpeg: original 1508b -> clean 719b
+Stripped png: original 2631b -> clean 2008b
+Stripped webp: original 988b -> clean 224b
+
+--- PROOF: re-scanning the actual stripped/downloaded file ---
+  jpeg clean file has 0 metadata field(s), Make=undefined, Model=undefined
+  PASS: clean jpeg has NO leaked Make/Model
+  png clean file has 7 metadata field(s), Make=undefined, Model=undefined
+  PASS: clean png has NO leaked Make/Model
+  webp clean file has 0 metadata field(s), Make=undefined, Model=undefined
+  PASS: clean webp has NO leaked Make/Model
+
+--- TIFF -> PNG fallback ---
+  PASS: TIFF original HAS metadata
+  PASS: TIFF->PNG clean file has NO leaked Make/Model
+
+--- PNG transparency preserved ---
+  PASS: PNG alpha channel preserved through re-encode
+
+=== RESULT: 12 passed, 0 failed ===
+ALL PIPELINE CHECKS PASSED

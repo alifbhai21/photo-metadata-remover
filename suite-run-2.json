@@ -1,0 +1,1475 @@
+﻿{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\photo metadata remover\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--reporter=json"
+    ],
+    "configFile": "D:\\photo metadata remover\\playwright.config.ts",
+    "rootDir": "D:/photo metadata remover",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/photo metadata remover/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/photo metadata remover",
+        "testIgnore": [
+          "**/.kilo/**",
+          "**/node_modules/**"
+        ],
+        "testMatch": [
+          "*.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 3,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "launch-gate-test.spec.ts",
+      "file": "launch-gate-test.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Launch gate ΓÇô zero-metadata guarantee (RW)",
+          "file": "launch-gate-test.spec.ts",
+          "line": 73,
+          "column": 6,
+          "specs": [
+            {
+              "title": "cleaned JPEG has no APP1/APP13/COM segments and no privacy strings",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2255,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED: cleaned JPEG is metadata-free (segment + content level)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:16.841Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3053c7f0e238afe28bd-25f30daba15ce9950ca0",
+              "file": "launch-gate-test.spec.ts",
+              "line": 74,
+              "column": 3
+            },
+            {
+              "title": "batch ZIP downloads as one archive containing metadata-free clean images",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1460,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED: batch ZIP is valid and contains only metadata-free clean images\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:19.301Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3053c7f0e238afe28bd-435327a9fb99073fb1aa",
+              "file": "launch-gate-test.spec.ts",
+              "line": 105,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Launch gate ΓÇô FR-1 upload validation (RW)",
+          "file": "launch-gate-test.spec.ts",
+          "line": 142,
+          "column": 6,
+          "specs": [
+            {
+              "title": "unsupported file types are rejected with a localized error and never enter the pipeline",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 260,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED: unsupported type rejected with localized error\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:20.774Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3053c7f0e238afe28bd-c88185bbe5e470e68d7b",
+              "file": "launch-gate-test.spec.ts",
+              "line": 143,
+              "column": 3
+            },
+            {
+              "title": "files over the 40 MB cap are rejected with a localized error and never enter the pipeline",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6883,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED: oversized file rejected with localized error\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:21.048Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3053c7f0e238afe28bd-ac2401243721e6d0fef7",
+              "file": "launch-gate-test.spec.ts",
+              "line": 162,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "metadata-classification-test.spec.ts",
+      "file": "metadata-classification-test.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Metadata classification",
+          "file": "metadata-classification-test.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Privacy fields should appear under Privacy metadata section",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2070,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED: Privacy fields correctly classified\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:16.804Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "624511dc2f1238dada7a-5937f04b2d6688498432",
+              "file": "metadata-classification-test.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "Technical fields should appear under Technical section, not Privacy",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1752,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED: Technical fields correctly classified\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:19.020Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "624511dc2f1238dada7a-d74ea0c25fd9cb100ccd",
+              "file": "metadata-classification-test.spec.ts",
+              "line": 42,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "stale-state-test.spec.ts",
+      "file": "stale-state-test.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Stale-state bug ΓÇö alternative scenarios",
+          "file": "stale-state-test.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Clean single file ΓåÆ reset ΓåÆ re-upload should show metadata",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 2679,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:16.805Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d2a24f3101db46739e5-57fbaf8b02c52656c872",
+              "file": "stale-state-test.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "Clean without reset ΓåÆ re-upload should show metadata",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 2243,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:19.627Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d2a24f3101db46739e5-3a55331683bc0566fb9d",
+              "file": "stale-state-test.spec.ts",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "Auto-strip scenario: file with metadata should NOT auto-strip",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1470,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED: auto-strip did not fire incorrectly\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:21.886Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d2a24f3101db46739e5-37de18ae607a9cc3998e",
+              "file": "stale-state-test.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "Rapid re-upload: upload ΓåÆ clean ΓåÆ reset ΓåÆ immediate re-upload",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 2408,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "PASSED\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:23.373Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d2a24f3101db46739e5-c13f486688ec3663a5d7",
+              "file": "stale-state-test.spec.ts",
+              "line": 81,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "test-batch-guard.spec.ts",
+      "file": "test-batch-guard.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Batch-ID guard: real re-upload verification",
+          "file": "test-batch-guard.spec.ts",
+          "line": 95,
+          "column": 6,
+          "specs": [
+            {
+              "title": "1ΓåÆ1: upload 1 JPEG, then re-upload 1 JPEG while first is stripping",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2315,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:20.960Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-013bfb1ba35634185808",
+              "file": "test-batch-guard.spec.ts",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "5ΓåÆ1: upload 5 JPEGs, then re-upload 1 PNG while first batch is stripping",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2215,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:23.294Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-d17b5dda1c260967aee6",
+              "file": "test-batch-guard.spec.ts",
+              "line": 134,
+              "column": 3
+            },
+            {
+              "title": "10ΓåÆ5: upload 10 JPEGs, then re-upload 5 PNGs",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2057,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:25.522Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-11a994f14acc35d4faec",
+              "file": "test-batch-guard.spec.ts",
+              "line": 172,
+              "column": 3
+            },
+            {
+              "title": "10ΓåÆ10: upload 10 JPEGs, then re-upload 10 PNGs",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2125,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:27.592Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-695f214abc9012fc0ddd",
+              "file": "test-batch-guard.spec.ts",
+              "line": 210,
+              "column": 3
+            },
+            {
+              "title": "Rapid re-upload: upload A, immediately upload B without waiting",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1903,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:29.729Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-27db4d3966c5103b4b30",
+              "file": "test-batch-guard.spec.ts",
+              "line": 248,
+              "column": 3
+            },
+            {
+              "title": "Repeated re-upload: A ΓåÆ B ΓåÆ C in sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3004,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:31.646Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-81577ccc2017486d2160",
+              "file": "test-batch-guard.spec.ts",
+              "line": 279,
+              "column": 3
+            },
+            {
+              "title": "Normal behavior: upload and strip without re-upload",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 1426,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Success\"\u001b[39m\nReceived string:    \u001b[31m\"Remove all metadata\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Success\"\u001b[39m\nReceived string:    \u001b[31m\"Remove all metadata\"\u001b[39m\n    at D:\\photo metadata remover\\test-batch-guard.spec.ts:350:22",
+                        "location": {
+                          "file": "D:\\photo metadata remover\\test-batch-guard.spec.ts",
+                          "column": 22,
+                          "line": 350
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 348 |\u001b[39m       \u001b[36mfor\u001b[39m (\u001b[36mlet\u001b[39m i \u001b[33m=\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m i \u001b[33m<\u001b[39m count\u001b[33m;\u001b[39m i\u001b[33m++\u001b[39m) {\n \u001b[90m 349 |\u001b[39m         \u001b[36mconst\u001b[39m text \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m buttons\u001b[33m.\u001b[39mnth(i)\u001b[33m.\u001b[39mtextContent()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 350 |\u001b[39m         expect(text)\u001b[33m.\u001b[39mtoContain(\u001b[32m'Success'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 351 |\u001b[39m       }\n \u001b[90m 352 |\u001b[39m     } \u001b[36mfinally\u001b[39m {\n \u001b[90m 353 |\u001b[39m       cleanup(files)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\photo metadata remover\\test-batch-guard.spec.ts",
+                            "column": 22,
+                            "line": 350
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Success\"\u001b[39m\nReceived string:    \u001b[31m\"Remove all metadata\"\u001b[39m\n\n  348 |       for (let i = 0; i < count; i++) {\n  349 |         const text = await buttons.nth(i).textContent();\n> 350 |         expect(text).toContain('Success');\n      |                      ^\n  351 |       }\n  352 |     } finally {\n  353 |       cleanup(files);\n    at D:\\photo metadata remover\\test-batch-guard.spec.ts:350:22"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:34.663Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\photo metadata remover\\test-results\\test-batch-guard-Batch-ID--4d749-and-strip-without-re-upload\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\photo metadata remover\\test-batch-guard.spec.ts",
+                        "column": 22,
+                        "line": 350
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-812d1baacab87669e7b6",
+              "file": "test-batch-guard.spec.ts",
+              "line": 320,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Responsive: mobile-small (375├ù667)",
+          "file": "test-batch-guard.spec.ts",
+          "line": 359,
+          "column": 8,
+          "specs": [
+            {
+              "title": "1ΓåÆ1 re-upload at mobile-small",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2178,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:36.790Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-7feab6033f63d641dd2e",
+              "file": "test-batch-guard.spec.ts",
+              "line": 362,
+              "column": 5
+            },
+            {
+              "title": "5ΓåÆ1 re-upload at mobile-small",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1967,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:39.088Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-ae280931ee2b9c91e0b3",
+              "file": "test-batch-guard.spec.ts",
+              "line": 396,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "title": "Responsive: mobile-large (390├ù844)",
+          "file": "test-batch-guard.spec.ts",
+          "line": 359,
+          "column": 8,
+          "specs": [
+            {
+              "title": "1ΓåÆ1 re-upload at mobile-large",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2240,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:41.067Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-1db507ec8e98d07c5b44",
+              "file": "test-batch-guard.spec.ts",
+              "line": 362,
+              "column": 5
+            },
+            {
+              "title": "5ΓåÆ1 re-upload at mobile-large",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1954,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:43.319Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-ef3a13a7fae0a8af116d",
+              "file": "test-batch-guard.spec.ts",
+              "line": 396,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "title": "Responsive: tablet (768├ù1024)",
+          "file": "test-batch-guard.spec.ts",
+          "line": 359,
+          "column": 8,
+          "specs": [
+            {
+              "title": "1ΓåÆ1 re-upload at tablet",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2093,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:45.297Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-0230419955c9574b275f",
+              "file": "test-batch-guard.spec.ts",
+              "line": 362,
+              "column": 5
+            },
+            {
+              "title": "5ΓåÆ1 re-upload at tablet",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1977,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:47.404Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-85d7549302fc539e06a4",
+              "file": "test-batch-guard.spec.ts",
+              "line": 396,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "title": "Responsive: tablet-large (820├ù1180)",
+          "file": "test-batch-guard.spec.ts",
+          "line": 359,
+          "column": 8,
+          "specs": [
+            {
+              "title": "1ΓåÆ1 re-upload at tablet-large",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2140,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:49.394Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-de53342e065c00c7e667",
+              "file": "test-batch-guard.spec.ts",
+              "line": 362,
+              "column": 5
+            },
+            {
+              "title": "5ΓåÆ1 re-upload at tablet-large",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1980,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:51.550Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-b78a94a7c1e6dee89460",
+              "file": "test-batch-guard.spec.ts",
+              "line": 396,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "title": "Responsive: laptop (1280├ù800)",
+          "file": "test-batch-guard.spec.ts",
+          "line": 359,
+          "column": 8,
+          "specs": [
+            {
+              "title": "1ΓåÆ1 re-upload at laptop",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2174,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:53.545Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-996ac39a410b5c605684",
+              "file": "test-batch-guard.spec.ts",
+              "line": 362,
+              "column": 5
+            },
+            {
+              "title": "5ΓåÆ1 re-upload at laptop",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1962,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:55.732Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-a75031bc1aae5f717fef",
+              "file": "test-batch-guard.spec.ts",
+              "line": 396,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "title": "Responsive: desktop (1440├ù900)",
+          "file": "test-batch-guard.spec.ts",
+          "line": 359,
+          "column": 8,
+          "specs": [
+            {
+              "title": "1ΓåÆ1 re-upload at desktop",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2139,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:57.708Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-0518538f15bd62c0e7e1",
+              "file": "test-batch-guard.spec.ts",
+              "line": 362,
+              "column": 5
+            },
+            {
+              "title": "5ΓåÆ1 re-upload at desktop",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1941,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:59.862Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ae2f86abded077063a37-a73a3385abb575dd72f0",
+              "file": "test-batch-guard.spec.ts",
+              "line": 396,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "test-dom-inspect.spec.ts",
+      "file": "test-dom-inspect.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "inspect DOM",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 6550,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Elements with metadata/privacy/remove/download text: [\n  {\n    \"tag\": \"HTML\",\n    \"class\": \"\",\n    \"text\": \"(function () {\\n        var root = document.documentElement;\\n        var stored = localStorage.getIte\"\n  },\n  {\n    \"tag\": \"HEAD\",\n    \"class\": \"\",\n    \"text\": \"(function () {\\n        var root = document.documentElement;\\n        var stored = localStorage.getIte\"\n  },\n  {\n    \"tag\": \"TITLE\",\n    \"class\": \"\",\n    \"text\": \"Remove Metadata from Your Photos Online | Photo Metadata Remover\"\n  },\n  {\n    \"tag\": \"SCRIPT\",\n    \"class\": \"\",\n    \"text\": \"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"WebSite\\\",\\\"name\\\":\\\"Photo Metadata Remover\\\",\\\"description\\\":\\\"St\"\n  },\n  {\n    \"tag\": \"SCRIPT\",\n    \"class\": \"\",\n    \"text\": \"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"SoftwareApplication\\\",\\\"name\\\":\\\"Photo Metadata Remover\\\",\\\"desc\"\n  },\n  {\n    \"tag\": \"SCRIPT\",\n    \"class\": \"\",\n    \"text\": \"window.__astro_dev_toolbar__ = {\\\"root\\\":\\\"D:\\\\\\\\photo metadata remover\\\\\\\\\\\",\\\"version\\\":\\\"7.3.1\\\",\\\"debugInfo\\\":\"\n  },\n  {\n    \"tag\": \"BODY\",\n    \"class\": \"min-h-screen flex flex-col bg-bg text-text antialiased pmr-elegant-bg\",\n    \"text\": \"Skip to contentPM.Photo Metadata RemoverFormatsGuidesFAQAbout100% Client-SideenEnglishDeutschFran├ºai\"\n  },\n  {\n    \"tag\": \"NAV\",\n    \"class\": \"fixed top-0 left-0 right-0 z-50 bg-bg/80 dark:bg-bg/80 backdrop-blur-xl border-b border-border/80\",\n    \"text\": \"PM.Photo Metadata RemoverFormatsGuidesFAQAbout100% Client-SideenEnglishDeutschFran├ºaisRemove nowRemo\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4\",\n    \"text\": \"PM.Photo Metadata RemoverFormatsGuidesFAQAbout100% Client-SideenEnglishDeutschFran├ºaisRemove nowRemo\"\n  },\n  {\n    \"tag\": \"A\",\n    \"class\": \"flex items-center gap-2.5 shrink-0 group\",\n    \"text\": \"PM.Photo Metadata Remover\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"font-semibold text-text text-[15px] tracking-tight hidden sm:inline\",\n    \"text\": \"Photo Metadata Remover\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"flex items-center gap-1.5 sm:gap-2\",\n    \"text\": \"enEnglishDeutschFran├ºaisRemove nowRemove\"\n  },\n  {\n    \"tag\": \"A\",\n    \"class\": \"inline-flex items-center gap-1.5 h-9 px-3.5 sm:px-4 rounded-full bg-accent-btn text-accent-btn-text text-[13px] font-medium whitespace-nowrap hover:bg-accent-btn-hover transition-colors\",\n    \"text\": \"Remove nowRemove\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"hidden sm:inline\",\n    \"text\": \"Remove now\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"sm:hidden\",\n    \"text\": \"Remove\"\n  },\n  {\n    \"tag\": \"MAIN\",\n    \"class\": \"flex-1 pt-16\",\n    \"text\": \"Privacy-first toolRemove metadata from your photosStrip GPS coordinates, camera serial numbers, time\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"max-w-[580px] mx-auto px-4 sm:px-6\",\n    \"text\": \"Privacy-first toolRemove metadata from your photosStrip GPS coordinates, camera serial numbers, time\"\n  },\n  {\n    \"tag\": \"SECTION\",\n    \"class\": \"relative pmr-hero-backdrop pt-12 sm:pt-16 lg:pt-20 pb-4\",\n    \"text\": \"Privacy-first toolRemove metadata from your photosStrip GPS coordinates, camera serial numbers, time\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"text-center\",\n    \"text\": \"Privacy-first toolRemove metadata from your photosStrip GPS coordinates, camera serial numbers, time\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"pmr-eyebrow justify-center\",\n    \"text\": \"Privacy-first tool\"\n  },\n  {\n    \"tag\": \"H1\",\n    \"class\": \"mt-5 text-[30px] sm:text-[36px] font-semibold tracking-[-0.03em] text-text leading-[1.1] max-w-[480px] mx-auto\",\n    \"text\": \"Remove metadata from your photos\"\n  },\n  {\n    \"tag\": \"SECTION\",\n    \"class\": \"pt-6 sm:pt-8 pb-12 sm:pb-16\",\n    \"text\": \"Scanning photosΓÇªDrop your photos hereor click to browseBrowse filestool.try_sampleSelect multiple fi\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"max-w-[580px] mx-auto\",\n    \"text\": \"Scanning photosΓÇªDrop your photos hereor click to browseBrowse filestool.try_sampleSelect multiple fi\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"mt-6 p-4 sm:p-5 bg-surface rounded-xl border border-border pmr-elev-1 hidden\",\n    \"text\": \"Scanning photosΓÇªRemoving metadata...\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"flex items-center gap-3\",\n    \"text\": \"Scanning photosΓÇªRemoving metadata...\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"flex flex-col\",\n    \"text\": \"Removing metadata...\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"text-[13.5px] text-text font-medium tracking-tight\",\n    \"text\": \"Removing metadata...\"\n  },\n  {\n    \"tag\": \"OL\",\n    \"class\": \"mt-6 pmr-card p-4 sm:p-5\",\n    \"text\": \"Γ£ô 1UploadΓ£ô 2Scan3Remove4Download\"\n  },\n  {\n    \"tag\": \"LI\",\n    \"class\": \"flex items-center flex-1\",\n    \"text\": \"3Remove\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"ml-2 text-[12.5px] font-medium text-text-muted tracking-tight\",\n    \"text\": \"Remove\"\n  },\n  {\n    \"tag\": \"LI\",\n    \"class\": \"flex items-center\",\n    \"text\": \"4Download\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"ml-2 text-[12.5px] font-medium text-text-muted tracking-tight\",\n    \"text\": \"Download\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"mt-6 pmr-card overflow-hidden pmr-elev-1\",\n    \"text\": \"Privacy metadata resultsClear allRemove all metadataDownload ZIPShow image metadataclean-verify-insp\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"px-4 sm:px-5 py-4 border-b border-border\",\n    \"text\": \"Privacy metadata resultsClear allRemove all metadataDownload ZIPShow image metadata\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3\",\n    \"text\": \"Privacy metadata resultsClear allRemove all metadataDownload ZIPShow image metadata\"\n  },\n  {\n    \"tag\": \"H3\",\n    \"class\": \"text-[14.5px] font-semibold text-text tracking-tight\",\n    \"text\": \"Privacy metadata results\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"flex flex-wrap gap-2\",\n    \"text\": \"Clear allRemove all metadataDownload ZIPShow image metadata\"\n  },\n  {\n    \"tag\": \"BUTTON\",\n    \"class\": \"inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent-btn text-accent-btn-text text-[12.5px] font-medium rounded-full hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed\",\n    \"text\": \"Remove all metadata\"\n  },\n  {\n    \"tag\": \"BUTTON\",\n    \"class\": \"hidden inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent-btn text-accent-btn-text text-[12.5px] font-medium rounded-full hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed\",\n    \"text\": \"Download ZIP\"\n  },\n  {\n    \"tag\": \"BUTTON\",\n    \"class\": \"inline-flex items-center gap-1.5 px-3.5 py-2 bg-surface text-text text-[12.5px] font-medium rounded-full border border-border hover:bg-surface-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed\",\n    \"text\": \"Show image metadata\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"divide-y divide-border\",\n    \"text\": \"clean-verify-inspect.png710 BPrivacy metadata found (2)Remove metadataDownload clean imageShow image\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"p-4 sm:p-5 flex items-start sm:items-center gap-3 sm:gap-4 flex-col sm:flex-row pmr-fade-in\",\n    \"text\": \"clean-verify-inspect.png710 BPrivacy metadata found (2)Remove metadataDownload clean imageShow image\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"flex-1 min-w-0 w-full sm:w-auto\",\n    \"text\": \"clean-verify-inspect.png710 BPrivacy metadata found (2)\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"text-xs mt-1 text-text-muted\",\n    \"text\": \"Privacy metadata found (2)\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"flex gap-2 flex-wrap w-full sm:w-auto\",\n    \"text\": \"Remove metadataDownload clean imageShow image metadata\"\n  },\n  {\n    \"tag\": \"BUTTON\",\n    \"class\": \"inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed\",\n    \"text\": \"Remove metadata\"\n  },\n  {\n    \"tag\": \"BUTTON\",\n    \"class\": \"inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-surface text-text rounded-full font-medium border border-border hover:bg-surface-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed\",\n    \"text\": \"Download clean image\"\n  },\n  {\n    \"tag\": \"BUTTON\",\n    \"class\": \"inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-surface text-text rounded-full font-medium border border-border hover:bg-surface-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed\",\n    \"text\": \"Show image metadata\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"hidden\",\n    \"text\": \"Image metadataClose metadata panel\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"border-t border-border\",\n    \"text\": \"Image metadataClose metadata panel\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"p-4 sm:p-5\",\n    \"text\": \"Image metadataClose metadata panel\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"flex items-center justify-between mb-4\",\n    \"text\": \"Image metadataClose metadata panel\"\n  },\n  {\n    \"tag\": \"H4\",\n    \"class\": \"text-[13.5px] font-semibold text-text tracking-tight\",\n    \"text\": \"Image metadata\"\n  },\n  {\n    \"tag\": \"BUTTON\",\n    \"class\": \"inline-flex items-center gap-1 text-[12.5px] text-text-muted hover:text-text transition-colors px-2.5 py-1 rounded-md hover:bg-surface-muted\",\n    \"text\": \"Close metadata panel\"\n  },\n  {\n    \"tag\": \"SECTION\",\n    \"class\": \"py-16 sm:py-20 px-4 sm:px-6 border-t border-border\",\n    \"text\": \"Why this toolWhy use our tool?Everything you need to keep your photos private ΓÇö without leaving your\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"max-w-5xl mx-auto\",\n    \"text\": \"Why this toolWhy use our tool?Everything you need to keep your photos private ΓÇö without leaving your\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5\",\n    \"text\": \"features.private.eyebrowfeatures.private.titlefeatures.private.descriptionfeatures.private.bullets.n\"\n  },\n  {\n    \"tag\": \"ARTICLE\",\n    \"class\": \"lg:col-span-5 pmr-card p-6 sm:p-7 pmr-elev-1 flex flex-col\",\n    \"text\": \"CompleteComplete metadata cleanupStrips the metadata that exposes you ΓÇö location, device, software, \"\n  },\n  {\n    \"tag\": \"H3\",\n    \"class\": \"text-[18px] sm:text-[20px] font-semibold tracking-tight text-text leading-tight\",\n    \"text\": \"Complete metadata cleanup\"\n  },\n  {\n    \"tag\": \"P\",\n    \"class\": \"mt-2 text-[14px] text-text-muted leading-relaxed\",\n    \"text\": \"Strips the metadata that exposes you ΓÇö location, device, software, and timestamps ΓÇö while preserving\"\n  },\n  {\n    \"tag\": \"SECTION\",\n    \"class\": \"py-16 sm:py-20 px-4 sm:px-6 border-t border-border\",\n    \"text\": \"WorkflowHow it worksFour short steps. Nothing leaves your browser, and your pixels stay exactly as c\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"max-w-5xl mx-auto\",\n    \"text\": \"WorkflowHow it worksFour short steps. Nothing leaves your browser, and your pixels stay exactly as c\"\n  },\n  {\n    \"tag\": \"OL\",\n    \"class\": \"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4\",\n    \"text\": \"01UploadDrag a photo from your desktop or click to browse. We detect the format automatically.02Scan\"\n  },\n  {\n    \"tag\": \"LI\",\n    \"class\": \"pmr-card p-5 sm:p-6 relative group\",\n    \"text\": \"02ScanWe show every metadata field found ΓÇö GPS, camera info, timestamps, software.\"\n  },\n  {\n    \"tag\": \"P\",\n    \"class\": \"mt-1.5 text-[13.5px] text-text-muted leading-relaxed\",\n    \"text\": \"We show every metadata field found ΓÇö GPS, camera info, timestamps, software.\"\n  },\n  {\n    \"tag\": \"LI\",\n    \"class\": \"pmr-card p-5 sm:p-6 relative group\",\n    \"text\": \"03RemoveClick once to strip all privacy-sensitive metadata from your file.\"\n  },\n  {\n    \"tag\": \"H3\",\n    \"class\": \"text-[16px] font-semibold tracking-tight text-text leading-snug\",\n    \"text\": \"Remove\"\n  },\n  {\n    \"tag\": \"P\",\n    \"class\": \"mt-1.5 text-[13.5px] text-text-muted leading-relaxed\",\n    \"text\": \"Click once to strip all privacy-sensitive metadata from your file.\"\n  },\n  {\n    \"tag\": \"LI\",\n    \"class\": \"pmr-card p-5 sm:p-6 relative group\",\n    \"text\": \"04DownloadSave the cleaned image. The pixels are identical to your original ΓÇö only the metadata is g\"\n  },\n  {\n    \"tag\": \"H3\",\n    \"class\": \"text-[16px] font-semibold tracking-tight text-text leading-snug\",\n    \"text\": \"Download\"\n  },\n  {\n    \"tag\": \"P\",\n    \"class\": \"mt-1.5 text-[13.5px] text-text-muted leading-relaxed\",\n    \"text\": \"Save the cleaned image. The pixels are identical to your original ΓÇö only the metadata is gone.\"\n  },\n  {\n    \"tag\": \"SECTION\",\n    \"class\": \"py-16 sm:py-20 px-4 sm:px-6 border-t border-border\",\n    \"text\": \"FAQFrequently Asked QuestionsWhat metadata is removed?We remove EXIF data (GPS coordinates, camera m\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"max-w-3xl mx-auto\",\n    \"text\": \"FAQFrequently Asked QuestionsWhat metadata is removed?We remove EXIF data (GPS coordinates, camera m\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"space-y-2.5\",\n    \"text\": \"What metadata is removed?We remove EXIF data (GPS coordinates, camera make/model, serial number, tim\"\n  },\n  {\n    \"tag\": \"DETAILS\",\n    \"class\": \"group pmr-card overflow-hidden\",\n    \"text\": \"What metadata is removed?We remove EXIF data (GPS coordinates, camera make/model, serial number, tim\"\n  },\n  {\n    \"tag\": \"SUMMARY\",\n    \"class\": \"flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden transition-colors\",\n    \"text\": \"What metadata is removed?\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"text-[14.5px] sm:text-[15px] font-medium text-text leading-snug pr-2\",\n    \"text\": \"What metadata is removed?\"\n  },\n  {\n    \"tag\": \"DETAILS\",\n    \"class\": \"group pmr-card overflow-hidden\",\n    \"text\": \"What about social networks?Some social networks strip metadata on upload, but not all. Stripping at \"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"px-5 pb-4 text-[14px] text-text-muted leading-relaxed\",\n    \"text\": \"Some social networks strip metadata on upload, but not all. Stripping at the source means you're not\"\n  },\n  {\n    \"tag\": \"DETAILS\",\n    \"class\": \"group pmr-card overflow-hidden\",\n    \"text\": \"Can I clean multiple photos at once?Yes. Drop multiple files and we'll process them all. Download th\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"px-5 pb-4 text-[14px] text-text-muted leading-relaxed\",\n    \"text\": \"Yes. Drop multiple files and we'll process them all. Download them individually or as a single ZIP f\"\n  },\n  {\n    \"tag\": \"FOOTER\",\n    \"class\": \"bg-surface border-t border-border mt-16\",\n    \"text\": \"PM.Photo Metadata RemoverRemove EXIF data from your photos. Privacy-first, free, no uploads.100% Cli\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-12\",\n    \"text\": \"PM.Photo Metadata RemoverRemove EXIF data from your photos. Privacy-first, free, no uploads.100% Cli\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 sm:gap-10\",\n    \"text\": \"PM.Photo Metadata RemoverRemove EXIF data from your photos. Privacy-first, free, no uploads.100% Cli\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"col-span-2 sm:col-span-3 md:col-span-1\",\n    \"text\": \"PM.Photo Metadata RemoverRemove EXIF data from your photos. Privacy-first, free, no uploads.100% Cli\"\n  },\n  {\n    \"tag\": \"A\",\n    \"class\": \"inline-flex items-center gap-2.5 mb-3\",\n    \"text\": \"PM.Photo Metadata Remover\"\n  },\n  {\n    \"tag\": \"SPAN\",\n    \"class\": \"font-semibold text-text text-[14px] tracking-tight\",\n    \"text\": \"Photo Metadata Remover\"\n  },\n  {\n    \"tag\": \"P\",\n    \"class\": \"text-[13px] text-text-muted leading-relaxed max-w-xs\",\n    \"text\": \"Remove EXIF data from your photos. Privacy-first, free, no uploads.\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"\",\n    \"text\": \"LegalPrivacy PolicyTerms of ServiceImprint\"\n  },\n  {\n    \"tag\": \"UL\",\n    \"class\": \"space-y-2\",\n    \"text\": \"Privacy PolicyTerms of ServiceImprint\"\n  },\n  {\n    \"tag\": \"LI\",\n    \"class\": \"\",\n    \"text\": \"Privacy Policy\"\n  },\n  {\n    \"tag\": \"A\",\n    \"class\": \"text-[13.5px] text-text-muted hover:text-text transition-colors\",\n    \"text\": \"Privacy Policy\"\n  },\n  {\n    \"tag\": \"DIV\",\n    \"class\": \"mt-10 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3\",\n    \"text\": \"┬⌐ 2026 Photo Metadata Remover. All rights reserved.100% client-side ┬╖ nothing uploaded\"\n  },\n  {\n    \"tag\": \"P\",\n    \"class\": \"text-[12.5px] text-text-faint\",\n    \"text\": \"┬⌐ 2026 Photo Metadata Remover. All rights reserved.\"\n  }\n]\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-11T09:27:25.898Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b3bbae22cdd731595259-b493baa5c42b3bcfe36a",
+          "file": "test-dom-inspect.spec.ts",
+          "line": 10,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "test-e2e-strip-rereupload.spec.ts",
+      "file": "test-e2e-strip-rereupload.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Metadata strip + re-upload E2E",
+          "file": "test-e2e-strip-rereupload.spec.ts",
+          "line": 18,
+          "column": 6,
+          "specs": [
+            {
+              "title": "PNG: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2487,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Re-upload status text: \"Γ£ô No privacy metadata foundTechnical image information preserved: 7 properties\"\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:28.079Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f487a04d137480494326-18b87c201debc5db528b",
+              "file": "test-e2e-strip-rereupload.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "JPEG: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 17338,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('div.text-xs:has-text(\"No privacy metadata found\")')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('div.text-xs:has-text(\"No privacy metadata found\")')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('div.text-xs:has-text(\"No privacy metadata found\")')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('div.text-xs:has-text(\"No privacy metadata found\")')\u001b[22m\n\n    at D:\\photo metadata remover\\test-e2e-strip-rereupload.spec.ts:124:85",
+                        "location": {
+                          "file": "D:\\photo metadata remover\\test-e2e-strip-rereupload.spec.ts",
+                          "column": 85,
+                          "line": 124
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 122 |\u001b[39m\n \u001b[90m 123 |\u001b[39m     \u001b[90m// 9. Wait for re-scan ΓÇö should show \"No privacy metadata found\"\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 124 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'div.text-xs:has-text(\"No privacy metadata found\")'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 125 |\u001b[39m\n \u001b[90m 126 |\u001b[39m     \u001b[90m// 10. Verify badge\u001b[39m\n \u001b[90m 127 |\u001b[39m     \u001b[36mconst\u001b[39m reuploadStatus \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'div.text-xs'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\photo metadata remover\\test-e2e-strip-rereupload.spec.ts",
+                            "column": 85,
+                            "line": 124
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('div.text-xs:has-text(\"No privacy metadata found\")')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('div.text-xs:has-text(\"No privacy metadata found\")')\u001b[22m\n\n\n  122 |\n  123 |     // 9. Wait for re-scan ΓÇö should show \"No privacy metadata found\"\n> 124 |     await expect(page.locator('div.text-xs:has-text(\"No privacy metadata found\")')).toBeVisible({ timeout: 15000 });\n      |                                                                                     ^\n  125 |\n  126 |     // 10. Verify badge\n  127 |     const reuploadStatus = page.locator('div.text-xs').first();\n    at D:\\photo metadata remover\\test-e2e-strip-rereupload.spec.ts:124:85"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:30.581Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\photo metadata remover\\test-results\\test-e2e-strip-rereupload--6d48b-d-shows-no-privacy-metadata\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\photo metadata remover\\test-e2e-strip-rereupload.spec.ts",
+                        "column": 85,
+                        "line": 124
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f487a04d137480494326-3c956dbb8992638a30b3",
+              "file": "test-e2e-strip-rereupload.spec.ts",
+              "line": 80,
+              "column": 3
+            },
+            {
+              "title": "WebP: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 60039,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\photo metadata remover\\test-e2e-strip-rereupload.spec.ts",
+                            "column": 21,
+                            "line": 159
+                          },
+                          "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"Remove metadata\")').first()\u001b[22m\n\n\n  157 |     // 5. Click \"Remove metadata\"\n  158 |     const removeBtn = page.locator('button:has-text(\"Remove metadata\")').first();\n> 159 |     await removeBtn.click();\n      |                     ^\n  160 |\n  161 |     // 6. Wait for success\n  162 |     await expect(page.locator('div.text-success-text:has-text(\"Metadata removed successfully\")')).toBeVisible({ timeout: 20000 });\n    at D:\\photo metadata remover\\test-e2e-strip-rereupload.spec.ts:159:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-11T09:27:48.655Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\photo metadata remover\\test-results\\test-e2e-strip-rereupload--75232-d-shows-no-privacy-metadata\\error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f487a04d137480494326-1cfb9c74af26720ec329",
+              "file": "test-e2e-strip-rereupload.spec.ts",
+              "line": 133,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-11T09:27:15.982Z",
+    "duration": 92957.28,
+    "expected": 30,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

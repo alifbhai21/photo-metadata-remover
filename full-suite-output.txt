@@ -1,0 +1,621 @@
+﻿
+Running 33 tests using 3 workers
+
+PASSED: Privacy fields correctly classified
+  Γ£ô   3 metadata-classification-test.spec.ts:11:3 ΓÇ║ Metadata classification ΓÇ║ Privacy fields should appear under Privacy metadata section (1.8s)
+PASSED: cleaned JPEG is metadata-free (segment + content level)
+  Γ£ô   2 launch-gate-test.spec.ts:74:3 ΓÇ║ Launch gate ΓÇô zero-metadata guarantee (RW) ΓÇ║ cleaned JPEG has no APP1/APP13/COM segments and no privacy strings (2.2s)
+PASSED
+  Γ£ô   1 stale-state-test.spec.ts:11:3 ΓÇ║ Stale-state bug ΓÇö alternative scenarios ΓÇ║ Clean single file ΓåÆ reset ΓåÆ re-upload should show metadata (2.5s)
+PASSED: batch ZIP is valid and contains only metadata-free clean images
+  Γ£ô   5 launch-gate-test.spec.ts:105:3 ΓÇ║ Launch gate ΓÇô zero-metadata guarantee (RW) ΓÇ║ batch ZIP downloads as one archive containing metadata-free clean images (1.5s)
+PASSED: Technical fields correctly classified
+  Γ£ô   4 metadata-classification-test.spec.ts:42:3 ΓÇ║ Metadata classification ΓÇ║ Technical fields should appear under Technical section, not Privacy (1.7s)
+PASSED: unsupported type rejected with localized error
+  Γ£ô   7 launch-gate-test.spec.ts:143:3 ΓÇ║ Launch gate ΓÇô FR-1 upload validation (RW) ΓÇ║ unsupported file types are rejected with a localized error and never enter the pipeline (316ms)
+PASSED
+  Γ£ô   6 stale-state-test.spec.ts:37:3 ΓÇ║ Stale-state bug ΓÇö alternative scenarios ΓÇ║ Clean without reset ΓåÆ re-upload should show metadata (2.2s)
+PASSED: auto-strip did not fire incorrectly
+  Γ£ô  10 stale-state-test.spec.ts:66:3 ΓÇ║ Stale-state bug ΓÇö alternative scenarios ΓÇ║ Auto-strip scenario: file with metadata should NOT auto-strip (1.4s)
+  Γ£ô   8 test-batch-guard.spec.ts:97:3 ΓÇ║ Batch-ID guard: real re-upload verification ΓÇ║ 1ΓåÆ1: upload 1 JPEG, then re-upload 1 JPEG while first is stripping (2.3s)
+  Γ£ô  12 test-batch-guard.spec.ts:134:3 ΓÇ║ Batch-ID guard: real re-upload verification ΓÇ║ 5ΓåÆ1: upload 5 JPEGs, then re-upload 1 PNG while first batch is stripping (2.2s)
+PASSED
+  Γ£ô  11 stale-state-test.spec.ts:81:3 ΓÇ║ Stale-state bug ΓÇö alternative scenarios ΓÇ║ Rapid re-upload: upload ΓåÆ clean ΓåÆ reset ΓåÆ immediate re-upload (2.4s)
+  Γ£ô  13 test-batch-guard.spec.ts:172:3 ΓÇ║ Batch-ID guard: real re-upload verification ΓÇ║ 10ΓåÆ5: upload 10 JPEGs, then re-upload 5 PNGs (2.2s)
+PASSED: oversized file rejected with localized error
+  Γ£ô   9 launch-gate-test.spec.ts:162:3 ΓÇ║ Launch gate ΓÇô FR-1 upload validation (RW) ΓÇ║ files over the 40 MB cap are rejected with a localized error and never enter the pipeline (7.3s)
+  Γ£ô  15 test-batch-guard.spec.ts:210:3 ΓÇ║ Batch-ID guard: real re-upload verification ΓÇ║ 10ΓåÆ10: upload 10 JPEGs, then re-upload 10 PNGs (2.1s)
+Re-upload status text: "Γ£ô No privacy metadata foundTechnical image information preserved: 7 properties"
+  Γ£ô  16 test-e2e-strip-rereupload.spec.ts:20:3 ΓÇ║ Metadata strip + re-upload E2E ΓÇ║ PNG: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata (2.4s)
+  Γ£ô  17 test-batch-guard.spec.ts:248:3 ΓÇ║ Batch-ID guard: real re-upload verification ΓÇ║ Rapid re-upload: upload A, immediately upload B without waiting (2.0s)
+Elements with metadata/privacy/remove/download text: [
+  {
+    "tag": "HTML",
+    "class": "",
+    "text": "(function () {\n        var root = document.documentElement;\n        var stored = localStorage.getIte"
+  },
+  {
+    "tag": "HEAD",
+    "class": "",
+    "text": "(function () {\n        var root = document.documentElement;\n        var stored = localStorage.getIte"
+  },
+  {
+    "tag": "TITLE",
+    "class": "",
+    "text": "Remove Metadata from Your Photos Online | Photo Metadata Remover"
+  },
+  {
+    "tag": "SCRIPT",
+    "class": "",
+    "text": "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"Photo Metadata Remover\",\"description\":\"St"
+  },
+  {
+    "tag": "SCRIPT",
+    "class": "",
+    "text": "{\"@context\":\"https://schema.org\",\"@type\":\"SoftwareApplication\",\"name\":\"Photo Metadata Remover\",\"desc"
+  },
+  {
+    "tag": "SCRIPT",
+    "class": "",
+    "text": "window.__astro_dev_toolbar__ = {\"root\":\"D:\\\\photo metadata remover\\\\\",\"version\":\"7.3.1\",\"debugInfo\":"
+  },
+  {
+    "tag": "BODY",
+    "class": "min-h-screen flex flex-col bg-bg text-text antialiased pmr-elegant-bg",
+    "text": "Skip to contentPM.Photo Metadata RemoverFormatsGuidesFAQAbout100% Client-SideenEnglishDeutschFran├ºai"
+  },
+  {
+    "tag": "NAV",
+    "class": "fixed top-0 left-0 right-0 z-50 bg-bg/80 dark:bg-bg/80 backdrop-blur-xl border-b border-border/80",
+    "text": "PM.Photo Metadata RemoverFormatsGuidesFAQAbout100% Client-SideenEnglishDeutschFran├ºaisRemove nowRemo"
+  },
+  {
+    "tag": "DIV",
+    "class": "max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4",
+    "text": "PM.Photo Metadata RemoverFormatsGuidesFAQAbout100% Client-SideenEnglishDeutschFran├ºaisRemove nowRemo"
+  },
+  {
+    "tag": "A",
+    "class": "flex items-center gap-2.5 shrink-0 group",
+    "text": "PM.Photo Metadata Remover"
+  },
+  {
+    "tag": "SPAN",
+    "class": "font-semibold text-text text-[15px] tracking-tight hidden sm:inline",
+    "text": "Photo Metadata Remover"
+  },
+  {
+    "tag": "DIV",
+    "class": "flex items-center gap-1.5 sm:gap-2",
+    "text": "enEnglishDeutschFran├ºaisRemove nowRemove"
+  },
+  {
+    "tag": "A",
+    "class": "inline-flex items-center gap-1.5 h-9 px-3.5 sm:px-4 rounded-full bg-accent-btn text-accent-btn-text text-[13px] font-medium whitespace-nowrap hover:bg-accent-btn-hover transition-colors",
+    "text": "Remove nowRemove"
+  },
+  {
+    "tag": "SPAN",
+    "class": "hidden sm:inline",
+    "text": "Remove now"
+  },
+  {
+    "tag": "SPAN",
+    "class": "sm:hidden",
+    "text": "Remove"
+  },
+  {
+    "tag": "MAIN",
+    "class": "flex-1 pt-16",
+    "text": "Privacy-first toolRemove metadata from your photosStrip GPS coordinates, camera serial numbers, time"
+  },
+  {
+    "tag": "DIV",
+    "class": "max-w-[580px] mx-auto px-4 sm:px-6",
+    "text": "Privacy-first toolRemove metadata from your photosStrip GPS coordinates, camera serial numbers, time"
+  },
+  {
+    "tag": "SECTION",
+    "class": "relative pmr-hero-backdrop pt-12 sm:pt-16 lg:pt-20 pb-4",
+    "text": "Privacy-first toolRemove metadata from your photosStrip GPS coordinates, camera serial numbers, time"
+  },
+  {
+    "tag": "DIV",
+    "class": "text-center",
+    "text": "Privacy-first toolRemove metadata from your photosStrip GPS coordinates, camera serial numbers, time"
+  },
+  {
+    "tag": "SPAN",
+    "class": "pmr-eyebrow justify-center",
+    "text": "Privacy-first tool"
+  },
+  {
+    "tag": "H1",
+    "class": "mt-5 text-[30px] sm:text-[36px] font-semibold tracking-[-0.03em] text-text leading-[1.1] max-w-[480px] mx-auto",
+    "text": "Remove metadata from your photos"
+  },
+  {
+    "tag": "SECTION",
+    "class": "pt-6 sm:pt-8 pb-12 sm:pb-16",
+    "text": "Scanning photosΓÇªDrop your photos hereor click to browseBrowse filestool.try_sampleSelect multiple fi"
+  },
+  {
+    "tag": "DIV",
+    "class": "max-w-[580px] mx-auto",
+    "text": "Scanning photosΓÇªDrop your photos hereor click to browseBrowse filestool.try_sampleSelect multiple fi"
+  },
+  {
+    "tag": "DIV",
+    "class": "mt-6 p-4 sm:p-5 bg-surface rounded-xl border border-border pmr-elev-1 hidden",
+    "text": "Scanning photosΓÇªRemoving metadata..."
+  },
+  {
+    "tag": "DIV",
+    "class": "flex items-center gap-3",
+    "text": "Scanning photosΓÇªRemoving metadata..."
+  },
+  {
+    "tag": "DIV",
+    "class": "flex flex-col",
+    "text": "Removing metadata..."
+  },
+  {
+    "tag": "SPAN",
+    "class": "text-[13.5px] text-text font-medium tracking-tight",
+    "text": "Removing metadata..."
+  },
+  {
+    "tag": "OL",
+    "class": "mt-6 pmr-card p-4 sm:p-5",
+    "text": "Γ£ô 1UploadΓ£ô 2Scan3Remove4Download"
+  },
+  {
+    "tag": "LI",
+    "class": "flex items-center flex-1",
+    "text": "3Remove"
+  },
+  {
+    "tag": "SPAN",
+    "class": "ml-2 text-[12.5px] font-medium text-text-muted tracking-tight",
+    "text": "Remove"
+  },
+  {
+    "tag": "LI",
+    "class": "flex items-center",
+    "text": "4Download"
+  },
+  {
+    "tag": "SPAN",
+    "class": "ml-2 text-[12.5px] font-medium text-text-muted tracking-tight",
+    "text": "Download"
+  },
+  {
+    "tag": "DIV",
+    "class": "mt-6 pmr-card overflow-hidden pmr-elev-1",
+    "text": "Privacy metadata resultsClear allRemove all metadataDownload ZIPShow image metadataclean-verify-insp"
+  },
+  {
+    "tag": "DIV",
+    "class": "px-4 sm:px-5 py-4 border-b border-border",
+    "text": "Privacy metadata resultsClear allRemove all metadataDownload ZIPShow image metadata"
+  },
+  {
+    "tag": "DIV",
+    "class": "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3",
+    "text": "Privacy metadata resultsClear allRemove all metadataDownload ZIPShow image metadata"
+  },
+  {
+    "tag": "H3",
+    "class": "text-[14.5px] font-semibold text-text tracking-tight",
+    "text": "Privacy metadata results"
+  },
+  {
+    "tag": "DIV",
+    "class": "flex flex-wrap gap-2",
+    "text": "Clear allRemove all metadataDownload ZIPShow image metadata"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent-btn text-accent-btn-text text-[12.5px] font-medium rounded-full hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed",
+    "text": "Remove all metadata"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "hidden inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent-btn text-accent-btn-text text-[12.5px] font-medium rounded-full hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed",
+    "text": "Download ZIP"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "inline-flex items-center gap-1.5 px-3.5 py-2 bg-surface text-text text-[12.5px] font-medium rounded-full border border-border hover:bg-surface-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed",
+    "text": "Show image metadata"
+  },
+  {
+    "tag": "DIV",
+    "class": "divide-y divide-border",
+    "text": "clean-verify-inspect.png710 BPrivacy metadata found (2)Remove metadataDownload clean imageShow image"
+  },
+  {
+    "tag": "DIV",
+    "class": "p-4 sm:p-5 flex items-start sm:items-center gap-3 sm:gap-4 flex-col sm:flex-row pmr-fade-in",
+    "text": "clean-verify-inspect.png710 BPrivacy metadata found (2)Remove metadataDownload clean imageShow image"
+  },
+  {
+    "tag": "DIV",
+    "class": "flex-1 min-w-0 w-full sm:w-auto",
+    "text": "clean-verify-inspect.png710 BPrivacy metadata found (2)"
+  },
+  {
+    "tag": "DIV",
+    "class": "text-xs mt-1 text-text-muted",
+    "text": "Privacy metadata found (2)"
+  },
+  {
+    "tag": "DIV",
+    "class": "flex gap-2 flex-wrap w-full sm:w-auto",
+    "text": "Remove metadataDownload clean imageShow image metadata"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed",
+    "text": "Remove metadata"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-surface text-text rounded-full font-medium border border-border hover:bg-surface-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed",
+    "text": "Download clean image"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-surface text-text rounded-full font-medium border border-border hover:bg-surface-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed",
+    "text": "Show image metadata"
+  },
+  {
+    "tag": "DIV",
+    "class": "hidden",
+    "text": "Image metadataClose metadata panel"
+  },
+  {
+    "tag": "DIV",
+    "class": "border-t border-border",
+    "text": "Image metadataClose metadata panel"
+  },
+  {
+    "tag": "DIV",
+    "class": "p-4 sm:p-5",
+    "text": "Image metadataClose metadata panel"
+  },
+  {
+    "tag": "DIV",
+    "class": "flex items-center justify-between mb-4",
+    "text": "Image metadataClose metadata panel"
+  },
+  {
+    "tag": "H4",
+    "class": "text-[13.5px] font-semibold text-text tracking-tight",
+    "text": "Image metadata"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "inline-flex items-center gap-1 text-[12.5px] text-text-muted hover:text-text transition-colors px-2.5 py-1 rounded-md hover:bg-surface-muted",
+    "text": "Close metadata panel"
+  },
+  {
+    "tag": "SECTION",
+    "class": "py-16 sm:py-20 px-4 sm:px-6 border-t border-border",
+    "text": "Why this toolWhy use our tool?Everything you need to keep your photos private ΓÇö without leaving your"
+  },
+  {
+    "tag": "DIV",
+    "class": "max-w-5xl mx-auto",
+    "text": "Why this toolWhy use our tool?Everything you need to keep your photos private ΓÇö without leaving your"
+  },
+  {
+    "tag": "DIV",
+    "class": "grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5",
+    "text": "features.private.eyebrowfeatures.private.titlefeatures.private.descriptionfeatures.private.bullets.n"
+  },
+  {
+    "tag": "ARTICLE",
+    "class": "lg:col-span-5 pmr-card p-6 sm:p-7 pmr-elev-1 flex flex-col",
+    "text": "CompleteComplete metadata cleanupStrips the metadata that exposes you ΓÇö location, device, software, "
+  },
+  {
+    "tag": "H3",
+    "class": "text-[18px] sm:text-[20px] font-semibold tracking-tight text-text leading-tight",
+    "text": "Complete metadata cleanup"
+  },
+  {
+    "tag": "P",
+    "class": "mt-2 text-[14px] text-text-muted leading-relaxed",
+    "text": "Strips the metadata that exposes you ΓÇö location, device, software, and timestamps ΓÇö while preserving"
+  },
+  {
+    "tag": "SECTION",
+    "class": "py-16 sm:py-20 px-4 sm:px-6 border-t border-border",
+    "text": "WorkflowHow it worksFour short steps. Nothing leaves your browser, and your pixels stay exactly as c"
+  },
+  {
+    "tag": "DIV",
+    "class": "max-w-5xl mx-auto",
+    "text": "WorkflowHow it worksFour short steps. Nothing leaves your browser, and your pixels stay exactly as c"
+  },
+  {
+    "tag": "OL",
+    "class": "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4",
+    "text": "01UploadDrag a photo from your desktop or click to browse. We detect the format automatically.02Scan"
+  },
+  {
+    "tag": "LI",
+    "class": "pmr-card p-5 sm:p-6 relative group",
+    "text": "02ScanWe show every metadata field found ΓÇö GPS, camera info, timestamps, software."
+  },
+  {
+    "tag": "P",
+    "class": "mt-1.5 text-[13.5px] text-text-muted leading-relaxed",
+    "text": "We show every metadata field found ΓÇö GPS, camera info, timestamps, software."
+  },
+  {
+    "tag": "LI",
+    "class": "pmr-card p-5 sm:p-6 relative group",
+    "text": "03RemoveClick once to strip all privacy-sensitive metadata from your file."
+  },
+  {
+    "tag": "H3",
+    "class": "text-[16px] font-semibold tracking-tight text-text leading-snug",
+    "text": "Remove"
+  },
+  {
+    "tag": "P",
+    "class": "mt-1.5 text-[13.5px] text-text-muted leading-relaxed",
+    "text": "Click once to strip all privacy-sensitive metadata from your file."
+  },
+  {
+    "tag": "LI",
+    "class": "pmr-card p-5 sm:p-6 relative group",
+    "text": "04DownloadSave the cleaned image. The pixels are identical to your original ΓÇö only the metadata is g"
+  },
+  {
+    "tag": "H3",
+    "class": "text-[16px] font-semibold tracking-tight text-text leading-snug",
+    "text": "Download"
+  },
+  {
+    "tag": "P",
+    "class": "mt-1.5 text-[13.5px] text-text-muted leading-relaxed",
+    "text": "Save the cleaned image. The pixels are identical to your original ΓÇö only the metadata is gone."
+  },
+  {
+    "tag": "SECTION",
+    "class": "py-16 sm:py-20 px-4 sm:px-6 border-t border-border",
+    "text": "FAQFrequently Asked QuestionsWhat metadata is removed?We remove EXIF data (GPS coordinates, camera m"
+  },
+  {
+    "tag": "DIV",
+    "class": "max-w-3xl mx-auto",
+    "text": "FAQFrequently Asked QuestionsWhat metadata is removed?We remove EXIF data (GPS coordinates, camera m"
+  },
+  {
+    "tag": "DIV",
+    "class": "space-y-2.5",
+    "text": "What metadata is removed?We remove EXIF data (GPS coordinates, camera make/model, serial number, tim"
+  },
+  {
+    "tag": "DETAILS",
+    "class": "group pmr-card overflow-hidden",
+    "text": "What metadata is removed?We remove EXIF data (GPS coordinates, camera make/model, serial number, tim"
+  },
+  {
+    "tag": "SUMMARY",
+    "class": "flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden transition-colors",
+    "text": "What metadata is removed?"
+  },
+  {
+    "tag": "SPAN",
+    "class": "text-[14.5px] sm:text-[15px] font-medium text-text leading-snug pr-2",
+    "text": "What metadata is removed?"
+  },
+  {
+    "tag": "DETAILS",
+    "class": "group pmr-card overflow-hidden",
+    "text": "What about social networks?Some social networks strip metadata on upload, but not all. Stripping at "
+  },
+  {
+    "tag": "DIV",
+    "class": "px-5 pb-4 text-[14px] text-text-muted leading-relaxed",
+    "text": "Some social networks strip metadata on upload, but not all. Stripping at the source means you're not"
+  },
+  {
+    "tag": "DETAILS",
+    "class": "group pmr-card overflow-hidden",
+    "text": "Can I clean multiple photos at once?Yes. Drop multiple files and we'll process them all. Download th"
+  },
+  {
+    "tag": "DIV",
+    "class": "px-5 pb-4 text-[14px] text-text-muted leading-relaxed",
+    "text": "Yes. Drop multiple files and we'll process them all. Download them individually or as a single ZIP f"
+  },
+  {
+    "tag": "FOOTER",
+    "class": "bg-surface border-t border-border mt-16",
+    "text": "PM.Photo Metadata RemoverRemove EXIF data from your photos. Privacy-first, free, no uploads.100% Cli"
+  },
+  {
+    "tag": "DIV",
+    "class": "max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-12",
+    "text": "PM.Photo Metadata RemoverRemove EXIF data from your photos. Privacy-first, free, no uploads.100% Cli"
+  },
+  {
+    "tag": "DIV",
+    "class": "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 sm:gap-10",
+    "text": "PM.Photo Metadata RemoverRemove EXIF data from your photos. Privacy-first, free, no uploads.100% Cli"
+  },
+  {
+    "tag": "DIV",
+    "class": "col-span-2 sm:col-span-3 md:col-span-1",
+    "text": "PM.Photo Metadata RemoverRemove EXIF data from your photos. Privacy-first, free, no uploads.100% Cli"
+  },
+  {
+    "tag": "A",
+    "class": "inline-flex items-center gap-2.5 mb-3",
+    "text": "PM.Photo Metadata Remover"
+  },
+  {
+    "tag": "SPAN",
+    "class": "font-semibold text-text text-[14px] tracking-tight",
+    "text": "Photo Metadata Remover"
+  },
+  {
+    "tag": "P",
+    "class": "text-[13px] text-text-muted leading-relaxed max-w-xs",
+    "text": "Remove EXIF data from your photos. Privacy-first, free, no uploads."
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "text": "LegalPrivacy PolicyTerms of ServiceImprint"
+  },
+  {
+    "tag": "UL",
+    "class": "space-y-2",
+    "text": "Privacy PolicyTerms of ServiceImprint"
+  },
+  {
+    "tag": "LI",
+    "class": "",
+    "text": "Privacy Policy"
+  },
+  {
+    "tag": "A",
+    "class": "text-[13.5px] text-text-muted hover:text-text transition-colors",
+    "text": "Privacy Policy"
+  },
+  {
+    "tag": "DIV",
+    "class": "mt-10 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3",
+    "text": "┬⌐ 2026 Photo Metadata Remover. All rights reserved.100% client-side ┬╖ nothing uploaded"
+  },
+  {
+    "tag": "P",
+    "class": "text-[12.5px] text-text-faint",
+    "text": "┬⌐ 2026 Photo Metadata Remover. All rights reserved."
+  }
+]
+  Γ£ô  14 test-dom-inspect.spec.ts:10:1 ΓÇ║ inspect DOM (6.6s)
+  Γ£ô  19 test-batch-guard.spec.ts:279:3 ΓÇ║ Batch-ID guard: real re-upload verification ΓÇ║ Repeated re-upload: A ΓåÆ B ΓåÆ C in sequence (3.4s)
+  Γ£ô  20 test-batch-guard.spec.ts:320:3 ΓÇ║ Batch-ID guard: real re-upload verification ΓÇ║ Normal behavior: upload and strip without re-upload (1.4s)
+  Γ£ô  21 test-batch-guard.spec.ts:362:5 ΓÇ║ Responsive: mobile-small (375├ù667) ΓÇ║ 1ΓåÆ1 re-upload at mobile-small (2.3s)
+  Γ£ô  22 test-batch-guard.spec.ts:396:5 ΓÇ║ Responsive: mobile-small (375├ù667) ΓÇ║ 5ΓåÆ1 re-upload at mobile-small (2.7s)
+  Γ£ô  23 test-batch-guard.spec.ts:362:5 ΓÇ║ Responsive: mobile-large (390├ù844) ΓÇ║ 1ΓåÆ1 re-upload at mobile-large (2.2s)
+  Γ£ÿ  24 test-batch-guard.spec.ts:396:5 ΓÇ║ Responsive: mobile-large (390├ù844) ΓÇ║ 5ΓåÆ1 re-upload at mobile-large (31.3s)
+  Γ£ô  25 test-batch-guard.spec.ts:362:5 ΓÇ║ Responsive: tablet (768├ù1024) ΓÇ║ 1ΓåÆ1 re-upload at tablet (2.9s)
+  Γ£ô  26 test-batch-guard.spec.ts:396:5 ΓÇ║ Responsive: tablet (768├ù1024) ΓÇ║ 5ΓåÆ1 re-upload at tablet (2.0s)
+  Γ£ô  27 test-batch-guard.spec.ts:362:5 ΓÇ║ Responsive: tablet-large (820├ù1180) ΓÇ║ 1ΓåÆ1 re-upload at tablet-large (3.1s)
+  Γ£ô  28 test-batch-guard.spec.ts:396:5 ΓÇ║ Responsive: tablet-large (820├ù1180) ΓÇ║ 5ΓåÆ1 re-upload at tablet-large (1.9s)
+  Γ£ÿ  18 test-e2e-strip-rereupload.spec.ts:80:3 ΓÇ║ Metadata strip + re-upload E2E ΓÇ║ JPEG: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata (1.0m)
+  Γ£ÿ  29 test-batch-guard.spec.ts:362:5 ΓÇ║ Responsive: laptop (1280├ù800) ΓÇ║ 1ΓåÆ1 re-upload at laptop (31.3s)
+  Γ£ô  31 test-batch-guard.spec.ts:396:5 ΓÇ║ Responsive: laptop (1280├ù800) ΓÇ║ 5ΓåÆ1 re-upload at laptop (2.5s)
+  Γ£ô  32 test-batch-guard.spec.ts:362:5 ΓÇ║ Responsive: desktop (1440├ù900) ΓÇ║ 1ΓåÆ1 re-upload at desktop (2.2s)
+  Γ£ô  33 test-batch-guard.spec.ts:396:5 ΓÇ║ Responsive: desktop (1440├ù900) ΓÇ║ 5ΓåÆ1 re-upload at desktop (2.4s)
+  Γ£ÿ  30 test-e2e-strip-rereupload.spec.ts:133:3 ΓÇ║ Metadata strip + re-upload E2E ΓÇ║ WebP: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata (1.0m)
+
+
+  1) test-batch-guard.spec.ts:396:5 ΓÇ║ Responsive: mobile-large (390├ù844) ΓÇ║ 5ΓåÆ1 re-upload at mobile-large 
+
+    TimeoutError: locator.waitFor: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#files-list > div').first()
+
+
+      75 | /** Wait for at least one file item to appear */
+      76 | async function waitForFiles(page: Page, timeout = 30000): Promise<void> {
+    > 77 |   await page.locator('#files-list > div').first().waitFor({ state: 'attached', timeout });
+         |                                                   ^
+      78 | }
+      79 |
+      80 | /** Wait for all items in current batch to show "Remove metadata" button (ready state) */
+        at waitForFiles (D:\photo metadata remover\test-batch-guard.spec.ts:77:51)
+        at D:\photo metadata remover\test-batch-guard.spec.ts:406:15
+
+    Error Context: test-results\test-batch-guard-Responsiv-6ed51-1-re-upload-at-mobile-large\error-context.md
+
+  2) test-batch-guard.spec.ts:362:5 ΓÇ║ Responsive: laptop (1280├ù800) ΓÇ║ 1ΓåÆ1 re-upload at laptop ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    TimeoutError: locator.waitFor: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#files-list > div').first()
+
+
+      75 | /** Wait for at least one file item to appear */
+      76 | async function waitForFiles(page: Page, timeout = 30000): Promise<void> {
+    > 77 |   await page.locator('#files-list > div').first().waitFor({ state: 'attached', timeout });
+         |                                                   ^
+      78 | }
+      79 |
+      80 | /** Wait for all items in current batch to show "Remove metadata" button (ready state) */
+        at waitForFiles (D:\photo metadata remover\test-batch-guard.spec.ts:77:51)
+        at D:\photo metadata remover\test-batch-guard.spec.ts:373:15
+
+    Error Context: test-results\test-batch-guard-Responsiv-2d025-800-1ΓåÆ1-re-upload-at-laptop\error-context.md
+
+  3) test-e2e-strip-rereupload.spec.ts:80:3 ΓÇ║ Metadata strip + re-upload E2E ΓÇ║ JPEG: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for locator('button:has-text("Remove metadata")').first()
+        - locator resolved to <button id="remove-1" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Remove metadata</button>
+      - attempting click action
+        2 ├ù waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      - retrying click action
+        - waiting 100ms
+        - waiting for "http://localhost:4321/en/" navigation to finish...
+        - navigated to "http://localhost:4321/en/"
+        - waiting for element to be visible, enabled and stable
+      - element was detached from the DOM, retrying
+        4 ├ù waiting for "http://localhost:4321/en/" navigation to finish...
+          - navigated to "http://localhost:4321/en/"
+
+
+      104 |     // 5. Click "Remove metadata"
+      105 |     const removeBtn = page.locator('button:has-text("Remove metadata")').first();
+    > 106 |     await removeBtn.click();
+          |                     ^
+      107 |
+      108 |     // 6. Wait for success
+      109 |     await expect(page.locator('div.text-success-text:has-text("Metadata removed successfully")')).toBeVisible({ timeout: 20000 });
+        at D:\photo metadata remover\test-e2e-strip-rereupload.spec.ts:106:21
+
+    Error Context: test-results\test-e2e-strip-rereupload--6d48b-d-shows-no-privacy-metadata\error-context.md
+
+  4) test-e2e-strip-rereupload.spec.ts:133:3 ΓÇ║ Metadata strip + re-upload E2E ΓÇ║ WebP: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for locator('button:has-text("Remove metadata")').first()
+
+
+      157 |     // 5. Click "Remove metadata"
+      158 |     const removeBtn = page.locator('button:has-text("Remove metadata")').first();
+    > 159 |     await removeBtn.click();
+          |                     ^
+      160 |
+      161 |     // 6. Wait for success
+      162 |     await expect(page.locator('div.text-success-text:has-text("Metadata removed successfully")')).toBeVisible({ timeout: 20000 });
+        at D:\photo metadata remover\test-e2e-strip-rereupload.spec.ts:159:21
+
+    Error Context: test-results\test-e2e-strip-rereupload--75232-d-shows-no-privacy-metadata\error-context.md
+
+  4 failed
+    test-batch-guard.spec.ts:396:5 ΓÇ║ Responsive: mobile-large (390├ù844) ΓÇ║ 5ΓåÆ1 re-upload at mobile-large 
+    test-batch-guard.spec.ts:362:5 ΓÇ║ Responsive: laptop (1280├ù800) ΓÇ║ 1ΓåÆ1 re-upload at laptop ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-e2e-strip-rereupload.spec.ts:80:3 ΓÇ║ Metadata strip + re-upload E2E ΓÇ║ JPEG: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata 
+    test-e2e-strip-rereupload.spec.ts:133:3 ΓÇ║ Metadata strip + re-upload E2E ΓÇ║ WebP: upload ΓåÆ strip ΓåÆ download ΓåÆ re-upload shows no privacy metadata 
+  29 passed (2.3m)
