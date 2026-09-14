@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { getTranslations, t } from '../../i18n/index';
+import { getLegalIdentity, isLegalConfigured } from '../../lib/legal';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const legalIdentity = getLegalIdentity();
+const legalConfigured = isLegalConfigured();
+---
+
+<Layout lang={currentLang} title={t(translations, 'impressum.title')} description={t(translations, 'seo.impressum.description')}>
+  <section class="py-12 sm:py-16 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto">
+      <PageHeader
+        lang={currentLang}
+        eyebrow={t(translations, 'impressum.eyebrow')}
+        title={t(translations, 'impressum.title')}
+      />
+
+      <div class="mt-8 space-y-3">
+        {legalConfigured ? (
+          <>
+            <div class="pmr-card p-5 sm:p-6">
+              <p class="text-[15px] text-text leading-relaxed">
+                <strong class="font-semibold">{t(translations, 'impressum.intro')}</strong>
+              </p>
+            </div>
+
+            <div class="pmr-card p-5 sm:p-6">
+              <h2 class="text-[15px] font-semibold text-text tracking-tight mb-3">{t(translations, 'impressum.responsible')}</h2>
+              <div class="space-y-1.5 text-[14.5px]">
+                <p class="text-text">{legalIdentity.name}</p>
+                <p class="text-text-muted">
+                  <strong class="text-text font-medium">{t(translations, 'impressum.address_label')}:</strong> {legalIdentity.address}
+                </p>
+                <p class="text-text-muted">
+                  <strong class="text-text font-medium">{t(translations, 'impressum.email_label')}:</strong>
+                  <a class="text-accent hover:text-accent-hover underline underline-offset-2 ml-1" href={`mailto:${legalIdentity.email}`}>{legalIdentity.email}</a>
+                </p>
+                {legalIdentity.representative && (
+                  <p class="text-text-muted">
+                    <strong class="text-text font-medium">{t(translations, 'impressum.representative_label')}:</strong> {legalIdentity.representative}
+                  </p>
+                )}
+                {legalIdentity.vat && (
+                  <p class="text-text-muted">
+                    <strong class="text-text font-medium">{t(translations, 'impressum.vat_label')}:</strong> {legalIdentity.vat}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div class="pmr-card p-5 sm:p-6">
+              <h2 class="text-[15px] font-semibold text-text tracking-tight mb-2">{t(translations, 'impressum.contact_title')}</h2>
+              <p class="text-[14.5px] text-text-muted leading-relaxed">
+                {t(translations, 'impressum.contact_body')}
+              </p>
+            </div>
+          </>
+        ) : (
+          <div class="pmr-card p-5 sm:p-6">
+            <p class="text-[14.5px] text-text-muted leading-relaxed">
+              {t(translations, 'impressum.not_configured')}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+</Layout>

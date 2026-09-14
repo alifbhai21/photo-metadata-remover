@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Info/Icon.astro';
+import Breadcrumbs from '../../components/Info/Breadcrumbs.astro';
+import { getTranslations, t } from '../../i18n/index';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const flowIcons = ['device', 'terminal', 'upload', 'scan', 'warning', 'remove', 'verified', 'download'];
+const pillarIcons = ['lock', 'device', 'cloud_off', 'memory'];
+---
+
+<Layout lang={currentLang} title={t(translations, 'security_page.title')} description={t(translations, 'seo.security.description')}>
+  <div class="bg-background text-on-surface">
+    <section class="overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
+        <Breadcrumbs current={t(translations, 'nav.security')} />
+        <div class="mt-10 max-w-4xl flex flex-col gap-4">
+          <span class="inline-flex items-center gap-2 self-start px-3 py-1 rounded bg-secondary-fixed/50 text-secondary text-[11px] font-mono uppercase tracking-widest font-semibold">
+            <Icon name="verified" class="w-4 h-4" />
+            {t(translations, 'security_page.hero_badge')}
+          </span>
+          <h1 class="text-[32px] sm:text-[40px] lg:text-[48px] font-semibold tracking-tight text-on-surface leading-[1.05]">{t(translations, 'security_page.title')}</h1>
+          <p class="text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">{t(translations, 'security_page.hero_lead')}</p>
+          <p class="text-[14px] text-on-surface-variant">{t(translations, 'security_page.subtitle')}</p>
+        </div>
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[1, 2, 3, 4].map((i) => (
+            <div class="p-3.5 rounded bg-surface-container-low flex flex-col">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">{t(translations, `security_page.spec.${i}.label`)}</span>
+              <span class="text-[15px] font-semibold text-on-surface mt-0.5">{t(translations, `security_page.spec.${i}.value`)}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface-container-lowest">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="mb-6">
+          <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold mb-2">{t(translations, 'security_page.pipeline_eyebrow')}</span>
+          <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'security_page.pipeline_title')}</h2>
+          <p class="mt-2 text-[14px] text-on-surface-variant max-w-2xl">{t(translations, 'security_page.pipeline_intro')}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+            <div class="bg-surface-container-low rounded-xl p-4 group hover:bg-surface-container transition-colors">
+              <div class="flex items-center justify-between mb-2">
+                <span class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-mono text-[11px] font-bold">0{i}</span>
+                <Icon name={flowIcons[i - 1]} class="w-5 h-5 text-secondary" />
+              </div>
+              <span class="block text-[14px] font-semibold text-on-surface">{t(translations, `security_page.flow.${i}.title`)}</span>
+              <span class="block mt-1 text-[12px] text-on-surface-variant">{t(translations, `security_page.flow.${i}.text`)}</span>
+            </div>
+          ))}
+        </div>
+        <div class="mt-6 p-4 rounded-xl bg-surface-container-low flex flex-col gap-2">
+          <div class="flex items-center gap-2 text-[13px] font-semibold text-secondary">
+            <span class="w-2 h-2 rounded-full bg-secondary" aria-hidden="true"></span>
+            {t(translations, 'security_page.local_note')}
+          </div>
+          <div class="flex items-center gap-2 text-[13px] text-on-surface-variant">
+            <Icon name="cloud_off" class="w-4 h-4 text-error" />
+            {t(translations, 'security_page.server_note')}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 max-w-2xl">
+          <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold mb-2">{t(translations, 'security_page.pillars_eyebrow')}</span>
+          <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'security_page.pillars_title')}</h2>
+          <p class="mt-2 text-[14px] text-on-surface-variant">{t(translations, 'security_page.pillars_intro')}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
+                  <Icon name={pillarIcons[i - 1]} class="w-[22px] h-[22px] text-primary" />
+                </div>
+                <span class="px-2 py-1 rounded bg-secondary-fixed/30 text-secondary text-[10px] font-mono uppercase font-semibold">{t(translations, 'security_page.pillar_prefix')} 0{i}</span>
+              </div>
+              <h3 class="text-[17px] font-semibold text-on-surface">{t(translations, `security_page.pillars.${i}.title`)}</h3>
+              <p class="text-[14px] text-on-surface-variant leading-relaxed mt-1">{t(translations, `security_page.pillars.${i}.text`)}</p>
+              <ul class="mt-2 flex flex-col gap-2 text-[13px]">
+                {[1, 2].map((j) => (
+                  <li class="inline-flex items-center gap-2 text-on-surface-variant">
+                    <Icon name="check" class="w-4 h-4 text-secondary" />
+                    <span>{t(translations, `security_page.pillars.${i}.items.${j}`)}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="bg-surface-container-low shadow-sm pb-14 pt-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 max-w-2xl">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-secondary-fixed/50 text-secondary text-[11px] font-mono uppercase tracking-widest font-semibold mb-3">{t(translations, 'security_page.verify_eyebrow')}</span>
+          <h2 class="text-2xl font-semibold text-on-surface tracking-tight mt-2">{t(translations, 'security_page.verify_title')}</h2>
+          <p class="mt-2 text-[14px] text-on-surface-variant">{t(translations, 'security_page.verify_intro')}</p>
+        </div>
+        <ol class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <li class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex items-start gap-3">
+              <span class="w-7 h-7 shrink-0 rounded-full bg-primary text-on-primary font-mono text-[11px] font-bold flex items-center justify-center">{i}</span>
+              <span class="text-[14px] text-on-surface leading-relaxed">{t(translations, `security_page.verify_steps.${i}`)}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="pb-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="w-14 h-14 rounded-full bg-secondary-fixed/50 flex items-center justify-center mx-auto">
+          <Icon name="terminal" class="w-7 h-7 text-secondary" />
+        </div>
+        <h2 class="text-2xl font-semibold text-on-surface tracking-tight mt-4">{t(translations, 'security_page.cta_title')}</h2>
+        <p class="mt-2 text-[15px] text-on-surface-variant max-w-xl mx-auto">{t(translations, 'security_page.cta_text')}</p>
+        <div class="mt-5 flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3 pt-2 w-full sm:w-auto">
+          <a href={`/${currentLang}/`} class="w-full sm:w-auto h-11 px-5 rounded-lg bg-primary text-on-primary font-medium inline-flex items-center justify-center gap-2 hover:bg-primary-container shadow-sm">
+            <Icon name="upload" class="w-[18px] h-[18px]" />
+            {t(translations, 'security_page.cta_primary')}
+          </a>
+          <a href={`/${currentLang}/open-source`} class="w-full sm:w-auto h-11 px-5 rounded-lg bg-surface-container-high text-on-surface font-medium inline-flex items-center justify-center gap-2 hover:bg-surface-container-highest">
+            <Icon name="github" class="w-[18px] h-[18px]" />
+            {t(translations, 'security_page.cta_secondary')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

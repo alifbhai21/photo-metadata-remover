@@ -1,0 +1,571 @@
+@import "tailwindcss";
+
+/* Google Stitch — Light Theme (Phase 1)
+   Single light theme. The legacy dark variant is retired; the `dark:` custom
+   variant is kept only so any residual `dark:` utility classes stay inert. */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+ * Design tokens — PhotoGuard Light
+ *
+ * Palette (from the user-provided PhotoGuard design):
+ *   brand green #22c55e family (accent #15803d, button #166534)
+ *   surface #f7f9f7 · card #ffffff · slate text/border scale
+ * Type: Inter (sans/display) · JetBrains Mono (labels)
+ * ------------------------------------------------------------------------- */
+
+:root {
+  /* Surfaces — PhotoGuard light */
+  --pmr-bg: #f7f9f7;
+  --pmr-bg-deep: #eef2ef;
+  --pmr-surface: #ffffff;
+  --pmr-surface-muted: #f8fafc;
+  --pmr-surface-strong: #f1f5f9;
+  --pmr-surface-strong-2: #e2e8f0;
+
+  /* Text — PhotoGuard light (slate scale) */
+  --pmr-text: #1e293b;
+  --pmr-text-muted: #475569;
+  --pmr-text-faint: #64748b;
+
+  /* Borders — slate scale */
+  --pmr-border: #e2e8f0;
+  --pmr-border-strong: #cbd5e1;
+
+  /* Accent — PhotoGuard brand green */
+  --pmr-accent: #15803d;
+  --pmr-accent-hover: #166534;
+  --pmr-accent-soft: #dcfce7;
+  --pmr-accent-softer: #f0fdf4;
+  --pmr-accent-secondary: #15803d;
+  --pmr-accent-btn: #166534;
+  --pmr-accent-btn-hover: #14532d;
+  --pmr-accent-btn-text: #ffffff;
+
+  /* Status accents — light mode */
+  --pmr-success: #16a34a;
+  --pmr-success-hover: #15803d;
+  --pmr-warning: #8a5a00;
+  --pmr-danger: #ba1a1a;
+
+  /* Status surfaces — light mode */
+  --pmr-success-bg: #f0fdf4;
+  --pmr-success-border: #bbf7d0;
+  --pmr-success-text: #15803d;
+  --pmr-warning-bg: #fdf3d9;
+  --pmr-warning-border: #efd9a0;
+  --pmr-warning-text: #6d4700;
+  --pmr-danger-bg: #ffdad6;
+  --pmr-danger-border: #f6b9b4;
+  --pmr-danger-text: #93000a;
+
+  /* Eyebrow / mono label color */
+  --pmr-eyebrow: #475569;
+
+  /* Effects — light mode */
+  --pmr-shadow-xs: 0 1px 2px 0 rgb(25 28 31 / 0.05);
+  --pmr-shadow-sm: 0 1px 3px 0 rgb(25 28 31 / 0.07), 0 1px 2px -1px rgb(25 28 31 / 0.05);
+  --pmr-shadow-md: 0 6px 16px -4px rgb(25 28 31 / 0.10), 0 2px 6px -2px rgb(25 28 31 / 0.06);
+  --pmr-shadow-lg: 0 20px 40px -12px rgb(25 28 31 / 0.14), 0 8px 20px -8px rgb(25 28 31 / 0.08);
+  --pmr-glow-accent: 0 0 0 4px rgb(22 163 74 / 0.12);
+  --pmr-ring-accent: rgb(22 163 74 / 0.30);
+
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------------
+ * Google Stitch light palette (information pages, Phase 1)
+ *
+ * The selected Stitch Material tonal palette, mapped onto the existing token
+ * architecture. These role names mirror the Stitch design system so the
+ * information pages can use the exact Stitch colors (surfaces, on-colors,
+ * secondary/primary roles, error, outline) without altering the legacy
+ * PhotoGuard tokens above. Values are the light-theme Material values from
+ * the selected Stitch design — no new hues are introduced.
+ * ------------------------------------------------------------------------- */
+:root {
+  /* Background / surface roles */
+  --pmr-background: #fbf8ff;
+  --pmr-surface-bright: #fbf8ff;
+  --pmr-on-background: #1a1b22;
+  --pmr-on-surface: #1a1b22;
+  --pmr-on-surface-variant: #47464a;
+
+  /* Surface container ladder (lowest -> highest) */
+  --pmr-surface-container-lowest: #ffffff;
+  --pmr-surface-container-low: #f4f2fd;
+  --pmr-surface-container: #eeedf7;
+  --pmr-surface-container-high: #e8e7f1;
+  --pmr-surface-container-highest: #e3e1ec;
+  --pmr-surface-variant: #e3e1ec;
+  --pmr-surface-dim: #dad9e3;
+  --pmr-surface-tint: #5f5e60;
+
+  /* Primary (near-black ink) */
+  --pmr-primary: #000000;
+  --pmr-on-primary: #ffffff;
+  --pmr-primary-container: #1c1b1d;
+  --pmr-on-primary-container: #858386;
+  --pmr-primary-fixed: #e5e1e4;
+  --pmr-primary-fixed-dim: #c8c6c8;
+  --pmr-on-primary-fixed: #1c1b1d;
+  --pmr-on-primary-fixed-variant: #474649;
+  --pmr-inverse-primary: #c8c6c8;
+  --pmr-inverse-on-surface: #f1effa;
+  --pmr-inverse-surface: #2f3038;
+
+  /* Secondary (Stitch green) */
+  --pmr-secondary: #006c4a;
+  --pmr-on-secondary: #ffffff;
+  --pmr-secondary-container: #82f5c1;
+  --pmr-on-secondary-container: #00714e;
+  --pmr-secondary-fixed: #85f8c4;
+  --pmr-secondary-fixed-dim: #68dba9;
+  --pmr-on-secondary-fixed: #002114;
+  --pmr-on-secondary-fixed-variant: #005137;
+
+  /* Error role (Stitch Material light) */
+  --pmr-error: #ba1a1a;
+  --pmr-on-error: #ffffff;
+  --pmr-error-container: #ffdad6;
+  --pmr-on-error-container: #93000a;
+
+  /* Tertiary role (rarely used — kept for parity with the design) */
+  --pmr-tertiary: #000000;
+  --pmr-on-tertiary: #ffffff;
+  --pmr-tertiary-container: #410004;
+  --pmr-on-tertiary-container: #ef4444;
+  --pmr-tertiary-fixed: #ffdad7;
+  --pmr-tertiary-fixed-dim: #ffb3ad;
+  --pmr-on-tertiary-fixed: #410004;
+  --pmr-on-tertiary-fixed-variant: #930013;
+
+  /* Outline roles */
+  --pmr-outline: #78767b;
+  --pmr-outline-variant: #c8c5ca;
+}
+
+/* Dark mode retired — the site ships light-only (Stitch Phase 1). */
+
+
+
+/* Design tokens exposed to Tailwind utilities */
+@theme {
+  --color-bg: var(--pmr-bg);
+  --color-bg-deep: var(--pmr-bg-deep);
+  --color-surface: var(--pmr-surface);
+  --color-surface-muted: var(--pmr-surface-muted);
+  --color-surface-strong: var(--pmr-surface-strong);
+  --color-surface-strong-2: var(--pmr-surface-strong-2);
+  --color-text: var(--pmr-text);
+  --color-text-muted: var(--pmr-text-muted);
+  --color-text-faint: var(--pmr-text-faint);
+  --color-border: var(--pmr-border);
+  --color-border-strong: var(--pmr-border-strong);
+  --color-accent: var(--pmr-accent);
+  --color-accent-hover: var(--pmr-accent-hover);
+  --color-accent-soft: var(--pmr-accent-soft);
+  --color-accent-softer: var(--pmr-accent-softer);
+  --color-accent-secondary: var(--pmr-accent-secondary);
+  --color-accent-btn: var(--pmr-accent-btn);
+  --color-accent-btn-hover: var(--pmr-accent-btn-hover);
+  --color-accent-btn-text: var(--pmr-accent-btn-text);
+  --color-eyebrow: var(--pmr-eyebrow);
+  --color-success: var(--pmr-success);
+  --color-success-hover: var(--pmr-success-hover);
+  --color-warning: var(--pmr-warning);
+  --color-danger: var(--pmr-danger);
+  --color-success-bg: var(--pmr-success-bg);
+  --color-success-border: var(--pmr-success-border);
+  --color-success-text: var(--pmr-success-text);
+  --color-warning-bg: var(--pmr-warning-bg);
+  --color-warning-border: var(--pmr-warning-border);
+  --color-warning-text: var(--pmr-warning-text);
+  --color-danger-bg: var(--pmr-danger-bg);
+  --color-danger-border: var(--pmr-danger-border);
+  --color-danger-text: var(--pmr-danger-text);
+
+  /* PhotoGuard brand palette (user-provided design) */
+  --color-brand-50: #f0fdf4;
+  --color-brand-100: #dcfce7;
+  --color-brand-200: #bbf7d0;
+  --color-brand-500: #22c55e;
+  --color-brand-600: #16a34a;
+  --color-brand-700: #15803d;
+  --color-brand-800: #166534;
+  --color-brand-900: #14532d;
+  --color-brand-dark: #0f5132;
+  --color-surface-bg: #f8faf8;
+
+  /* Google Stitch light palette (information pages) */
+  --color-background: var(--pmr-background);
+  --color-on-background: var(--pmr-on-background);
+  --color-surface-bright: var(--pmr-surface-bright);
+  --color-on-surface: var(--pmr-on-surface);
+  --color-on-surface-variant: var(--pmr-on-surface-variant);
+  --color-surface-container-lowest: var(--pmr-surface-container-lowest);
+  --color-surface-container-low: var(--pmr-surface-container-low);
+  --color-surface-container: var(--pmr-surface-container);
+  --color-surface-container-high: var(--pmr-surface-container-high);
+  --color-surface-container-highest: var(--pmr-surface-container-highest);
+  --color-surface-variant: var(--pmr-surface-variant);
+  --color-surface-dim: var(--pmr-surface-dim);
+  --color-surface-tint: var(--pmr-surface-tint);
+  --color-primary: var(--pmr-primary);
+  --color-on-primary: var(--pmr-on-primary);
+  --color-primary-container: var(--pmr-primary-container);
+  --color-on-primary-container: var(--pmr-on-primary-container);
+  --color-primary-fixed: var(--pmr-primary-fixed);
+  --color-primary-fixed-dim: var(--pmr-primary-fixed-dim);
+  --color-on-primary-fixed: var(--pmr-on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--pmr-on-primary-fixed-variant);
+  --color-inverse-primary: var(--pmr-inverse-primary);
+  --color-inverse-on-surface: var(--pmr-inverse-on-surface);
+  --color-inverse-surface: var(--pmr-inverse-surface);
+  --color-secondary: var(--pmr-secondary);
+  --color-on-secondary: var(--pmr-on-secondary);
+  --color-secondary-container: var(--pmr-secondary-container);
+  --color-on-secondary-container: var(--pmr-on-secondary-container);
+  --color-secondary-fixed: var(--pmr-secondary-fixed);
+  --color-secondary-fixed-dim: var(--pmr-secondary-fixed-dim);
+  --color-on-secondary-fixed: var(--pmr-on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--pmr-on-secondary-fixed-variant);
+  --color-error: var(--pmr-error);
+  --color-on-error: var(--pmr-on-error);
+  --color-error-container: var(--pmr-error-container);
+  --color-on-error-container: var(--pmr-on-error-container);
+  --color-tertiary: var(--pmr-tertiary);
+  --color-on-tertiary: var(--pmr-on-tertiary);
+  --color-tertiary-container: var(--pmr-tertiary-container);
+  --color-on-tertiary-container: var(--pmr-on-tertiary-container);
+  --color-tertiary-fixed: var(--pmr-tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--pmr-tertiary-fixed-dim);
+  --color-on-tertiary-fixed: var(--pmr-on-tertiary-fixed);
+  --color-on-tertiary-fixed-variant: var(--pmr-on-tertiary-fixed-variant);
+  --color-outline: var(--pmr-outline);
+  --color-outline-variant: var(--pmr-outline-variant);
+
+  --font-sans: "Inter", "Geist", "Geist Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  --font-display: "Inter", "Hanken Grotesk", "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+ * Base typography
+ * ------------------------------------------------------------------------- */
+html {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* Display & headings — clean, tight tracking */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+}
+
+/* Selection color — brand wash (user design) */
+::selection {
+  background: #dcfce7; /* brand-100 */
+  color: #14532d;      /* brand-900 */
+}
+
+/* Scrollbar styling for WebKit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--pmr-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pmr-border-strong);
+  border-radius: 6px;
+  border: 2px solid var(--pmr-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pmr-text-faint);
+}
+
+/* Focus visible ring for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--pmr-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Premium surfaces & utilities
+ * ------------------------------------------------------------------------- */
+
+/* Soft elevation tokens */
+.pmr-elev-1 { box-shadow: var(--pmr-shadow-sm); }
+.pmr-elev-2 { box-shadow: var(--pmr-shadow-md); }
+.pmr-elev-3 { box-shadow: var(--pmr-shadow-lg); }
+
+/* Card — clean, minimal surface (Stitch: 16px radius, outline-variant border) */
+.pmr-card {
+  background: var(--pmr-surface);
+  border: 1px solid var(--pmr-border);
+  border-radius: 16px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.pmr-card-hover:hover {
+  border-color: var(--pmr-border-strong);
+  background: var(--pmr-surface-muted);
+}
+
+/* Inline eyebrow / mono label */
+.pmr-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pmr-eyebrow);
+}
+
+/* Status dot — small privacy indicator */
+.pmr-status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--pmr-success);
+  box-shadow: 0 0 0 3px var(--pmr-success-bg);
+  position: relative;
+}
+.pmr-status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--pmr-success);
+  opacity: 0.6;
+  animation: pmrPulse 2.4s ease-out infinite;
+}
+
+@keyframes pmrPulse {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Gradient text — for display headings only */
+.pmr-gradient-text {
+  background: linear-gradient(
+    100deg,
+    var(--pmr-text) 0%,
+    var(--pmr-text) 40%,
+    var(--pmr-accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+ * Background System — Clean & Minimal
+ *
+ * Light mode: clean, no dark atmosphere.
+ * Dark mode: solid near-black, no atmospheric effects.
+ * ------------------------------------------------------------------------- */
+
+/* Hero backdrop — subtle accent over body background */
+.pmr-hero-backdrop {
+  background: var(--pmr-bg);
+  position: relative;
+}
+
+/* Elegant background — main body wrapper (light only) */
+.pmr-elegant-bg {
+  position: relative;
+  background: var(--pmr-bg);
+}
+
+/* Default (light) — subtle accent wash only */
+.pmr-elegant-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dot grid — hidden in light mode */
+.pmr-elegant-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: transparent;
+  background-size: 22px 22px;
+  background-position: 0 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content wrapper — sits above background pseudo-elements */
+.pmr-elegant-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Subtle dot grid background — kept for backward compatibility */
+.pmr-dot-grid {
+  background-image: radial-gradient(rgba(113, 113, 122, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: 0 0;
+  opacity: 0.4;
+}
+
+/* Indeterminate progress shimmer */
+.pmr-progress-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: var(--pmr-surface-muted);
+  border-radius: 999px;
+  height: 6px;
+}
+.pmr-progress-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40%;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--pmr-accent),
+    transparent
+  );
+  animation: pmrShimmer 1.6s ease-in-out infinite;
+}
+@keyframes pmrShimmer {
+  0%   { left: -40%; }
+  100% { left: 100%; }
+}
+
+/* Drag-over glow for upload zone */
+.pmr-drag-glow {
+  box-shadow:
+    0 0 0 1px var(--pmr-accent),
+    0 0 0 6px var(--pmr-accent-soft),
+    0 12px 32px -8px var(--pmr-accent-soft);
+  border-color: var(--pmr-accent) !important;
+  background: var(--pmr-accent-softer) !important;
+}
+
+/* Soft fade-in for newly revealed rows */
+@keyframes pmrFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.pmr-fade-in { animation: pmrFadeIn 240ms ease-out both; }
+
+/* ---------------------------------------------------------------------------
+ * Upload dropzone — SVG dashed border per the PhotoGuard design.
+ * The dashed outline is a background SVG (.custom-dashed-border); hover/drag
+ * states tint the wash and add a brand ring.
+ * ------------------------------------------------------------------------- */
+#upload-zone {
+  border: none;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease;
+}
+#upload-zone:hover {
+  background-color: #f8fafc;
+}
+#upload-zone[data-drag-active="true"] {
+  background-color: #f0fdf4 !important;
+  box-shadow: 0 0 0 2px #16a34a, 0 12px 32px -8px rgb(22 163 74 / 0.25);
+}
+
+/* ---------------------------------------------------------------------------
+ * Responsive adaptation — one compact Stitch navbar, every viewport.
+ *
+ * The navbar is ALWAYS the same single horizontal Stitch row
+ * (brand · navigation · controls) at every viewport size. It never wraps
+ * and never re-stacks: when the viewport is narrower than the row's natural
+ * width the row pans horizontally inside the sticky header so the compact
+ * composition (~80px tall, same as desktop) is preserved everywhere.
+ * All interactive controls keep a >= 44px physical touch target.
+ * ------------------------------------------------------------------------- */
+#nav-fit {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge/IE */
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+#nav-fit::-webkit-scrollbar {
+  display: none;
+}
+#nav-fit a,
+#nav-fit button {
+  min-width: 44px;
+  min-height: 44px;
+}
+/* Text links and button controls keep their natural width (no clipping) —
+   only the brand (identified by its aria-label) may truncate when space is tight. */
+#nav-fit a:not([aria-label]),
+#nav-fit button {
+  flex-shrink: 0;
+}
+
+/* The brand is the single element allowed to give up width so the row always
+   fits before the right-side controls (incl. the CTA) can be pushed past the
+   navbar's clip boundary. It truncates (ellipsis) when space is tight.
+   The min-width is a floor so it never collapses to just the logo icon —
+   declared here (unlayered) so it overrides the 44px link floor above. */
+#nav-fit a[aria-label] {
+  flex-shrink: 1;
+  min-width: 8.5rem;
+}
+
+/* Dashed border utility from the PhotoGuard design (SVG rect, 2px, slate-300) */
+.custom-dashed-border {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23D1D5DB' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+/* Smooth scrolling */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .pmr-status-dot::after { animation: none; }
+  .pmr-progress-shimmer::after { animation: none; }
+}

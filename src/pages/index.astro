@@ -1,11 +1,153 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+import { SUPPORTED_LANGS, LANG_LABELS } from '../lib/lang';
+import { isAnalyticsEnabled } from '../lib/analytics';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+export const prerender = true;
+
+const analyticsEnabled = isAnalyticsEnabled();
+const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN as string | undefined;
+const plausibleScriptSrc =
+  (import.meta.env.PUBLIC_PLAUSIBLE_SCRIPT_SRC as string | undefined) ?? 'https://plausible.io/js/script.js';
+const plausibleApiHost = import.meta.env.PUBLIC_PLAUSIBLE_API_HOST as string | undefined;
+
+const SITE_URL = (Astro.site?.origin ?? 'https://photometadataremover.com').replace(/\/$/, '');
+const siteName = 'Photo Metadata Remover';
+const siteDescription = 'Remove EXIF data from your photos. Privacy-first, free, no uploads.';
+const ogImageUrl = `${SITE_URL}/og-image.png`;
+const ogImageAlt = 'Photo Metadata Remover – remove EXIF and GPS data from your photos in your browser. Free, private, no uploads.';
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteName,
+  description: siteDescription,
+  url: SITE_URL,
+  inLanguage: [...SUPPORTED_LANGS],
+};
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={siteDescription} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#03070A" media="(prefers-color-scheme: dark)" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Theme init: respect system preference, allow manual override via localStorage -->
+    <script is:inline>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var stored = localStorage.getItem('pmr_theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            root.classList.add('dark');
+            root.style.colorScheme = 'dark';
+          } else {
+            root.classList.remove('dark');
+            root.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="canonical" href={`${SITE_URL}/`} />
+    {SUPPORTED_LANGS.map((l) => (
+      <link rel="alternate" hreflang={l} href={`${SITE_URL}/${l}/`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${SITE_URL}/en/`} />
+
+    <title>{siteName} — Choose your language</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={siteName} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:url" content={`${SITE_URL}/`} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteName} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
+    {analyticsEnabled && (
+      <script
+        defer
+        data-domain={plausibleDomain}
+        data-api={plausibleApiHost ? `${plausibleApiHost.replace(/\/$/, '')}/api/event` : undefined}
+        src={plausibleScriptSrc}
+      />
+    )}
+
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+  </head>
+  <body class="min-h-screen flex flex-col items-center justify-center">
+    <main class="w-full px-4 py-16">
+      <div class="max-w-xl mx-auto text-center">
+        <div class="w-12 h-12 bg-accent-btn rounded-xl flex items-center justify-center mx-auto mb-6">
+          <svg class="w-6 h-6 text-accent-btn-text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-bold text-text mb-3">{siteName}</h1>
+        <p class="text-text-muted mb-10">{siteDescription}</p>
+        <nav aria-label="Choose language" class="flex flex-col gap-3">
+          {SUPPORTED_LANGS.map((l) => (
+            <a
+              href={`/${l}/`}
+              hreflang={l}
+              lang={l}
+              data-lang-switch={l}
+              class="flex items-center justify-between px-5 py-4 rounded-xl border border-border bg-surface hover:border-accent hover:shadow-sm transition-colors"
+            >
+              <span class="text-lg font-medium text-text">{LANG_LABELS[l]}</span>
+              <span class="text-sm text-text-muted">/{l}/</span>
+            </a>
+          ))}
+        </nav>
+      </div>
+    </main>
+
+    <script>
+      import { resolveHomeLang } from '../lib/lang';
+
+      (function preferLanguage() {
+        const target = resolveHomeLang();
+        const current = window.location.pathname;
+        if (current !== `/${target}/` && current !== `/${target}`) {
+          window.location.replace(`/${target}/`);
+        }
+      })();
+    </script>
+
+    <script>
+      import { saveLang, isLang } from '../lib/lang';
+      import { trackEvent } from '../lib/analytics';
+
+      // Persist the user's manual language choice and track it (same wiring as the
+      // header language switcher on localized pages).
+      document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((link) => {
+        link.addEventListener('click', () => {
+          const target = link.getAttribute('data-lang-switch');
+          if (isLang(target)) {
+            saveLang(target);
+            trackEvent('language_switch', { from: document.documentElement.lang || 'en', to: target });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

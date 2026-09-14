@@ -1,0 +1,90 @@
+---
+import { getTranslations, t } from '../i18n/index';
+
+const { lang = 'en' } = Astro.props;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const rows = [
+  { key: 'r1', removed: true },
+  { key: 'r2', removed: true },
+  { key: 'r3', removed: true },
+  { key: 'r4', removed: true },
+  { key: 'r5', removed: true },
+  { key: 'r6', removed: false },
+] as const;
+---
+
+<section id="privacy-risk" class="py-16 sm:py-20 px-4 sm:px-6 border-t border-border scroll-mt-24">
+  <div class="max-w-5xl mx-auto">
+    <!-- Section header -->
+    <div class="max-w-2xl mb-10 sm:mb-14">
+      <span class="pmr-eyebrow">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent"></span>
+        {t(translations, 'risk_audit.eyebrow')}
+      </span>
+      <h2 class="mt-3 text-[28px] sm:text-[36px] font-semibold tracking-tight text-text leading-[1.1]">
+        {t(translations, 'risk_audit.title')}
+      </h2>
+      <p class="mt-4 text-[15.5px] text-text-muted leading-relaxed">
+        {t(translations, 'risk_audit.subtitle')}
+      </p>
+    </div>
+
+    <!-- Audit table -->
+    <div class="pmr-card pmr-elev-1 overflow-hidden">
+      <!-- Column headers (desktop only) -->
+      <div
+        class="hidden sm:grid grid-cols-[1.1fr_1.6fr_auto] gap-4 px-5 sm:px-6 py-3.5 bg-surface-muted border-b border-border"
+        aria-hidden="true"
+      >
+        <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-text-faint">
+          {t(translations, 'risk_audit.headers.item')}
+        </span>
+        <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-text-faint">
+          {t(translations, 'risk_audit.headers.risk')}
+        </span>
+        <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-text-faint text-right">
+          {t(translations, 'risk_audit.headers.action')}
+        </span>
+      </div>
+
+      <ul>
+        {rows.map((row, i) => (
+          <li
+            class:list={[
+              'px-5 sm:px-6 py-4 flex flex-col sm:grid sm:grid-cols-[1.1fr_1.6fr_auto] gap-y-1.5 sm:gap-x-4 sm:items-center',
+              i < rows.length - 1 ? 'border-b border-border' : '',
+            ]}
+          >
+            <span class="text-[14px] font-semibold text-text tracking-tight">
+              {t(translations, `risk_audit.rows.${row.key}.item`)}
+            </span>
+            <span class="text-[13.5px] text-text-muted leading-snug">
+              {t(translations, `risk_audit.rows.${row.key}.risk`)}
+            </span>
+            <span
+              class:list={[
+                'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11.5px] font-medium w-fit sm:justify-self-end',
+                row.removed
+                  ? 'bg-accent-soft text-accent-secondary'
+                  : 'bg-success-bg text-success-text border border-success-border',
+              ]}
+            >
+              {row.removed ? (
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              )}
+              {t(translations, `risk_audit.rows.${row.key}.action`)}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

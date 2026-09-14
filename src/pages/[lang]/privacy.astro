@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Info/Icon.astro';
+import Breadcrumbs from '../../components/Info/Breadcrumbs.astro';
+import { getTranslations, t } from '../../i18n/index';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const metricIcons = ['cloud_off', 'memory', 'close'];
+const flowIcons = ['upload', 'scan', 'download'];
+---
+
+<Layout lang={currentLang} title={t(translations, 'footer.privacy')} description={t(translations, 'seo.privacy.description')}>
+  <div class="bg-background text-on-surface">
+    <section class="overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
+        <Breadcrumbs current={t(translations, 'nav.privacy')} />
+        <div class="mt-10 relative bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-sm overflow-hidden">
+          <div class="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-secondary-fixed/30 pointer-events-none" aria-hidden="true"></div>
+          <div class="relative flex flex-col items-start gap-4 max-w-3xl">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed/50 text-secondary text-[11px] font-mono uppercase tracking-widest font-semibold">
+              <Icon name="lock" class="w-4 h-4" />
+              {t(translations, 'privacy.hero_badge')}
+            </span>
+            <h1 class="text-[32px] sm:text-[40px] lg:text-[44px] font-semibold tracking-tight text-on-surface leading-[1.05]">{t(translations, 'privacy.hero_title')}</h1>
+            <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed max-w-2xl">{t(translations, 'privacy.hero_text')}</p>
+          </div>
+        </div>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[1, 2, 3].map((i) => (
+            <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm hover:shadow-md transition-all">
+              <div class="flex items-start justify-between">
+                <div class="w-10 h-10 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary"><Icon name={metricIcons[i - 1]} class="w-6 h-6" /></div>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">{t(translations, `privacy.metrics.${i}.badge`)}</span>
+              </div>
+              <div class="mt-4">
+                <div class="text-xl font-semibold text-on-surface">{t(translations, `privacy.metrics.${i}.title`)}</div>
+                <div class="text-[14px] font-semibold text-secondary mt-0.5">{t(translations, `privacy.metrics.${i}.sub`)}</div>
+                <p class="mt-2 text-[13px] text-on-surface-variant leading-relaxed">{t(translations, `privacy.metrics.${i}.text`)}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-8 bg-surface-container-low rounded-xl p-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3">
+            <div>
+              <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold">{t(translations, 'privacy.flow_eyebrow')}</span>
+              <h2 class="text-xl font-semibold text-on-surface mt-1">{t(translations, 'privacy.flow_title')}</h2>
+            </div>
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container text-on-surface-variant text-[11px] font-mono">{t(translations, 'privacy.flow_note')}</span>
+          </div>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+            {[1, 2, 3].map((i) => (
+              <div class="bg-surface-container-lowest rounded-lg p-4 shadow-sm">
+                <div class="w-10 h-10 rounded-full bg-surface-container text-on-surface flex items-center justify-center"><Icon name={flowIcons[i - 1]} class="w-5 h-5" /></div>
+                <span class="block mt-2 text-[14px] font-semibold text-on-surface">{t(translations, `privacy.flow.${i}.title`)}</span>
+                <p class="mt-1 text-[12px] text-on-surface-variant">{t(translations, `privacy.flow.${i}.text`)}</p>
+                <span class="mt-2 block text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-semibold">{t(translations, `privacy.flow.${i}.tag`)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 max-w-2xl">
+          <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold mb-2">{t(translations, 'privacy.sections_eyebrow')}</span>
+          <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'privacy.sections_title')}</h2>
+          <p class="mt-2 text-[14px] text-on-surface-variant">{t(translations, 'privacy.sections_intro')}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-3">
+              <div class="flex items-center gap-2">
+                <span class="w-7 h-7 rounded bg-surface-container text-on-surface font-mono text-[11px] font-semibold flex items-center justify-center">0{i}</span>
+                <h3 class="text-[15px] font-semibold text-on-surface">{t(translations, `privacy.sections.${i}.title`)}</h3>
+              </div>
+              <p class="text-[13.5px] text-on-surface-variant leading-relaxed">{t(translations, `privacy.sections.${i}.text`)}</p>
+              <div class="mt-auto inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-secondary font-semibold">
+                <Icon name="check" class="w-4 h-4" />
+                <span>{t(translations, `privacy.sections.${i}.note`)}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="pt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm flex flex-col lg:flex-row gap-6 items-start justify-between">
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-secondary-fixed/50 text-secondary flex items-center justify-center"><Icon name="lock" class="w-5 h-5" /></div>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-secondary font-semibold">{t(translations, 'privacy.gdpr_eyebrow')}</span>
+            </div>
+            <h3 class="text-xl font-semibold text-on-surface">{t(translations, 'privacy.gdpr_title')}</h3>
+            <p class="mt-2 text-[14px] text-on-surface-variant leading-relaxed">{t(translations, 'privacy.gdpr_text')}</p>
+            <ul class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
+              {[1, 2, 3].map((i) => (
+                <li class="flex items-start gap-2 text-[12.5px]">
+                  <Icon name="check" class="w-4 h-4 shrink-0 text-secondary mt-0.5" />
+                  <span class="text-on-surface-variant">{t(translations, `privacy.gdpr_items.${i}`)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <span class="block text-[11px] font-mono uppercase tracking-wider text-secondary font-semibold">{t(translations, 'privacy.verify_eyebrow')}</span>
+              <h3 class="text-xl font-semibold text-on-surface mt-1">{t(translations, 'privacy.verify_title')}</h3>
+            </div>
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container text-on-surface-variant text-[11px] font-mono">{t(translations, 'privacy.flow_note')}</span>
+          </div>
+          <p class="text-[14px] text-on-surface-variant">{t(translations, 'privacy.verify_text')}</p>
+          <ol class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[1, 2, 3, 4].map((i) => (
+              <li class="flex items-start gap-2 text-[13px] bg-surface-container-low rounded-lg p-3">
+                <span class="w-6 h-6 shrink-0 rounded-full bg-secondary-fixed/50 text-secondary font-mono text-[10px] font-bold flex items-center justify-center">{i}</span>
+                <span class="text-on-surface-variant">{t(translations, `privacy.verify_steps.${i}`)}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-surface-container-low rounded-xl p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="max-w-xl text-center sm:text-left">
+            <h4 class="text-lg font-semibold text-on-surface">{t(translations, 'privacy.links_title')}</h4>
+            <p class="mt-1 text-[14px] text-on-surface-variant">{t(translations, 'privacy.links_text')}</p>
+          </div>
+          <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
+            <a href={`/${currentLang}/security`} class="h-11 px-4 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface font-medium inline-flex items-center gap-2 shadow-sm">
+              <Icon name="lock" class="w-[18px] h-[18px] text-secondary" />
+              {t(translations, 'privacy.links_primary')}
+            </a>
+            <a href={`/${currentLang}/open-source`} class="h-11 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-medium inline-flex items-center gap-2 shadow-sm">
+              <Icon name="github" class="w-[18px] h-[18px]" />
+              {t(translations, 'privacy.links_secondary')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

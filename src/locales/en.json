@@ -1,0 +1,1628 @@
+{
+  "site": {
+    "name": "Photo Metadata Remover",
+    "tagline": "Remove EXIF data from your photos. Privacy-first, free, no uploads.",
+    "description": "Strip GPS coordinates, camera serial numbers, timestamps, and other hidden metadata from your photos. Everything runs in your browser â€” nothing leaves your device."
+  },
+  "seo": {
+    "og_image_alt": "Photo Metadata Remover â€“ remove EXIF and GPS data from your photos in your browser. Free, private, no uploads.",
+    "home": {
+      "title": "Remove Metadata from Your Photos Online",
+      "description": "Strip GPS coordinates, camera serial numbers, timestamps, and other hidden EXIF data from your photos. Free, private, and 100% in your browser â€” nothing is ever uploaded."
+    },
+    "about": {
+      "description": "Photo Metadata Remover is a free, open-source tool built with privacy first. Learn how we help you control your digital footprint."
+    },
+    "faq": {
+      "description": "Answers to common questions about removing EXIF, GPS, IPTC, and XMP metadata from your photos â€” all in your browser, with no uploads."
+    },
+    "formats": {
+      "description": "Supported image formats: JPG, PNG, WebP, TIFF, and HEIC. Remove EXIF, GPS, IPTC, and XMP metadata while preserving image quality."
+    },
+    "guides": {
+      "description": "Learn how to protect your photo privacy â€” what EXIF data is, GPS risks, and how social media handles metadata."
+    },
+    "privacy": {
+      "description": "Our privacy policy: we process your photos entirely in your browser. No image data, metadata, or files are ever uploaded to our servers."
+    },
+    "terms": {
+      "description": "Terms of service for Photo Metadata Remover â€” a free tool that strips EXIF, GPS, IPTC, and XMP metadata from your photos in your browser."
+    },
+    "impressum": {
+      "description": "Imprint and legal notice for Photo Metadata Remover, including responsible party and contact information."
+    },
+    "how_it_works": {
+      "title": "How Photo Metadata Removal Works",
+      "description": "A transparent look at how Photo Metadata Remover scans and strips EXIF, GPS, IPTC, and XMP metadata entirely in your browser â€” with zero uploads."
+    },
+    "security": {
+      "title": "Privacy Architecture & Threat Model",
+      "description": "How Photo Metadata Remover keeps your photos private: client-side processing, volatile memory, zero server uploads, and a verifiable threat model."
+    },
+    "open_source": {
+      "title": "Open Source & Verifiable by Design",
+      "description": "Photo Metadata Remover is free and open source. Audit the code, run your own instance, and verify that your photos never leave your browser."
+    },
+    "legal": {
+      "title": "Legal Information & Disclosures",
+      "description": "Terms of use, privacy policy, imprint, and open-source licensing for Photo Metadata Remover â€” a free, client-side photo metadata removal tool."
+    },
+    "blog": {
+      "title": "Photo Metadata Blog â€“ EXIF & GPS Privacy Guides",
+      "description": "Guides and answers about photo metadata: what EXIF data is, how to remove GPS data, and how to protect your privacy when sharing images."
+    },
+    "contact": {
+      "description": "Contact the team behind Photo Metadata Remover â€“ a free, private tool that strips EXIF, GPS, and XMP metadata from your photos in your browser."
+    },
+    "tools": {
+      "photo-metadata-remover": {
+        "title": "Photo Metadata Remover â€“ Remove EXIF & GPS Data Online",
+        "description": "Remove EXIF, GPS location, camera, and device data from your photos online for free. 100% private â€“ everything happens in your browser."
+      },
+      "remove-exif-data": {
+        "title": "Remove EXIF Data from Photos Online â€“ Free EXIF Stripper",
+        "description": "Strip EXIF data from your photos online for free. Remove camera model, lens, settings, and timestamps â€“ privately, in your browser."
+      },
+      "remove-gps-data": {
+        "title": "Remove GPS Data from Photos Online â€“ Delete Location Info",
+        "description": "Delete GPS coordinates and location data from your photos online for free. Protect your home address and locations â€“ entirely in your browser."
+      },
+      "view-photo-metadata": {
+        "title": "View Photo Metadata Online â€“ EXIF & GPS Reader",
+        "description": "Read the metadata hidden in your photos: EXIF, camera data, dates, and GPS location. Upload and inspect any image privately, in your browser."
+      },
+      "remove-metadata-heic": {
+        "title": "Remove Metadata from HEIC Photos â€“ Free HEIC Stripper",
+        "description": "Remove EXIF and GPS metadata from HEIC photos online for free. Strip hidden camera and location data from Apple's image format â€“ in your browser."
+      }
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "tool": "Tool",
+    "formats": "Supported Formats",
+    "guides": "Guides",
+    "blog": "Blog",
+    "about": "About",
+    "faq": "FAQ",
+    "menu": "Menu",
+    "change_language": "Change language",
+    "toggle_theme": "Toggle theme",
+    "switch_to_dark": "Switch to dark mode",
+    "switch_to_light": "Switch to light mode",
+    "skip_to_content": "Skip to content",
+    "upload_photo": "Upload a Photo",
+    "remove_now": "Remove now",
+    "remove_now_short": "Remove",
+    "metadata": "Metadata",
+    "open_source": "Open Source",
+    "privacy": "Privacy",
+    "how_it_works": "How It Works",
+    "security": "Security",
+    "legal": "Legal",
+    "information": "Information",
+    "client_side_badge": "100% Client-Side"
+  },
+  "hero": {
+    "title": "Remove Photo Metadata",
+    "subtitle": "Strip GPS coordinates, camera serial numbers, timestamps, and other hidden EXIF data. Everything runs in your browser â€” nothing leaves your device.",
+    "cta": "Open the tool",
+    "secondary_cta": "How it works",
+    "eyebrow": "Privacy-first tool",
+    "workflow_label": "Workflow",
+    "workflow_step_1_desc": "Drop or browse your image",
+    "workflow_step_2_desc": "See what metadata is hidden",
+    "workflow_step_3_desc": "Strip all privacy fields",
+    "workflow_step_4_desc": "Download the clean copy",
+    "badges": {
+      "private": "100% Private",
+      "no_uploads": "No uploads",
+      "free": "Free forever"
+    },
+    "pill": "100% Client-Side Processing",
+    "title_a": "Keep Your Photos",
+    "title_b": "Private",
+    "tagline": "Remove hidden metadata from your photos before sharing. Your privacy matters.",
+    "props": {
+      "local": {
+        "title": "100% local",
+        "sub": "No uploads"
+      },
+      "fast": {
+        "title": "Fast & secure",
+        "sub": "In your browser"
+      },
+      "open": {
+        "title": "Open source",
+        "sub": "Transparency"
+      }
+    },
+    "mock": {
+      "camera": "Camera Model",
+      "location": "Location",
+      "date": "Date & Time",
+      "software": "Software",
+      "more": "And more hidden data...",
+      "clean_title": "Clean Photo",
+      "clean_sub": "No metadata"
+    }
+  },
+  "tool": {
+    "upload_title": "Drag & drop your photos here",
+    "upload_subtitle": "or click to browse files",
+    "upload_zone_label": "Upload photos - click or press Enter to browse",
+    "browse_files": "Browse files",
+    "supported_formats": "JPG, PNG, WebP, TIFF, HEIC",
+    "batch_info": "Select multiple files at once",
+    "formats_line": "Supports JPG, JPEG, PNG, WEBP, HEIC (Max 40MB each)",
+    "choose_photos": "Choose Photos",
+    "progress_label": "Progress",
+    "step_upload": "Upload",
+    "step_scan": "Scan",
+    "step_remove": "Remove",
+    "step_download": "Download",
+    "processing": "Processing...",
+    "scan_results": "Privacy metadata results",
+    "remove_all": "Remove all metadata",
+    "remove_selected": "Remove metadata",
+    "download_clean": "Download clean image",
+    "download_zip": "Download ZIP",
+    "creating_zip": "Creating ZIP...",
+    "zip_error": "Could not create ZIP file",
+    "a11y_zip_ready": "{{count}} images ready to download",
+    "preview_before": "Before",
+    "preview_after": "After",
+    "metadata_fields": "Metadata fields found",
+    "no_metadata": "No privacy metadata found",
+    "error": "Error processing file",
+    "unsupported_file": "Unsupported file type: {{name}}",
+    "file_too_large": "{{name}} is too large (max {{size}})",
+    "reset": "Clear all",
+    "drag_active": "Drop your photos here",
+    "removing": "Removing...",
+    "removing_metadata": "Removing metadata...",
+    "success_all": "All metadata removed successfully",
+    "success_file": "Metadata removed successfully",
+    "partial_success": "{{success}} of {{total}} files cleaned successfully",
+    "error_all": "Could not clean any files",
+    "try_again": "Try again",
+    "file_failed": "Failed to remove metadata",
+    "files_cleaned": "{{count}} files cleaned successfully",
+    "failed_to_remove": "✕ Failed to remove metadata",
+    "show_metadata": "Show image metadata",
+    "hide_metadata": "Hide metadata",
+    "show_technical_info": "Show technical info",
+    "hide_technical_info": "Hide technical info",
+    "metadata_for": "Metadata for {{name}}",
+    "gps_detected": "GPS coordinates detected",
+    "gps_location": "Location data",
+    "no_metadata_found": "No metadata found",
+    "field_name": "Field",
+    "field_value": "Value",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "binary_present": "Present",
+    "metadata_panel_title": "Image metadata",
+    "metadata_empty": "No metadata detected in this image.",
+    "close_metadata": "Close metadata panel",
+    "metadata_summary": "{{count}} privacy fields found",
+    "scanning": "Scanning photos…",
+    "scanning_progress": "Scanning {{current}} of {{total}}…"
+  },
+  "metadata": {
+    "no_privacy_metadata_found": "No privacy metadata found",
+    "privacy_metadata_found": "Privacy metadata found",
+    "technical_image_info": "Technical image information",
+    "privacy_metadata": "Privacy metadata",
+    "technical_properties": "technical properties",
+    "technical_preserved": "Technical image information preserved: {{count}} properties",
+    "privacy_metadata_remaining": "Privacy metadata remaining: {{count}}",
+    "privacy_fields": "fields"
+  },
+  "features": {
+    "cards": {
+      "how": {
+        "title": "How It Works",
+        "description": "Upload â†’ Analyze â†’ Remove â†’ Download. Simple, fast, and secure. All in your browser.",
+        "link": "Learn more"
+      },
+      "audit": {
+        "title": "Privacy Risk Audit",
+        "description": "See what hidden data your photos contain and why it matters.",
+        "link": "Explore risks"
+      },
+      "fidelity": {
+        "title": "Perceptual Fidelity",
+        "description": "Your photos remain visually identical. Only metadata is removed.",
+        "link": "See comparison"
+      },
+      "tech": {
+        "title": "Technical Information",
+        "description": "Learn about EXIF, IPTC, XMP and how metadata works.",
+        "link": "Read the guide"
+      }
+    },
+    "title": "Why use our tool?",
+    "subtitle": "Everything you need to keep your photos private â€” without leaving your browser, creating an account, or trusting a third party with your files.",
+    "eyebrow": "Why this tool",
+    "privacy": {
+      "title": "Private by default",
+      "eyebrow": "Private",
+      "description": "Your photos never leave your browser. No uploads, no servers, no tracking.",
+      "description_analytics": "Your photos never leave your browser. No uploads, no servers â€” only cookieless, anonymous analytics.",
+      "bullets": {
+        "no_server": "No server uploads",
+        "no_account": "No account required",
+        "network_tab": "Verifiable in network tab",
+        "open_source": "Open and auditable"
+      }
+    },
+    "complete": {
+      "title": "Complete metadata cleanup",
+      "eyebrow": "Complete",
+      "description": "Strips the metadata that exposes you â€” location, device, software, and timestamps â€” while preserving the pixels exactly as captured."
+    },
+    "free": {
+      "title": "Completely Free",
+      "eyebrow": "Free",
+      "description": "No limits, no watermarks, no sign-up required. Use it as much as you want."
+    },
+    "fast": {
+      "title": "Instant Processing",
+      "description": "Metadata is stripped in milliseconds. No waiting for uploads or downloads."
+    },
+    "batch": {
+      "title": "Batch Processing",
+      "eyebrow": "Batch",
+      "description": "Process multiple photos at once and download them individually or as a single ZIP archive.",
+      "zip_note": "Single-click ZIP download"
+    },
+    "formats": {
+      "title": "Multi-format support",
+      "eyebrow": "Formats",
+      "description": "Works with JPG, PNG, WebP, TIFF, HEIC, and HEIF â€” the formats you actually use."
+    },
+    "transparent": {
+      "title": "Verifiably Private",
+      "description": "Check your browser's network tab â€” you'll see no files are uploaded.",
+      "description_analytics": "Your photos never leave your device. In the network tab you'll only see lightweight, anonymous analytics â€” no image data."
+    }
+  },
+  "how_it_works": {
+    "title": "How it works",
+    "subtitle": "Four short steps. Nothing leaves your browser, and your pixels stay exactly as captured.",
+    "eyebrow": "Workflow",
+    "step1": {
+      "title": "Upload",
+      "description": "Drag a photo from your desktop or click to browse. We detect the format automatically."
+    },
+    "step2": {
+      "title": "Scan",
+      "description": "We show every metadata field found â€” GPS, camera info, timestamps, software."
+    },
+    "step3": {
+      "title": "Remove",
+      "description": "Click once to strip all privacy-sensitive metadata from your file."
+    },
+    "step4": {
+      "title": "Download",
+      "description": "Save the cleaned image. The pixels are identical to your original â€” only the metadata is gone."
+    }
+  },
+  "formats_page": {
+    "title": "Supported Formats",
+    "eyebrow": "Formats",
+    "subtitle": "We support the most common image formats. More coming soon.",
+    "jpg": {
+      "name": "JPEG",
+      "description": "The most common photo format. Strips EXIF, IPTC, XMP, GPS, and camera serial."
+    },
+    "png": {
+      "name": "PNG",
+      "description": "Lossless format. Strips metadata chunks while preserving transparency."
+    },
+    "webp": {
+      "name": "WebP",
+      "description": "Modern format with excellent compression. Full metadata removal."
+    },
+    "tiff": {
+      "name": "TIFF",
+      "description": "Professional format. Strips all metadata while preserving image quality."
+    },
+    "heic": {
+      "name": "HEIC",
+      "description": "Apple's modern format. Fully strips metadata by re-encoding to a clean JPEG."
+    },
+    "hero_badge": "Format Specification & Compatibility",
+    "hero_text": "Technical details and bitstream preservation behavior for each format supported by the client-side engine.",
+    "stat_title": "100% In-Browser",
+    "stat_text": "Zero bitstream recompression",
+    "detail": {
+      "jpg": {
+        "mime": "image/jpeg",
+        "badge": "Lossless Strip",
+        "extensions": ".jpg, .jpeg",
+        "segments": "EXIF (APP1), IPTC (APP13), XMP (APP1), MakerNotes",
+        "behavior": "Byte-level marker manipulation. APP segments are removed without re-encoding the picture.",
+        "output": "sanitized.jpg"
+      },
+      "png": {
+        "mime": "image/png",
+        "badge": "Lossless Strip",
+        "extensions": ".png",
+        "segments": "eXIf, tEXt, zTXt, iTXt (ancillary metadata chunks)",
+        "behavior": "Bitwise chunk filtering drops metadata; image and alpha data stay untouched.",
+        "output": "sanitized.png"
+      },
+      "webp": {
+        "mime": "image/webp",
+        "badge": "Lossless Strip",
+        "extensions": ".webp",
+        "segments": "RIFF headers, EXIF and XMP sub-chunks",
+        "behavior": "The RIFF container is parsed and metadata chunks are removed without touching the image stream.",
+        "output": "sanitized.webp"
+      },
+      "tiff": {
+        "mime": "image/tiff",
+        "badge": "Lossless Strip",
+        "extensions": ".tiff, .tif",
+        "segments": "IFD0, IFD1, ExifIFD, GPSIFD, IPTC, XMP",
+        "behavior": "The image-file directory chain is walked and metadata pointer tags are stripped.",
+        "output": "sanitized.tiff"
+      },
+      "heic": {
+        "mime": "image/heic",
+        "badge": "Dual Mode",
+        "extensions": ".heic, .heif",
+        "segments": "ISOBMFF box structure, meta boxes, exif items",
+        "behavior": "HEIC/HEIF is re-encoded to a clean JPEG at maximum quality because browsers cannot strip HEIC in place.",
+        "output": "sanitized.heic / .jpg"
+      }
+    },
+    "pipeline": {
+      "title": "Zero Network Footprint",
+      "text": "All format parsers run directly in your local browser — no uploads, no cloud services.",
+      "rows": {
+        "1": {
+          "label": "Processing location",
+          "value": "Your browser only"
+        },
+        "2": {
+          "label": "GPS geotag stripping",
+          "value": "100% client-side"
+        },
+        "3": {
+          "label": "Serial / device UID",
+          "value": "Purged"
+        }
+      }
+    },
+    "table": {
+      "eyebrow": "Technical Reference",
+      "title": "Comparison Matrix",
+      "intro": "Parsing method, preservation strategy, and output target for each supported format.",
+      "headers": {
+        "format": "Format",
+        "extensions": "Common Extensions",
+        "standards": "Metadata Standards Handled",
+        "guarantee": "Preservation Guarantee",
+        "output": "Output Format"
+      },
+      "rows": {
+        "1": {
+          "format": "JPEG",
+          "extensions": ".jpg, .jpeg",
+          "standards": "EXIF, IPTC-NAA, Adobe XMP, MakerNotes",
+          "guarantee": "100% bit-exact pixels",
+          "output": ".jpg"
+        },
+        "2": {
+          "format": "PNG",
+          "extensions": ".png",
+          "standards": "eXIf, tEXt, zTXt, iTXt",
+          "guarantee": "Unaltered image & alpha data",
+          "output": ".png"
+        },
+        "3": {
+          "format": "WebP",
+          "extensions": ".webp",
+          "standards": "EXIF sub-chunk, XMP sub-chunk",
+          "guarantee": "Bitstream unmodified",
+          "output": ".webp"
+        },
+        "4": {
+          "format": "TIFF",
+          "extensions": ".tiff, .tif",
+          "standards": "ExifIFD, GPSIFD, IPTC, XMP tags",
+          "guarantee": "Raw bit-depth preserved",
+          "output": ".tiff"
+        },
+        "5": {
+          "format": "HEIC / HEIF",
+          "extensions": ".heic, .heif",
+          "standards": "ISOBMFF boxes, meta items",
+          "guarantee": "Preserved / optional transcode",
+          "output": ".heic / .jpg"
+        }
+      }
+    },
+    "limits": {
+      "eyebrow": "Limits & Specifications",
+      "title": "Practical Limits",
+      "cards": {
+        "1": {
+          "title": "Maximum File Size",
+          "text": "Up to 40 MB per image is recommended for the best client-side performance. Larger files can be processed depending on your device memory.",
+          "note": "40 MB / image recommended"
+        },
+        "2": {
+          "title": "Batch Processing & ZIP",
+          "text": "Process multiple files at once. Cleaned outputs are packaged into a single ZIP file directly in your browser.",
+          "note": "Unlimited local batch queue"
+        },
+        "3": {
+          "title": "ICC Profile Handling",
+          "text": "Embedded ICC color profiles are detected and reported by the scan. HEIC/HEIF files are re-encoded to clean JPEGs.",
+          "note": "HEIC re-encoded to JPEG"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to sanitize your photos?",
+      "text": "Remove location markers, camera serial numbers, and private capture data in seconds — without leaving your browser.",
+      "primary": "Remove Metadata from a Photo",
+      "secondary": "View Architecture"
+    },
+    "labels": {
+      "extensions": "Extensions",
+      "behavior": "Behavior",
+      "output": "OUTPUT"
+    }
+  },
+  "faq": {
+    "more": "Still have questions? Visit our full FAQ",
+    "title": "Frequently Asked Questions",
+    "eyebrow": "FAQ",
+    "questions": {
+      "q1": {
+        "question": "What metadata is removed?",
+        "answer": "We remove EXIF data (GPS coordinates, camera make/model, serial number, timestamps), IPTC data (captions, keywords), and XMP data. The image pixels remain untouched."
+      },
+      "q2": {
+        "question": "Does this reduce image quality?",
+        "answer": "No. Metadata is separate from the image data. Removing it does not re-compress or alter the pixels in any way."
+      },
+      "q3": {
+        "question": "Is anything uploaded to a server?",
+        "answer": "No. Everything runs in your browser. Your photos never leave your device â€” you can verify this in your browser's network tab."
+      },
+      "q4": {
+        "question": "What about social networks?",
+        "answer": "Some social networks strip metadata on upload, but not all. Stripping at the source means you're not relying on any platform's policy."
+      },
+      "q5": {
+        "question": "Can I clean multiple photos at once?",
+        "answer": "Yes. Drop multiple files and we'll process them all. Download them individually or as a single ZIP file."
+      }
+    }
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "A free, open-source tool built so everyone can share photos without exposing where they live, what they shoot on, or when they captured the moment.",
+    "eyebrow": "About",
+    "content": "Photo Metadata Remover is a free, open-source tool built with privacy in mind. We believe everyone deserves to control their digital footprint.",
+    "hero_badge": "100% Client-Side Privacy",
+    "hero_title_1": "About Photo",
+    "hero_title_2": "Metadata Remover",
+    "hero_lead": "A free, client-side utility built to protect your privacy by stripping hidden EXIF data, GPS coordinates, camera serial numbers, and device telemetry â€” before your photos ever leave your hardware.",
+    "chips": {
+      "1": "100% In-Browser Execution",
+      "2": "Zero Server Uploads",
+      "3": "Open Source & Verifiable"
+    },
+    "cta_primary": "Remove Photo Metadata",
+    "cta_secondary": "See How It Works",
+    "why_eyebrow": "The Background",
+    "why_title": "Why We Built This Utility",
+    "why_text": "Cameras and operating systems are built for cataloging, not personal safety. Every casual snapshot you share online can broadcast sensitive metadata by default.",
+    "guarantee_title": "Our Guarantee",
+    "guarantee_text": "No analytics beacons, no tracking pixels, no persistent cookies, and no back-end endpoints that ever handle your imagery.",
+    "problem_title": "The Problem: Hidden Breadcrumbs",
+    "problem_text": "Modern devices silently embed exact GPS coordinates, altitude, lens identifiers, owner metadata, and editing software trees into the file header (EXIF, IPTC, XMP).",
+    "problem_items": {
+      "1": "Exposes home addresses and familiar locations",
+      "2": "Allows hardware correlation across identities",
+      "3": "Bypasses casual social media upload filters"
+    },
+    "problem_footer": "Threat Matrix: High Correlation Risk",
+    "solution_title": "The Solution: Isolated Execution",
+    "solution_text": "A single-purpose, fast privacy utility running exclusively in your browser's memory sandbox. Your photo is decoded, purged of sensitive tags, and saved locally.",
+    "solution_items": {
+      "1": "Runs entirely offline, without any active internet connection",
+      "2": "Zero registration, no subscriptions, and no ads",
+      "3": "Keeps your pixels identical while removing the hidden data"
+    },
+    "solution_footer": "Protocol: In-Memory Hex Sanitation",
+    "threat_eyebrow": "Threat Surface Analysis",
+    "threat_title": "What Photos Secretly Contain",
+    "threat_intro": "EXIF headers can store hundreds of metadata keys. These four primary vectors present the highest privacy and physical safety risks.",
+    "cards": {
+      "gps": {
+        "title": "GPS & Physical Location",
+        "text": "Pinpoint decimal coordinates, altitude, compass orientation, and GPS timestamps that can point straight back to private residences or daily routines.",
+        "code1": "GPSLatitudeRef: \"N\"",
+        "code2": "GPSAltitude: \"142.3m\""
+      },
+      "hardware": {
+        "title": "Hardware Fingerprints",
+        "text": "Camera body serials, unique lens identifiers, firmware revisions, and sensor patterns that allow correlation between otherwise unrelated accounts.",
+        "code1": "BodySerialNumber: 49201",
+        "code2": "LensSerialNumber: 00921"
+      },
+      "time": {
+        "title": "Timestamps & Exposure",
+        "text": "Sub-second shutter intervals, shutter counts, exact local timestamps, and exposure patterns that can reconstruct precise timelines.",
+        "code1": "SubSecTimeDigitized: \"921\"",
+        "code2": "DateTimeOriginal: \"14:22:01\""
+      },
+      "software": {
+        "title": "Software & Author Profiles",
+        "text": "Embedded editing history logs, creator names, internal folder structures, embedded preview thumbnails, and copyright tags.",
+        "code1": "XMP:CreatorTool: \"CC 2024\"",
+        "code2": "IPTC:By-line: \"J. Doe\""
+      }
+    },
+    "steps_eyebrow": "Operational Workflow",
+    "steps_title": "Simple by Design",
+    "steps_subtitle": "Complete privacy in under three seconds, without technical hurdles.",
+    "cta_badge": "Private & Free Forever",
+    "cta_title": "Ready to protect your photos?",
+    "cta_text": "Strip hidden coordinates, identifiers, and timestamps immediately in your browser. No sign-up required.",
+    "phase": "Phase",
+    "leaks_badge": "5 LEAKS"
+  },
+  "how_it_works_page": {
+    "title": "How Photo Metadata Removal Works",
+    "eyebrow": "How It Works",
+    "hero_badge": "Client-Side Processing Pipeline",
+    "hero_lead": "A transparent look at our in-browser metadata scanning and stripping pipeline. Learn exactly how your images remain private and untouched on your machine.",
+    "subtitle": "Five clear steps from loaded file to sanitized image. Everything happens in your browser.",
+    "flow_eyebrow": "Sandbox Pipeline",
+    "flow_title": "In-Memory Bitstream Lifecycle",
+    "flow_note": "Zero bytes are ever sent to remote servers.",
+    "nodes": {
+      "1": {
+        "title": "Your Device",
+        "text": "Local file selection via the browser's file API",
+        "tag": "Origin: Local Disk"
+      },
+      "2": {
+        "title": "Browser Memory",
+        "text": "Ephemeral buffer allocated in your browser's RAM",
+        "tag": "Volatile Scope"
+      },
+      "3": {
+        "title": "Metadata Scan",
+        "text": "Parses EXIF, XMP, IPTC, and GPS marker blocks",
+        "tag": "Tag Discovery"
+      },
+      "4": {
+        "title": "Privacy Classification",
+        "text": "Flags high-risk fields: location, serials, owner data",
+        "tag": "Risk Ranking"
+      },
+      "5": {
+        "title": "Metadata Removal",
+        "text": "Excises marker bytes without pixel recompression",
+        "tag": "No Transcoding"
+      },
+      "6": {
+        "title": "Clean Output",
+        "text": "Sanitized binary rebuilt with zero embedded traces",
+        "tag": "Clean File"
+      },
+      "7": {
+        "title": "Download",
+        "text": "Direct stream write or batched ZIP in your browser",
+        "tag": "Immediate Flush"
+      }
+    },
+    "steps_eyebrow": "Execution Phases",
+    "steps_title": "5 Steps from Loaded File to Sanitized Image",
+    "steps": {
+      "1": {
+        "title": "Select Your Photo",
+        "text": "When you drag and drop or select an image, the browser mounts a read-only pointer to the file. Your original photo on disk is never modified or relocated.",
+        "badge": "Local file pointer: read-only"
+      },
+      "2": {
+        "title": "Scan Metadata",
+        "text": "The parser reads the raw binary bytes and walks the file headers, recognizing JPEG markers, PNG chunk types, and HEIC/TIFF box structures to build a complete tag inventory.",
+        "badge": "Scans EXIF, IPTC, XMP & MakerNotes"
+      },
+      "3": {
+        "title": "Review Metadata",
+        "text": "Detected data is grouped into clear categories: GPS coordinates, device serial numbers, timestamps, and camera settings. You get full transparency about what is hiding in your file.",
+        "badge": "Full disclosure before removal"
+      },
+      "4": {
+        "title": "Remove Metadata",
+        "text": "Instead of re-rendering through a canvas, the engine excises only the metadata bytes. The original pixel data stays untouched, so there is no quality loss.",
+        "badge": "True byte-level removal: 0% quality loss"
+      },
+      "5": {
+        "title": "Download Clean Image",
+        "text": "The sanitized binary is wrapped into an in-memory blob and linked to an instant download. For batches, the cleaned files are packed into a ZIP archive directly in your browser.",
+        "badge": "Memory released immediately"
+      }
+    },
+    "compare_eyebrow": "Anatomy of Purging",
+    "compare_title": "What Happens to Your Photo?",
+    "compare_intro": "Unlike converters that re-compress images into new JPEGs, this tool removes unwanted segments while preserving your photography exactly as captured.",
+    "remove_title": "What We Process & Remove",
+    "remove_intro": "Identifying tracking vectors, camera serial numbers, and private exposure markers are isolated and removed from the header stream.",
+    "remove_items": {
+      "1": "GPS latitude, longitude & altitude — pinpoint coordinates that reveal home or work locations.",
+      "2": "Device identifiers & serial numbers — unique body serials, lens IDs, and camera model codes.",
+      "3": "Exact timestamps & sub-second offsets — original creation dates and timezone signatures.",
+      "4": "Embedded thumbnails & MakerNotes — old preview images cached inside the EXIF block.",
+      "5": "Software & copyright entries — editing history, artist tags, and application names."
+    },
+    "keep_title": "What Stays Untouched",
+    "keep_intro": "Your photo's visual fidelity is never modified. Because nothing is re-encoded, there is zero generational quality degradation.",
+    "keep_items": {
+      "1": "Full native resolution — every pixel width and height stays identical.",
+      "2": "Lossless pixel data — no re-compression artifacts, color shift, or bit-depth reduction.",
+      "3": "Color profile — sRGB, Adobe RGB, or Display P3 matrices remain calibrated.",
+      "4": "Transparency — PNG or WebP transparent backgrounds remain crisp.",
+      "5": "Image stream — the scan data containing the visuals stays bit-for-bit untouched."
+    },
+    "lossless_title": "Guaranteed Perceptual and Structural Fidelity",
+    "lossless_text": "Many online scrubbers load images into an HTML canvas and re-export them, degrading detail. Our approach operates purely at the binary container layer.",
+    "tech_eyebrow": "Deep Dive by Standard",
+    "tech_title": "Handling by Metadata Classification",
+    "tech_intro": "Different metadata formats store information differently. Here is how the client engine evaluates each header layer.",
+    "tech_cards": {
+      "privacy": {
+        "title": "Privacy-Critical Vectors",
+        "items": {
+          "1": "GPSInfo IFD — latitude, longitude, altitude, velocity, and GPS timestamp fields, stripped.",
+          "2": "Owner & artist strings — owner names, user comments, copyright, and creator identity tags, purged.",
+          "3": "Camera body & lens serials — hardware identifiers used to cross-reference equipment, removed."
+        }
+      },
+      "technical": {
+        "title": "Photographic & Capture Settings",
+        "items": {
+          "1": "Exposure records — aperture, ISO, exposure time, white balance, and flash status, wiped.",
+          "2": "XMP & Adobe packages — embedded XML trees and editing parameters, safely removed.",
+          "3": "Proprietary MakerNotes — vendor payloads with shutter counters and hidden extra data."
+        }
+      }
+    },
+    "cta_title": "Ready to sanitize your photos?",
+    "cta_text": "Upload a single photo or a whole batch. Your photos will never touch a server, cloud bucket, or external service.",
+    "cta_primary": "Open Metadata Remover",
+    "cta_secondary": "Read Security Architecture",
+    "step_prefix": "Step",
+    "remove_badge": "Purged",
+    "keep_badge": "Preserved"
+  },
+  "units": {
+    "bytes": "Bytes",
+    "kb": "KB",
+    "mb": "MB",
+    "gb": "GB",
+    "zero": "0 Bytes"
+  },
+  "privacy": {
+    "eyebrow": "Privacy",
+    "subtitle": "Plain-language summary: your photos never leave your device. Everything you see below is the entire policy.",
+    "intro": "We don't collect anything. Period.",
+    "intro_analytics": "We collect minimal anonymous usage statistics â€” never your photos, metadata, or personal information.",
+    "collect_title": "What we do collect",
+    "collect_text": "We use cookieless, privacy-respecting analytics (such as Plausible) that do not use cookies or track individual users. We only see aggregated, anonymous statistics like page views.",
+    "collect_text_none": "We do not use cookies, analytics, or tracking of any kind. Nothing about your visit is recorded or shared with anyone.",
+    "your_data_title": "Your data",
+    "your_data_text": "Your photos are never stored, uploaded, or transmitted. Once you close the page, everything is gone.",
+    "contact_title": "Contact",
+    "contact_text": "If you have questions about this privacy policy, please contact us.",
+    "browser_text": "This website processes your photos entirely in your browser. No image data, metadata, or file contents are ever uploaded to our servers. You can verify this by opening your browser's developer tools and checking the Network tab while using the tool.",
+    "hero_badge": "Zero-Knowledge Architecture",
+    "hero_title": "Privacy First, by Design",
+    "hero_text": "Privacy tools should not require blind trust. The entire processing pipeline runs strictly on your device — the image payload is never routed through remote servers.",
+    "metrics": {
+      "1": {
+        "badge": "Network Invariant",
+        "title": "0 Bytes Uploaded",
+        "sub": "Photos Never Leave Your Device",
+        "text": "No HTTP uploads, no cloud storage, no websockets. All mutation happens inside your browser."
+      },
+      "2": {
+        "badge": "Storage Policy",
+        "title": "100% Volatile Memory",
+        "sub": "Auto-Purging Temporary Data",
+        "text": "Parsed bytes live only in the current tab's memory. Closing the tab or resetting the tool wipes everything."
+      },
+      "3": {
+        "badge": "Tracking State",
+        "title": "No Tracking Cookies",
+        "sub": "No Advertising Telemetry",
+        "text": "No marketing trackers or third-party pixel beacons are loaded anywhere."
+      }
+    },
+    "flow_eyebrow": "Data Flow Verification",
+    "flow_title": "How Local Insulation Works",
+    "flow_note": "Isolated browser execution",
+    "flow": {
+      "1": {
+        "title": "1. User File Drop",
+        "text": "The browser passes the file to client memory via the file API.",
+        "tag": "Local ID: None"
+      },
+      "2": {
+        "title": "2. In-Memory Scan",
+        "text": "The local parser reads and classifies EXIF, IPTC, and XMP blocks.",
+        "tag": "Zero Network Calls"
+      },
+      "3": {
+        "title": "3. Direct Download",
+        "text": "The cleaned file is saved straight to your device.",
+        "tag": "Memory Purged On Unload"
+      }
+    },
+    "sections_eyebrow": "Detailed Specification",
+    "sections_title": "Privacy & Technical Policies",
+    "sections_intro": "A line-by-line review of how this tool treats your imagery and browsing session.",
+    "sections": {
+      "1": {
+        "title": "Local Processing Guarantee",
+        "text": "Every step of file sanitization runs in your browser. No remote worker or backend pipeline ever participates in parsing your files.",
+        "note": "Verified Client-Side Runtime"
+      },
+      "2": {
+        "title": "Zero Image Uploads",
+        "text": "There are no image ingestion endpoints. You can disconnect from the internet after the page loads and the tool keeps working.",
+        "note": "Operates Offline"
+      },
+      "3": {
+        "title": "No Server-Side Storage or Logs",
+        "text": "Because files never leave your device, server logs contain no filenames, timestamps, GPS locations, or image hashes.",
+        "note": "Zero Remote Footprint"
+      },
+      "4": {
+        "title": "Metadata Inspection Scope",
+        "text": "The scan looks for known markers — TIFF headers, APP1 EXIF segments, IPTC records, XMP blocks — and renders them only to your screen.",
+        "note": "Local Inspection Only"
+      },
+      "5": {
+        "title": "Sanitization & Memory Blobs",
+        "text": "The cleaned file is created as an in-memory object that only your current tab can read, then handed to your download.",
+        "note": "Ephemeral Blob Lifecycle"
+      },
+      "6": {
+        "title": "Cookies & Analytics Boundaries",
+        "text": "No cross-site advertising cookies are used. If anonymous analytics are enabled, they only track page views — never your photos.",
+        "note": "Privacy-Respecting Metrics"
+      }
+    },
+    "gdpr_eyebrow": "Regulatory Standard",
+    "gdpr_title": "GDPR (DSGVO) Alignment",
+    "gdpr_text": "The architecture follows the principle of data minimization: no personal data is collected, stored, or processed on our servers, so most GDPR obligations are never triggered by your photos.",
+    "gdpr_items": {
+      "1": "Data minimization is enforced by architecture: 0 bytes of photo data is stored.",
+      "2": "Processing occurs entirely under user direction, on the user's device.",
+      "3": "Erasure is instant: closing the tab discards everything."
+    },
+    "verify_eyebrow": "Independent Verification",
+    "verify_title": "Verify Our Claims Yourself",
+    "verify_text": "Every modern browser ships developer tools that let you watch network activity in real time.",
+    "verify_steps": {
+      "1": "Open Developer Tools (F12 or Cmd+Option+I).",
+      "2": "Switch to the Network tab and filter by Fetch/XHR/WebSocket.",
+      "3": "Drop a photo into the tool and run the removal.",
+      "4": "Observe zero outbound requests — every byte is read locally."
+    },
+    "links_title": "Have questions about our privacy practices?",
+    "links_text": "Read the full security architecture or inspect the open-source codebase.",
+    "links_primary": "Security Architecture",
+    "links_secondary": "Open Source Verification"
+  },
+  "terms": {
+    "eyebrow": "Terms",
+    "use_title": "Use of the service",
+    "use_text": "This tool is provided free of charge for personal and commercial use. You may not use the service for any unlawful purpose or in a way that violates the rights of others.",
+    "warranty_title": "No warranty",
+    "warranty_text": "This tool is provided \"as is\" without warranty of any kind. While we aim for the tool to work correctly at all times, we do not guarantee that metadata removal will be 100% effective for all files in all situations.",
+    "liability_title": "Limitation of liability",
+    "liability_text": "We shall not be liable for any damages arising from the use of this tool, including but not limited to data loss, privacy breaches resulting from incomplete metadata removal, or any other indirect damages.",
+    "changes_title": "Changes to terms",
+    "changes_text": "We may update these terms from time to time. Continued use of the service constitutes acceptance of the updated terms."
+  },
+  "guides": {
+    "title": "Guides",
+    "eyebrow": "Guides",
+    "subtitle": "Learn how to protect your privacy in the photos you share.",
+    "read_more": "Read more",
+    "cta": "Strip metadata & get a clean photo",
+    "related": "Related guides",
+    "cards": {
+      "what_is_exif": {
+        "title": "What is EXIF Data?",
+        "text": "EXIF (Exchangeable Image File Format) data is hidden information stored in your photos, including GPS coordinates, camera settings, and timestamps."
+      },
+      "gps_privacy": {
+        "title": "GPS & Location Privacy",
+        "text": "Your photos can reveal exactly where you live, work, and travel. Learn how to protect your location privacy."
+      },
+      "social_media": {
+        "title": "Do Social Media Sites Strip Metadata?",
+        "text": "Not always. Some platforms strip metadata, others don't. Always remove metadata before sharing to be safe."
+      }
+    }
+  },
+  "blog": {
+    "title": "Photo Metadata Blog",
+    "eyebrow": "Blog",
+    "subtitle": "Guides, tips, and answers about EXIF, GPS data, and photo privacy.",
+    "read_more": "Read more",
+    "cta": "Remove photo metadata now",
+    "related": "Related articles",
+    "faq_title": "FAQ"
+  },
+  "tool_page": {
+    "eyebrow": "Tool"
+  },
+  "tools": {
+    "photo-metadata-remover": {
+      "title": "Photo Metadata Remover",
+      "subtitle": "Remove EXIF, GPS, and other hidden camera data from your images â€“ free and private.",
+      "intro": "Every photo stores hidden information called metadata. It records the camera, lens, settings, and often the exact GPS location where the photo was taken. Our free photo metadata remover strips all of this in seconds â€“ directly in your browser. Your images never leave your device, so removing metadata stays 100% private.",
+      "features_title": "Why remove photo metadata?",
+      "how_title": "How to remove metadata from your photos",
+      "faq_title": "Photo Metadata FAQ",
+      "features": {
+        "1": {
+          "title": "Removes all metadata",
+          "text": "EXIF, GPS, and XMP data including the camera model, lens, settings, and timestamps."
+        },
+        "2": {
+          "title": "100% private",
+          "text": "Everything happens locally in your browser. No file is ever uploaded to a server."
+        },
+        "3": {
+          "title": "Free and unlimited",
+          "text": "Clean as many photos as you want â€“ no watermarks, accounts, or fees."
+        }
+      },
+      "how_steps": {
+        "1": {
+          "text": "Upload your photo or drag it into the drop zone. Your image never leaves your device."
+        },
+        "2": {
+          "text": "Review the detected metadata in the preview. All of it will be stripped."
+        },
+        "3": {
+          "text": "Download the cleaned image. The new file is free of EXIF, GPS, and XMP data."
+        }
+      },
+      "faq": {
+        "1": {
+          "question": "Does removing metadata reduce image quality?",
+          "answer": "No. Removing metadata only deletes the hidden information block of the file. The pixels, resolution, and quality of your photo remain exactly the same."
+        },
+        "2": {
+          "question": "Is it really private?",
+          "answer": "Yes. The tool runs entirely in your browser and never sends your photos to a server. You don't need to register or share any personal data."
+        },
+        "3": {
+          "question": "Which formats are supported?",
+          "answer": "The tool supports JPG, PNG, WebP, HEIC, and TIFF. Batch support for additional formats is being expanded."
+        }
+      }
+    },
+    "remove-exif-data": {
+      "title": "Remove EXIF Data",
+      "subtitle": "Strip the hidden camera information from your photos â€“ model, settings, and timestamps.",
+      "intro": "EXIF (Exchangeable Image File Format) stores the technical data behind every shot: the exact camera model, lens, exposure settings, and the moment the photo was taken. Our free EXIF remover deletes all of this in a single step. Everything runs locally in your browser, so your photo never leaves your device.",
+      "features_title": "Why remove EXIF data?",
+      "how_title": "How to remove EXIF data in 3 steps",
+      "faq_title": "EXIF FAQ",
+      "features": {
+        "1": {
+          "title": "Removes all EXIF tags",
+          "text": "Camera model, lens, exposure, ISO, flash, and timestamps are completely removed."
+        },
+        "2": {
+          "title": "Keeps image quality",
+          "text": "Only the metadata is stripped â€“ your photo's pixels and resolution stay untouched."
+        },
+        "3": {
+          "title": "No upload, no sign-up",
+          "text": "Processing happens in your browser. Your image is never sent to a server."
+        }
+      },
+      "how_steps": {
+        "1": {
+          "text": "Upload your photo or drop it into the drop zone above."
+        },
+        "2": {
+          "text": "Preview the EXIF data that was found. Everything shown will be removed."
+        },
+        "3": {
+          "text": "Download your cleaned image and share it safely."
+        }
+      },
+      "faq": {
+        "1": {
+          "question": "What is EXIF data?",
+          "answer": "EXIF stands for Exchangeable Image File Format. It is a standard that stores technical information in photos â€“ such as the camera model, lens, exposure settings, and the date the photo was taken."
+        },
+        "2": {
+          "question": "Can EXIF data be seen by other people?",
+          "answer": "Yes. When you share the original file, recipients can read its EXIF data with any photo viewer, EXIF viewer, or online tool. That's why it's safer to remove it before sharing."
+        },
+        "3": {
+          "question": "Does removing EXIF data affect the photo?",
+          "answer": "No. The visible image is unchanged. Only the hidden metadata section is removed, so the photo looks and functions exactly as before."
+        }
+      }
+    },
+    "remove-gps-data": {
+      "title": "Remove GPS Data",
+      "subtitle": "Delete the exact GPS coordinates that cameras and phones store in your photos.",
+      "intro": "Most smartphones and many cameras save the exact GPS coordinates of the place where a photo was taken. Anyone who receives the original file can read that location â€“ right down to the street. With our free GPS remover you delete these coordinates in seconds, completely in your browser and without uploading the photo anywhere.",
+      "features_title": "Why remove GPS data?",
+      "how_title": "How to remove GPS data from a photo",
+      "faq_title": "GPS Privacy FAQ",
+      "features": {
+        "1": {
+          "title": "Removes exact coordinates",
+          "text": "Latitude, longitude, and altitude are stripped from your photo's EXIF data."
+        },
+        "2": {
+          "title": "Protects your locations",
+          "text": "Home, workplace, and travel routes stay secret when you share the file."
+        },
+        "3": {
+          "title": "Completely private",
+          "text": "Your photo is processed in your browser and never leaves your device."
+        }
+      },
+      "how_steps": {
+        "1": {
+          "text": "Upload the photo whose location you want to remove."
+        },
+        "2": {
+          "text": "Check the GPS data shown in the preview â€“ it will be deleted."
+        },
+        "3": {
+          "text": "Download the cleaned photo. The location information is gone."
+        }
+      },
+      "faq": {
+        "1": {
+          "question": "Do all photos contain GPS data?",
+          "answer": "No. GPS coordinates are only stored when the camera or smartphone had location services enabled when the photo was taken. When in doubt, check your photo â€“ our viewer shows you what's hidden inside."
+        },
+        "2": {
+          "question": "Can GPS data be added to a photo later?",
+          "answer": "Yes. Many photo programs let you save coordinates into an image manually. Removing them is the reliable way to keep your locations private."
+        },
+        "3": {
+          "question": "Is removing GPS data enough for privacy?",
+          "answer": "Usually not. Photos also contain other metadata such as your camera model or timestamps. For full privacy, remove all metadata â€“ our photo metadata remover does this in one step."
+        }
+      }
+    },
+    "view-photo-metadata": {
+      "title": "View Photo Metadata",
+      "subtitle": "Read the hidden information in your photos â€“ EXIF, camera data, dates, and GPS.",
+      "intro": "Every photo carries a complete technical profile: camera, lens, exposure, software, and often the GPS location. With our free online viewer you can read exactly this information before you share a photo. Simply upload the image and review every hidden detail â€“ directly in your browser and without any server.",
+      "features_title": "What can you see?",
+      "how_title": "How to view photo metadata",
+      "faq_title": "Metadata Viewer FAQ",
+      "features": {
+        "1": {
+          "title": "Camera & lens info",
+          "text": "See the camera model, lens, focal length, aperture, and shutter speed."
+        },
+        "2": {
+          "title": "Dates & software",
+          "text": "Read the capture date and the editing software that produced the image."
+        },
+        "3": {
+          "title": "GPS location",
+          "text": "Check whether your photo contains the coordinates of where it was taken."
+        }
+      },
+      "how_steps": {
+        "1": {
+          "text": "Upload your photo or drag it into the drop zone."
+        },
+        "2": {
+          "text": "Review all metadata detected in the image."
+        },
+        "3": {
+          "text": "Decide what to share â€“ or strip the data with our remover."
+        }
+      },
+      "faq": {
+        "1": {
+          "question": "Why don't I see metadata in my photo viewer?",
+          "answer": "Many programs hide metadata by default. Use this viewer to read the EXIF, GPS, and XMP data directly from the file â€“ no other software needed."
+        },
+        "2": {
+          "question": "Can I view metadata without uploading the photo?",
+          "answer": "Yes. Our viewer processes the file entirely in your browser. The photo never leaves your device, so you can inspect your private images safely."
+        },
+        "3": {
+          "question": "What if no metadata is found?",
+          "answer": "Some services and apps strip metadata before you receive the file. If nothing is detected, your photo likely arrived already cleaned."
+        }
+      }
+    },
+    "remove-metadata-heic": {
+      "title": "Remove Metadata from HEIC",
+      "subtitle": "Strip EXIF and GPS data from HEIC images before you share them.",
+      "intro": "HEIC is Apple's image format and it stores exactly the same hidden metadata as JPG â€“ including camera data and GPS coordinates. Our free tool removes this data from your HEIC photos in seconds. Processing runs entirely in your browser, so your photos never leave your device.",
+      "note": "HEIC files are processed entirely in your browser and re-encoded to a clean JPEG with all metadata removed.",
+      "features_title": "Why remove HEIC metadata?",
+      "how_title": "How to remove metadata from HEIC",
+      "faq_title": "HEIC FAQ",
+      "features": {
+        "1": {
+          "title": "Strips EXIF and GPS",
+          "text": "Camera data, timestamps, and location coordinates are completely removed."
+        },
+        "2": {
+          "title": "Built for Apple photos",
+          "text": "Designed for iPhone and Apple device HEIC files, with full JPG support too."
+        },
+        "3": {
+          "title": "Private by design",
+          "text": "Your HEIC file is processed in your browser and never uploaded anywhere."
+        }
+      },
+      "how_steps": {
+        "1": {
+          "text": "Upload your HEIC photo or drag it into the drop zone."
+        },
+        "2": {
+          "text": "Review the metadata that was found in the file."
+        },
+        "3": {
+          "text": "Download the cleaned image, ready to share safely."
+        }
+      },
+      "faq": {
+        "1": {
+          "question": "What is a HEIC file?",
+          "answer": "HEIC (High Efficiency Image Coding) is a modern image format used by Apple. It stores photos with better compression than JPG but contains the same kind of hidden metadata."
+        },
+        "2": {
+          "question": "Does removing metadata from HEIC reduce quality?",
+          "answer": "HEIC is re-encoded to JPEG during processing, so the clean output is a lossy JPEG (quality 0.92). The image is rebuilt from pixels with all metadata stripped. For a format-preserving, lossless result, use JPG or PNG files instead."
+        },
+        "3": {
+          "question": "Are HEIC photos shared as HEIC?",
+          "answer": "Not always. Many apps convert HEIC to JPG when you share. Both formats contain metadata, so strip it before sending â€“ regardless of the output format."
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "eyebrow": "Contact",
+    "content": "Questions about photo metadata or our free tools? Browse the FAQ first â€“ you will find answers to the most common questions there. For anything else, use the contact details in the Imprint.",
+    "faq_link": "Visit the FAQ",
+    "impressum_intro": "Legal contact details:",
+    "impressum_link": "Imprint",
+    "contact_label": "Reach us"
+  },
+  "impressum": {
+    "title": "Imprint",
+    "eyebrow": "Imprint",
+    "intro": "Information pursuant to Â§ 5 TMG / legal notice.",
+    "responsible": "Responsible for the content",
+    "legal_name": "",
+    "address_label": "Address",
+    "address": "",
+    "email_label": "Email",
+    "email": "",
+    "representative_label": "Authorized representative",
+    "representative": "",
+    "vat_label": "VAT ID",
+    "vat": "",
+    "contact_title": "Contact",
+    "contact_body": "For questions or requests related to this website, please contact us using the details above.",
+    "not_configured": "The imprint cannot be displayed because the operator's legal identity has not been configured yet."
+  },
+  "risk_audit": {
+    "eyebrow": "Risk audit",
+    "title": "What your photos are quietly leaking",
+    "subtitle": "A typical phone photo carries dozens of hidden fields. This is what we scan for â€” and remove.",
+    "headers": {
+      "item": "Item",
+      "risk": "What it exposes",
+      "action": "Our action"
+    },
+    "rows": {
+      "r1": {
+        "item": "GPS coordinates",
+        "risk": "The exact place where the photo was taken",
+        "action": "Removed"
+      },
+      "r2": {
+        "item": "Camera & lens info",
+        "risk": "Device model, serial number, lens and settings",
+        "action": "Removed"
+      },
+      "r3": {
+        "item": "Timestamps",
+        "risk": "When the photo was originally captured and edited",
+        "action": "Removed"
+      },
+      "r4": {
+        "item": "Author & copyright tags",
+        "risk": "Your name, the software used, editing history",
+        "action": "Removed"
+      },
+      "r5": {
+        "item": "Embedded previews",
+        "risk": "Thumbnails inside the file can retain the original frame",
+        "action": "Removed"
+      },
+      "r6": {
+        "item": "Image pixels",
+        "risk": "The visible picture itself",
+        "action": "Preserved"
+      }
+    }
+  },
+  "fidelity": {
+    "eyebrow": "Perceptual fidelity",
+    "title": "Same pixels. Zero metadata.",
+    "subtitle": "Cleaning is byte-level surgery, not re-compression: your image data passes through untouched and only the metadata blocks are cut away.",
+    "points": {
+      "pixels": {
+        "title": "Visually identical output",
+        "description": "JPG, PNG, WebP, and TIFF files are cleaned without re-encoding or re-compressing the picture â€” quality loss is impossible."
+      },
+      "byte_level": {
+        "title": "Byte-level removal",
+        "description": "We split the file and delete only the metadata segments, keeping the image stream exactly as it was."
+      },
+      "verify": {
+        "title": "Verify it yourself",
+        "description": "Open the cleaned file in any metadata viewer â€” the privacy fields are gone while dimensions and quality stay the same."
+      },
+      "heic_note": {
+        "title": "One honest exception",
+        "description": "HEIC/HEIF photos are re-encoded to a clean JPEG at maximum quality, because browsers cannot strip HEIC in place."
+      }
+    }
+  },
+  "trust": {
+    "items": {
+      "client_side": {
+        "title": "100% Client-Side",
+        "description": "Your photos never leave your device"
+      },
+      "open_source": {
+        "title": "Open Source",
+        "description": "Verify the code on GitHub"
+      },
+      "built_for": {
+        "title": "Built for Privacy",
+        "description": "Because your photos are yours"
+      }
+    },
+    "eyebrow": "Trust & transparency",
+    "title": "Private by architecture, not by promise",
+    "subtitle": "Everything runs inside your browser tab. There is no server that could receive your photos â€” you can watch it happen in your browser's network tab.",
+    "badges": {
+      "client_side": "100% client-side processing",
+      "no_account": "No account, no sign-up",
+      "free": "Free, unlimited use",
+      "open": "Open and auditable approach"
+    },
+    "cta": "See how it works",
+    "secondary_cta": "Read the FAQ"
+  },
+  "footer": {
+    "made_with_line": "Made with â¤ï¸ for a more private internet.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "impressum": "Imprint",
+    "contact": "Contact",
+    "legal_label": "Legal",
+    "client_side_note": "100% client-side Â· nothing uploaded",
+    "copyright": "Â© 2026 Photo Metadata Remover. All rights reserved.",
+    "product_title": "Product",
+    "info_title": "Information",
+    "trust_title": "Trust & Privacy",
+    "main_tool": "Metadata Remover (Main Tool)",
+    "legal_hub": "Legal Hub",
+    "languages": "Languages",
+    "trust": [
+      "100% Client-Side Processing",
+      "Zero Cloud Storage",
+      "Volatile In-Memory Only",
+      "No Tracking or Telemetry"
+    ]
+  },
+  "sidebar": {
+    "privacy": {
+      "title": "Your Privacy, Our Priority",
+      "desc": "All processing happens in your browser. Your photos never leave your device.",
+      "items": [
+        "No server uploads",
+        "No data storage",
+        "No tracking",
+        "100% open source"
+      ]
+    },
+    "removed": {
+      "title": "What Gets Removed?",
+      "desc": "We remove EXIF, IPTC, XMP and other metadata that can reveal:",
+      "items": [
+        "Location (GPS coordinates)",
+        "Camera/device information",
+        "Date and time",
+        "Software used",
+        "And many other hidden details"
+      ]
+    }
+  },
+  "security_page": {
+    "title": "Privacy Architecture & Threat Model",
+    "eyebrow": "Security",
+    "hero_badge": "Architecture & Threat Model",
+    "hero_lead": "A verifiable breakdown of the client-side processing boundary, the data isolation model, and the volatile memory lifecycle. No image bytes ever touch a network socket.",
+    "subtitle": "How the tool separates your data from the network — and how you can verify it.",
+    "spec": {
+      "1": {
+        "label": "Egress Traffic",
+        "value": "0.00 Bytes"
+      },
+      "2": {
+        "label": "Execution Root",
+        "value": "Browser Runtime"
+      },
+      "3": {
+        "label": "Persistence State",
+        "value": "Zero-Write (RAM)"
+      },
+      "4": {
+        "label": "Threat Envelope",
+        "value": "Zero-Trust Local"
+      }
+    },
+    "pipeline_eyebrow": "Data Flow",
+    "pipeline_title": "The Full Client-Side Pipeline",
+    "pipeline_intro": "Your photo travels through this exact path — every step inside the browser, never across the network.",
+    "flow": {
+      "1": {
+        "title": "User Device",
+        "text": "The photo lives on your phone, tablet, or computer."
+      },
+      "2": {
+        "title": "Browser",
+        "text": "The tool runs as a normal web page in your browser."
+      },
+      "3": {
+        "title": "Photo Input",
+        "text": "The browser reads the file locally via the file API."
+      },
+      "4": {
+        "title": "Metadata Scan",
+        "text": "EXIF, IPTC, XMP, and GPS marker blocks are located and listed."
+      },
+      "5": {
+        "title": "Privacy Classification",
+        "text": "Each tag is ranked by how much it can reveal about you."
+      },
+      "6": {
+        "title": "Metadata Removal",
+        "text": "Only the sensitive bytes are excised. Pixels stay identical."
+      },
+      "7": {
+        "title": "Clean Output",
+        "text": "A sanitized file is rebuilt in browser memory."
+      },
+      "8": {
+        "title": "Download",
+        "text": "You save the clean file. The buffer is released immediately."
+      }
+    },
+    "local_note": "Local / browser processing",
+    "server_note": "No server-side processing exists for your photos",
+    "pillars_eyebrow": "Formal Invariants",
+    "pillars_title": "Core Architectural Pillars",
+    "pillars_intro": "The design closes the common attack surfaces of cloud-based converters from the start.",
+    "pillars": {
+      "1": {
+        "title": "Zero-Trust Threat Model",
+        "text": "Cloud converters require sending files to remote servers, exposing you to infrastructure breaches, rogue databases, and transit interception. Here, the server only serves static code — it never sees your state.",
+        "items": {
+          "1": "No photo data exists to expose or subpoena",
+          "2": "No admin accounts or credentials can access user images"
+        }
+      },
+      "2": {
+        "title": "What Stays On Your Hardware",
+        "text": "100% of the raw photo bits, metadata blocks, geolocation tags, and thumbnails remain confined to your browser's process on your operating system.",
+        "items": {
+          "1": "Latitude & longitude (GPS), serials, timestamps",
+          "2": "Embedded previews and editing history"
+        }
+      },
+      "3": {
+        "title": "What Leaves Your Device",
+        "text": "Only the initial request for the page's static files. Once loaded, the tool works even in airplane mode — there are no analytics payloads or tracking beacons.",
+        "items": {
+          "1": "No tracking pixels and no telemetry pings",
+          "2": "Fully functional without an internet connection"
+        }
+      },
+      "4": {
+        "title": "Volatile Memory Lifecycle",
+        "text": "Processed buffers live in the tab's memory and are released when the tab closes, the page refreshes, or the file is reset. Nothing is written to disk.",
+        "items": {
+          "1": "No IndexedDB or localStorage caching of file data",
+          "2": "Memory drops automatically on tab close"
+        }
+      }
+    },
+    "verify_eyebrow": "Don't Trust. Verify.",
+    "verify_title": "Independent Verification",
+    "verify_intro": "Confirm zero network leakage yourself in any modern browser.",
+    "verify_steps": {
+      "1": "Open Developer Tools (F12 or Cmd+Option+I).",
+      "2": "Switch to the Network tab and filter by Fetch/XHR/WebSocket.",
+      "3": "Drop a photo into the tool and run the metadata removal.",
+      "4": "Observe zero outbound requests — all reading happens on local file pointers."
+    },
+    "cta_title": "Verify the code, then clean your photos",
+    "cta_text": "Audit the open-source repository, run your own instance, or simply use the tool — every byte stays on your device.",
+    "cta_primary": "Open Metadata Remover",
+    "cta_secondary": "Inspect Open Source Code",
+    "pillar_prefix": "Pillar"
+  },
+  "faq_page": {
+    "title": "Frequently Asked Questions",
+    "eyebrow": "FAQ",
+    "hero_badge": "Knowledge Base & Answers",
+    "subtitle": "Clear, factual answers about photo metadata, client-side privacy, and byte-level file sanitization.",
+    "search_placeholder": "Search by keyword (e.g. GPS, quality, HEIC)...",
+    "search_aria": "Search frequently asked questions",
+    "filter_all": "All Questions",
+    "counter_answers": "Verifiable Answers",
+    "counter_results": "Results",
+    "categories": {
+      "understanding": "Photo Metadata",
+      "privacy": "Privacy & Security",
+      "formats": "Formats & Quality",
+      "trust": "Open Source & Legal"
+    },
+    "questions": {
+      "q1": {
+        "category": "understanding",
+        "question": "What is photo metadata?",
+        "answer": "Photo metadata is hidden header information stored inside an image file. Every time you capture a picture, the device automatically stamps the file with non-visual data: device identifiers, capture timestamps, camera settings, and often GPS coordinates."
+      },
+      "q2": {
+        "category": "understanding",
+        "question": "What is EXIF?",
+        "answer": "EXIF (Exchangeable Image File Format) is the standard that digital cameras use to write operational tags into files like JPEG and TIFF. Alongside EXIF, images often carry IPTC data (captions and copyright) and XMP data (Adobe's extensible metadata)."
+      },
+      "q3": {
+        "category": "understanding",
+        "question": "Can photos contain my home GPS coordinates?",
+        "answer": "Yes. If location permissions are enabled on your camera app, GPS satellites inject latitude, longitude, and elevation into the file. Anyone who downloads the original file can map your exact location."
+      },
+      "q4": {
+        "category": "privacy",
+        "question": "Does Photo Metadata Remover upload my photos to a server?",
+        "answer": "Never. Everything runs inside your browser. You can turn off your internet connection after the page loads and the tool continues to work — that is the clearest proof that nothing is sent anywhere."
+      },
+      "q5": {
+        "category": "privacy",
+        "question": "How does browser-based processing work?",
+        "answer": "When you drop a file, the browser reads it into memory. The parser locates the metadata markers, you review what was found, and only the sensitive bytes are removed. The result is a new file you download. Everything happens in your browser tab."
+      },
+      "q6": {
+        "category": "privacy",
+        "question": "Can I inspect metadata before removing it?",
+        "answer": "Yes. The tool scans each photo and lists the privacy-sensitive fields it found — GPS, device, timestamps, software — so you can review exactly what will be stripped before you download the clean file."
+      },
+      "q7": {
+        "category": "privacy",
+        "question": "What happens if my image has no metadata?",
+        "answer": "The scan reports that no privacy metadata was found, and you can use the file as-is. Nothing is modified in that case."
+      },
+      "q8": {
+        "category": "formats",
+        "question": "Which formats are supported?",
+        "answer": "JPEG/JPG, PNG, WebP, TIFF, and HEIC/HEIF. Each format is processed according to how it actually stores metadata — see the Supported Formats page for details."
+      },
+      "q9": {
+        "category": "formats",
+        "question": "Does removing metadata change image quality?",
+        "answer": "No. For JPG, PNG, WebP, and TIFF the pixels are never re-encoded — only the metadata blocks are removed, so quality is preserved bit-for-bit."
+      },
+      "q10": {
+        "category": "formats",
+        "question": "What happens with HEIC/HEIF files?",
+        "answer": "Apple devices store photos in HEIC/HEIF. Because browsers cannot strip metadata inside HEIC in place, the tool re-encodes those photos to a clean JPEG at maximum quality with all metadata removed."
+      },
+      "q11": {
+        "category": "formats",
+        "question": "Can I process multiple images at once?",
+        "answer": "Yes. Drop several files at once, remove metadata from all of them, and download them individually or as a single ZIP archive — all generated locally in your browser."
+      },
+      "q12": {
+        "category": "trust",
+        "question": "Is Photo Metadata Remover free and open source?",
+        "answer": "Yes. The tool is free to use with no quotas or registration, and the project is open source so anyone can audit the code or run their own copy."
+      },
+      "q13": {
+        "category": "trust",
+        "question": "Can I verify that nothing is uploaded?",
+        "answer": "Absolutely. Open your browser's developer tools, switch to the Network tab, and use the tool. You will see zero outbound requests while a photo is processed — the bytes never leave your device."
+      }
+    },
+    "cta_title": "Still have questions?",
+    "cta_text": "Explore the architecture blueprint, read the full FAQ, or inspect the open source code.",
+    "cta_primary": "How It Works",
+    "cta_secondary": "Security Architecture",
+    "cta_tertiary": "Open Source Repo",
+    "items_suffix": "Items"
+  },
+  "open_source_page": {
+    "title": "Open Source",
+    "title_2": "Verifiable by Design",
+    "eyebrow": "Open Source",
+    "hero_badge": "Transparency & Verifiability",
+    "subtitle": "True privacy requires verifiable transparency. Every line of code that touches your photos is open source, auditable, and runs entirely in your browser.",
+    "cta_primary": "Security Architecture",
+    "cta_secondary": "Open Metadata Remover",
+    "principles_eyebrow": "Foundation of Privacy",
+    "principles_title": "Why Open Source Matters",
+    "principles_intro": "Closed-source utilities claiming privacy require blind faith. Open source substitutes assumptions with public, inspectable code.",
+    "principles": {
+      "1": {
+        "title": "Zero Hidden Logic",
+        "text": "No obfuscated bundles, tracking pixels, or stealth fingerprinting routines. Every transformation is declared in the source.",
+        "note": "Audited against telemetry beacons"
+      },
+      "2": {
+        "title": "Community Audited",
+        "text": "Independent researchers and security engineers can review the code and verify how the tool really behaves.",
+        "note": "Cryptographic commit signatures"
+      },
+      "3": {
+        "title": "Self-Hostable & Offline",
+        "text": "Clone the repository, run your own copy, or deploy it to an air-gapped machine. No remote API is required.",
+        "note": "100% offline capable"
+      }
+    },
+    "code_eyebrow": "Deterministic Sanitation Engine",
+    "code_title": "Inspect the Client-Side Code",
+    "code_intro": "The tool directly excises binary segment markers (such as 0xFFE1 for EXIF) without recompressing the picture.",
+    "code_note": "Zero re-encoding loss",
+    "code_block": "export async function stripExifInMemory(file: File): Promise<Blob> {\n  const buffer = await file.arrayBuffer();\n  const view = new DataView(buffer);\n  if (view.getUint16(0) !== 0xFFD8) throw new Error(\"UNSUPPORTED_OR_CORRUPT_SOI_HEADER\");\n  let offset = 2;\n  const segments: ArrayBuffer[] = [buffer.slice(0, 2)];\n  while (offset < buffer.byteLength) {\n    const marker = view.getUint16(offset);\n    if (marker === 0xFFDA) { segments.push(buffer.slice(offset)); break; }\n    const length = view.getUint16(offset + 2);\n    if (marker !== 0xFFE1) segments.push(buffer.slice(offset, offset + 2 + length));\n    offset += 2 + length;\n  }\n  return new Blob(segments, { type: file.type });\n}",
+    "verify_eyebrow": "Independent Audit",
+    "verify_title": "Verify In 5 Seconds Without Coding",
+    "verify_intro": "Any modern browser contains the tools to prove that zero bytes leave your device.",
+    "verify_steps": {
+      "1": {
+        "title": "Open DevTools",
+        "text": "Press F12 or Cmd+Option+I in your browser."
+      },
+      "2": {
+        "title": "Network Tab",
+        "text": "Open the Network tab and press Clear."
+      },
+      "3": {
+        "title": "Go Offline",
+        "text": "Toggle airplane mode or offline mode."
+      },
+      "4": {
+        "title": "Drop Photos",
+        "text": "Drag photos into the tool and strip the metadata."
+      },
+      "5": {
+        "title": "Zero Egress",
+        "text": "The network log stays completely empty. Verified safe."
+      }
+    },
+    "contribute_eyebrow": "Community & Governance",
+    "contribute_title": "Get Involved",
+    "contribute_intro": "Contributions are welcome from engineers, translators, and privacy enthusiasts.",
+    "contribute": {
+      "1": {
+        "title": "Submit Bug Reports",
+        "text": "Found an unusual camera format or a parsing edge case? Open an issue with a sample file so it can be fixed.",
+        "link": "Open Issue on GitHub"
+      },
+      "2": {
+        "title": "Improve Parsers",
+        "text": "Help expand support for proprietary vendor tags and container formats.",
+        "link": "View Specification Guide"
+      },
+      "3": {
+        "title": "Translate & Refine",
+        "text": "Help localize the interface and documentation into more languages.",
+        "link": "Translate Locales"
+      }
+    },
+    "cta_title": "Build a more private internet together",
+    "cta_text": "Explore the code, learn the architecture, or just use the tool — every byte stays on your device."
+  },
+  "legal_page": {
+    "title": "Legal Information & Disclosures",
+    "eyebrow": "Legal",
+    "hero_badge": "Regulatory & Compliance Hub",
+    "subtitle": "Overview of terms of use, data protection declarations, open-source licensing, and statutory publisher notices.",
+    "cards": {
+      "terms": {
+        "title": "Terms of Use",
+        "sub": "Nutzungsbedingungen & Operating Agreement",
+        "text": "Contractual rules governing the zero-retention service, intellectual property, and local processing guarantees.",
+        "link": "Read Comprehensive Terms",
+        "badge": "Section 01"
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "sub": "Datenschutzerklärung (Strict Local Only)",
+        "text": "A binding declaration of data absence: zero analytics trackers, zero server persistence, and zero telemetry.",
+        "link": "Inspect Full Privacy Policy",
+        "badge": "GDPR-Aligned"
+      },
+      "impressum": {
+        "title": "Publisher Imprint",
+        "sub": "Impressum & Statutory Identification",
+        "text": "Formal disclosures required by European and national telemedia laws, populated from the configured legal identity.",
+        "link": "View Imprint Details",
+        "badge": "§ 5 DDG"
+      },
+      "licenses": {
+        "title": "Licensing & Attribution",
+        "sub": "Open Source License & Dependencies",
+        "text": "The project is free and open source. Discover license terms and how the code can be reused.",
+        "link": "Examine License Terms",
+        "badge": "Open Source Software"
+      }
+    },
+    "warranty_eyebrow": "Zero Data Retention",
+    "warranty_title": "Subpoena Immunity Through Inherent Inability",
+    "warranty_text": "Because this platform executes entirely on your device, no photo data, payload, geolocation coordinate, or device serial ever reaches our servers. We cannot produce, retain, or disclose user photos to any third party — we have no physical media and no telemetry logs to hand over.",
+    "warranty_tags": {
+      "1": {
+        "label": "Zero Servers",
+        "text": "No upload pipeline exists"
+      },
+      "2": {
+        "label": "RAM Resident",
+        "text": "Cleared when the tab closes"
+      },
+      "3": {
+        "label": "Auditable Code",
+        "text": "Every build is reproducible"
+      }
+    },
+    "odr_eyebrow": "EU Dispute Resolution",
+    "odr_title": "Consumer Arbitration & ODR",
+    "odr_text": "The European Commission provides a platform for out-of-court online dispute resolution (ODR). As this service is provided free of charge with no account custody, it involves no paid consumer contracts.",
+    "odr_items": {
+      "1": "ODR platform: ec.europa.eu/consumers/odr",
+      "2": "No consumer arbitration obligation applies to this free service."
+    },
+    "contact_title": "Contact & Legal Requests",
+    "contact_text": "For legal or regulatory requests, use the official contact channels. The imprint page lists the responsible entity once configured.",
+    "contact_primary": "Go to the FAQ",
+    "contact_secondary": "Contact & Imprint"
+  }
+}

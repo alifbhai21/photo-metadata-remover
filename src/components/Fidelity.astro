@@ -1,0 +1,72 @@
+---
+import { getTranslations, t } from '../i18n/index';
+
+const { lang = 'en' } = Astro.props;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const points = [
+  { key: 'pixels', icon: 'pixels' },
+  { key: 'byte_level', icon: 'bytes' },
+  { key: 'verify', icon: 'verify' },
+  { key: 'heic_note', icon: 'info' },
+] as const;
+---
+
+<section id="fidelity" class="py-16 sm:py-20 px-4 sm:px-6 border-t border-border scroll-mt-24">
+  <div class="max-w-5xl mx-auto">
+    <!-- Section header -->
+    <div class="text-center mb-10 sm:mb-14">
+      <span class="pmr-eyebrow justify-center">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent"></span>
+        {t(translations, 'fidelity.eyebrow')}
+      </span>
+      <h2 class="mt-3 text-[28px] sm:text-[36px] font-semibold tracking-tight text-text leading-[1.1]">
+        {t(translations, 'fidelity.title')}
+      </h2>
+      <p class="mt-4 text-[15.5px] text-text-muted leading-relaxed max-w-xl mx-auto">
+        {t(translations, 'fidelity.subtitle')}
+      </p>
+    </div>
+
+    <!-- Fidelity points -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+      {points.map((point) => (
+        <article class="pmr-card p-6 sm:p-7 pmr-elev-1">
+          <span
+            class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-accent-soft text-accent-secondary mb-4"
+            aria-hidden="true"
+          >
+            {point.icon === 'pixels' && (
+              <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
+            )}
+            {point.icon === 'bytes' && (
+              <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.848 8.25l1.536.887M7.848 8.25a3 3 0 11-5.196-3 3 3 0 015.196 3zm1.536.887a2.165 2.165 0 011.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l2.077 1.199M7.848 15.75l1.536-.887m-1.536.887a3 3 0 11-5.196 3 3 3 0 015.196-3zm1.536-.887a2.165 2.165 0 001.083-1.838c.005-.352.054-.695.14-1.025m-1.223 2.863l2.077-1.199m0-3.328a4.323 4.323 0 012.068-1.379l5.325-1.628a4.5 4.5 0 012.48-.044l.803.215-7.794 4.5m-2.882-.375a4.33 4.33 0 00-.127 2.093M16.5 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+              </svg>
+            )}
+            {point.icon === 'verify' && (
+              <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )}
+            {point.icon === 'info' && (
+              <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+              </svg>
+            )}
+          </span>
+
+          <h3 class="text-[16px] font-semibold tracking-tight text-text leading-snug">
+            {t(translations, `fidelity.points.${point.key}.title`)}
+          </h3>
+          <p class="mt-2 text-[13.5px] text-text-muted leading-relaxed">
+            {t(translations, `fidelity.points.${point.key}.description`)}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

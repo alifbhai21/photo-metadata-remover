@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { getTranslations, t } from '../../i18n/index';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const sections = [
+  { titleKey: 'terms.use_title', textKey: 'terms.use_text' },
+  { titleKey: 'terms.warranty_title', textKey: 'terms.warranty_text' },
+  { titleKey: 'terms.liability_title', textKey: 'terms.liability_text' },
+  { titleKey: 'terms.changes_title', textKey: 'terms.changes_text' },
+] as const;
+---
+
+<Layout lang={currentLang} title={t(translations, 'footer.terms')} description={t(translations, 'seo.terms.description')}>
+  <section class="py-12 sm:py-16 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto">
+      <PageHeader
+        lang={currentLang}
+        eyebrow={t(translations, 'terms.eyebrow')}
+        title={t(translations, 'footer.terms')}
+      />
+
+      <div class="mt-8 space-y-3">
+        {sections.map((s) => (
+          <div class="pmr-card p-5 sm:p-6">
+            <h2 class="text-[15px] font-semibold text-text tracking-tight mb-2">
+              {t(translations, s.titleKey)}
+            </h2>
+            <p class="text-[14.5px] text-text-muted leading-relaxed">
+              {t(translations, s.textKey)}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

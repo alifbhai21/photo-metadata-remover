@@ -1,0 +1,238 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+import { getTranslations, t } from '../../../i18n/index';
+
+export function getStaticPaths() {
+  const langs = ['en', 'de', 'fr'] as const;
+  const BLOG_SLUGS = [
+    'what-is-photo-metadata',
+    'what-is-exif-data',
+    'can-photos-reveal-your-location',
+    'how-to-remove-location-data-from-photos',
+    'how-to-remove-exif-data',
+    'does-instagram-remove-exif',
+    'how-to-check-photo-metadata',
+    'what-information-is-hidden-in-a-photo',
+    'does-whatsapp-remove-exif-data',
+    'how-to-remove-exif-data-on-iphone',
+    'how-to-remove-exif-data-on-android',
+    'iptc-vs-xmp-metadata-explained',
+  ];
+  const paths = [];
+  for (const lang of langs) {
+    for (const slug of BLOG_SLUGS) {
+      paths.push({ params: { lang, slug } });
+    }
+  }
+  return paths;
+}
+
+const { lang, slug } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+
+const posts = await getCollection('blog');
+const entry = posts.find((p) => p.data.lang === currentLang && p.data.slug === slug);
+
+if (!entry) {
+  throw new Error(`Missing blog content for ${currentLang}/${slug}`);
+}
+
+const { Content } = await render(entry);
+const translations = getTranslations(currentLang);
+
+const related = posts
+  .filter((p) => p.data.lang === currentLang && p.data.slug !== slug)
+  .sort((a, b) => b.data.published.getTime() - a.data.published.getTime())
+  .slice(0, 2);
+
+const SITE_URL = (Astro.site?.origin ?? 'https://photometadataremover.com').replace(/\/$/, '');
+const articleUrl = `${SITE_URL}/${currentLang}/blog/${slug}/`;
+const blogUrl = `${SITE_URL}/${currentLang}/blog/`;
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: t(translations, 'site.name'),
+      item: `${SITE_URL}/${currentLang}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t(translations, 'blog.title'),
+      item: blogUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: entry.data.title,
+      item: articleUrl,
+    },
+  ],
+};
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.published.toISOString(),
+  dateModified: entry.data.updated?.toISOString() ?? entry.data.published.toISOString(),
+  inLanguage: currentLang,
+  mainEntityOfPage: articleUrl,
+};
+
+const faqItems = entry.data.faq ?? [];
+const faqJsonLd =
+  faqItems.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
+---
+
+<Layout
+  lang={currentLang}
+  title={entry.data.title}
+  description={entry.data.description}
+  ogType="article"
+  jsonLd={[breadcrumbJsonLd, articleJsonLd, faqJsonLd].filter(Boolean)}
+>
+  <article class="py-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <nav class="text-sm text-text-muted mb-6" aria-label="breadcrumb">
+        <a href={`/${currentLang}`} class="hover:text-accent">{t(translations, 'site.name')}</a>
+        <span class="mx-2">/</span>
+        <a href={`/${currentLang}/blog`} class="hover:text-accent">{t(translations, 'blog.title')}</a>
+        <span class="mx-2">/</span>
+        <span>{entry.data.title}</span>
+      </nav>
+
+      <time class="text-sm text-text-muted" datetime={entry.data.published.toISOString()}>
+        {
+          new Intl.DateTimeFormat(currentLang, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }).format(entry.data.published)
+        }
+      </time>
+
+      <h1 class="text-3xl sm:text-4xl font-bold text-text mb-4 mt-2">{entry.data.title}</h1>
+      <p class="text-xl text-text-muted mb-8">{entry.data.description}</p>
+
+      <div class="article-body prose space-y-6 text-text">
+        <Content />
+      </div>
+
+      {faqItems.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-2xl font-semibold text-text mb-4">{t(translations, 'blog.faq_title')}</h2>
+          <div class="space-y-4">
+            {faqItems.map((item) => (
+              <details class="group border border-border rounded-xl overflow-hidden bg-surface">
+                <summary class="flex items-center justify-between gap-4 p-4 cursor-pointer hover:bg-surface-muted transition-colors">
+                  <span class="font-medium text-text">{item.question}</span>
+                  <svg
+                    class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div class="p-4 pt-0 text-text-muted">{item.answer}</div>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div class="mt-12 pt-8 border-t border-border">
+        <a
+          href={`/${currentLang}/photo-metadata-remover#tool`}
+          class="inline-flex items-center rounded-full bg-accent-btn text-accent-btn-text px-6 py-3 font-medium hover:bg-accent-btn-hover transition-colors"
+        >
+          {t(translations, 'blog.cta')}
+        </a>
+      </div>
+
+      {related.length > 0 && (
+        <div class="mt-12">
+          <h2 class="text-xl font-semibold text-text mb-4">{t(translations, 'blog.related')}</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {related.map((post) => (
+              <a
+                href={`/${currentLang}/blog/${post.data.slug}`}
+                class="block p-4 bg-surface rounded-xl border border-border hover:shadow-lg transition-shadow"
+              >
+                <h3 class="text-base font-semibold text-text mb-1">{post.data.title}</h3>
+                <p class="text-sm text-text-muted">{post.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .article-body h2 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .article-body h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .article-body p {
+    margin: 1rem 0;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+  }
+  .article-body ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+    color: var(--color-text-muted);
+  }
+  .article-body li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+  .article-body a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .article-body a:hover {
+    color: var(--color-accent-hover);
+  }
+  .article-body strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+</style>

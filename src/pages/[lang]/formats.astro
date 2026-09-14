@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Info/Icon.astro';
+import Breadcrumbs from '../../components/Info/Breadcrumbs.astro';
+import { getTranslations, t } from '../../i18n/index';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const formats = ['jpg', 'png', 'webp', 'tiff', 'heic'] as const;
+
+const layoutJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t(translations, 'formats_page.title'),
+  itemListElement: formats.map((f, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: t(translations, `formats_page.${f}.name`),
+  })),
+};
+---
+
+<Layout lang={currentLang} title={t(translations, 'formats_page.title')} description={t(translations, 'seo.formats.description')} jsonLd={layoutJsonLd}>
+  <div class="bg-background text-on-surface">
+    <section class="overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
+        <Breadcrumbs current={t(translations, 'nav.formats')} />
+        <div class="mt-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div class="max-w-3xl">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed/40 text-secondary w-fit shadow-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary" aria-hidden="true"></span>
+              <span class="text-[11px] font-mono uppercase tracking-widest font-semibold">{t(translations, 'formats_page.hero_badge')}</span>
+            </span>
+            <h1 class="text-[34px] sm:text-[42px] lg:text-[48px] font-semibold tracking-tight text-on-surface leading-[1.05] mt-3">{t(translations, 'formats_page.title')}</h1>
+            <p class="mt-3 text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">{t(translations, 'formats_page.hero_text')}</p>
+          </div>
+          <div class="inline-flex items-center gap-3 p-4 rounded-xl bg-surface-container-low shadow-sm">
+            <div class="w-11 h-11 rounded-lg bg-surface-container-highest text-secondary flex items-center justify-center"><Icon name="verified" class="w-6 h-6" /></div>
+            <div>
+              <div class="text-[15px] font-semibold text-on-surface">{t(translations, 'formats_page.stat_title')}</div>
+              <div class="text-[11px] font-mono text-on-surface-variant">{t(translations, 'formats_page.stat_text')}</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {formats.map((f) => (
+            <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div>
+                <div class="flex items-start justify-between">
+                  <div>
+                    <span class="block text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">{t(translations, `formats_page.detail.${f}.mime`)}</span>
+                    <h2 class="text-xl font-semibold text-on-surface mt-0.5">{t(translations, `formats_page.${f}.name`)}</h2>
+                  </div>
+                  <span class="px-2 py-1 rounded bg-secondary-fixed/50 text-secondary text-[10px] font-mono font-semibold">{t(translations, `formats_page.detail.${f}.badge`)}</span>
+                </div>
+                <div class="mt-4 flex flex-col gap-2">
+                  <div class="p-3 rounded-lg bg-surface-container-low">
+                    <span class="block text-[10px] font-mono uppercase tracking-wider text-on-surface-variant mb-1">{t(translations, 'formats_page.labels.extensions')}</span>
+                    <div class="flex flex-wrap gap-1.5">
+                      {t(translations, `formats_page.detail.${f}.extensions`).split(',').map((ext) => (
+                        <span class="px-1.5 py-0.5 rounded bg-surface-container-highest font-mono text-[11px] text-on-surface">{ext.trim()}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="p-3 rounded-lg bg-surface-container-low">
+                    <span class="block text-[10px] font-mono uppercase tracking-wider text-on-surface-variant mb-1">{t(translations, 'formats_page.table.headers.standards')}</span>
+                    <p class="text-[11px] font-mono text-on-surface">{t(translations, `formats_page.detail.${f}.segments`)}</p>
+                  </div>
+                  <div class="p-3 rounded-lg bg-surface-container-low">
+                    <span class="block text-[10px] font-mono uppercase tracking-wider text-on-surface-variant mb-1">{t(translations, 'formats_page.labels.behavior')}</span>
+                    <p class="text-[13px] text-on-surface">{t(translations, `formats_page.detail.${f}.behavior`)}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2.5 flex items-center justify-between text-[10px] font-mono text-on-surface-variant">
+                <span>{t(translations, 'formats_page.labels.output')}</span>
+                <span class="inline-flex items-center gap-1 font-semibold text-secondary"><Icon name="check" class="w-4 h-4" />{t(translations, `formats_page.detail.${f}.output`)}</span>
+              </div>
+            </div>
+          ))}
+          <div class="bg-surface-container-high rounded-xl p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-secondary font-semibold"><Icon name="memory" class="w-5 h-5" /><span class="text-[10px] font-mono uppercase tracking-widest">{t(translations, 'how_it_works_page.flow_eyebrow')}</span></div>
+              <h3 class="text-lg font-semibold text-on-surface mt-2">{t(translations, 'formats_page.pipeline.title')}</h3>
+              <p class="mt-1.5 text-[13px] text-on-surface-variant">{t(translations, 'formats_page.pipeline.text')}</p>
+              <div class="mt-4 flex flex-col gap-2">
+                {[1, 2, 3].map((j) => (
+                  <div class="flex items-center justify-between bg-surface-container-lowest/80 px-3 py-2 rounded text-[11px] font-mono">
+                    <span class="text-on-surface-variant">{t(translations, `formats_page.pipeline.rows.${j}.label`)}</span>
+                    <span class="text-secondary font-semibold">{t(translations, `formats_page.pipeline.rows.${j}.value`)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="mt-4">
+              <a href={`/${currentLang}/security`} class="text-[13px] font-semibold text-secondary hover:text-on-secondary-fixed-variant inline-flex items-center gap-1">
+                {t(translations, 'formats_page.cta.secondary')}<Icon name="chevron" class="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold mb-2">{t(translations, 'formats_page.table.eyebrow')}</span>
+            <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'formats_page.table.title')}</h2>
+          </div>
+          <p class="max-w-md text-[13px] text-on-surface-variant">{t(translations, 'formats_page.table.intro')}</p>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-[13px]">
+              <thead>
+                <tr class="bg-surface-container-low text-on-surface-variant">
+                  <th class="py-3 px-4 font-mono text-[10px] uppercase tracking-wider align-middle"><span class="font-semibold">{t(translations, 'formats_page.table.headers.format')}</span></th>
+                  <th class="py-3 px-3 font-mono text-[10px] uppercase tracking-wider"><span class="font-semibold">{t(translations, 'formats_page.table.headers.extensions')}</span></th>
+                  <th class="py-3 px-3 font-mono text-[10px] uppercase tracking-wider"><span class="font-semibold">{t(translations, 'formats_page.table.headers.standards')}</span></th>
+                  <th class="py-3 px-3 font-mono text-[10px] uppercase tracking-wider"><span class="font-semibold">{t(translations, 'formats_page.table.headers.guarantee')}</span></th>
+                  <th class="py-3 px-4 font-mono text-[10px] uppercase tracking-wider"><span class="font-semibold">{t(translations, 'formats_page.table.headers.output')}</span></th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-outline-variant/30">
+                {[1, 2, 3, 4, 5].map((j) => (
+                  <tr class="hover:bg-surface-container-low/50 transition-colors">
+                    <td class="py-3 px-4 font-semibold text-on-surface">{t(translations, `formats_page.table.rows.${j}.format`)}</td>
+                    <td class="py-3 px-3 font-mono text-[11px] text-on-surface-variant">{t(translations, `formats_page.table.rows.${j}.extensions`)}</td>
+                    <td class="py-3 px-3 text-on-surface-variant">{t(translations, `formats_page.table.rows.${j}.standards`)}</td>
+                    <td class="py-3 px-3">
+                      <span class="inline-flex items-center gap-1 text-secondary font-mono text-[11px] font-semibold"><Icon name="check" class="w-4 h-4" />{t(translations, `formats_page.table.rows.${j}.guarantee`)}</span>
+                    </td>
+                    <td class="py-3 px-4 font-mono text-[11px] font-semibold text-on-surface">{t(translations, `formats_page.table.rows.${j}.output`)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-6">
+          <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold mb-2">{t(translations, 'formats_page.limits.eyebrow')}</span>
+          <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'formats_page.limits.title')}</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {[1, 2, 3].map((j) => (
+            <div class="bg-surface-container-low rounded-xl p-5 flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center mb-3">
+                  <Icon name={j === 1 ? 'folder' : j === 2 ? 'download' : 'palette'} class="w-5 h-5" />
+                </div>
+                <h3 class="text-[16px] font-semibold text-on-surface mt-1">{t(translations, `formats_page.limits.cards.${j}.title`)}</h3>
+                <p class="mt-2 text-[13.5px] text-on-surface-variant leading-relaxed">{t(translations, `formats_page.limits.cards.${j}.text`)}</p>
+              </div>
+              <div class="mt-4 px-3 py-2 rounded-lg bg-surface-container-lowest/80 text-[11px] font-mono text-on-surface-variant">{t(translations, `formats_page.limits.cards.${j}.note`)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div class="max-w-2xl text-center lg:text-left">
+            <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'formats_page.cta.title')}</h2>
+            <p class="mt-2 text-[14px] text-on-surface-variant">{t(translations, 'formats_page.cta.text')}</p>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
+            <a href={`/${currentLang}/`} class="w-full sm:w-auto h-11 px-5 rounded-lg bg-primary text-on-primary font-medium inline-flex items-center justify-center gap-2 hover:bg-primary-container shadow-sm">
+              <Icon name="remove" class="w-5 h-5" />
+              {t(translations, 'formats_page.cta.primary')}
+            </a>
+            <a href={`/${currentLang}/security`} class="w-full sm:w-auto h-11 px-5 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container font-medium inline-flex items-center justify-center">
+              {t(translations, 'formats_page.cta.secondary')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

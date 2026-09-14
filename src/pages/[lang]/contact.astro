@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { getTranslations, t } from '../../i18n/index';
+import { getLegalIdentity, isLegalConfigured } from '../../lib/legal';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const legalIdentity = getLegalIdentity();
+const legalConfigured = isLegalConfigured();
+
+const SITE_URL = (Astro.site?.origin ?? 'https://photometadataremover.com').replace(/\/$/, '');
+const pageUrl = `${SITE_URL}/${currentLang}/contact/`;
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: t(translations, 'site.name'),
+      item: `${SITE_URL}/${currentLang}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t(translations, 'contact.title'),
+      item: pageUrl,
+    },
+  ],
+};
+---
+
+<Layout
+  lang={currentLang}
+  title={t(translations, 'contact.title')}
+  description={t(translations, 'seo.contact.description')}
+  jsonLd={breadcrumbJsonLd}
+>
+  <section class="py-12 sm:py-16 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto">
+      <PageHeader
+        lang={currentLang}
+        eyebrow={t(translations, 'contact.eyebrow')}
+        title={t(translations, 'contact.title')}
+      />
+
+      <div class="mt-8 space-y-3">
+        <div class="pmr-card p-5 sm:p-6">
+          <p class="text-[15px] text-text leading-relaxed">
+            {t(translations, 'contact.content')}
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <a class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-accent-btn text-accent-btn-text text-[12.5px] font-medium hover:bg-accent-btn-hover transition-colors" href={`/${currentLang}/faq`}>
+              {t(translations, 'contact.faq_link')}
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface text-text text-[12.5px] font-medium border border-border hover:bg-surface-muted transition-colors" href={`/${currentLang}/impressum`}>
+              {t(translations, 'contact.impressum_link')}
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        {legalConfigured && (
+          <div class="pmr-card p-5 sm:p-6">
+            <h2 class="text-[15px] font-semibold text-text tracking-tight mb-3">{t(translations, 'contact.contact_label')}</h2>
+            <div class="space-y-1.5 text-[14.5px]">
+              <p class="text-text-muted">
+                <strong class="text-text font-medium">{t(translations, 'impressum.email_label')}:</strong>
+                <a class="text-accent hover:text-accent-hover underline underline-offset-2 ml-1" href={`mailto:${legalIdentity.email}`}>{legalIdentity.email}</a>
+              </p>
+              <p class="text-text-muted">
+                <strong class="text-text font-medium">{t(translations, 'impressum.address_label')}:</strong> {legalIdentity.address}
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+</Layout>

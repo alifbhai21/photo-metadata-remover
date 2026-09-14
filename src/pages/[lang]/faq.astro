@@ -1,0 +1,257 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Info/Icon.astro';
+import Breadcrumbs from '../../components/Info/Breadcrumbs.astro';
+import { getTranslations, t } from '../../i18n/index';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const ALL_QUESTIONS = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13'];
+
+const catOrder = [
+  { id: 'understanding', icon: 'device' },
+  { id: 'privacy', icon: 'lock' },
+  { id: 'formats', icon: 'palette' },
+  { id: 'trust', icon: 'github' },
+];
+
+const groups = catOrder.map((cat) => ({
+  id: cat.id,
+  icon: cat.icon,
+  label: t(translations, `faq_page.categories.${cat.id}`),
+  questions: ALL_QUESTIONS
+    .filter((key) => t(translations, `faq_page.questions.${key}.category`) === cat.id)
+    .map((key) => ({
+      key,
+      question: t(translations, `faq_page.questions.${key}.question`),
+      answer: t(translations, `faq_page.questions.${key}.answer`),
+    })),
+}));
+const TOTAL_QS = groups.reduce((acc, g) => acc + g.questions.length, 0);
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: groups.flatMap((g) =>
+    g.questions.map((qa) => ({
+      '@type': 'Question',
+      name: qa.question,
+      acceptedAnswer: { '@type': 'Answer', text: qa.answer },
+    })),
+  ),
+};
+---
+
+<Layout lang={currentLang} title={t(translations, 'faq.title')} description={t(translations, 'seo.faq.description')} jsonLd={faqJsonLd}>
+  <div class="bg-background text-on-surface">
+    <section class="overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
+        <Breadcrumbs current={t(translations, 'nav.faq')} />
+        <div class="mt-10 bg-surface-container-lowest rounded-2xl shadow-sm p-8 md:p-12 overflow-hidden">
+          <div class="relative max-w-3xl flex flex-col gap-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed/50 text-secondary w-fit">
+              <Icon name="verified" class="w-4 h-4" />
+              <span class="text-[11px] font-mono uppercase tracking-widest font-semibold">{t(translations, 'faq_page.hero_badge')}</span>
+            </span>
+            <h1 class="text-[30px] sm:text-[38px] lg:text-[44px] font-semibold tracking-tight text-on-surface leading-[1.05]">{t(translations, 'faq_page.title')}</h1>
+            <p class="text-[15px] sm:text-base text-on-surface-variant">{t(translations, 'faq_page.subtitle')}</p>
+            <div class="mt-4">
+              <label class="text-[13px] font-medium text-on-surface block mb-1" for="faq-search">{t(translations, 'faq_page.search_aria')}</label>
+              <input
+                id="faq-search"
+                type="search"
+                class="w-full pl-4 pr-4 py-3 rounded-xl bg-surface-container-low text-on-surface text-[14px] placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all"
+                placeholder={t(translations, 'faq_page.search_placeholder')}
+              />
+            </div>
+          </div>
+          <div class="relative mt-4 flex items-center gap-2 flex-wrap" id="faq-chips" role="group" aria-label={t(translations, 'faq_page.search_aria')}>
+            <span class="text-[12px] font-mono uppercase tracking-wider text-on-surface-variant mr-1" id="faq-all-label">{t(translations, 'faq_page.filter_all')}:</span>
+            {catOrder.map((cat) => (
+              <button type="button" data-category={cat.id} class="faq-chip inline-flex items-center gap-1.5 h-10 px-3 rounded-full border border-outline-variant/40 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-low font-mono text-[11px] uppercase transition-colors">
+                {t(translations, `faq_page.categories.${cat.id}`)}
+              </button>
+            ))}
+            <span class="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant ml-1" id="faq-results-count" data-answers={t(translations, 'faq_page.counter_answers')} data-results={t(translations, 'faq_page.counter_results')}>{TOTAL_QS} {t(translations, 'faq_page.counter_answers')}</span>
+          </div>
+        </div>
+        <div class="mt-10 flex flex-col gap-8">
+          {groups.slice(0, 2).map((group) => (
+            <section class="faq-group" data-category={group.id}>
+              <div class="flex items-center justify-between pb-2 mb-2 border-b border-outline-variant/20">
+                <div class="flex items-center gap-2">
+                  <Icon name={group.icon} class="w-5 h-5 text-secondary" />
+                  <h2 class="text-lg font-semibold text-on-surface">{group.label}</h2>
+                </div>
+                <span class="text-[11px] font-mono text-on-surface-variant">{group.questions.length} {t(translations, 'faq_page.items_suffix')}</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                {group.questions.map((qa) => (
+                  <div class="faq-item bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden" data-category={group.id}>
+                    <h3>
+                      <button
+                        id={`faq-toggle-${qa.key}`}
+                        type="button"
+                        aria-expanded={qa.key === 'q1' ? 'true' : 'false'}
+                        aria-controls={`faq-answer-${qa.key}`}
+                        class="faq-toggle w-full flex items-center justify-between gap-3 p-5 text-left min-h-[44px] hover:bg-surface-container-low transition-colors"
+                      >
+                        <span class="text-[15px] font-semibold text-on-surface">{qa.question}</span>
+                        <Icon name="chevron_down" class={`faq-arrow w-5 h-5 text-on-surface-variant shrink-0 ${qa.key === 'q1' ? 'rotate-180' : ''}`} />
+                      </button>
+                    </h3>
+                    <div
+                      id={`faq-answer-${qa.key}`}
+                      role="region"
+                      aria-labelledby={`faq-toggle-${qa.key}`}
+                      class={'faq-answer px-5 py-4 ' + (qa.key === 'q1' ? '' : 'hidden')}
+                    >
+                      <p class="text-[13.5px] text-on-surface-variant leading-relaxed">{qa.answer}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+          {groups.slice(2, 4).map((group) => (
+            <section class="faq-group" data-category={group.id}>
+              <div class="flex items-center justify-between pb-2 mb-2 border-b border-outline-variant/20">
+                <div class="flex items-center gap-2">
+                  <Icon name={group.icon} class="w-5 h-5 text-secondary" />
+                  <h2 class="text-lg font-semibold text-on-surface">{group.label}</h2>
+                </div>
+                <span class="text-[11px] font-mono text-on-surface-variant">{group.questions.length} {t(translations, 'faq_page.items_suffix')}</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                {group.questions.map((qa) => (
+                  <div class="faq-item bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden" data-category={group.id}>
+                    <h3>
+                      <button
+                        id={`faq-toggle-${qa.key}`}
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls={`faq-answer-${qa.key}`}
+                        class="faq-toggle w-full flex items-center justify-between gap-3 p-5 text-left min-h-[44px] hover:bg-surface-container-low transition-colors"
+                      >
+                        <span class="text-[15px] font-semibold text-on-surface">{qa.question}</span>
+                        <Icon name="chevron_down" class="faq-arrow w-5 h-5 text-on-surface-variant shrink-0" />
+                      </button>
+                    </h3>
+                    <div id={`faq-answer-${qa.key}`} role="region" aria-labelledby={`faq-toggle-${qa.key}`} class="faq-answer hidden px-5 py-4">
+                      <p class="text-[13.5px] text-on-surface-variant leading-relaxed">{qa.answer}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="pt-12 pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-surface-container-lowest rounded-2xl p-8 md:p-10 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="max-w-xl">
+            <div class="flex items-center gap-2 text-secondary text-[15px] font-semibold">
+              <Icon name="verified" class="w-5 h-5" />
+              {t(translations, 'faq_page.cta_title')}
+            </div>
+            <p class="mt-2 text-[14px] text-on-surface-variant">{t(translations, 'faq_page.cta_text')}</p>
+          </div>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href={`/${currentLang}/how-it-works`} class="w-full sm:w-auto h-11 px-4 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-medium inline-flex items-center justify-center gap-2">
+              <Icon name="scan" class="w-[18px] h-[18px]" />
+              {t(translations, 'faq_page.cta_primary')}
+            </a>
+            <a href={`/${currentLang}/security`} class="h-11 px-4 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-medium inline-flex items-center justify-center gap-2">
+              <Icon name="lock" class="w-[18px] h-[18px]" />
+              {t(translations, 'faq_page.cta_secondary')}
+            </a>
+            <a href={`/${currentLang}/open-source`} class="w-full sm:w-auto h-11 px-4 rounded-lg bg-primary text-on-primary font-medium inline-flex items-center justify-center gap-2 hover:bg-primary-container">
+              <Icon name="github" class="w-[18px] h-[18px]" />
+              {t(translations, 'faq_page.cta_tertiary')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  <script>
+    const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+    const faqGroups = Array.from(document.querySelectorAll('.faq-group'));
+    const chipBtns = Array.from(document.querySelectorAll('.faq-chip'));
+    const counter = document.getElementById('faq-results-count');
+    const search = document.getElementById('faq-search');
+    const answersLabel = counter?.dataset.answers || '';
+    const resultsLabel = counter?.dataset.results || '';
+
+    Array.from(document.querySelectorAll('.faq-toggle')).forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const region = document.getElementById(btn.getAttribute('aria-controls') || '');
+        const arrow = btn.querySelector('.faq-arrow');
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if (region) region.classList.toggle('hidden', expanded);
+        if (arrow) arrow.classList.toggle('rotate-180', !expanded);
+      });
+    });
+
+    let activeCategory = 'all';
+
+    const countVisible = () => {
+      const n = faqItems.filter((el) => !el.classList.contains('hidden')).length;
+      const unfiltered = activeCategory === 'all' && !(search ? search.value.trim() : '');
+      if (counter) counter.textContent = `${n} ${unfiltered ? answersLabel : resultsLabel}`;
+    };
+
+    const applyChipStyles = (selected) => {
+      chipBtns.forEach((b) => {
+        const on = b.dataset.category === selected;
+        b.setAttribute('aria-pressed', String(on));
+        b.classList.toggle('bg-primary', on);
+        b.classList.toggle('text-on-primary', on);
+        b.classList.toggle('border-outline-variant/40', !on);
+        b.classList.toggle('bg-surface-container-low', !on);
+        b.classList.toggle('text-on-surface-variant', !on);
+      });
+    };
+
+    const applyFilters = () => {
+      const query = search ? search.value.trim().toLowerCase() : '';
+      faqItems.forEach((item) => {
+        const catOk = activeCategory === 'all' || item.dataset.category === activeCategory;
+        const hay = item.textContent ? item.textContent.toLowerCase() : '';
+        const queryOk = !query || hay.includes(query);
+        item.classList.toggle('hidden', !(catOk && queryOk));
+      });
+      faqGroups.forEach((group) => {
+        const visible = Array.from(group.querySelectorAll('.faq-item')).some((el) => !el.classList.contains('hidden'));
+        group.classList.toggle('hidden', !visible);
+      });
+      countVisible();
+    };
+
+    chipBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.dataset.category || 'all';
+        applyChipStyles(activeCategory);
+        applyFilters();
+      });
+    });
+
+    search?.addEventListener('input', applyFilters);
+
+    applyChipStyles('all');
+    applyFilters();
+  </script>
+  </div>
+</Layout>

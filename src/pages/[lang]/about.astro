@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Info/Icon.astro';
+import Breadcrumbs from '../../components/Info/Breadcrumbs.astro';
+import { getTranslations, t } from '../../i18n/index';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const SITE_URL = (Astro.site?.origin ?? 'https://photometadataremover.com').replace(/\/$/, '');
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: t(translations, 'site.name'),
+  description: t(translations, 'about.content'),
+  url: SITE_URL,
+};
+
+const threatCards = [
+  { key: 'gps', icon: 'pin', danger: true },
+  { key: 'hardware', icon: 'device', danger: true },
+  { key: 'time', icon: 'clock', danger: false },
+  { key: 'software', icon: 'palette', danger: false },
+] as const;
+---
+
+<Layout lang={currentLang} title={t(translations, 'about.title')} description={t(translations, 'seo.about.description')} jsonLd={orgJsonLd}>
+  <div class="bg-background text-on-surface">
+    <section class="overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+        <Breadcrumbs current={t(translations, 'nav.about')} />
+        <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 flex flex-col items-start gap-6">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary-fixed/40 text-secondary shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-secondary" aria-hidden="true"></span>
+              <span class="text-[11px] font-mono uppercase tracking-widest font-semibold">{t(translations, 'about.hero_badge')}</span>
+            </span>
+            <h1 class="text-[36px] sm:text-[44px] lg:text-[52px] font-semibold tracking-tight text-on-surface leading-[1.05]">
+              {t(translations, 'about.hero_title_1')} <span class="text-secondary font-semibold">{t(translations, 'about.hero_title_2')}</span>
+            </h1>
+            <p class="text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">{t(translations, 'about.hero_lead')}</p>
+            <div class="flex flex-wrap gap-3">
+              {[1, 2, 3].map((i) => (
+                <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-container-lowest text-on-surface shadow-sm">
+                  <span class="w-2 h-2 rounded-full bg-secondary" aria-hidden="true"></span>
+                  <span class="text-[12px] font-mono">{t(translations, `about.chips.${i}`)}</span>
+                </span>
+              ))}
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <a href={`/${currentLang}/`} class="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-medium">
+                <Icon name="remove" class="w-[18px] h-[18px]" />
+                <span>{t(translations, 'about.cta_primary')}</span>
+              </a>
+              <a href={`/${currentLang}/security`} class="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low text-on-surface border border-outline-variant/40 font-medium">
+                <Icon name="terminal" class="w-[18px] h-[18px]" />
+                <span>{t(translations, 'about.cta_secondary')}</span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-xl border border-outline-variant/30">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2 text-on-surface">
+                  <span class="text-error"><Icon name="warning" class="w-[18px] h-[18px]" /></span>
+                  <span class="text-[14px] font-semibold">{t(translations, 'about.hero_badge')}</span>
+                </div>
+                <span class="shrink-0 px-2 py-0.5 rounded bg-error-container text-on-error-container text-[10px] font-mono uppercase tracking-wider font-semibold">{t(translations, 'about.leaks_badge')}</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low"><span class="text-[12px] font-mono text-on-surface-variant">GPS.Latitude</span><span class="text-[12px] font-mono text-on-error-container line-through">37°46'29.9"N</span></div>
+                <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low"><span class="text-[12px] font-mono text-on-surface-variant">Camera.Serial</span><span class="text-[12px] font-mono text-on-error-container line-through">SN#848-A938F</span></div>
+                <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low"><span class="text-[12px] font-mono text-on-surface-variant">SubSecTime</span><span class="text-[12px] font-mono text-on-error-container line-through">2026:04:12 .841</span></div>
+              </div>
+              <div class="mt-4 p-3 rounded-xl bg-secondary-container/30 flex items-center justify-between">
+                <span class="inline-flex items-center gap-2 text-[13px] text-on-secondary-container font-semibold"><Icon name="verified" class="w-[18px] h-[18px] text-secondary" />{t(translations, 'about.solution_footer')}</span>
+                <span class="text-[10px] font-mono uppercase font-bold text-on-secondary-container">0 B</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-surface-container-low/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-4">
+            <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold mb-2">{t(translations, 'about.why_eyebrow')}</span>
+            <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'about.why_title')}</h2>
+            <p class="mt-3 text-[14px] text-on-surface-variant leading-relaxed">{t(translations, 'about.why_text')}</p>
+            <div class="mt-6 p-4 rounded-2xl bg-surface-container-lowest shadow-sm">
+              <div class="flex items-center gap-2 text-secondary text-[15px] font-semibold">
+                <Icon name="lock" class="w-5 h-5" />
+                <span>{t(translations, 'about.guarantee_title')}</span>
+              </div>
+              <p class="mt-2 text-[13px] text-on-surface-variant leading-relaxed">{t(translations, 'about.guarantee_text')}</p>
+            </div>
+          </div>
+          <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col">
+              <div class="w-10 h-10 rounded-xl bg-error-container text-on-error-container flex items-center justify-center mb-3">
+                <Icon name="warning" class="w-[22px] h-[22px]" />
+              </div>
+              <h3 class="text-[16px] font-semibold text-on-surface">{t(translations, 'about.problem_title')}</h3>
+              <p class="mt-2 text-[14px] text-on-surface-variant leading-relaxed">{t(translations, 'about.problem_text')}</p>
+              <ul class="mt-4 flex flex-col gap-2 text-[13px]">
+                {[1, 2, 3].map((i) => (
+                  <li class="inline-flex items-center gap-2 text-on-surface-variant"><Icon name="close" class="w-4 h-4 text-error" /><span>{t(translations, `about.problem_items.${i}`)}</span></li>
+                ))}
+              </ul>
+              <div class="mt-4 pt-3 border-t border-outline-variant/30 text-[10px] font-mono uppercase font-semibold text-on-error-container">{t(translations, 'about.problem_footer')}</div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col">
+              <div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center mb-3">
+                <Icon name="lock" class="w-[22px] h-[22px]" />
+              </div>
+              <h3 class="text-[16px] font-semibold text-on-surface">{t(translations, 'about.solution_title')}</h3>
+              <p class="mt-2 text-[14px] text-on-surface-variant leading-relaxed">{t(translations, 'about.solution_text')}</p>
+              <ul class="mt-4 flex flex-col gap-2 text-[13px]">
+                {[1, 2, 3].map((i) => (
+                  <li class="inline-flex items-center gap-2 text-on-surface-variant"><Icon name="check" class="w-4 h-4 text-secondary" /><span>{t(translations, `about.solution_items.${i}`)}</span></li>
+                ))}
+              </ul>
+              <div class="mt-4 pt-3 border-t border-outline-variant/30 text-[10px] font-mono uppercase font-semibold text-secondary">{t(translations, 'about.solution_footer')}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold mb-2">{t(translations, 'about.threat_eyebrow')}</span>
+            <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'about.threat_title')}</h2>
+          </div>
+          <p class="max-w-md text-[14px] text-on-surface-variant">{t(translations, 'about.threat_intro')}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {threatCards.map((card) => (
+            <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+              <div class={'w-10 h-10 rounded-xl ' + (card.danger ? 'bg-error-container/60 text-on-error-container' : 'bg-surface-container-high text-on-surface') + ' flex items-center justify-center mb-3'}>
+                <Icon name={card.icon} class="w-[22px] h-[22px]" />
+              </div>
+              <h3 class="text-[15px] font-semibold text-on-surface">{t(translations, `about.cards.${card.key}.title`)}</h3>
+              <p class="mt-2 text-[13px] text-on-surface-variant leading-relaxed">{t(translations, `about.cards.${card.key}.text`)}</p>
+              <div class="mt-4 p-2 rounded-lg bg-surface-container-low text-[11px] font-mono text-on-surface-variant">
+                <span class="text-on-error-container">{t(translations, `about.cards.${card.key}.code1`)}</span><br />
+                <span class="text-on-surface">{t(translations, `about.cards.${card.key}.code2`)}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="block text-[11px] font-mono uppercase tracking-widest text-secondary font-semibold mb-2">{t(translations, 'about.steps_eyebrow')}</span>
+          <h2 class="text-2xl font-semibold text-on-surface tracking-tight">{t(translations, 'about.steps_title')}</h2>
+          <p class="mt-3 text-[14px] text-on-surface-variant">{t(translations, 'about.steps_subtitle')}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[['1', 'upload', '01'], ['3', 'scan', '02'], ['4', 'remove', '03'], ['5', 'download', '04']].map(([stepNum, iconName, phase]) => (
+            <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-secondary font-bold">{t(translations, 'about.phase')} {phase}</span>
+              <div class="w-10 h-10 rounded-xl bg-surface-container text-on-surface flex items-center justify-center mt-3">
+                <Icon name={iconName} class="w-5 h-5" />
+              </div>
+              <h3 class="mt-3 text-[15px] font-semibold text-on-surface">{t(translations, `how_it_works_page.steps.${stepNum}.title`)}</h3>
+              <p class="mt-1.5 text-[13px] text-on-surface-variant leading-relaxed">{t(translations, `how_it_works_page.steps.${stepNum}.text`)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-primary text-on-primary rounded-3xl p-10 md:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+          <div class="absolute -right-16 -bottom-16 w-72 h-72 rounded-full bg-secondary/10 pointer-events-none" aria-hidden="true"></div>
+          <div class="max-w-xl">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed/20 text-secondary-fixed text-[10px] font-mono uppercase tracking-wider font-semibold">
+              <Icon name="lock" class="w-4 h-4" />
+              {t(translations, 'about.cta_badge')}
+            </span>
+            <h2 class="text-2xl font-semibold text-on-primary tracking-tight mt-2">{t(translations, 'about.cta_title')}</h2>
+            <p class="mt-2 text-[14px] text-primary-fixed-dim leading-relaxed">{t(translations, 'about.cta_text')}</p>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3 w-full md:w-auto">
+            <a href={`/${currentLang}/`} class="w-full sm:w-auto h-12 px-6 rounded-xl bg-secondary hover:bg-on-secondary-fixed-variant text-on-secondary font-medium shadow-md inline-flex items-center justify-center gap-2">
+              <Icon name="remove" class="w-5 h-5" />
+              <span>{t(translations, 'about.cta_primary')}</span>
+            </a>
+            <a href={`/${currentLang}/how-it-works`} class="w-full sm:w-auto h-12 px-5 rounded-xl bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 text-on-primary font-medium inline-flex items-center justify-center gap-2">
+              <Icon name="scan" class="w-[18px] h-[18px]" />
+              <span>{t(translations, 'about.cta_secondary')}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

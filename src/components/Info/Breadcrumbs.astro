@@ -1,0 +1,33 @@
+---
+import { getTranslations, t } from '../../i18n/index';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang?: string;
+  /** Localized label of the current page (shown bold, not linked). */
+  current: string;
+}
+
+const { lang = 'en', current } = Astro.props;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+---
+
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-[13px] text-on-surface-variant">
+  <a
+    href={`/${currentLang}/`}
+    class="inline-flex items-center gap-1.5 min-h-[44px] hover:text-on-surface transition-colors"
+  >
+    <Icon name="home" class="w-4 h-4" />
+    <span>{t(translations, 'nav.home')}</span>
+  </a>
+  <span class="text-outline-variant" aria-hidden="true">/</span>
+  <a
+    href={`/${currentLang}/about`}
+    class="min-h-[44px] hover:text-on-surface transition-colors"
+  >
+    {t(translations, 'nav.information')}
+  </a>
+  <span class="text-outline-variant" aria-hidden="true">/</span>
+  <span class="text-on-surface font-semibold">{current}</span>
+</nav>
