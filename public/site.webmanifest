@@ -1,0 +1,17 @@
+{
+  "name": "Photo Metadata Remover",
+  "short_name": "Photo Metadata Remover",
+  "description": "Remove EXIF data from your photos. Privacy-first, free, no uploads.",
+  "start_url": "/en/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f9f7",
+  "theme_color": "#f7f9f7",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

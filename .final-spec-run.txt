@@ -1,0 +1,46 @@
+﻿
+Running 8 tests using 1 worker
+
+  Γ£ô  1 test-output-verification.spec.ts:116:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ TEST A - clean JPEG: count comes from re-scanning the downloaded output (3.8s)
+  Γ£ô  2 test-output-verification.spec.ts:155:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ TEST B - dirty output: a byte-identical output that still carries EXIF is never claimed clean (1.6s)
+  Γ£ô  3 test-output-verification.spec.ts:187:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ TEST B2 - forced dirty output: the real remaining count is reported, not 0 (1.9s)
+  Γ£ô  4 test-output-verification.spec.ts:227:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ TEST C - TIFF regression: removal still works and the generated TIFF is verified (2.0s)
+  Γ£ô  5 test-output-verification.spec.ts:263:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ TEST D - WebP regression: removal keeps WebP and the generated WebP is verified (2.5s)
+  Γ£ô  6 test-output-verification.spec.ts:298:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ batch: one unverifiable output does not block the other files (1.8s)
+  Γ£ô  7 test-output-verification.spec.ts:349:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ async: a re-upload during removal/verification never contaminates the new batch (2.4s)
+  Γ£ÿ  8 test-output-verification.spec.ts:375:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ responsive: verification result and controls stay usable at all six viewports (1.0m)
+
+
+  1) test-output-verification.spec.ts:375:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ responsive: verification result and controls stay usable at all six viewports 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for locator('#remove-1')
+        - locator resolved to <button id="remove-1" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Remove metadata</button>
+      - attempting click action
+        2 ├ù waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+      - element was detached from the DOM, retrying
+
+
+      403 |       await page.locator('#file-input').setInputFiles(cleanJpegPath);
+      404 |       await expect(page.locator('#remove-1')).toHaveText('Remove metadata', { timeout: 30000 });
+    > 405 |       await page.locator('#remove-1').click();
+          |                                       ^
+      406 |       await expect(page.locator('#remove-1')).toHaveText('Γ£ô Success', { timeout: 30000 });
+      407 |
+      408 |       const verifiedStatus = statusOf(page, 1);
+        at D:\photo metadata remover\test-output-verification.spec.ts:405:39
+
+    Error Context: test-results\test-output-verification-P-2fe09-usable-at-all-six-viewports\error-context.md
+
+    Error Context: test-results\test-output-verification-P-2fe09-usable-at-all-six-viewports\error-context.md
+
+  1 failed
+    test-output-verification.spec.ts:375:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ responsive: verification result and controls stay usable at all six viewports 
+  7 passed (1.3m)

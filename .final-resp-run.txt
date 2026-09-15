@@ -1,0 +1,6 @@
+﻿
+Running 1 test using 1 worker
+
+  Γ£ô  1 test-output-verification.spec.ts:375:3 ΓÇ║ Post-removal verification of the generated output ΓÇ║ responsive: verification result and controls stay usable at all six viewports (11.8s)
+
+  1 passed (12.8s)

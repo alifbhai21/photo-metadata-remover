@@ -217,6 +217,8 @@
     "technical_properties": "propriétés techniques",
     "technical_preserved": "Informations techniques préservées : {{count}} propriétés",
     "privacy_metadata_remaining": "Métadonnées privées restantes : {{count}}",
+    "verifying_clean_output": "Vérification du fichier nettoyé…",
+    "verification_failed": "Échec de la vérification : fichier non confirmé comme nettoyé",
     "privacy_fields": "champs"
   },
   "features": {

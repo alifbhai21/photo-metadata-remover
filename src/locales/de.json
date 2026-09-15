@@ -217,6 +217,8 @@
     "technical_properties": "technische Eigenschaften",
     "technical_preserved": "Technische Bildinformationen erhalten: {{count}} Eigenschaften",
     "privacy_metadata_remaining": "Verbleibende private Metadaten: {{count}}",
+    "verifying_clean_output": "Bereinigte Ausgabe wird geprüft…",
+    "verification_failed": "Überprüfung fehlgeschlagen: Ausgabe nicht als bereinigt bestätigt",
     "privacy_fields": "Felder"
   },
   "features": {

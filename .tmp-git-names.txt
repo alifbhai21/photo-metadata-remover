@@ -1,0 +1,11 @@
+﻿clean-verify-e2e-clean.webp
+debug-after-upload.png
+debug-before.png
+debug-dom.html
+src/components/ToolUpload.astro
+src/layouts/Layout.astro
+src/locales/de.json
+src/locales/en.json
+src/locales/fr.json
+src/pages/index.astro
+test-results/.last-run.json

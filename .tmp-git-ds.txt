@@ -1,0 +1,31 @@
+﻿git : warning: in the working copy of 'debug-dom.html', LF will be replaced by 
+CRLF the next time Git touches it
+At line:1 char:1
++ git diff --stat 2>&1 | Out-File .tmp-git-ds.txt -Encoding utf8; Get-C ...
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it: 
+   String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+warning: in the working copy of 'src/components/ToolUpload.astro', LF will be 
+replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/locales/de.json', LF will be replaced by 
+CRLF the next time Git touches it
+warning: in the working copy of 'src/locales/en.json', LF will be replaced by 
+CRLF the next time Git touches it
+warning: in the working copy of 'src/locales/fr.json', LF will be replaced by 
+CRLF the next time Git touches it
+warning: in the working copy of 'test-results/.last-run.json', LF will be 
+replaced by CRLF the next time Git touches it
+ clean-verify-e2e-clean.webp     | Bin 800 -> 124 bytes
+ debug-after-upload.png          | Bin 542241 -> 542489 bytes
+ debug-before.png                | Bin 502497 -> 502446 bytes
+ debug-dom.html                  |   2 +-
+ src/components/ToolUpload.astro | 292 +++++++++++++++++++++++++++++++++-------
+ src/layouts/Layout.astro        |   2 +
+ src/locales/de.json             |   2 +
+ src/locales/en.json             |   2 +
+ src/locales/fr.json             |   2 +
+ src/pages/index.astro           |   2 +
+ test-results/.last-run.json     |   6 +-
+ 11 files changed, 257 insertions(+), 53 deletions(-)

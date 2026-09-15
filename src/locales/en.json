@@ -217,6 +217,8 @@
     "technical_properties": "technical properties",
     "technical_preserved": "Technical image information preserved: {{count}} properties",
     "privacy_metadata_remaining": "Privacy metadata remaining: {{count}}",
+    "verifying_clean_output": "Verifying clean output…",
+    "verification_failed": "Verification failed: output not confirmed clean",
     "privacy_fields": "fields"
   },
   "features": {
