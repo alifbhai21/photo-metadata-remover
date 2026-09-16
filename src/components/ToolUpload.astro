@@ -1212,6 +1212,12 @@ const translations = getTranslations(currentLang);
           if (!bitmap.width || !bitmap.height) {
             throw new Error('Decoded JPEG is invalid');
           }
+          // The decode exists only to prove the stripped bytes are still a
+          // decodable JPEG - its pixels are never used. A 12 MP bitmap is
+          // ~47 MB, so release it immediately instead of leaving one decoded
+          // image per file alive for the rest of a large batch.
+          bitmap.close();
+          bitmap = null;
           item.cleanBlob = cleanJpeg;
           item.cleanExt = 'jpg';
           // The generated JPEG bytes are re-scanned before success is claimed.
@@ -1320,6 +1326,11 @@ const translations = getTranslations(currentLang);
       return;
     } catch (err) {
       console.error('Error stripping metadata:', err);
+      if (bitmap) {
+        // A failure must not leave a decoded bitmap behind either.
+        bitmap.close();
+        bitmap = null;
+      }
       item.error = true;
       item.busy = false;
       // No verified output exists: drop anything that was published mid-way so
@@ -1587,6 +1598,35 @@ const translations = getTranslations(currentLang);
     return map[type] || 'jpg';
   }
 
+  /**
+   * exifr returns a few EXIF values (ComponentsConfiguration, UserComment, an
+   * IFD1 thumbnail, ...) as typed-array VIEWS INTO the ArrayBuffer that was
+   * parsed. Keeping such a view in `item.metadata` keeps that whole buffer alive
+   * for as long as the item lives, so every scanned photo pinned its complete
+   * source file in memory. A large batch therefore grew by (batch size x file
+   * size) before any removal had even started and the tab thrashed/hung.
+   *
+   * Copying those values into standalone buffers keeps the parsed - and shown -
+   * values byte-for-byte identical while letting the scanned bytes be collected.
+   */
+  function detachParsedMetadataViews<T>(parsed: T, inputBuffer: ArrayBufferLike): T {
+    if (!parsed || typeof parsed !== 'object' || ArrayBuffer.isView(parsed)) return parsed;
+    const record = parsed as Record<string, unknown>;
+    for (const key of Object.keys(record)) {
+      const value = record[key];
+      if (ArrayBuffer.isView(value)) {
+        if (value.buffer === inputBuffer) {
+          const copy = new Uint8Array(value.byteLength);
+          copy.set(new Uint8Array(value.buffer, value.byteOffset, value.byteLength));
+          record[key] = copy;
+        }
+      } else if (value && typeof value === 'object') {
+        detachParsedMetadataViews(value, inputBuffer);
+      }
+    }
+    return parsed;
+  }
+
   async function parseMetadataForFileType(arrayBuffer: ArrayBuffer, fileType: string, exifr: typeof import('exifr')) {
     if (fileType === 'image/webp') {
       return parseWebpMetadata(arrayBuffer, exifr);
@@ -1595,7 +1635,9 @@ const translations = getTranslations(currentLang);
     // below has to see the resolved value - not the (always truthy) Promise.
     // Without the await the fallback never applied and `metadata` could end up
     // undefined, which the verification (and the classifier) cannot read.
-    return (await exifr.parse(arrayBuffer, true)) || {};
+    const parsed = (await exifr.parse(arrayBuffer, true)) || {};
+    // The scan input must never be retained through the parsed values.
+    return detachParsedMetadataViews(parsed, arrayBuffer);
   }
 
   async function parseWebpMetadata(arrayBuffer: ArrayBuffer, exifr: typeof import('exifr')): Promise<Record<string, unknown>> {
@@ -1634,9 +1676,12 @@ const translations = getTranslations(currentLang);
     // reader has already skipped the optional "Exif\0\0" identifier. Use exifr
     // to parse it since it handles TIFF/EXIF correctly (both byte orders).
     try {
-      const parsed = await exifr.parse(bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length), true);
+      const payload = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length);
+      const parsed = await exifr.parse(payload, true);
       if (parsed && typeof parsed === 'object') {
-        Object.assign(result, parsed);
+        // Same reason as in parseMetadataForFileType: no parsed value may keep
+        // the parsed buffer (here a slice of the WebP chunk) alive.
+        Object.assign(result, detachParsedMetadataViews(parsed, payload));
       }
     } catch {
       // exifr failed — fall through to empty result
