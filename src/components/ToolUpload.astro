@@ -429,6 +429,8 @@ const translations = getTranslations(currentLang);
 
   interface FileItem {
     id: number;
+    /** Immutable batch this item was created in — never changes after upload. */
+    batchId: number;
     file: File;
     metadata: Record<string, unknown>;
     cleanBlob: Blob | null;
@@ -589,6 +591,7 @@ const translations = getTranslations(currentLang);
 
       const item: FileItem = {
         id: nextId++,
+        batchId: thisBatchId,
         file,
         metadata: {},
         cleanBlob: null,
@@ -867,6 +870,7 @@ const translations = getTranslations(currentLang);
     setGlobalStatus('processing');
 
     for (const item of pending) {
+      if (thisBatchId !== batchId) return;
       await stripMetadata(item);
     }
 
@@ -1182,7 +1186,7 @@ const translations = getTranslations(currentLang);
   async function stripMetadata(item: FileItem): Promise<void> {
     if (item.busy || item.cleanBlob !== null || item.error) return;
 
-    const thisBatchId = batchId;
+    const thisBatchId = item.batchId;
 
     item.cleanBlob = null;
     item.error = false;
@@ -1341,8 +1345,8 @@ const translations = getTranslations(currentLang);
       if (thisBatchId === batchId) {
         busyCount--;
         refreshActions();
+        reRenderItem(item);
       }
-      reRenderItem(item);
       return;
     }
   }
