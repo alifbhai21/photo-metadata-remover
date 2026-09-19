@@ -156,6 +156,8 @@ const translations = getTranslations(currentLang);
             <button
               id="download-all-btn"
               type="button"
+              disabled
+              aria-disabled="true"
               class="hidden inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent-btn text-accent-btn-text text-[12.5px] font-medium rounded-full hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -453,6 +455,21 @@ const translations = getTranslations(currentLang);
   let metadataViewerOpen = false;
   let zipBusy = false;
 
+  /**
+   * A file is downloadable ONLY when its generated output exists AND the real
+   * output verification of those bytes passed.
+   *
+   * `cleanBlob` alone is NOT proof of a verified output: it is published by
+   * `stripMetadata()` before verification runs, so during the verification
+   * window an item has a non-null `cleanBlob` while `verifyStatus` is still
+   * 'verifying'. Every download / ZIP path must therefore use this predicate
+   * instead of testing `cleanBlob` directly - it is the single source of truth
+   * for download eligibility.
+   */
+  function isVerifiedClean(item: FileItem): boolean {
+    return item.cleanBlob !== null && item.verifyStatus === 'passed';
+  }
+
   function announce(message: string) {
     if (!a11yStatusEl) return;
     a11yStatusEl.textContent = '';
@@ -468,7 +485,10 @@ const translations = getTranslations(currentLang);
     const steps = progressSteps.querySelectorAll('[data-step]');
     const hasFiles = fileItems.length > 0;
     const processing = resultsPanel ? resultsPanel.classList.contains('hidden') : false;
-    const allDone = hasFiles && fileItems.every((f) => f.error || f.cleanBlob !== null);
+    // The download step represents VERIFIED completion, not merely "a blob
+    // exists": an item whose output is still being verified is not done, so the
+    // stepper must not advance to the download step during that window.
+    const allDone = hasFiles && fileItems.every((f) => f.error || isVerifiedClean(f));
 
     let active: number;
     let completed: number;
@@ -827,7 +847,7 @@ const translations = getTranslations(currentLang);
         remainingLine(item.remainingPrivacyMetadata),
       ]);
       statusEl.className = 'text-xs mt-1 text-success-text font-medium';
-      downloadBtn.disabled = item.verifyStatus !== 'passed';
+      downloadBtn.disabled = !isVerifiedClean(item);
       removeBtn.disabled = true;
       removeBtn.textContent = '✓ Success';
       return;
@@ -1364,8 +1384,10 @@ const translations = getTranslations(currentLang);
   }
 
   function refreshActions() {
-    const allClean = fileItems.length > 0 && fileItems.every((f) => f.cleanBlob !== null || f.error);
-    const hasClean = fileItems.some((f) => f.cleanBlob !== null);
+    // ZIP availability is driven by VERIFIED outputs only (never by cleanBlob
+    // alone) and is withheld while any current-batch item is still verifying.
+    const hasVerifiedClean = fileItems.some(isVerifiedClean);
+    const hasVerifying = fileItems.some((f) => !f.error && f.verifyStatus === 'verifying');
     const hasPending = fileItems.some((f) => !f.error && f.cleanBlob === null);
 
     if (removeAllBtn) {
@@ -1374,7 +1396,16 @@ const translations = getTranslations(currentLang);
     }
 
     if (downloadAllBtn) {
-      downloadAllBtn.classList.toggle('hidden', !hasClean);
+      // The `hidden` class is NOT a gate here: the button also carries
+      // `inline-flex`, which wins in the compiled Tailwind output, so the class
+      // toggle never actually hides it. The authoritative integrity gate is the
+      // real `disabled` property (mirrored to aria-disabled), which also blocks
+      // keyboard and programmatic activation. The class toggle is kept for the
+      // visual state only.
+      downloadAllBtn.classList.toggle('hidden', !hasVerifiedClean);
+      const zipBlocked = !hasVerifiedClean || hasVerifying || zipBusy;
+      downloadAllBtn.disabled = zipBlocked;
+      downloadAllBtn.setAttribute('aria-disabled', String(downloadAllBtn.disabled));
       downloadAllBtn.onclick = () => downloadAllItems();
     }
 
@@ -1385,8 +1416,11 @@ const translations = getTranslations(currentLang);
 
   function downloadItem(id: number) {
     const item = fileItems.find((f) => f.id === id);
-    if (!item || !item.cleanBlob) return;
-    const url = URL.createObjectURL(item.cleanBlob);
+    // Defence in depth: an item is downloadable only when its generated output
+    // passed real output verification. This also protects the single-item
+    // "download all" shortcut and any direct call to this function.
+    if (!item || !isVerifiedClean(item)) return;
+    const url = URL.createObjectURL(item.cleanBlob!);
     const a = document.createElement('a');
     a.href = url;
     const baseName = item.file.name.replace(/\.[^.]+$/, '');
@@ -1400,7 +1434,10 @@ const translations = getTranslations(currentLang);
 
   async function downloadAllItems() {
     if (zipBusy) return;
-    const cleanItems = fileItems.filter((f) => f.cleanBlob !== null);
+    // Defence in depth: never trust the button state. Only outputs whose real
+    // verification passed may enter the download / ZIP path, so a blob that is
+    // still being verified (verifyStatus === 'verifying') can never be shipped.
+    const cleanItems = fileItems.filter(isVerifiedClean);
     if (cleanItems.length === 0) return;
 
     if (cleanItems.length === 1) {
