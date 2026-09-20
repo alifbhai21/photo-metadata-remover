@@ -1,0 +1,259 @@
+
+Running 11 tests using 1 worker
+
+  ok  1 test-png-removal.spec.ts:177:3 › PNG metadata removal › RGB PNG + EXIF: detected, removed, download is a clean PNG (3.2s)
+  ok  2 test-png-removal.spec.ts:183:3 › PNG metadata removal › RGBA PNG + EXIF: detected, removed, download is a clean PNG (3.0s)
+  x   3 test-png-removal.spec.ts:189:3 › PNG metadata removal › ICC profile (iCCP) is preserved byte-for-byte while eXIf is removed (1.0m)
+  x   4 test-png-removal.spec.ts:205:3 › PNG metadata removal › tEXt, zTXt, iTXt and tIME are all detected as privacy chunks and removed (1.0m)
+  ok  5 test-png-removal.spec.ts:220:3 › PNG metadata removal › palette PNG keeps PLTE and indexed colour type (3.3s)
+  ok  6 test-png-removal.spec.ts:231:3 › PNG metadata removal › 16-bit PNG keeps its bit depth and image data (3.1s)
+  x   7 test-png-removal.spec.ts:237:3 › PNG metadata removal › unknown ancillary chunks are preserved by default (1.0m)
+  x   8 test-png-removal.spec.ts:248:3 › PNG metadata removal › PNG without metadata: removal still yields a verified, byte-clean PNG (1.0m)
+  x   9 test-png-removal.spec.ts:278:3 › PNG metadata removal › malformed PNG fails cleanly and never sticks the UI in processing (31.5s)
+  x  10 test-png-removal.spec.ts:308:3 › PNG metadata removal › batch: PNG next to a JPEG keeps both formats (31.6s)
+  ok 11 test-png-removal.spec.ts:347:3 › PNG metadata removal › responsive: PNG upload/remove/download stays usable at all six viewports (12.4s)
+
+
+  1) test-png-removal.spec.ts:189:3 › PNG metadata removal › ICC profile (iCCP) is preserved byte-for-byte while eXIf is removed 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for locator('#remove-1')
+        - locator resolved to <button id="remove-1" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Remove metadata</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+          - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <astro-dev-toolbar></astro-dev-toolbar> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+      - element was detached from the DOM, retrying
+
+
+      109 |   await expect(page.locator('#files-list > div[data-id]')).toHaveCount(1, { timeout: 30000 });
+      110 |
+    > 111 |   await page.locator('#remove-1').click();
+          |                                   ^
+      112 |
+      113 |   // Verification must run before the download control becomes usable.
+      114 |   await expect(page.locator('#remove-1')).toHaveText('✓ Success', { timeout: 30000 });
+        at uploadRemoveDownload (D:\photo metadata remover\test-png-removal.spec.ts:111:35)
+        at D:\photo metadata remover\test-png-removal.spec.ts:193:23
+
+    Error Context: test-results\test-png-removal-PNG-metad-ee650--byte-while-eXIf-is-removed\error-context.md
+
+    Error Context: test-results\test-png-removal-PNG-metad-ee650--byte-while-eXIf-is-removed\error-context.md
+
+  2) test-png-removal.spec.ts:205:3 › PNG metadata removal › tEXt, zTXt, iTXt and tIME are all detected as privacy chunks and removed 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for locator('#remove-1')
+        - locator resolved to <button id="remove-1" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Remove metadata</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div id="nav-fit" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 min-h-20 flex flex-nowrap items-center justify-between gap-2 sm:gap-4">…</div> from <nav aria-label="Primary" class="sticky top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30 relative">…</nav> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <astro-dev-toolbar></astro-dev-toolbar> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+      - element was detached from the DOM, retrying
+
+
+      109 |   await expect(page.locator('#files-list > div[data-id]')).toHaveCount(1, { timeout: 30000 });
+      110 |
+    > 111 |   await page.locator('#remove-1').click();
+          |                                   ^
+      112 |
+      113 |   // Verification must run before the download control becomes usable.
+      114 |   await expect(page.locator('#remove-1')).toHaveText('✓ Success', { timeout: 30000 });
+        at uploadRemoveDownload (D:\photo metadata remover\test-png-removal.spec.ts:111:35)
+        at D:\photo metadata remover\test-png-removal.spec.ts:210:23
+
+    Error Context: test-results\test-png-removal-PNG-metad-33762--privacy-chunks-and-removed\error-context.md
+
+    Error Context: test-results\test-png-removal-PNG-metad-33762--privacy-chunks-and-removed\error-context.md
+
+  3) test-png-removal.spec.ts:237:3 › PNG metadata removal › unknown ancillary chunks are preserved by default 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for locator('#remove-1')
+        - locator resolved to <button id="remove-1" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Remove metadata</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+          - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <astro-dev-toolbar></astro-dev-toolbar> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+      - element was detached from the DOM, retrying
+
+
+      109 |   await expect(page.locator('#files-list > div[data-id]')).toHaveCount(1, { timeout: 30000 });
+      110 |
+    > 111 |   await page.locator('#remove-1').click();
+          |                                   ^
+      112 |
+      113 |   // Verification must run before the download control becomes usable.
+      114 |   await expect(page.locator('#remove-1')).toHaveText('✓ Success', { timeout: 30000 });
+        at uploadRemoveDownload (D:\photo metadata remover\test-png-removal.spec.ts:111:35)
+        at D:\photo metadata remover\test-png-removal.spec.ts:240:23
+
+    Error Context: test-results\test-png-removal-PNG-metad-dd555-ks-are-preserved-by-default\error-context.md
+
+    Error Context: test-results\test-png-removal-PNG-metad-dd555-ks-are-preserved-by-default\error-context.md
+
+  4) test-png-removal.spec.ts:248:3 › PNG metadata removal › PNG without metadata: removal still yields a verified, byte-clean PNG 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for locator('#remove-1')
+        - locator resolved to <button id="remove-1" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Remove metadata</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div id="nav-fit" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 min-h-20 flex flex-nowrap items-center justify-between gap-2 sm:gap-4">…</div> from <nav aria-label="Primary" class="sticky top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30 relative">…</nav> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <astro-dev-toolbar></astro-dev-toolbar> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+      - element was detached from the DOM, retrying
+
+
+      259 |       .toMatch(/Remove metadata|✓ Success/);
+      260 |     if ((await page.locator('#remove-1').textContent()) !== '✓ Success') {
+    > 261 |       await page.locator('#remove-1').click();
+          |                                       ^
+      262 |     }
+      263 |     await expect(page.locator('#remove-1')).toHaveText('✓ Success', { timeout: 30000 });
+      264 |
+        at D:\photo metadata remover\test-png-removal.spec.ts:261:39
+
+    Error Context: test-results\test-png-removal-PNG-metad-e24a2-s-a-verified-byte-clean-PNG\error-context.md
+
+    Error Context: test-results\test-png-removal-PNG-metad-e24a2-s-a-verified-byte-clean-PNG\error-context.md
+
+  5) test-png-removal.spec.ts:278:3 › PNG metadata removal › malformed PNG fails cleanly and never sticks the UI in processing 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('#remove-1')
+    Expected: "Try again"
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" with timeout 30000ms
+      - waiting for locator('#remove-1')
+        7 × locator resolved to <button id="remove-1" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[12.5px] bg-accent-btn text-accent-btn-text rounded-full font-medium hover:bg-accent-btn-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Remove metadata</button>
+          - unexpected value "Remove metadata"
+
+
+      284 |
+      285 |     // The corrupt file resolves to a retryable error state...
+    > 286 |     await expect(page.locator('#remove-1')).toHaveText('Try again', { timeout: 30000 });
+          |                                             ^
+      287 |     await expect(page.locator('[data-id="1"] .text-xs')).toContainText('Failed to remove metadata');
+      288 |     await expect(page.locator('#download-1')).toBeDisabled();
+      289 |     // ...and the batch is not left processing.
+        at D:\photo metadata remover\test-png-removal.spec.ts:286:45
+
+    Error Context: test-results\test-png-removal-PNG-metad-0228e-sticks-the-UI-in-processing\error-context.md
+
+    Error Context: test-results\test-png-removal-PNG-metad-0228e-sticks-the-UI-in-processing\error-context.md
+
+  6) test-png-removal.spec.ts:308:3 › PNG metadata removal › batch: PNG next to a JPEG keeps both formats 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('#remove-1')
+    Expected: "✓ Success"
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" with timeout 30000ms
+      - waiting for locator('#remove-1')
+        - waiting for navigation to finish...
+        - navigated to "http://localhost:4321/en"
+
+
+      320 |
+      321 |     await page.locator('#remove-all-btn').click();
+    > 322 |     await expect(page.locator('#remove-1')).toHaveText('✓ Success', { timeout: 30000 });
+          |                                             ^
+      323 |     await expect(page.locator('#remove-2')).toHaveText('✓ Success', { timeout: 30000 });
+      324 |     await expect(page.locator('#processing-status')).toHaveClass(/hidden/);
+      325 |
+        at D:\photo metadata remover\test-png-removal.spec.ts:322:45
+
+    Error Context: test-results\test-png-removal-PNG-metad-8a126-o-a-JPEG-keeps-both-formats\error-context.md
+
+    Error Context: test-results\test-png-removal-PNG-metad-8a126-o-a-JPEG-keeps-both-formats\error-context.md
+
+  6 failed
+    test-png-removal.spec.ts:189:3 › PNG metadata removal › ICC profile (iCCP) is preserved byte-for-byte while eXIf is removed 
+    test-png-removal.spec.ts:205:3 › PNG metadata removal › tEXt, zTXt, iTXt and tIME are all detected as privacy chunks and removed 
+    test-png-removal.spec.ts:237:3 › PNG metadata removal › unknown ancillary chunks are preserved by default 
+    test-png-removal.spec.ts:248:3 › PNG metadata removal › PNG without metadata: removal still yields a verified, byte-clean PNG 
+    test-png-removal.spec.ts:278:3 › PNG metadata removal › malformed PNG fails cleanly and never sticks the UI in processing 
+    test-png-removal.spec.ts:308:3 › PNG metadata removal › batch: PNG next to a JPEG keeps both formats 
+  5 passed (5.6m)
