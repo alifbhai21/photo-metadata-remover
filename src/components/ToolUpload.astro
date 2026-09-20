@@ -274,6 +274,7 @@ const translations = getTranslations(currentLang);
 
 <script>
   import { trackEvent } from '../lib/analytics';
+  import { stripPngMetadata } from '../lib/png';
   import { stripTiffMetadata } from '../lib/tiff';
   import { findOutputPrivacyFindings } from '../lib/verify';
   import { normalizeWebpExifPayload, stripWebpMetadata } from '../lib/webp';
@@ -1291,6 +1292,26 @@ const translations = getTranslations(currentLang);
         item.cleanBlob = cleanWebp;
         item.cleanExt = 'webp';
         // The generated WebP bytes are re-scanned before success is claimed.
+        await finishWithVerification(item, thisBatchId);
+        return;
+      }
+
+      // PNG: the generic canvas path below re-encodes the whole image — the
+      // ICC profile, pHYs/gAMA/cHRM/sRGB/sBIT/bKGD chunks and palette data are
+      // dropped, and RGB values under fully transparent pixels can change.
+      // Strip the chunk list instead: eXIf/tEXt/zTXt/iTXt/tIME go, every other
+      // chunk (IHDR, PLTE, IDAT, tRNS, iCCP, APNG, unknown) is copied verbatim,
+      // so the download is the same real PNG with the same pixels.
+      if (item.file.type === 'image/png') {
+        const source = new Uint8Array(await withTimeout(item.file.arrayBuffer(), STRIP_TIMEOUT_MS));
+        const stripped = stripPngMetadata(source);
+        const cleanPng = new Blob([stripped.bytes], { type: 'image/png' });
+        if (cleanPng.size === 0) {
+          throw new Error('PNG stripping produced an empty image');
+        }
+        item.cleanBlob = cleanPng;
+        item.cleanExt = 'png';
+        // The generated PNG bytes are re-scanned before success is claimed.
         await finishWithVerification(item, thisBatchId);
         return;
       }

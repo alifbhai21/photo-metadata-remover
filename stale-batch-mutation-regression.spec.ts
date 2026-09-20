@@ -18,12 +18,15 @@
  * removeAllMetadata() iteration BEFORE it starts, and moves the catch path's
  * reRenderItem() inside the same current-batch guard.
  *
- * Determinism: `createImageBitmap` is patched by an init script so one chosen
- * removal is frozen at an exact point (and optionally forced to fail) while a
- * second batch is uploaded, then released. A MutationObserver records ANY DOM
- * change inside the new batch, so a stale repaint cannot slip through unseen,
- * and the observer is proven live with a positive control before its empty
- * result is trusted.
+ * Determinism: the browser primitives a removal awaits are patched by an init
+ * script so one chosen removal is frozen at an exact point (and optionally
+ * forced to fail) while a second batch is uploaded, then released. The gate
+ * covers the removal's own byte read (`Blob.prototype.arrayBuffer`, the first
+ * thing every strip branch awaits - including the structural PNG path, which
+ * never decodes) and the decode (`createImageBitmap`) used by the remaining
+ * canvas paths. A MutationObserver records ANY DOM change inside the new batch,
+ * so a stale repaint cannot slip through unseen, and the observer is proven
+ * live with a positive control before its empty result is trusted.
  *
  * TEST 1 - stale SUCCESS: an old batch operation finishing after a re-upload
  *          must not mutate the new batch (DOM, buttons, status, metadata
@@ -132,8 +135,10 @@ const GATE_SCRIPT = function () {
 
   const originalBitmap = window.createImageBitmap.bind(window);
   const originalToBlob = HTMLCanvasElement.prototype.toBlob;
+  const originalArrayBuffer = Blob.prototype.arrayBuffer;
 
   w.__pmrToBlobCalls = 0;
+  w.__pmrOutputReads = 0;
   w.__pmrMutationRecords = [];
   w.__pmrGate = { armed: false, mode: 'hold', intercepted: 0, resolved: 0, gate: null, release: null };
 
@@ -162,7 +167,41 @@ const GATE_SCRIPT = function () {
     return true;
   };
 
-  w.__pmrCounters = () => ({ toBlob: w.__pmrToBlobCalls });
+  w.__pmrCounters = () => ({ toBlob: w.__pmrToBlobCalls, outputReads: w.__pmrOutputReads });
+
+  // Every strip branch starts by reading the uploaded file's bytes, and the
+  // verification tail reads the generated output. Both pass through here, so
+  // the structural PNG path (which never decodes) is freezable too - the
+  // pending read rejects in 'fail' mode exactly where a decode failure used to.
+  // An armed gate is one-shot: it freezes exactly the removal it belongs to.
+  Blob.prototype.arrayBuffer = function (this: Blob) {
+    const state = w.__pmrGate;
+    const gated = !!state && state.armed;
+    if (gated) {
+      state.armed = false;
+      state.intercepted++;
+    }
+
+    const countOutputRead = (buf: ArrayBuffer): ArrayBuffer => {
+      // A non-File blob is the generated output handed to verification.
+      if (!(this instanceof File)) w.__pmrOutputReads++;
+      return buf;
+    };
+
+    const read = () => originalArrayBuffer.call(this).then(countOutputRead);
+
+    if (!gated) return read();
+    return state.gate.then(() => {
+      if (state.mode === 'fail') {
+        state.resolved++;
+        throw new Error('PMR deterministic stale-strip failure');
+      }
+      return read().then((buf: ArrayBuffer) => {
+        state.resolved++;
+        return buf;
+      });
+    });
+  } as typeof Blob.prototype.arrayBuffer;
 
   // Every createImageBitmap the app awaits passes through here. An armed gate is
   // one-shot: it freezes exactly the removal it belongs to.
@@ -314,6 +353,16 @@ async function toBlobCalls(page: Page): Promise<number> {
   return (await page.evaluate(() => (window as any).__pmrCounters())).toBlob;
 }
 
+/**
+ * Completed reads of a generated output blob (never the uploaded File): the
+ * verification byte read. A rising count proves a removal reached its
+ * verification tail - the format-neutral replacement for the canvas toBlob
+ * counter, which the structural PNG path never touches.
+ */
+async function outputReads(page: Page): Promise<number> {
+  return (await page.evaluate(() => (window as any).__pmrCounters())).outputReads;
+}
+
 async function startRecording(page: Page): Promise<void> {
   await page.evaluate(() => (window as any).__pmrInstallObserver());
 }
@@ -374,6 +423,14 @@ test.describe('Stale batch ownership - deterministic regression', () => {
     const b2 = await makePng('t1-b2');
 
     await installGate(page);
+    // A removal that fails logs the app's own strip error - collected so the
+    // frozen removal's completion (not just its restart) can be asserted.
+    const stripErrors: string[] = [];
+    page.on('console', (message) => {
+      if (message.type() === 'error' && message.text().includes('Error stripping metadata')) {
+        stripErrors.push(message.text());
+      }
+    });
     await openTool(page);
     const fileInput = st.fileInput(page);
     const items = st.items(page);
@@ -408,11 +465,18 @@ test.describe('Stale batch ownership - deterministic regression', () => {
     const before = await snapshot(page);
 
     // --- The stale Batch A removal is released and completes SUCCESSFULLY ---
-    const toBlobBefore = await toBlobCalls(page);
     await releaseGate(page);
-    await waitForGateHandled(page);
-    await expect.poll(() => toBlobCalls(page), { timeout: 20000 }).toBeGreaterThan(toBlobBefore);
-    await page.waitForTimeout(600); // allow the stale publish + verification tail to settle
+    await waitForGateHandled(page); // the frozen byte read resumed
+    await page.waitForTimeout(600); // allow the stale publish + drop tail to settle
+
+    // The released removal ran to completion: the structural PNG strip is
+    // synchronous after that read, so a failure would have logged the app's own
+    // removal error. (The old canvas path proved completion through a
+    // canvas.toBlob call; the structural path never paints a canvas, which the
+    // counter below asserts.) A stale item never reaches verification - the
+    // batch guard drops it first - so `busyCount` integrity is re-proven below.
+    expect(stripErrors).toEqual([]);
+    expect(await toBlobCalls(page)).toBe(0);
 
     await expectNoMutation(page, 'TEST 1 stale success');
     expect(await snapshot(page)).toEqual(before);
@@ -441,10 +505,14 @@ test.describe('Stale batch ownership - deterministic regression', () => {
     await expect.poll(() => hasHiddenClass(page, '#remove-all-btn')).toBe(true); // busyCount > 0
     await expect(page.locator('#remove-1')).toBeDisabled();
     expect(await mutationCount(page)).toBeGreaterThan(0); // positive control: observer is live
+    const readsBefore = await outputReads(page);
     await releaseGate(page);
 
     await expect(page.locator('#remove-1')).toHaveText(/Success/, { timeout: 60000 });
     await expect(page.locator('#remove-2')).toHaveText(/Success/, { timeout: 60000 });
+    // The current batch's removal reached real verification: its generated PNG
+    // bytes were re-read and re-scanned before the output was published.
+    await expect.poll(() => outputReads(page), { timeout: 20000 }).toBeGreaterThan(readsBefore);
     await expect(page.locator('#download-1')).toBeEnabled();
     await expect(page.locator('#download-2')).toBeEnabled();
     await expect(page.locator('#global-status')).toContainText('2 files cleaned');
