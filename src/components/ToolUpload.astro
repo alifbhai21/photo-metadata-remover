@@ -274,7 +274,7 @@ const translations = getTranslations(currentLang);
 
 <script>
   import { trackEvent } from '../lib/analytics';
-  import { stripPngMetadata } from '../lib/png';
+  import { readPngMetadataChunks, stripPngMetadata } from '../lib/png';
   import { stripTiffMetadata } from '../lib/tiff';
   import { findOutputPrivacyFindings } from '../lib/verify';
   import { normalizeWebpExifPayload, stripWebpMetadata } from '../lib/webp';
@@ -1622,6 +1622,15 @@ const translations = getTranslations(currentLang);
     if (btn) btn.setAttribute('aria-expanded', 'true');
   }
 
+  /**
+   * Chunk-scoped keys the PNG scan adds for the textual/time chunks that exifr
+   * does not surface (tEXt keywords it cannot map, zTXt, iTXt, tIME). The
+   * "PNG " prefix keeps this vocabulary separate from EXIF/XMP/IPTC tag names,
+   * so no other format's classification can change, and repeated chunks of the
+   * same type are numbered ("PNG tEXt (2)") instead of overwriting each other.
+   */
+  const PNG_CHUNK_METADATA_KEY = /^PNG (?:eXIf|tEXt|zTXt|iTXt|tIME)(?: \(\d+\))?$/;
+
   function filterMetadata(metadata: Record<string, unknown>): Array<{ label: string; value: string; privacy: boolean }> {
     const result: Array<{ label: string; value: string; privacy: boolean }> = [];
     const privacyKeys = ['GPSLatitude', 'GPSLongitude', 'GPSAltitude', 'GPSDateStamp',
@@ -1633,7 +1642,7 @@ const translations = getTranslations(currentLang);
     for (const [key, val] of Object.entries(metadata)) {
       if (val === undefined || val === null) continue;
       const str = typeof val === 'object' ? JSON.stringify(val) : String(val);
-      const isPrivacy = privacyKeys.includes(key);
+      const isPrivacy = privacyKeys.includes(key) || PNG_CHUNK_METADATA_KEY.test(key);
       result.push({ label: key, value: str.length > 100 ? str.substring(0, 100) + '...' : str, privacy: isPrivacy });
     }
     return result;
@@ -1699,7 +1708,65 @@ const translations = getTranslations(currentLang);
     // undefined, which the verification (and the classifier) cannot read.
     const parsed = (await exifr.parse(arrayBuffer, true)) || {};
     // The scan input must never be retained through the parsed values.
-    return detachParsedMetadataViews(parsed, arrayBuffer);
+    const detached = detachParsedMetadataViews(parsed, arrayBuffer);
+    // PNG: exifr alone does not see zTXt / iTXt / tIME at all and misses most
+    // tEXt keywords, so the chunk list is read as well (see
+    // addPngChunkMetadata). exifr stays in charge of everything else.
+    if (fileType === 'image/png') {
+      return addPngChunkMetadata(detached, arrayBuffer);
+    }
+    return detached;
+  }
+
+  /**
+   * Supplement the PNG scan with the privacy-bearing chunks exifr does not
+   * surface.
+   *
+   * exifr's PNG reader returns eXIf, IHDR and a few tEXt keywords only: zTXt is
+   * never inflated, an XMP iTXt merely adds an internal `errors` entry and tIME
+   * is ignored, so a PNG carrying only textual/time metadata used to be
+   * reported as "No privacy metadata found" while the removal path removed
+   * those very chunks. Every detected chunk becomes one chunk-scoped entry
+   * ("PNG tEXt", "PNG zTXt (2)", ...) that the classifier treats as privacy
+   * metadata; exifr's own fields (dimensions, bit depth, colour type, ICC,
+   * EXIF/GPS) are left untouched.
+   *
+   * Double counting: a chunk payload that exifr already surfaced AS a privacy
+   * field (tEXt "Copyright"/"Software") is skipped, so the same bytes are never
+   * counted twice. eXIf is normally fully represented by exifr's EXIF fields;
+   * the chunk-scoped eXIf entry is only added when exifr produced nothing at
+   * all, so a PNG with an unreadable EXIF block is not silently ignored.
+   *
+   * A malformed container or payload never breaks the scan: the reader reports
+   * what it can and the function returns the metadata unchanged.
+   */
+  function addPngChunkMetadata(metadata: Record<string, unknown>, arrayBuffer: ArrayBuffer): Record<string, unknown> {
+    let chunks;
+    try {
+      chunks = readPngMetadataChunks(new Uint8Array(arrayBuffer));
+    } catch {
+      return metadata;
+    }
+    if (chunks.length === 0) return metadata;
+
+    const privacyFields = filterMetadata(metadata).filter((entry) => entry.privacy).map((entry) => entry.label);
+    const seen: Record<string, number> = {};
+
+    for (const chunk of chunks) {
+      if (chunk.type === 'eXIf') {
+        // exifr owns the EXIF fields; only step in when it found nothing.
+        if (Object.keys(metadata).length === 0) metadata['PNG eXIf'] = chunk.summary;
+        continue;
+      }
+      if (chunk.text && privacyFields.some((label) => metadata[label] === chunk.text)) {
+        // The same payload is already counted as a privacy field - skip it.
+        continue;
+      }
+      seen[chunk.type] = (seen[chunk.type] || 0) + 1;
+      const key = seen[chunk.type] === 1 ? `PNG ${chunk.type}` : `PNG ${chunk.type} (${seen[chunk.type]})`;
+      metadata[key] = chunk.summary;
+    }
+    return metadata;
   }
 
   async function parseWebpMetadata(arrayBuffer: ArrayBuffer, exifr: typeof import('exifr')): Promise<Record<string, unknown>> {

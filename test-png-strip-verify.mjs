@@ -18,12 +18,16 @@ import {
   buildPalettePng, buildTransparencyPng, buildTrnsPng, build16BitPng,
   buildPlainPng, buildMalformedPng, buildGarbagePng, buildUnknownChunkPng,
   buildSingleChunkPng, buildUnverifiableXmpPng, buildBadCrcPng, buildNoIendPng,
+  rebuildPng, textChunkPayload, itxtChunkPayload,
   readPngChunks, pngChunkTypes, findPngChunk, readIhdr, rawChunkBytes,
   idatBytes, leakedPrivacyValues, parsePngMetadata, PNG_PRIVACY_CHUNKS,
   XMP_PAYLOAD_SIGNATURE,
 } from './test-png-fixture.mjs';
 import { transform } from 'esbuild';
 import { readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import sharp from 'sharp';
 
 // Node cannot strip TS interfaces natively, so transpile the modules with the
@@ -34,8 +38,26 @@ const { code: pngCode } = await transform(readFileSync('src/lib/png.ts', 'utf8')
 writeFileSync('src/lib/png.mjs', pngCode);
 const { code: verifyCode } = await transform(readFileSync('src/lib/verify.ts', 'utf8'), { loader: 'ts' });
 writeFileSync('src/lib/verify.mjs', verifyCode);
-const { stripPngMetadata } = await import('./src/lib/png.mjs');
+const { stripPngMetadata, readPngMetadataChunks } = await import('./src/lib/png.mjs');
 const { findPngPrivacyFindings, findOutputPrivacyFindings } = await import('./src/lib/verify.mjs');
+
+// The scan-side classifier lives inside the Astro component's client script, so
+// the block is sliced out and transpiled with the same esbuild path - the real
+// classifier is exercised, not a mirrored copy of its privacy vocabulary.
+const toolUploadSource = readFileSync('src/components/ToolUpload.astro', 'utf8').replace(/\r\n/g, '\n');
+const classifierStart = toolUploadSource.indexOf('  /**\n   * Chunk-scoped keys the PNG scan adds');
+const classifierEnd = toolUploadSource.indexOf('  function formatFileSize(');
+if (classifierStart === -1 || classifierEnd === -1) {
+  throw new Error('scan classifier block not found in src/components/ToolUpload.astro');
+}
+const { code: classifierCode } = await transform(
+  toolUploadSource.slice(classifierStart, classifierEnd) + '\nexport { filterMetadata, countPrivacyFields };\n',
+  { loader: 'ts' },
+);
+const classifierPath = join(tmpdir(), `pmr-scan-classifier-${process.pid}.mjs`);
+writeFileSync(classifierPath, classifierCode);
+const { filterMetadata, countPrivacyFields } = await import(pathToFileURL(classifierPath).href);
+rmSync(classifierPath, { force: true });
 
 let failures = 0;
 function check(label, fn) {
@@ -283,6 +305,159 @@ for (const chunkType of ['tEXt', 'zTXt', 'iTXt', 'tIME']) {
   check('the output verifier never uses a hardcoded zero count', () =>
     assert.notDeepStrictEqual(dispatch(xmpPng, 'image/png'), []));
 }
+
+// ================================================================ SCAN SIDE
+// readPngMetadataChunks() + the real classifier: what the upload scan reports
+// for each privacy-chunk shape. The merge/dedupe path in the component is
+// covered end-to-end by test-png-removal.spec.ts and the classification spec.
+console.log('\n--- scan-side chunk detection (readPngMetadataChunks) ---');
+
+const scanPlain = await buildPlainPng();
+const scanExif = await buildRgbExifPng();
+const scanTextual = await buildTextualPng();
+const scanSingle = {};
+for (const type of ['tEXt', 'zTXt', 'iTXt', 'tIME']) {
+  scanSingle[type] = await buildSingleChunkPng(type);
+}
+const scanCopyright = rebuildPng(scanPlain, {
+  insert: [{ type: 'tEXt', payload: textChunkPayload('Copyright', 'PRIVACY-SCAN-COPYRIGHT') }],
+});
+const scanTwoText = rebuildPng(scanPlain, {
+  insert: [
+    { type: 'tEXt', payload: textChunkPayload('Author', 'PRIVACY-SCAN-AUTHOR') },
+    { type: 'tEXt', payload: textChunkPayload('Description', 'PRIVACY-SCAN-DESCRIPTION') },
+  ],
+});
+const scanExifText = rebuildPng(scanExif, {
+  insert: [{ type: 'tEXt', payload: textChunkPayload('Author', 'PRIVACY-SCAN-AUTHOR') }],
+});
+const scanExifItxt = rebuildPng(scanExif, {
+  insert: [{ type: 'iTXt', payload: itxtChunkPayload('XML:com.adobe.xmp', 'PRIVACY-SCAN-XMP') }],
+});
+const scanMalformedText = rebuildPng(scanPlain, {
+  insert: [{ type: 'tEXt', payload: Buffer.from('NoSeparatorAtAll', 'latin1') }],
+});
+
+const shapes = (buf) => readPngMetadataChunks(new Uint8Array(buf)).map((c) => `${c.type}:${c.keyword}`);
+
+check('clean PNG: the scan finds no privacy chunk', () => assert.deepStrictEqual(shapes(scanPlain), []));
+
+for (const [type, keyword] of [['tEXt', 'Author'], ['zTXt', 'Comment'], ['iTXt', 'XML:com.adobe.xmp'], ['tIME', '']]) {
+  check(`${type}-only PNG: one ${type} chunk detected (has no eXIf)`, () => {
+    assert.ok(!pngChunkTypes(scanSingle[type]).includes('eXIf'));
+    assert.deepStrictEqual(shapes(scanSingle[type]), [`${type}:${keyword}`]);
+  });
+}
+
+check('eXIf chunk is detected as a privacy chunk too', () => assert.ok(shapes(scanExif).includes('eXIf:')));
+
+check('all four textual/time chunks are detected alongside eXIf', () =>
+  assert.deepStrictEqual(shapes(scanTextual), [
+    // buildTextualPng uses PRIVACY_VALUES[4] as the iTXt keyword.
+    'eXIf:', 'tEXt:Author', 'zTXt:Comment', 'iTXt:PRIVACY-PNG-UTC-KEY', 'tIME:',
+  ]));
+
+check('eXIf + tEXt: both chunk types detected', () =>
+  assert.deepStrictEqual(shapes(scanExifText), ['eXIf:', 'tEXt:Author']));
+
+check('eXIf + iTXt: both chunk types detected', () =>
+  assert.deepStrictEqual(shapes(scanExifItxt), ['eXIf:', 'iTXt:XML:com.adobe.xmp']));
+
+check('tEXt payload text is exposed so a duplicate can be recognised', () => {
+  const entry = readPngMetadataChunks(new Uint8Array(scanCopyright))[0];
+  assert.strictEqual(entry.type, 'tEXt');
+  assert.strictEqual(entry.keyword, 'Copyright');
+  assert.strictEqual(entry.text, 'PRIVACY-SCAN-COPYRIGHT');
+  assert.ok(entry.summary.includes('PRIVACY-SCAN-COPYRIGHT'));
+});
+
+check('repeated tEXt chunks are reported separately (never collapsed)', () =>
+  assert.deepStrictEqual(shapes(scanTwoText), ['tEXt:Author', 'tEXt:Description']));
+
+check('blank keyword chunks are still detected', () => {
+  const payload = Buffer.concat([Buffer.from([0]), Buffer.from('PRIVACY-BLANK-KEYWORD', 'latin1')]);
+  const png = rebuildPng(scanPlain, { insert: [{ type: 'tEXt', payload }] });
+  assert.deepStrictEqual(shapes(png), ['tEXt:']);
+});
+
+check('malformed textual payload (no separator) is detected, not dropped', () => {
+  const entries = readPngMetadataChunks(new Uint8Array(scanMalformedText));
+  assert.strictEqual(entries.length, 1);
+  assert.strictEqual(entries[0].type, 'tEXt');
+  assert.strictEqual(entries[0].keyword, '');
+  assert.ok(entries[0].summary.length > 0);
+});
+
+check('no returned value keeps a reference into the scanned buffer', () => {
+  const bytes = new Uint8Array(scanCopyright);
+  const entry = readPngMetadataChunks(bytes)[0];
+  for (const value of Object.values(entry)) {
+    assert.strictEqual(ArrayBuffer.isView(value), false);
+    assert.strictEqual(typeof value, 'string');
+  }
+  bytes.fill(0);
+  assert.ok(entry.text.includes('PRIVACY-SCAN-COPYRIGHT'));
+  assert.ok(entry.summary.includes('PRIVACY-SCAN-COPYRIGHT'));
+});
+
+check('non-PNG input is rejected without throwing', () => {
+  assert.deepStrictEqual(readPngMetadataChunks(new Uint8Array(0)), []);
+  assert.deepStrictEqual(readPngMetadataChunks(new Uint8Array(Buffer.from('not a png', 'latin1'))), []);
+  assert.deepStrictEqual(
+    readPngMetadataChunks(new Uint8Array([0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46])),
+    [],
+  );
+});
+
+check('malformed / truncated PNG yields no entries instead of throwing', () => {
+  assert.deepStrictEqual(readPngMetadataChunks(new Uint8Array(buildMalformedPng())), []);
+  assert.deepStrictEqual(readPngMetadataChunks(new Uint8Array(buildGarbagePng())), []);
+  assert.deepStrictEqual(readPngMetadataChunks(new Uint8Array(scanSingle.tEXt.subarray(0, 60))), []);
+});
+
+check('a bad chunk CRC does not hide the chunk from the scan', () => {
+  const badCrc = Buffer.from(scanCopyright);
+  const target = findPngChunk(badCrc, 'tEXt');
+  badCrc[target.end - 1] = badCrc[target.end - 1] ^ 0xff;
+  // Lenient on purpose: the scan must report the chunk, while the removal path
+  // still rejects the untrustworthy file (covered by the verifier section).
+  assert.deepStrictEqual(shapes(badCrc), ['tEXt:Copyright']);
+});
+
+// ---- the real classifier on the keys the scan produces -------------------
+console.log('\n--- scan-side classification (ToolUpload.astro classifier) ---');
+
+check('chunk-scoped PNG keys are classified as privacy metadata', () => {
+  const metadata = {
+    'PNG tEXt': 'Author: PRIVACY-SCAN-AUTHOR',
+    'PNG zTXt': 'Comment (compressed text)',
+    'PNG iTXt (2)': 'XML:com.adobe.xmp: PRIVACY-SCAN-XMP',
+    'PNG tIME': '2024-01-02 03:04:05 UTC',
+    'PNG eXIf': 'EXIF block (200 bytes)',
+  };
+  assert.strictEqual(countPrivacyFields(metadata), 5);
+  assert.deepStrictEqual(filterMetadata(metadata).map((e) => e.privacy), [true, true, true, true, true]);
+});
+
+check('technical PNG fields stay technical', () => {
+  const metadata = {
+    ImageWidth: 120, ImageHeight: 80, BitDepth: 8, ColorType: 'RGB',
+    Compression: 'Deflate/Inflate', Filter: 'Adaptive', Interlace: 'Noninterlaced',
+  };
+  assert.strictEqual(countPrivacyFields(metadata), 0);
+});
+
+check('the chunk-scoped vocabulary does not reclassify other formats', () => {
+  // tEXt keywords exifr surfaces for a PNG (Author, Description, Comment, ...)
+  // must not become privacy fields for metadata from other formats.
+  assert.strictEqual(countPrivacyFields({ Author: 'x', Comment: 'x', Description: 'x', Keywords: 'x' }), 0);
+  // The pre-existing vocabulary is untouched.
+  assert.strictEqual(countPrivacyFields({ Copyright: 'x', Software: 'x' }), 2);
+});
+
+check('lookalike keys outside the chunk vocabulary are not privacy', () => {
+  assert.strictEqual(countPrivacyFields({ 'PNG tEXt stuff': 'x', 'NG tEXt': 'x', 'PNG xTXt': 'x', 'PNG tEXt(2)': 'x' }), 0);
+});
 
 // The transpiled siblings are test artefacts only - never leave them behind.
 rmSync('src/lib/png.mjs', { force: true });

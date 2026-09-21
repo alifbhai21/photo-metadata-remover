@@ -3,12 +3,18 @@
  * ZERO privacy-sensitive fields, and that the counter logic in
  * ToolUpload.astro (countPrivacyFields) reports correctly.
  *
- * Mirrors the PRIVACY_KEYS set added to ToolUpload.astro and applies it
- * to both original and clean fixture files.
+ * Mirrors the PRIVACY_KEYS set and the chunk-scoped PNG key rule added to
+ * ToolUpload.astro, applies them to original and clean fixture files, and
+ * exercises the real PNG chunk reader (src/lib/png.ts) for the scan-side
+ * detection added for tEXt / zTXt / iTXt / tIME.
  */
 import sharp from 'sharp';
 import exifr from 'exifr';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'fs';
+import { join } from 'path';
+import { tmpdir } from 'os';
+import { buildPlainPng, buildRgbExifPng, buildSingleChunkPng, buildTextualPng, rebuildPng, textChunkPayload, itxtChunkPayload } from './test-png-fixture.mjs';
+import { readPngMetadataChunks } from './src/lib/png.ts';
 
 const PRIVACY_KEYS = new Set([
   // Camera / device identification
@@ -46,12 +52,43 @@ const PRIVACY_KEYS = new Set([
   'latitude', 'longitude', 'latituderef', 'longituderef',
 ]);
 
+/**
+ * Mirrors the chunk-scoped PNG key rule of filterMetadata() in
+ * ToolUpload.astro: 'PNG tEXt', 'PNG zTXt', 'PNG iTXt', 'PNG tIME', 'PNG eXIf'
+ * and the numbered repeats ('PNG tEXt (2)') are privacy metadata.
+ */
+const PNG_CHUNK_KEY = /^PNG (?:eXIf|tEXt|zTXt|iTXt|tIME)(?: \(\d+\))?$/;
+
+function isPrivacyKey(key) {
+  return PRIVACY_KEYS.has(key) || PNG_CHUNK_KEY.test(key);
+}
+
 function countPrivacyFields(metadata) {
   let count = 0;
   for (const key of Object.keys(metadata)) {
-    if (PRIVACY_KEYS.has(key)) count++;
+    if (isPrivacyKey(key)) count++;
   }
   return count;
+}
+
+/**
+ * Mirrors the merge rule of addPngChunkMetadata() in ToolUpload.astro: every
+ * detected textual/time chunk becomes one chunk-scoped entry, except when the
+ * payload is already represented by a privacy-classified field (tEXt
+ * Copyright / Software, which exifr surfaces under its own tag names).
+ */
+function pngScanMetadata(png, exifrMetadata = {}) {
+  const metadata = { ...exifrMetadata };
+  const privacyLabels = Object.keys(metadata).filter((key) => isPrivacyKey(key));
+  const seen = {};
+  for (const chunk of readPngMetadataChunks(new Uint8Array(png))) {
+    if (chunk.type === 'eXIf') continue;
+    if (chunk.text && privacyLabels.some((label) => metadata[label] === chunk.text)) continue;
+    seen[chunk.type] = (seen[chunk.type] || 0) + 1;
+    const key = seen[chunk.type] === 1 ? `PNG ${chunk.type}` : `PNG ${chunk.type} (${seen[chunk.type]})`;
+    metadata[key] = chunk.summary;
+  }
+  return metadata;
 }
 
 console.log('=== PRIVACY-FIELD VERIFICATION ===\n');
@@ -163,6 +200,84 @@ if (cleanPrivacy === 0 && origPrivacy > 0) {
   failures++;
 } else {
   console.log('✅ Clean file shows fewer/equal fields than original');
+}
+
+// ─── S5: PNG chunk-scoped scan detection ───────────────────────────
+// The scan-side defect: exifr alone never reported zTXt / iTXt / tIME and
+// missed most tEXt keywords, so a PNG with textual privacy metadata looked
+// clean. readPngMetadataChunks() (real module) supplies those chunks and the
+// chunk-scoped keys are classified as privacy metadata.
+console.log('\n--- PNG SCAN: tEXt / zTXt / iTXt / tIME detection ---');
+const pngDir = mkdtempSync(join(tmpdir(), 'pmr-privacy-png-'));
+try {
+  const plain = await buildPlainPng({ width: 120, height: 80 });
+  const exifPng = await buildRgbExifPng({ width: 120, height: 80 });
+  const cases = [];
+  for (const [type, keyword] of [['tEXt', 'Author'], ['zTXt', 'Comment'], ['iTXt', 'XML:com.adobe.xmp'], ['tIME', '']]) {
+    cases.push([`${type} only`, await buildSingleChunkPng(type, { width: 120, height: 80 }), [`${type}:${keyword}`]]);
+  }
+  cases.push(['tEXt Copyright (dedupe)', rebuildPng(plain, {
+    insert: [{ type: 'tEXt', payload: textChunkPayload('Copyright', 'PRIVACY-SCAN-COPYRIGHT') }],
+  }), ['tEXt:Copyright']]);
+  cases.push(['tEXt Software (dedupe)', rebuildPng(plain, {
+    insert: [{ type: 'tEXt', payload: textChunkPayload('Software', 'PRIVACY-SCAN-SOFTWARE') }],
+  }), ['tEXt:Software']]);
+  cases.push(['two tEXt chunks', rebuildPng(plain, {
+    insert: [
+      { type: 'tEXt', payload: textChunkPayload('Author', 'PRIVACY-SCAN-AUTHOR') },
+      { type: 'tEXt', payload: textChunkPayload('Description', 'PRIVACY-SCAN-DESCRIPTION') },
+    ],
+  }), ['tEXt:Author', 'tEXt:Description']]);
+  cases.push(['eXIf + tEXt', rebuildPng(exifPng, {
+    insert: [{ type: 'tEXt', payload: textChunkPayload('Author', 'PRIVACY-SCAN-AUTHOR') }],
+  }), ['eXIf:', 'tEXt:Author']]);
+  cases.push(['eXIf + iTXt', rebuildPng(exifPng, {
+    insert: [{ type: 'iTXt', payload: itxtChunkPayload('XML:com.adobe.xmp', 'PRIVACY-SCAN-XMP') }],
+  }), ['eXIf:', 'iTXt:XML:com.adobe.xmp']]);
+  cases.push(['all four textual/time', await buildTextualPng({ width: 120, height: 80 }), [
+    'eXIf:', 'tEXt:Author', 'zTXt:Comment', 'iTXt:PRIVACY-PNG-UTC-KEY', 'tIME:',
+  ]]);
+  cases.push(['clean PNG', plain, []]);
+
+  let index = 0;
+  for (const [label, png, expectedChunks] of cases) {
+    const file = join(pngDir, `case-${index++}.png`);
+    writeFileSync(file, png);
+    const buffer = readFileSync(file);
+    const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
+
+    const exifrMeta = (await exifr.parse(arrayBuffer, true)) || {};
+    const before = countPrivacyFields(exifrMeta); // what the old scan reported
+    const detected = readPngMetadataChunks(new Uint8Array(buffer));
+    const merged = pngScanMetadata(buffer, exifrMeta);
+    const after = countPrivacyFields(merged);
+
+    // Vocabulary-independent invariants: nothing is lost, and no single chunk
+    // can ever add more than one finding (that is the double-count rule).
+    const detectedShapes = detected.map((c) => `${c.type}:${c.keyword}`);
+    const lost = after < before;
+    const overCounted = after > before + detected.filter((c) => c.type !== 'eXIf').length;
+    const missing = detected
+      .filter((c) => c.type !== 'eXIf')
+      .filter((chunk) => {
+        const keyed = Object.keys(merged).some((key) => key === `PNG ${chunk.type}` || key.startsWith(`PNG ${chunk.type} (`));
+        const represented = chunk.text ? Object.keys(exifrMeta).some((k) => isPrivacyKey(k) && exifrMeta[k] === chunk.text) : false;
+        return !keyed && !represented;
+      })
+      .map((c) => c.type);
+
+    const chunksMatch = detectedShapes.join() === expectedChunks.join();
+    const ok = chunksMatch && !lost && !overCounted && missing.length === 0;
+    if (!ok) failures++;
+    console.log(
+      ` ${ok ? '✅' : '❌'} ${label.padEnd(24)} chunks=[${detectedShapes.join(', ') || 'none'}] ` +
+      `privacy before=${before} after=${after}` +
+      `${missing.length ? ` MISSING=[${missing.join(', ')}]` : ''}` +
+      `${chunksMatch ? '' : ` CHUNKS-UNEXPECTED expected=[${expectedChunks.join(', ')}]`}`,
+    );
+  }
+} finally {
+  rmSync(pngDir, { recursive: true, force: true });
 }
 
 console.log(`\n=== ${failures === 0 ? 'ALL TESTS PASSED' : failures + ' FAILURE(S)'} ===`);

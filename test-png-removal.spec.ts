@@ -33,6 +33,7 @@ import {
   buildPalettePng, buildTrnsPng, build16BitPng, buildPlainPng,
   buildMalformedPng, buildUnknownChunkPng, buildSingleChunkPng,
   buildUnverifiableXmpPng,
+  rebuildPng, textChunkPayload, itxtChunkPayload, ztxtChunkPayload,
   readPngChunks, pngChunkTypes, findPngChunk, readIhdr, rawChunkBytes,
   idatBytes, leakedPrivacyValues, parsePngMetadata, PNG_PRIVACY_CHUNKS,
   PNG_SIGNATURE, PRIVACY_VALUES, XMP_PAYLOAD_SIGNATURE, XMP_PRIVACY_TEXT,
@@ -63,6 +64,16 @@ let jpegPath = '';
 let trnsPath = '';
 let textOnlyPaths: Record<string, string> = {};
 let unverifiablePath = '';
+// Scan-side fixtures (PNG chunk detection / classification).
+let plainPngPath = '';
+let textCopyrightPath = '';
+let textSoftwarePath = '';
+let twoTextPath = '';
+let exifPlusTextPath = '';
+let exifPlusItxtPath = '';
+let malformedTextPath = '';
+let emptyTextPath = '';
+let twoZtxtPath = '';
 
 test.beforeAll(async () => {
   workDir = mkdtempSync(join(tmpdir(), 'pmr-png-'));
@@ -87,6 +98,63 @@ test.beforeAll(async () => {
     writeFileSync(path, await buildSingleChunkPng(chunkType, SIZE));
     textOnlyPaths[chunkType] = path;
   }
+
+  // Scan-side fixtures: the shapes that decide detection and counting.
+  const plainBase = await buildPlainPng(SIZE);
+  const exifBase = await buildRgbExifPng(SIZE);
+  writeFileSync((plainPngPath = join(workDir, 'scan-plain.png')), plainBase);
+  writeFileSync(
+    (textCopyrightPath = join(workDir, 'scan-tEXt-Copyright.png')),
+    rebuildPng(plainBase, {
+      insert: [{ type: 'tEXt', payload: textChunkPayload('Copyright', 'PRIVACY-PNG-TEXT-COPYRIGHT') }],
+    }),
+  );
+  writeFileSync(
+    (textSoftwarePath = join(workDir, 'scan-tEXt-Software.png')),
+    rebuildPng(plainBase, {
+      insert: [{ type: 'tEXt', payload: textChunkPayload('Software', 'PRIVACY-PNG-TEXT-SOFTWARE') }],
+    }),
+  );
+  writeFileSync(
+    (twoTextPath = join(workDir, 'scan-two-tEXt.png')),
+    rebuildPng(plainBase, {
+      insert: [
+        { type: 'tEXt', payload: textChunkPayload('Author', 'PRIVACY-PNG-AUTHOR') },
+        { type: 'tEXt', payload: textChunkPayload('Description', 'PRIVACY-PNG-DESCRIPTION') },
+      ],
+    }),
+  );
+  writeFileSync(
+    (exifPlusTextPath = join(workDir, 'scan-exif-plus-tEXt.png')),
+    rebuildPng(exifBase, {
+      insert: [{ type: 'tEXt', payload: textChunkPayload('Author', 'PRIVACY-PNG-AUTHOR') }],
+    }),
+  );
+  writeFileSync(
+    (exifPlusItxtPath = join(workDir, 'scan-exif-plus-iTXt.png')),
+    rebuildPng(exifBase, {
+      insert: [{ type: 'iTXt', payload: itxtChunkPayload('XML:com.adobe.xmp', XMP_PRIVACY_TEXT) }],
+    }),
+  );
+  writeFileSync(
+    (malformedTextPath = join(workDir, 'scan-tEXt-malformed.png')),
+    // No NUL after the keyword: the payload cannot be split, but the chunk is
+    // still a privacy-bearing tEXt chunk and must be detected.
+    rebuildPng(plainBase, { insert: [{ type: 'tEXt', payload: Buffer.from('NoSeparatorAtAll', 'latin1') }] }),
+  );
+  writeFileSync(
+    (emptyTextPath = join(workDir, 'scan-tEXt-empty.png')),
+    rebuildPng(plainBase, { insert: [{ type: 'tEXt', payload: Buffer.alloc(0) }] }),
+  );
+  writeFileSync(
+    (twoZtxtPath = join(workDir, 'scan-two-zTXt.png')),
+    rebuildPng(plainBase, {
+      insert: [
+        { type: 'zTXt', payload: ztxtChunkPayload('Comment', 'PRIVACY-PNG-COMMENT-ONE') },
+        { type: 'zTXt', payload: ztxtChunkPayload('Author', 'PRIVACY-PNG-AUTHOR-TWO') },
+      ],
+    }),
+  );
   writeFileSync(
     (jpegPath = join(workDir, 'batch-photo.jpg')),
     await sharp({ create: { width: 64, height: 48, channels: 3, background: { r: 200, g: 20, b: 20 } } })
@@ -599,6 +667,172 @@ test.describe('PNG metadata removal', () => {
         `${viewport.label} (${viewport.width}x${viewport.height}) overflows horizontally`,
       ).toBeLessThanOrEqual(overflow.clientWidth + 1);
     }
+  });
+});
+
+/**
+ * Scan-side privacy detection (the defect this block pins down).
+ *
+ * Before this fix the scan relied on exifr alone: a PNG carrying only tEXt /
+ * zTXt / iTXt / tIME was reported as "No privacy metadata found", the count
+ * never included textual chunks, and zTXt / iTXt / tIME content was invisible
+ * even though the removal path removed those very chunks. The scan is now
+ * supplemented by the PNG chunk reader (src/lib/png.ts) and the chunk-scoped
+ * keys it adds are classified as privacy metadata.
+ */
+test.describe('PNG scan-side privacy detection', () => {
+  /** Upload one PNG and return the scan-phase status line (before any removal). */
+  async function scanStatusFor(page: Page, filePath: string): Promise<string> {
+    await page.goto('http://localhost:4321/en');
+    await ensureReady(page);
+    await page.locator('#file-input').setInputFiles(filePath);
+    await expect(page.locator('#files-list > div[data-id]')).toHaveCount(1, { timeout: 30000 });
+    // PNG never auto-strips (the IHDR fields keep the metadata object non-empty),
+    // so this is the stable pre-removal scan state.
+    await expect(page.locator('#remove-1')).toHaveText('Remove metadata', { timeout: 30000 });
+    return (await page.locator('[data-id="1"] .text-xs').innerText()).replace(/\s+/g, ' ').trim();
+  }
+
+  /** Open the per-file viewer and return its rows with their privacy highlight. */
+  async function openPanelRows(page: Page): Promise<Array<{ label: string; value: string; privacy: boolean }>> {
+    await page.locator('#meta-toggle-1').click();
+    await expect(page.locator('#metadata-panel-1')).toBeVisible({ timeout: 5000 });
+    return page.$$eval('#metadata-panel-1 > div > div', (rows) =>
+      rows.map((row) => ({
+        label: (row.children[0] as HTMLElement | undefined)?.textContent?.trim() ?? '',
+        value: (row.children[1] as HTMLElement | undefined)?.textContent?.trim() ?? '',
+        privacy: row.className.includes('bg-warning-bg'),
+      })),
+    );
+  }
+
+  test('textual-chunk-only PNGs report privacy metadata (tEXt / zTXt / iTXt / tIME)', async ({ page }) => {
+    for (const chunkType of ['tEXt', 'zTXt', 'iTXt', 'tIME']) {
+      const status = await scanStatusFor(page, textOnlyPaths[chunkType]);
+      expect(status, `${chunkType}-only PNG was reported as clean`).toContain('Privacy metadata found (1)');
+
+      const rows = await openPanelRows(page);
+      const flagged = rows.filter((row) => row.privacy);
+      expect(flagged.length, `${chunkType}: wrong number of flagged rows`).toBe(1);
+      expect(flagged[0].label).toBe(`PNG ${chunkType}`);
+      expect(flagged[0].value.length).toBeGreaterThan(0);
+
+      // The privacy variant of the toggle, never the "technical info" one.
+      await expect(page.locator('#meta-toggle-1')).not.toContainText('technical info');
+    }
+  });
+
+  test('tEXt-only PNG: scan -> flagged row -> remove -> verified download', async ({ page }) => {
+    const source = textOnlyPaths['tEXt'];
+    await page.goto('http://localhost:4321/en');
+    await ensureReady(page);
+    await page.locator('#file-input').setInputFiles(source);
+    await expect(page.locator('#remove-1')).toHaveText('Remove metadata', { timeout: 30000 });
+
+    // Nothing is downloadable before a verified removal exists.
+    await expect(page.locator('#download-1')).toBeDisabled();
+
+    const rows = await openPanelRows(page);
+    expect(rows.filter((row) => row.privacy).map((row) => row.label)).toContain('PNG tEXt');
+    expect(rows.some((row) => row.value.includes('PRIVACY-PNG-AUTHOR'))).toBe(true);
+
+    await page.locator('#remove-1').click();
+    await expect(page.locator('#remove-1')).toHaveText('✓ Success', { timeout: 30000 });
+    const status = page.locator('[data-id="1"] .text-xs');
+    await expect(status).toContainText('Metadata removed successfully');
+    await expect(status).toContainText('Privacy metadata remaining: 0');
+    await expect(page.locator('#download-1')).toBeEnabled();
+
+    const [download] = await Promise.all([page.waitForEvent('download'), page.locator('#download-1').click()]);
+    const saved = join(workDir, 'scan-clean-text-only.png');
+    await download.saveAs(saved);
+    await verifyCleanPng(saved, source);
+  });
+
+  test('eXIf + textual chunk: both sources are counted, exactly once each', async ({ page }) => {
+    // The EXIF block contributes Make/Model/Software/Copyright (4 privacy
+    // fields, all surfaced by exifr); the textual chunk adds exactly one more.
+    const exifText = await scanStatusFor(page, exifPlusTextPath);
+    expect(exifText).toContain('Privacy metadata found (5)');
+    const textRows = await openPanelRows(page);
+    expect(textRows.filter((row) => row.privacy).map((row) => row.label)).toContain('PNG tEXt');
+
+    const exifItxt = await scanStatusFor(page, exifPlusItxtPath);
+    expect(exifItxt).toContain('Privacy metadata found (5)');
+    const itxtRows = await openPanelRows(page);
+    expect(itxtRows.filter((row) => row.privacy).map((row) => row.label)).toContain('PNG iTXt');
+  });
+
+  test('multiple textual chunks are all counted (no collapsing)', async ({ page }) => {
+    // buildTextualPng carries eXIf + tEXt + zTXt + iTXt + tIME: 4 EXIF privacy
+    // fields + one entry per textual/time chunk.
+    const status = await scanStatusFor(page, textualPath);
+    expect(status).toContain('Privacy metadata found (8)');
+
+    const rows = await openPanelRows(page);
+    const labels = rows.filter((row) => row.privacy).map((row) => row.label);
+    for (const expected of ['PNG tEXt', 'PNG zTXt', 'PNG iTXt', 'PNG tIME']) {
+      expect(labels, `${expected} missing from the flagged rows`).toContain(expected);
+    }
+  });
+
+  test('clean PNG: still reported as free of privacy metadata', async ({ page }) => {
+    const status = await scanStatusFor(page, plainPngPath);
+    expect(status).toContain('No privacy metadata found');
+    expect(status).toContain('Technical image information preserved');
+
+    const rows = await openPanelRows(page);
+    expect(rows.filter((row) => row.privacy)).toEqual([]);
+    await expect(page.locator('#meta-toggle-1')).toContainText('technical info');
+  });
+
+  test('duplicate protection: tEXt Copyright / tEXt Software are counted once', async ({ page }) => {
+    // exifr already surfaces these two keywords as the privacy-classified
+    // EXIF-named fields Copyright / Software. The chunk reader must not add a
+    // second entry for the same payload - the count stays exactly 1.
+    for (const [label, filePath] of [['Copyright', textCopyrightPath], ['Software', textSoftwarePath]] as const) {
+      const status = await scanStatusFor(page, filePath);
+      expect(status, `tEXt ${label} was counted more than once`).toContain('Privacy metadata found (1)');
+
+      const rows = await openPanelRows(page);
+      const flagged = rows.filter((row) => row.privacy);
+      expect(flagged.map((row) => row.label)).toEqual([label]);
+      expect(rows.some((row) => row.label === 'PNG tEXt'), `tEXt ${label} produced a duplicate PNG tEXt row`).toBe(false);
+    }
+  });
+
+  test('repeated chunks of one type are numbered, never overwritten', async ({ page }) => {
+    const twoText = await scanStatusFor(page, twoTextPath);
+    expect(twoText).toContain('Privacy metadata found (2)');
+    const textRows = await openPanelRows(page);
+    const textLabels = textRows.filter((row) => row.privacy).map((row) => row.label);
+    expect(textLabels).toEqual(['PNG tEXt', 'PNG tEXt (2)']);
+
+    const twoZtxt = await scanStatusFor(page, twoZtxtPath);
+    expect(twoZtxt).toContain('Privacy metadata found (2)');
+    const ztxtRows = await openPanelRows(page);
+    const ztxtLabels = ztxtRows.filter((row) => row.privacy).map((row) => row.label);
+    expect(ztxtLabels).toEqual(['PNG zTXt', 'PNG zTXt (2)']);
+  });
+
+  test('malformed / empty textual payloads are detected and never break the scan', async ({ page }) => {
+    for (const filePath of [malformedTextPath, emptyTextPath]) {
+      const status = await scanStatusFor(page, filePath);
+      expect(status).toContain('Privacy metadata found (1)');
+
+      const rows = await openPanelRows(page);
+      expect(rows.filter((row) => row.privacy).map((row) => row.label)).toEqual(['PNG tEXt']);
+    }
+
+    // The malformed payload must not affect the removal path either.
+    await page.goto('http://localhost:4321/en');
+    await ensureReady(page);
+    await page.locator('#file-input').setInputFiles(malformedTextPath);
+    await expect(page.locator('#remove-1')).toHaveText('Remove metadata', { timeout: 30000 });
+    await page.locator('#remove-1').click();
+    await expect(page.locator('#remove-1')).toHaveText('✓ Success', { timeout: 30000 });
+    await expect(page.locator('[data-id="1"] .text-xs')).toContainText('Privacy metadata remaining: 0');
+    await expect(page.locator('#download-1')).toBeEnabled();
   });
 });
 

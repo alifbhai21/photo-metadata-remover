@@ -133,6 +133,172 @@ function readChunks(bytes: Uint8Array, verifyCrc: boolean): PngChunk[] {
   return chunks;
 }
 
+/** UTF-8 decoding for the uncompressed iTXt text field. */
+function decodeUtf8(bytes: Uint8Array): string {
+  try {
+    return new TextDecoder('utf-8').decode(bytes);
+  } catch {
+    let text = '';
+    for (let i = 0; i < bytes.length; i++) text += String.fromCharCode(bytes[i]);
+    return text;
+  }
+}
+
+/** Display cap: the scanner only shows a preview of a textual payload. */
+const MAX_SUMMARY_TEXT = 160;
+
+/**
+ * Keyword field of tEXt/zTXt/iTXt: 1-79 bytes terminated by NUL. Returns the
+ * keyword and the offset of the NUL (or -1 when the payload is malformed).
+ */
+function readChunkKeyword(bytes: Uint8Array, start: number, end: number): { keyword: string; separator: number } {
+  let cursor = start;
+  while (cursor < end && bytes[cursor] !== 0) cursor++;
+  if (cursor >= end) return { keyword: '', separator: -1 };
+  const length = Math.min(cursor - start, 79);
+  let keyword = '';
+  for (let i = start; i < start + length; i++) keyword += String.fromCharCode(bytes[i]);
+  return { keyword, separator: cursor };
+}
+
+/** Latin-1 payload text (tEXt), capped. Never a view into the source bytes. */
+function readLatin1Text(bytes: Uint8Array, start: number, end: number): string {
+  const limit = Math.min(end, start + MAX_SUMMARY_TEXT);
+  let text = '';
+  for (let i = start; i < limit; i++) text += String.fromCharCode(bytes[i]);
+  return text;
+}
+
+/**
+ * Text of an UNCOMPRESSED iTXt chunk: language tag, translated keyword and the
+ * UTF-8 text, each bounded by the payload end. '' when the payload is unusable.
+ */
+function readItxtText(bytes: Uint8Array, start: number, end: number): string {
+  let cursor = start;
+  for (let field = 0; field < 2; field++) {
+    const fieldStart = cursor;
+    while (cursor < end && bytes[cursor] !== 0) cursor++;
+    if (cursor >= end) {
+      // No separator for this field. Writers that omit the translated-keyword
+      // terminator put the text straight after the language tag, so show the
+      // remaining bytes rather than dropping the payload entirely.
+      if (field === 1 && cursor > fieldStart) {
+        return decodeUtf8(bytes.subarray(fieldStart, Math.min(end, fieldStart + MAX_SUMMARY_TEXT)));
+      }
+      return '';
+    }
+    cursor++;
+  }
+  if (cursor >= end) return '';
+  return decodeUtf8(bytes.subarray(cursor, Math.min(end, cursor + MAX_SUMMARY_TEXT)));
+}
+
+/** tIME payload: year(2) month day hour minute second, all big-endian fields. */
+function formatPngTime(bytes: Uint8Array, start: number, end: number): string {
+  if (end - start < 7) return '';
+  const year = (bytes[start] << 8) | bytes[start + 1];
+  const month = bytes[start + 2];
+  const day = bytes[start + 3];
+  const hour = bytes[start + 4];
+  const minute = bytes[start + 5];
+  const second = bytes[start + 6];
+  if (month < 1 || month > 12 || day < 1 || day > 31 || hour > 23 || minute > 59 || second > 60) return '';
+  const pad = (value: number, width = 2): string => String(value).padStart(width, '0');
+  return `${pad(year, 4)}-${pad(month)}-${pad(day)} ${pad(hour)}:${pad(minute)}:${pad(second)} UTC`;
+}
+
+/** One privacy-bearing PNG chunk as the SCAN sees it (plain data, no views). */
+export interface PngMetadataChunk {
+  /** Chunk type: 'eXIf', 'tEXt', 'zTXt', 'iTXt' or 'tIME'. */
+  type: string;
+  /** Keyword field of tEXt/zTXt/iTXt; '' when absent or malformed. */
+  keyword: string;
+  /** Plain readable payload text; '' when compressed or not textual. */
+  text: string;
+  /** Always non-empty: the line the scanner shows for this chunk. */
+  summary: string;
+}
+
+function describeMetadataChunk(
+  type: string,
+  bytes: Uint8Array,
+  start: number,
+  end: number,
+  size: number,
+): PngMetadataChunk {
+  if (type === 'eXIf') {
+    return { type, keyword: '', text: '', summary: `EXIF block (${size} bytes)` };
+  }
+  if (type === 'tIME') {
+    const time = formatPngTime(bytes, start, end);
+    return { type, keyword: '', text: time, summary: time || 'modification time' };
+  }
+
+  const { keyword, separator } = readChunkKeyword(bytes, start, end);
+  const named = keyword || '(no keyword)';
+
+  if (type === 'tEXt') {
+    const text = separator >= 0 ? readLatin1Text(bytes, separator + 1, end) : '';
+    return { type, keyword, text, summary: text ? `${named}: ${text}` : `${named} (empty)` };
+  }
+
+  if (type === 'zTXt') {
+    // Compressed text is NOT inflated: detection only needs the chunk and its
+    // keyword, and inflating an untrusted payload is not worth the risk.
+    return { type, keyword, text: '', summary: `${named} (compressed text)` };
+  }
+
+  // iTXt: keyword NUL, compression flag, compression method, language tag NUL,
+  // translated keyword NUL, text. The flag is the byte right after the keyword,
+  // the text fields start after flag + method.
+  if (separator < 0) {
+    // No keyword terminator: the payload cannot be located safely.
+    return { type, keyword: '', text: '', summary: '(no keyword) (payload not readable)' };
+  }
+  const flag = separator + 1 < end ? bytes[separator + 1] : 1;
+  const text = flag === 0 ? readItxtText(bytes, separator + 3, end) : '';
+  const summary = text ? `${named}: ${text}` : `${named} (${flag === 0 ? 'uncompressed' : 'compressed'} text)`;
+  return { type, keyword, text, summary };
+}
+
+/**
+ * Privacy-bearing chunks a PNG carries, as plain data for the upload scan.
+ *
+ * Why this exists:
+ * the scan used to rely on exifr alone, and exifr's PNG reader only surfaces
+ * eXIf, IHDR and a few tEXt keywords. zTXt is never inflated, an XMP iTXt only
+ * produces an internal error entry and tIME is ignored completely, so a PNG
+ * whose only privacy metadata is textual looked like a metadata-free file and
+ * the classifier reported "No privacy metadata found" - even though the removal
+ * path (stripPngMetadata) removes exactly these chunks.
+ *
+ * Detection is deliberate about what it does NOT do: no decompression, no CRC
+ * verification, no pixel decoding, and no returned value keeps a reference into
+ * `bytes`. A structurally broken container yields [] instead of throwing, so a
+ * malformed file can never break the scan.
+ */
+export function readPngMetadataChunks(bytes: Uint8Array): PngMetadataChunk[] {
+  const found: PngMetadataChunk[] = [];
+  if (!isPngSignature(bytes)) return found;
+
+  let chunks: PngChunk[];
+  try {
+    // CRC verification stays off here: the scan only needs to know which
+    // privacy chunks exist. Removal keeps verifying CRCs, so an untrustworthy
+    // file still fails loudly there instead of being reported as clean.
+    chunks = readChunks(bytes, false);
+  } catch {
+    return found;
+  }
+
+  for (const chunk of chunks) {
+    if (!METADATA_CHUNK_TYPES.includes(chunk.type)) continue;
+    const start = chunk.start + 8;
+    found.push(describeMetadataChunk(chunk.type, bytes, start, start + chunk.size, chunk.size));
+  }
+  return found;
+}
+
 /**
  * Remove the privacy-bearing metadata chunks from a PNG and return a new,
  * structurally valid PNG.
