@@ -173,13 +173,25 @@ test.describe('Metadata strip + re-upload E2E', () => {
     await ensureReady(page);
     await fileInput.setInputFiles(cleanPath);
 
-    // 9. Wait for re-scan — should show "No privacy metadata found"
-    await expect(page.locator('div.text-xs:has-text("No privacy metadata found")')).toBeVisible({ timeout: 15000 });
+    // 9. Wait for the re-upload pipeline to settle. A clean WebP's scan finds
+    //    nothing at all, so the item takes the documented auto-strip path (see
+    //    test-png-autostrip-decision.spec.ts) and ends in the verified-clean
+    //    state. The "No privacy metadata found" render is only a transient
+    //    intermediate frame on that path (measured ~2 ms), so awaiting it is a
+    //    race and must not be used as the settled-state signal.
+    const reuploadItem = page.locator('#files-list [data-id="1"]');
+    const reuploadStatus = reuploadItem.locator('.text-xs');
+    await expect(page.locator('#remove-1')).toHaveText('✓ Success', { timeout: 20000 });
 
-    // 10. Verify badge
-    const reuploadStatus = page.locator('div.text-xs').first();
-    const reuploadText = await reuploadStatus.textContent();
-    console.log(`Re-upload status text: "${reuploadText}"`);
+    // 10. Verify the re-scan of the generated output found zero privacy fields
+    //     and that the download is gated on exactly that verified state.
+    await expect(reuploadStatus).toContainText('Metadata removed successfully');
+    await expect(reuploadStatus).toContainText('Privacy metadata remaining: 0');
+    await expect(page.locator('#download-1')).toBeEnabled();
+
+    // 11. Verify the re-uploaded file is never reported as privacy-bearing.
+    const reuploadText = await reuploadItem.textContent();
+    console.log(`Re-upload item text: "${reuploadText}"`);
     expect(reuploadText).not.toContain('Privacy metadata found');
   });
 });
