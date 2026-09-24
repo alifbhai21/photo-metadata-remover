@@ -181,7 +181,6 @@ console.log('\n=== Stitch sections (EN home, 1280x800) ===');
     faq: !!document.querySelector('#faq details'),
     trust: document.body.textContent.includes('Private by architecture, not by promise'),
     anchors: !!document.querySelector('a[href="#how-it-works"]') && !!document.querySelector('a[href="#faq"]'),
-    themeToggleInert: !!document.querySelector('#theme-toggle') && !document.documentElement.classList.contains('dark'),
     surfaceBg: getComputedStyle(document.documentElement).getPropertyValue('--pmr-bg').trim() === '#f7f9f7',
     accent: getComputedStyle(document.documentElement).getPropertyValue('--pmr-accent').trim() === '#15803d',
   }));
@@ -195,7 +194,6 @@ console.log('\n=== Stitch sections (EN home, 1280x800) ===');
   ok('accessible FAQ (native details)', checks.faq);
   ok('trust strip', checks.trust);
   ok('trust CTAs target real anchors', checks.anchors);
-  ok('theme toggle present but inert (light-only)', checks.themeToggleInert);
   ok('surface token #f7f9f7 active', checks.surfaceBg);
   ok('accent #15803d active', checks.accent);
 

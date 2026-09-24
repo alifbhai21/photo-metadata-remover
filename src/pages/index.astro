@@ -35,29 +35,10 @@ const websiteJsonLd = {
     <meta name="description" content={siteDescription} />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#03070A" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.ico" />
     <link rel="manifest" href="/site.webmanifest" />
-
-    <!-- Theme init: respect system preference, allow manual override via localStorage -->
-    <script is:inline>
-      (function () {
-        try {
-          var root = document.documentElement;
-          var stored = localStorage.getItem('pmr_theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (stored === 'dark' || (!stored && prefersDark)) {
-            root.classList.add('dark');
-            root.style.colorScheme = 'dark';
-          } else {
-            root.classList.remove('dark');
-            root.style.colorScheme = 'light';
-          }
-        } catch (e) {}
-      })();
-    </script>
 
     <link rel="canonical" href={`${SITE_URL}/`} />
     {SUPPORTED_LANGS.map((l) => (

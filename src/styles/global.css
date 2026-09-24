@@ -1,10 +1,6 @@
 @import "tailwindcss";
 
-/* Google Stitch — Light Theme (Phase 1)
-   Single light theme. The legacy dark variant is retired; the `dark:` custom
-   variant is kept only so any residual `dark:` utility classes stay inert. */
-
-@custom-variant dark (&:where(.dark, .dark *));
+/* Google Stitch — Light Theme (Phase 1) — light-only site */
 
 /* ---------------------------------------------------------------------------
  * Design tokens — PhotoGuard Light
