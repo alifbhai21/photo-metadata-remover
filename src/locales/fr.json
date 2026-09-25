@@ -742,6 +742,16 @@
     "related": "Articles associés",
     "faq_title": "FAQ"
   },
+  "selected_articles": {
+    "eyebrow": "Lectures sélectionnées",
+    "title": "En savoir plus sur les métadonnées photo",
+    "subtitle": "Cinq guides pratiques sur ce que révèlent les métadonnées et comment les supprimer avant de partager.",
+    "view_all": "Voir tous les articles",
+    "toc": "Table des matières",
+    "updated": "Mis à jour",
+    "try_tool": "Essayer l'outil",
+    "read_full": "Lire l'article complet"
+  },
   "tool_page": {
     "eyebrow": "Outil"
   },

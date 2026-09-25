@@ -1,0 +1,413 @@
+---
+import { getCollection, render } from 'astro:content';
+import { getTranslations, t } from '../i18n/index';
+import { FEATURED_POSTS } from '../config/featured-posts';
+
+const { lang = 'en' } = Astro.props;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+
+const allPosts = await getCollection('blog');
+
+const posts = allPosts
+  .filter((p) => p.data.lang === currentLang && (FEATURED_POSTS as readonly string[]).includes(p.data.slug))
+  .sort(
+    (a, b) =>
+      (FEATURED_POSTS as readonly string[]).indexOf(a.data.slug) -
+      (FEATURED_POSTS as readonly string[]).indexOf(b.data.slug),
+  );
+
+function demoteHeadings(html: string): string {
+  return html
+    .replace(/<h([2-6])(?=[\s>])/gi, (_, n) => `<h${Math.min(Number(n) + 2, 6)}`)
+    .replace(/<\/h([2-6])>/gi, (_, n) => `</h${Math.min(Number(n) + 2, 6)}>`);
+}
+
+function wrapTables(html: string): string {
+  return html
+    .replace(/<table(\s|>)/gi, '<div class="learn-table"><table$1')
+    .replace(/<\/table>/gi, '</table></div>');
+}
+
+const articles = await Promise.all(
+  posts.map(async (post) => {
+    await render(post);
+    const raw = post.rendered?.html ?? '';
+    const html = wrapTables(demoteHeadings(raw));
+    const related = allPosts
+      .filter((p) => p.data.lang === currentLang && p.data.slug !== post.data.slug)
+      .sort((a, b) => b.data.published.getTime() - a.data.published.getTime())
+      .slice(0, 2);
+    const date = post.data.updated ?? post.data.published;
+    return {
+      slug: post.data.slug,
+      title: post.data.title,
+      date,
+      html,
+      related,
+    };
+  }),
+);
+
+const dateFormat = new Intl.DateTimeFormat(currentLang, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<section
+  id="selected-articles"
+  class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 border-t border-slate-200/70 scroll-mt-24"
+  data-purpose="selected-articles"
+>
+  <div class="text-center mb-8 sm:mb-10">
+    <span class="pmr-eyebrow justify-center">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent"></span>
+      {t(translations, 'selected_articles.eyebrow')}
+    </span>
+    <h2 class="mt-3 text-[24px] sm:text-[30px] font-bold tracking-tight text-slate-900 leading-[1.1]">
+      {t(translations, 'selected_articles.title')}
+    </h2>
+    <p class="mt-4 text-[14px] sm:text-[15px] text-slate-500 leading-relaxed max-w-xl mx-auto">
+      {t(translations, 'selected_articles.subtitle')}
+    </p>
+  </div>
+
+  <nav class="learn-toc" aria-label={t(translations, 'selected_articles.toc')}>
+    <p class="learn-toc-title">{t(translations, 'selected_articles.toc')}</p>
+    <ol class="learn-toc-list">
+      {articles.map((article) => (
+        <li>
+          <a href={`#${article.slug}`}>{article.title}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+
+  <div class="learn-articles">
+    {articles.map((article) => (
+      <article id={article.slug} class="learn-article">
+        <h3 class="learn-article-title">{article.title}</h3>
+        <p class="learn-article-meta">
+          <span>{t(translations, 'selected_articles.updated')}</span>
+          {' '}
+          <time datetime={article.date.toISOString()}>{dateFormat.format(article.date)}</time>
+        </p>
+        <div class="learn-body" set:html={article.html} />
+        <footer class="learn-article-footer">
+          <div class="learn-ctas">
+            <a href="#top" class="learn-cta learn-cta-primary">
+              {t(translations, 'selected_articles.try_tool')}
+            </a>
+            <a href={`/${currentLang}/blog/${article.slug}`} class="learn-cta">
+              {t(translations, 'selected_articles.read_full')}
+            </a>
+          </div>
+          {article.related.length > 0 && (
+            <div class="learn-related">
+              <span class="learn-related-label">{t(translations, 'blog.related')}</span>
+              <ul class="learn-related-list">
+                {article.related.map((rel) => (
+                  <li>
+                    <a href={`/${currentLang}/blog/${rel.data.slug}`}>{rel.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </footer>
+      </article>
+    ))}
+  </div>
+
+  <div class="mt-6 text-center">
+    <a
+      href={`/${currentLang}/blog`}
+      class="text-xs font-semibold text-brand-700 hover:text-brand-800 inline-flex items-center gap-1"
+    >
+      <span>{t(translations, 'selected_articles.view_all')}</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .learn-toc {
+    max-width: 72ch;
+    margin: 0 auto 2.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--pmr-surface);
+    border: 1px solid var(--pmr-border);
+    border-radius: 16px;
+  }
+
+  .learn-toc-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pmr-eyebrow);
+    margin-bottom: 0.75rem;
+  }
+
+  .learn-toc-list {
+    list-style: decimal;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .learn-toc-list a {
+    color: var(--pmr-text);
+    font-size: 14.5px;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: transparent;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  }
+
+  .learn-toc-list a:hover {
+    color: var(--pmr-accent);
+    text-decoration-color: currentColor;
+  }
+
+  .learn-articles {
+    max-width: 72ch;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .learn-article {
+    scroll-margin-top: 5.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--pmr-border);
+  }
+
+  .learn-article:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .learn-article-title {
+    font-size: 1.375rem;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--pmr-text);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .learn-article-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--pmr-text-faint);
+    margin-bottom: 1.25rem;
+  }
+
+  .learn-body {
+    line-height: 1.75;
+    color: var(--pmr-text-muted);
+    font-size: 15.5px;
+  }
+
+  .learn-body :global(h4) {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--pmr-text);
+    margin-top: 2rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .learn-body :global(h5) {
+    font-size: 1.0625rem;
+    line-height: 1.35;
+    font-weight: 600;
+    color: var(--pmr-text);
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .learn-body :global(h6) {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--pmr-text);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .learn-body :global(p) {
+    margin: 1rem 0;
+  }
+
+  .learn-body :global(ul),
+  .learn-body :global(ol) {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .learn-body :global(ul) {
+    list-style: disc;
+  }
+
+  .learn-body :global(ol) {
+    list-style: decimal;
+  }
+
+  .learn-body :global(li) {
+    margin: 0.4rem 0;
+    line-height: 1.65;
+  }
+
+  .learn-body :global(a) {
+    color: var(--pmr-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .learn-body :global(a:hover) {
+    color: var(--pmr-accent-hover);
+  }
+
+  .learn-body :global(strong) {
+    color: var(--pmr-text);
+    font-weight: 600;
+  }
+
+  .learn-body :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--pmr-surface-muted);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+
+  .learn-body :global(blockquote) {
+    margin: 1.25rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--pmr-border-strong);
+    color: var(--pmr-text-muted);
+    font-style: italic;
+  }
+
+  .learn-body :global(.learn-table) {
+    overflow-x: auto;
+    margin: 1.25rem 0;
+    border: 1px solid var(--pmr-border);
+    border-radius: 12px;
+  }
+
+  .learn-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.5;
+    min-width: 320px;
+  }
+
+  .learn-body :global(th),
+  .learn-body :global(td) {
+    padding: 0.65rem 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid var(--pmr-border);
+    vertical-align: top;
+  }
+
+  .learn-body :global(th) {
+    font-weight: 600;
+    color: var(--pmr-text);
+    background: var(--pmr-surface-muted);
+    white-space: nowrap;
+  }
+
+  .learn-body :global(td) {
+    color: var(--pmr-text-muted);
+  }
+
+  .learn-body :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .learn-article-footer {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--pmr-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .learn-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .learn-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.15rem;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    border: 1px solid var(--pmr-border);
+    color: var(--pmr-text);
+    background: var(--pmr-surface);
+    text-decoration: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .learn-cta:hover {
+    background: var(--pmr-surface-muted);
+    border-color: var(--pmr-border-strong);
+  }
+
+  .learn-cta-primary {
+    background: var(--pmr-accent-btn, var(--pmr-accent));
+    border-color: transparent;
+    color: var(--pmr-accent-btn-text, #fff);
+  }
+
+  .learn-cta-primary:hover {
+    background: var(--pmr-accent-btn-hover, var(--pmr-accent));
+    border-color: transparent;
+  }
+
+  .learn-related-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--pmr-text-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .learn-related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .learn-related-list a {
+    font-size: 14px;
+    color: var(--pmr-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .learn-related-list a:hover {
+    color: var(--pmr-accent-hover);
+  }
+</style>

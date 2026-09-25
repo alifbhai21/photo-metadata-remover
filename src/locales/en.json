@@ -869,6 +869,16 @@
     "related": "Related articles",
     "faq_title": "FAQ"
   },
+  "selected_articles": {
+    "eyebrow": "Selected reading",
+    "title": "Learn more about photo metadata",
+    "subtitle": "Five practical guides on what metadata reveals and how to remove it before you share.",
+    "view_all": "View all articles",
+    "toc": "Table of contents",
+    "updated": "Updated",
+    "try_tool": "Try the tool",
+    "read_full": "Read the full article"
+  },
   "tool_page": {
     "eyebrow": "Tool"
   },

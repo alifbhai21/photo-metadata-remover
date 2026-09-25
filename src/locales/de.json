@@ -742,6 +742,16 @@
     "related": "Verwandte Artikel",
     "faq_title": "FAQ"
   },
+  "selected_articles": {
+    "eyebrow": "Ausgewählte Artikel",
+    "title": "Mehr über Foto-Metadaten erfahren",
+    "subtitle": "Fünf praktische Ratgeber darüber, was Metadaten verraten und wie man sie vor dem Teilen entfernt.",
+    "view_all": "Alle Artikel ansehen",
+    "toc": "Inhaltsverzeichnis",
+    "updated": "Aktualisiert",
+    "try_tool": "Werkzeug ausprobieren",
+    "read_full": "Vollständigen Artikel lesen"
+  },
   "tool_page": {
     "eyebrow": "Werkzeug"
   },
