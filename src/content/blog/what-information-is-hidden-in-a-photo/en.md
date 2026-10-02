@@ -72,7 +72,7 @@ The risk is not that one field is dangerous; it is the combination of location, 
 
 1. **Scan** — run the [photo metadata checker](/en/view-photo-metadata) and read the field-by-field output.
 2. **Decide** — separate what you want to keep (usually nothing) from what must go.
-3. **Strip** — use the [photo metadata remover](/en/photo-metadata-remover#tool) to remove EXIF, GPS, IPTC, XMP, and embedded previews.
+3. **Strip** — use the [photo metadata remover](/en/#tool) to remove EXIF, GPS, IPTC, XMP, and embedded previews.
 4. **Re-scan** — verify the cleaned copy is truly empty before it goes anywhere.
 
 Everything runs locally in your browser; your originals never leave your device.
@@ -81,4 +81,4 @@ Everything runs locally in your browser; your originals never leave your device.
 
 Hidden in a photo are the camera and its settings profile, the exact capture time, your coordinates, editorial names, software history, and embedded previews. Technicians use these fields to organize and verify files; strangers use them to find out who you are and where you live. Scan your files, strip the fields, and verify the result — the same way you would check a gate before leaving it unlocked.
 
-See exactly what your files carry: [check photo metadata](/en/view-photo-metadata), then [remove EXIF, GPS, and hidden data](/en/photo-metadata-remover#tool).
+See exactly what your files carry: [check photo metadata](/en/view-photo-metadata), then [remove EXIF, GPS, and hidden data](/en/#tool).

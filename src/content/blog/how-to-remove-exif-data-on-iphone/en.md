@@ -41,7 +41,7 @@ On iOS, the share sheet exposes an "Options" menu with a **Location** toggle. Wh
 
 ## Step 4: the reliable method — strip metadata locally with a browser-based tool
 
-When you need the file itself cleaned — every EXIF field, GPS block, IPTC and XMP data removed — the most direct route is the [photo metadata remover](/en/photo-metadata-remover#tool):
+When you need the file itself cleaned — every EXIF field, GPS block, IPTC and XMP data removed — the most direct route is the [photo metadata remover](/en/#tool):
 
 1. Open the tool in Safari on your iPhone.
 2. Load the photo you want to clean. The tool reads and processes it entirely in your browser.
@@ -79,6 +79,6 @@ Only the full remover clears every metadata container in the actual file, and it
 
 ## The bottom line
 
-To remove EXIF data from photos on iPhone, start with Settings — stop the camera recording location, then strip the visible location on existing photos. For a fully clean file, run the [photo metadata remover](/en/photo-metadata-remover#tool) in your browser: it clears every field on-device, and the [metadata checker](/en/view-photo-metadata) confirms the result. Prevention, cleaning, and verification take under a minute once you have the loop.
+To remove EXIF data from photos on iPhone, start with Settings — stop the camera recording location, then strip the visible location on existing photos. For a fully clean file, run the [photo metadata remover](/en/#tool) in your browser: it clears every field on-device, and the [metadata checker](/en/view-photo-metadata) confirms the result. Prevention, cleaning, and verification take under a minute once you have the loop.
 
-Clean your iPhone photos now: [remove EXIF, GPS, and hidden data](/en/photo-metadata-remover#tool).
+Clean your iPhone photos now: [remove EXIF, GPS, and hidden data](/en/#tool).

@@ -81,7 +81,7 @@ En confidentialité : priorisez EXIF. Pour un nettoyage total : supprimez les tr
 
 ## Comment supprimer IPTC et XMP de vos photos
 
-Vous n'avez pas à choisir entre les normes pour nettoyer. Le [suppresseur de métadonnées photo](/fr/photo-metadata-remover#tool) retire EXIF, IPTC et XMP en une seule passe locale :
+Vous n'avez pas à choisir entre les normes pour nettoyer. Le [suppresseur de métadonnées photo](/fr/#tool) retire EXIF, IPTC et XMP en une seule passe locale :
 
 1. Chargez la photo — elle est traitée entièrement dans votre navigateur.
 2. Confirmez les champs supprimés avec le [vérificateur de métadonnées photo](/fr/view-photo-metadata) avant et après.
@@ -93,4 +93,4 @@ Tout s'exécute sur votre appareil, donc même les fichiers de presse avec droit
 
 IPTC est la norme photo de presse qui stocke légendes, bylines et droits ; XMP est le successeur XML d'Adobe qui couvre les champs IPTC plus les données caméra, logiciel et couleur. Les photos modernes portent les deux — souvent dupliqués — donc un nettoyeur qui ne touche qu'une seule norme laisse l'autre derrière. Supprimez EXIF, IPTC et XMP ensemble, et vos photos portent exactement ce que vous voulez qu'elles portent : rien.
 
-Nettoyez chaque norme de métadonnées en même temps : [supprimez EXIF, GPS, IPTC et XMP](/fr/photo-metadata-remover#tool).
+Nettoyez chaque norme de métadonnées en même temps : [supprimez EXIF, GPS, IPTC et XMP](/fr/#tool).

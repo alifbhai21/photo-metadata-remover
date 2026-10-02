@@ -81,7 +81,7 @@ Privacy-wise, prioritize EXIF; for total cleaning, clear all three. The visual q
 
 ## How to clear IPTC and XMP from your photos
 
-You do not need to pick between standards when you clean. The [photo metadata remover](/en/photo-metadata-remover#tool) strips EXIF, IPTC, and XMP in a single local pass:
+You do not need to pick between standards when you clean. The [photo metadata remover](/en/#tool) strips EXIF, IPTC, and XMP in a single local pass:
 
 1. Load the photo — it is processed entirely in your browser.
 2. Confirm the removed fields with the [photo metadata checker](/en/view-photo-metadata) before and after.
@@ -93,4 +93,4 @@ Everything runs on your device, so even rights-bearing press files stay where th
 
 IPTC is the press-photo standard that stores captions, bylines, and rights; XMP is Adobe's XML successor that covers IPTC fields plus camera, software, and color data. Modern photos carry both — often duplicated — so a cleaner that touches only one standard leaves the other behind. Clear EXIF, IPTC, and XMP together, and your photos carry exactly what you want them to carry: nothing.
 
-Clean every metadata standard at once: [remove EXIF, GPS, IPTC, and XMP](/en/photo-metadata-remover#tool).
+Clean every metadata standard at once: [remove EXIF, GPS, IPTC, and XMP](/en/#tool).

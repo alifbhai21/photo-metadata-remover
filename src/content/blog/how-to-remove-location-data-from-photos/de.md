@@ -21,7 +21,7 @@ Das Entfernen von Standortdaten ist nur sinnvoll, wenn Sie bestätigen können, 
 
 ## Methode 1: Metadaten mit einem Browser-Tool entfernen (empfohlen)
 
-Der sauberste Ansatz auf jedem Gerät – Handy oder Desktop – ist ein Metadaten-Entferner, der das Bild ohne die versteckten Blöcke neu schreibt. Der [kostenlose Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) funktioniert so:
+Der sauberste Ansatz auf jedem Gerät – Handy oder Desktop – ist ein Metadaten-Entferner, der das Bild ohne die versteckten Blöcke neu schreibt. Der [kostenlose Foto-Metadaten-Entferner](/de/#tool) funktioniert so:
 
 1. **Foto laden** – per Drag & Drop oder Dateiauswahl.
 2. **Scan prüfen** – das Tool zeigt die erkannten Kamera-, Software- und GPS-Felder, damit Sie genau wissen, was entfernt wird.
@@ -75,4 +75,4 @@ Lassen Sie nach dem Bereinigen die [Metadaten-Prüfung](/de/view-photo-metadata)
 
 Standortdaten aus Fotos zu entfernen ist eine zweiteilige Gewohnheit: Zukünftige Tags verhindern, indem Sie GPS an der Kamera ausschalten, und bestehende Dateien bereinigen, indem Sie vor dem Teilen die Metadaten entfernen. Ein lokaler, browserbasierter Entferner liefert auf jedem Gerät ein schnelles, konsistentes Ergebnis ohne Upload – prüfen, entfernen, verifizieren und erst dann teilen.
 
-Bereit, ein Foto zu bereinigen? [Standort- und andere Metadaten jetzt entfernen](/de/photo-metadata-remover#tool).
+Bereit, ein Foto zu bereinigen? [Standort- und andere Metadaten jetzt entfernen](/de/#tool).

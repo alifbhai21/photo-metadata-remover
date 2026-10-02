@@ -72,7 +72,7 @@ An empty result is not a failure. It means the file carries no EXIF the parser c
 
 Everything you learn from the check tells you what to do next:
 
-- **Clean** — if camera, GPS, or software fields appear, run the [photo metadata remover](/en/photo-metadata-remover#tool) to produce a clean copy.
+- **Clean** — if camera, GPS, or software fields appear, run the [photo metadata remover](/en/#tool) to produce a clean copy.
 - **Verify** — after stripping, re-run the checker on the output and confirm the fields are gone.
 - **Repeat before every share** — a 10-second check removes the guesswork across all your channels.
 
@@ -80,4 +80,4 @@ Everything you learn from the check tells you what to do next:
 
 Checking photo metadata is quick and free: file properties on Windows, Preview's inspector on macOS, detail panels on phones, and a full field-by-field readout from a browser-based checker. Read the GPS, camera, and software fields critically, strip what should not be shared, and verify the cleaned file before you send it anywhere.
 
-Start with a scan: [check photo metadata online](/en/view-photo-metadata) or [remove EXIF and GPS now](/en/photo-metadata-remover#tool).
+Start with a scan: [check photo metadata online](/en/view-photo-metadata) or [remove EXIF and GPS now](/en/#tool).

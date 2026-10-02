@@ -21,7 +21,7 @@ Supprimer les données de position n'a de sens que si vous pouvez confirmer qu'e
 
 ## Méthode 1 : supprimer les métadonnées avec un outil navigateur (recommandé)
 
-L'approche la plus propre sur tout appareil – téléphone ou ordinateur – est un suppresseur de métadonnées qui réécrit l'image sans les blocs cachés. Le [suppresseur de métadonnées photo gratuit](/fr/photo-metadata-remover#tool) fonctionne ainsi :
+L'approche la plus propre sur tout appareil – téléphone ou ordinateur – est un suppresseur de métadonnées qui réécrit l'image sans les blocs cachés. Le [suppresseur de métadonnées photo gratuit](/fr/#tool) fonctionne ainsi :
 
 1. **Chargez la photo** – glisser-déposer ou sélection du fichier.
 2. **Examinez le scan** – l'outil affiche les champs caméra, logiciel et GPS détectés afin que vous sachiez exactement ce qui sera retiré.
@@ -75,4 +75,4 @@ Après nettoyage, relancez la [vérification des métadonnées](/fr/view-photo-m
 
 Supprimer les données de position des photos est une habitude en deux temps : empêcher les futurs marqueurs en coupant le GPS de votre appareil, et nettoyer les fichiers existants en retirant les métadonnées avant de partager. Un suppresseur local basé navigateur offre un résultat rapide et cohérent sur tout appareil sans téléversement – vérifiez, supprimez, contrôlez, puis partagez.
 
-Prêt à nettoyer une photo ? [Supprimez la position et les autres métadonnées maintenant](/fr/photo-metadata-remover#tool).
+Prêt à nettoyer une photo ? [Supprimez la position et les autres métadonnées maintenant](/fr/#tool).

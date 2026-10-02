@@ -21,7 +21,7 @@ Removal you cannot verify is removal you cannot trust. Run the photo through the
 
 ## The fastest free method: a browser-based stripper
 
-No install, no upload, works on every platform. The free [photo metadata remover](/en/photo-metadata-remover#tool) handles JPG and PNG and does the whole job client-side:
+No install, no upload, works on every platform. The free [photo metadata remover](/en/#tool) handles JPG and PNG and does the whole job client-side:
 
 1. **Load the photo** — drag and drop or pick it from disk.
 2. **Read the scan results** — the tool surfaces the detected camera, software, and GPS fields.
@@ -79,4 +79,4 @@ Close the loop the same way you opened it: run the output through the [metadata 
 
 Removing EXIF data is free, fast, and quality-neutral: confirm it is present with a checker, strip it with a browser-based tool that never uploads your file, and verify the result before sharing. On Windows and macOS the built-in export and property paths work for simple cases; on phones a dedicated stripper is the most predictable option.
 
-Clean a photo in under a minute: [remove EXIF and other metadata now](/en/photo-metadata-remover#tool).
+Clean a photo in under a minute: [remove EXIF and other metadata now](/en/#tool).

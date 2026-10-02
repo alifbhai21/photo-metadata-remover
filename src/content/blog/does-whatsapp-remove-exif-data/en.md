@@ -55,7 +55,7 @@ Cleaning is not about outsmarting WhatsApp; it is about ensuring every copy of a
 ## How to send a photo on WhatsApp without leaking metadata
 
 1. **Check the file** — scan it with the [photo metadata checker](/en/view-photo-metadata) and see what it carries.
-2. **Strip it** — run the [photo metadata remover](/en/photo-metadata-remover#tool) to produce a clean copy. Everything happens locally; your original never leaves your device.
+2. **Strip it** — run the [photo metadata remover](/en/#tool) to produce a clean copy. Everything happens locally; your original never leaves your device.
 3. **Verify** — re-scan the cleaned output and confirm GPS, camera, and software fields are gone.
 4. **Then send** — share the clean copy through whatever channel you like, including document mode.
 
@@ -65,4 +65,4 @@ You lose nothing: quality is controlled by WhatsApp's compression anyway, and a 
 
 WhatsApp compresses and re-encodes standard photo sends, which strips the original EXIF and GPS in the common case — but it is not a sanitizer. Document sends can carry the full metadata, cached copies remain on your device, and every forward depends on whatever the intermediate file held. Check, strip in your browser, verify, then send. That one habit protects every photo on every platform, not just WhatsApp chats.
 
-Ready to send safely? [Check your photo's metadata](/en/view-photo-metadata) and [remove EXIF, GPS, and hidden data](/en/photo-metadata-remover#tool) in one pass.
+Ready to send safely? [Check your photo's metadata](/en/view-photo-metadata) and [remove EXIF, GPS, and hidden data](/en/#tool) in one pass.

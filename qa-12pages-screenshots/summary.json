@@ -1,0 +1,730 @@
+{
+  "summary": {
+    "totalRenders": 72,
+    "failures": 0,
+    "overflows": 0,
+    "consoleErrors": 0
+  },
+  "results": [
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__view-photo-metadata\\375x667.png"
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__view-photo-metadata\\390x844.png"
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__view-photo-metadata\\768x1024.png"
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__view-photo-metadata\\820x1180.png"
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__view-photo-metadata\\1280x800.png"
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__view-photo-metadata\\1440x900.png"
+    },
+    {
+      "route": "de/view-photo-metadata",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__view-photo-metadata\\375x667.png"
+    },
+    {
+      "route": "de/view-photo-metadata",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__view-photo-metadata\\390x844.png"
+    },
+    {
+      "route": "de/view-photo-metadata",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__view-photo-metadata\\768x1024.png"
+    },
+    {
+      "route": "de/view-photo-metadata",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__view-photo-metadata\\820x1180.png"
+    },
+    {
+      "route": "de/view-photo-metadata",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__view-photo-metadata\\1280x800.png"
+    },
+    {
+      "route": "de/view-photo-metadata",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__view-photo-metadata\\1440x900.png"
+    },
+    {
+      "route": "fr/view-photo-metadata",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__view-photo-metadata\\375x667.png"
+    },
+    {
+      "route": "fr/view-photo-metadata",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__view-photo-metadata\\390x844.png"
+    },
+    {
+      "route": "fr/view-photo-metadata",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__view-photo-metadata\\768x1024.png"
+    },
+    {
+      "route": "fr/view-photo-metadata",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__view-photo-metadata\\820x1180.png"
+    },
+    {
+      "route": "fr/view-photo-metadata",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__view-photo-metadata\\1280x800.png"
+    },
+    {
+      "route": "fr/view-photo-metadata",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__view-photo-metadata\\1440x900.png"
+    },
+    {
+      "route": "en/remove-exif-data",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-exif-data\\375x667.png"
+    },
+    {
+      "route": "en/remove-exif-data",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-exif-data\\390x844.png"
+    },
+    {
+      "route": "en/remove-exif-data",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-exif-data\\768x1024.png"
+    },
+    {
+      "route": "en/remove-exif-data",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-exif-data\\820x1180.png"
+    },
+    {
+      "route": "en/remove-exif-data",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-exif-data\\1280x800.png"
+    },
+    {
+      "route": "en/remove-exif-data",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-exif-data\\1440x900.png"
+    },
+    {
+      "route": "de/remove-exif-data",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-exif-data\\375x667.png"
+    },
+    {
+      "route": "de/remove-exif-data",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-exif-data\\390x844.png"
+    },
+    {
+      "route": "de/remove-exif-data",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-exif-data\\768x1024.png"
+    },
+    {
+      "route": "de/remove-exif-data",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-exif-data\\820x1180.png"
+    },
+    {
+      "route": "de/remove-exif-data",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-exif-data\\1280x800.png"
+    },
+    {
+      "route": "de/remove-exif-data",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-exif-data\\1440x900.png"
+    },
+    {
+      "route": "fr/remove-exif-data",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-exif-data\\375x667.png"
+    },
+    {
+      "route": "fr/remove-exif-data",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-exif-data\\390x844.png"
+    },
+    {
+      "route": "fr/remove-exif-data",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-exif-data\\768x1024.png"
+    },
+    {
+      "route": "fr/remove-exif-data",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-exif-data\\820x1180.png"
+    },
+    {
+      "route": "fr/remove-exif-data",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-exif-data\\1280x800.png"
+    },
+    {
+      "route": "fr/remove-exif-data",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-exif-data\\1440x900.png"
+    },
+    {
+      "route": "en/remove-gps-data",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-gps-data\\375x667.png"
+    },
+    {
+      "route": "en/remove-gps-data",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-gps-data\\390x844.png"
+    },
+    {
+      "route": "en/remove-gps-data",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-gps-data\\768x1024.png"
+    },
+    {
+      "route": "en/remove-gps-data",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-gps-data\\820x1180.png"
+    },
+    {
+      "route": "en/remove-gps-data",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-gps-data\\1280x800.png"
+    },
+    {
+      "route": "en/remove-gps-data",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-gps-data\\1440x900.png"
+    },
+    {
+      "route": "de/remove-gps-data",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-gps-data\\375x667.png"
+    },
+    {
+      "route": "de/remove-gps-data",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-gps-data\\390x844.png"
+    },
+    {
+      "route": "de/remove-gps-data",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-gps-data\\768x1024.png"
+    },
+    {
+      "route": "de/remove-gps-data",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-gps-data\\820x1180.png"
+    },
+    {
+      "route": "de/remove-gps-data",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-gps-data\\1280x800.png"
+    },
+    {
+      "route": "de/remove-gps-data",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-gps-data\\1440x900.png"
+    },
+    {
+      "route": "fr/remove-gps-data",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-gps-data\\375x667.png"
+    },
+    {
+      "route": "fr/remove-gps-data",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-gps-data\\390x844.png"
+    },
+    {
+      "route": "fr/remove-gps-data",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-gps-data\\768x1024.png"
+    },
+    {
+      "route": "fr/remove-gps-data",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-gps-data\\820x1180.png"
+    },
+    {
+      "route": "fr/remove-gps-data",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-gps-data\\1280x800.png"
+    },
+    {
+      "route": "fr/remove-gps-data",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-gps-data\\1440x900.png"
+    },
+    {
+      "route": "en/remove-metadata-heic",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-metadata-heic\\375x667.png"
+    },
+    {
+      "route": "en/remove-metadata-heic",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-metadata-heic\\390x844.png"
+    },
+    {
+      "route": "en/remove-metadata-heic",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-metadata-heic\\768x1024.png"
+    },
+    {
+      "route": "en/remove-metadata-heic",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-metadata-heic\\820x1180.png"
+    },
+    {
+      "route": "en/remove-metadata-heic",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-metadata-heic\\1280x800.png"
+    },
+    {
+      "route": "en/remove-metadata-heic",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\en__remove-metadata-heic\\1440x900.png"
+    },
+    {
+      "route": "de/remove-metadata-heic",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-metadata-heic\\375x667.png"
+    },
+    {
+      "route": "de/remove-metadata-heic",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-metadata-heic\\390x844.png"
+    },
+    {
+      "route": "de/remove-metadata-heic",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-metadata-heic\\768x1024.png"
+    },
+    {
+      "route": "de/remove-metadata-heic",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-metadata-heic\\820x1180.png"
+    },
+    {
+      "route": "de/remove-metadata-heic",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-metadata-heic\\1280x800.png"
+    },
+    {
+      "route": "de/remove-metadata-heic",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\de__remove-metadata-heic\\1440x900.png"
+    },
+    {
+      "route": "fr/remove-metadata-heic",
+      "vp": "375x667",
+      "status": 200,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-metadata-heic\\375x667.png"
+    },
+    {
+      "route": "fr/remove-metadata-heic",
+      "vp": "390x844",
+      "status": 200,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-metadata-heic\\390x844.png"
+    },
+    {
+      "route": "fr/remove-metadata-heic",
+      "vp": "768x1024",
+      "status": 200,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-metadata-heic\\768x1024.png"
+    },
+    {
+      "route": "fr/remove-metadata-heic",
+      "vp": "820x1180",
+      "status": 200,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-metadata-heic\\820x1180.png"
+    },
+    {
+      "route": "fr/remove-metadata-heic",
+      "vp": "1280x800",
+      "status": 200,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-metadata-heic\\1280x800.png"
+    },
+    {
+      "route": "fr/remove-metadata-heic",
+      "vp": "1440x900",
+      "status": 200,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflow": false,
+      "errors": [],
+      "file": "D:\\photo metadata remover\\qa-12pages-screenshots\\fr__remove-metadata-heic\\1440x900.png"
+    }
+  ]
+}

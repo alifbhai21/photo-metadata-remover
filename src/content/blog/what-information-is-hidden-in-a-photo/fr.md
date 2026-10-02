@@ -72,7 +72,7 @@ Le risque n'est pas qu'un seul champ soit dangereux ; c'est la combinaison de li
 
 1. **Scannez** – exécutez le [vérificateur de métadonnées photo](/fr/view-photo-metadata) et lisez la sortie champ par champ.
 2. **Décidez** – séparez ce que vous voulez garder (généralement rien) de ce qui doit partir.
-3. **Supprimez** – utilisez le [suppresseur de métadonnées photo](/fr/photo-metadata-remover#tool) pour retirer EXIF, GPS, IPTC, XMP et les aperçus intégrés.
+3. **Supprimez** – utilisez le [suppresseur de métadonnées photo](/fr/#tool) pour retirer EXIF, GPS, IPTC, XMP et les aperçus intégrés.
 4. **Re-scannez** – vérifiez que la copie nettoyée est vraiment vide avant qu'elle ne parte nulle part.
 
 Tout s'exécute en local dans votre navigateur ; vos originaux ne quittent jamais votre appareil.
@@ -81,4 +81,4 @@ Tout s'exécute en local dans votre navigateur ; vos originaux ne quittent jamai
 
 Dans une photo se cachent l'appareil et son profil de réglages, l'heure exacte de la prise, vos coordonnées, les noms éditoriaux, l'historique logiciel et les aperçus intégrés. Les techniciens utilisent ces champs pour organiser et vérifier les fichiers ; les inconnus, pour découvrir qui vous êtes et où vous habitez. Scannez vos fichiers, supprimez les champs et vérifiez le résultat – comme vous contrôleriez un portail avant de partir sans le verrouiller.
 
-Voyez exactement ce que vos fichiers portent : [vérifiez les métadonnées photo](/fr/view-photo-metadata), puis [supprimez EXIF, GPS et données cachées](/fr/photo-metadata-remover#tool).
+Voyez exactement ce que vos fichiers portent : [vérifiez les métadonnées photo](/fr/view-photo-metadata), puis [supprimez EXIF, GPS et données cachées](/fr/#tool).

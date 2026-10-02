@@ -58,7 +58,7 @@ Beaucoup supposent que modifier une photo supprime son EXIF. En général, ce n'
 
 ## Comment supprimer les données EXIF
 
-La suppression est simple : réécrire le fichier sans le bloc de métadonnées. Le [suppresseur de métadonnées photo gratuit](/fr/photo-metadata-remover#tool) le fait en quelques secondes :
+La suppression est simple : réécrire le fichier sans le bloc de métadonnées. Le [suppresseur de métadonnées photo gratuit](/fr/#tool) le fait en quelques secondes :
 
 1. Ouvrez l'outil et chargez votre photo – tout s'exécute localement dans votre navigateur.
 2. Examinez les champs détectés pour savoir ce qui disparaîtra.
@@ -74,4 +74,4 @@ EXIF est le bloc de métadonnées le plus connu, mais pas le seul. **IPTC** cont
 
 EXIF est le rapport caché que votre appareil écrit sur chaque photo – et il voyage avec le fichier où qu'il aille. La plupart sont utiles pour organiser vos images, mais les champs GPS et d'horodatage peuvent fuiter des détails que vous n'avez jamais voulu partager. Vérifier ce qu'une photo contient avant de l'envoyer, et supprimer les métadonnées lorsque le contenu est sensible, prend quelques secondes et constitue l'une des habitudes de confidentialité les plus efficaces.
 
-Curieux de savoir ce que vos photos cachent ? [Vérifiez une photo maintenant](/fr/view-photo-metadata) ou nettoyez-la directement avec le [suppresseur de métadonnées photo](/fr/photo-metadata-remover#tool).
+Curieux de savoir ce que vos photos cachent ? [Vérifiez une photo maintenant](/fr/view-photo-metadata) ou nettoyez-la directement avec le [suppresseur de métadonnées photo](/fr/#tool).

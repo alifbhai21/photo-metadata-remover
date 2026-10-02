@@ -21,7 +21,7 @@ Une suppression que vous ne pouvez pas vérifier est une suppression à laquelle
 
 ## Le moyen gratuit le plus rapide : un suppresseur basé navigateur
 
-Aucune installation, aucun téléversement, fonctionne sur toute plateforme. Le [suppresseur de métadonnées photo gratuit](/fr/photo-metadata-remover#tool) traite JPG et PNG et fait tout le travail côté client :
+Aucune installation, aucun téléversement, fonctionne sur toute plateforme. Le [suppresseur de métadonnées photo gratuit](/fr/#tool) traite JPG et PNG et fait tout le travail côté client :
 
 1. **Chargez la photo** – glisser-déposer ou sélection depuis le disque.
 2. **Lisez les résultats du scan** – l'outil met en évidence les champs appareil, logiciel et GPS détectés.
@@ -79,4 +79,4 @@ Bouclez la boucle comme vous l'avez ouverte : faites passer le résultat dans le
 
 Supprimer les données EXIF est gratuit, rapide et neutre pour la qualité : confirmez leur présence avec un vérificateur, supprimez-les avec un outil basé navigateur qui ne téléverse jamais votre fichier, et vérifiez le résultat avant de partager. Sur Windows et macOS, les chemins d'export et de propriétés intégrés suffisent pour les cas simples ; sur téléphone, un suppresseur dédié est l'option la plus prévisible.
 
-Nettoyez une photo en moins d'une minute : [supprimez l'EXIF et les autres métadonnées maintenant](/fr/photo-metadata-remover#tool).
+Nettoyez une photo en moins d'une minute : [supprimez l'EXIF et les autres métadonnées maintenant](/fr/#tool).

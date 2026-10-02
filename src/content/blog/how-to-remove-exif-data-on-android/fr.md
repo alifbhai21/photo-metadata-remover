@@ -41,7 +41,7 @@ Avec **Files par Google**, vous pouvez aussi supprimer la position d'une photo d
 
 ## Étape 4 : suppression complète dans le navigateur — la méthode fiable
 
-Quand vous voulez que le fichier réel soit propre — chaque champ EXIF, bloc GPS, donnée IPTC et XMP supprimée — utilisez le [suppresseur de métadonnées photo](/fr/photo-metadata-remover#tool) :
+Quand vous voulez que le fichier réel soit propre — chaque champ EXIF, bloc GPS, donnée IPTC et XMP supprimée — utilisez le [suppresseur de métadonnées photo](/fr/#tool) :
 
 1. Ouvrez l'outil dans Chrome sur votre appareil Android.
 2. Chargez la photo. Elle est lue et traitée entièrement dans votre navigateur.
@@ -79,6 +79,6 @@ Seul le suppresseur basé navigateur efface chaque conteneur de métadonnées da
 
 ## L'essentiel
 
-La suppression des données EXIF des photos sur Android commence par vos réglages de caméra — désactivez la position pour les nouvelles prises et masquez la position des photos existantes dans Google Photos. Pour un fichier réellement propre, exécutez le [suppresseur de métadonnées photo](/fr/photo-metadata-remover#tool) dans votre navigateur : il supprime chaque champ sur l'appareil, et le [vérificateur de métadonnées](/fr/view-photo-metadata) prouve le résultat. Prévention, nettoyage et vérification prennent environ une minute par photo.
+La suppression des données EXIF des photos sur Android commence par vos réglages de caméra — désactivez la position pour les nouvelles prises et masquez la position des photos existantes dans Google Photos. Pour un fichier réellement propre, exécutez le [suppresseur de métadonnées photo](/fr/#tool) dans votre navigateur : il supprime chaque champ sur l'appareil, et le [vérificateur de métadonnées](/fr/view-photo-metadata) prouve le résultat. Prévention, nettoyage et vérification prennent environ une minute par photo.
 
-Nettoyez vos photos Android maintenant : [supprimez EXIF, GPS et données cachées](/fr/photo-metadata-remover#tool).
+Nettoyez vos photos Android maintenant : [supprimez EXIF, GPS et données cachées](/fr/#tool).

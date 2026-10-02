@@ -41,7 +41,7 @@ Using **Files by Google**, you can also remove a photo's location from the file 
 
 ## Step 4: full removal in the browser — the reliable method
 
-When you want the actual file clean — every EXIF field, GPS block, IPTC and XMP data removed — use the [photo metadata remover](/en/photo-metadata-remover#tool):
+When you want the actual file clean — every EXIF field, GPS block, IPTC and XMP data removed — use the [photo metadata remover](/en/#tool):
 
 1. Open the tool in Chrome on your Android device.
 2. Load the photo. It is read and processed entirely in your browser.
@@ -79,6 +79,6 @@ Only the browser-based remover clears every metadata container in the actual fil
 
 ## The bottom line
 
-Removing EXIF data from photos on Android starts with your Camera settings — turn off location for new shots, and hide location in Google Photos for existing ones. For a file that is actually clean, run the [photo metadata remover](/en/photo-metadata-remover#tool) in your browser: it strips every field on-device, and the [metadata checker](/en/view-photo-metadata) proves the result. Prevention, cleaning, and verification take about a minute per photo.
+Removing EXIF data from photos on Android starts with your Camera settings — turn off location for new shots, and hide location in Google Photos for existing ones. For a file that is actually clean, run the [photo metadata remover](/en/#tool) in your browser: it strips every field on-device, and the [metadata checker](/en/view-photo-metadata) proves the result. Prevention, cleaning, and verification take about a minute per photo.
 
-Clean your Android photos now: [remove EXIF, GPS, and hidden data](/en/photo-metadata-remover#tool).
+Clean your Android photos now: [remove EXIF, GPS, and hidden data](/en/#tool).

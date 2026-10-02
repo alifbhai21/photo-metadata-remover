@@ -21,7 +21,7 @@ Removing location data is only meaningful if you can confirm it existed. Run the
 
 ## Method 1: Strip metadata with a browser tool (recommended)
 
-The cleanest approach on any device — phone or desktop — is a metadata remover that rewrites the image without the hidden blocks. The free [photo metadata remover](/en/photo-metadata-remover#tool) works like this:
+The cleanest approach on any device — phone or desktop — is a metadata remover that rewrites the image without the hidden blocks. The free [photo metadata remover](/en/#tool) works like this:
 
 1. **Load the photo** — drag and drop or select the file.
 2. **Review the scan** — the tool shows the detected camera, software, and GPS fields so you know exactly what will be stripped.
@@ -75,4 +75,4 @@ After cleaning, re-run the [metadata checker](/en/view-photo-metadata) on the ou
 
 Removing location data from photos is a two-part habit: prevent future tags by turning off GPS on your camera, and clean existing files by stripping metadata before you share. A local, browser-based remover gives you a fast, consistent result on any device without uploading your images — check, strip, verify, and only then share.
 
-Ready to clean a photo? [Remove location and other metadata now](/en/photo-metadata-remover#tool).
+Ready to clean a photo? [Remove location and other metadata now](/en/#tool).

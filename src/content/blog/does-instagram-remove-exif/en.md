@@ -54,7 +54,7 @@ Cleaning before posting is not about outsmarting Instagram; it is about making s
 ## How to clean your photo before Instagram
 
 1. **Check** — run the file through the free [photo metadata checker](/en/view-photo-metadata) to see what it carries.
-2. **Strip** — use the [photo metadata remover](/en/photo-metadata-remover#tool) to produce a clean copy. Everything runs locally; your original never leaves your device.
+2. **Strip** — use the [photo metadata remover](/en/#tool) to produce a clean copy. Everything runs locally; your original never leaves your device.
 3. **Review the picture** — consider reflections, landmarks, and house numbers before you add them to a public grid.
 4. **Decide on location labels** — skip the "add location" field for posts that should not be tied to a place.
 
@@ -64,4 +64,4 @@ None of this affects the visual quality Instagram re-encoding will impose anyway
 
 Yes, Instagram removes EXIF — the stored post does not carry the original's GPS, camera serial, or full metadata block, and viewers cannot recover them from the served file. But the platform re-adds its own location labels, can render camera capture info, and your original stays geotagged on your device. Strip before you post, keep your library clean, and control the visible frames yourself.
 
-Want the whole chain clean? [Remove EXIF and location data now](/en/photo-metadata-remover#tool).
+Want the whole chain clean? [Remove EXIF and location data now](/en/#tool).

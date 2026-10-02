@@ -83,7 +83,7 @@ Before sharing, it takes only seconds to see what is inside:
 
 ## How to remove photo metadata
 
-The most reliable way to remove metadata is to rewrite the file without the hidden blocks. The free [photo metadata remover](/en/photo-metadata-remover#tool) does exactly that — entirely in your browser:
+The most reliable way to remove metadata is to rewrite the file without the hidden blocks. The free [photo metadata remover](/en/#tool) does exactly that — entirely in your browser:
 
 1. Load your photo into the tool.
 2. Review the scan results to confirm what will be removed.
@@ -95,4 +95,4 @@ Your images are processed locally on your device and are never uploaded to a ser
 
 Photo metadata is a hidden record of how, when, and where every image was made. Most of it is useful, but the location and timestamp fields can quietly leak more than you intend. Knowing what is stored inside your photos — and cleaning them before you share — is one of the simplest and most effective privacy habits you can adopt.
 
-Ready to clean an image? [Open the free photo metadata remover](/en/photo-metadata-remover#tool).
+Ready to clean an image? [Open the free photo metadata remover](/en/#tool).

@@ -54,7 +54,7 @@ Nettoyer avant de publier ne vise pas à déjouer Instagram ; il s'agit de garan
 ## Comment nettoyer votre photo avant Instagram
 
 1. **Vérifiez** – faites passer le fichier dans le [vérificateur de métadonnées photo gratuit](/fr/view-photo-metadata) pour voir ce qu'il transporte.
-2. **Supprimez** – utilisez le [suppresseur de métadonnées photo](/fr/photo-metadata-remover#tool) pour produire une copie propre. Tout s'exécute en local ; votre original ne quitte jamais votre appareil.
+2. **Supprimez** – utilisez le [suppresseur de métadonnées photo](/fr/#tool) pour produire une copie propre. Tout s'exécute en local ; votre original ne quitte jamais votre appareil.
 3. **Examinez l'image** – pensez aux reflets, points de repère et numéros de maisons avant de l'ajouter à une grille publique.
 4. **Décidez des étiquettes de lieu** – sautez le champ « ajouter un lieu » pour les publications qui ne doivent pas être liées à un endroit.
 
@@ -64,4 +64,4 @@ Rien de tout cela n'affecte la qualité visuelle que le ré-encodage d'Instagram
 
 Oui, Instagram supprime l'EXIF – la publication stockée ne porte ni le GPS, ni le numéro de série de l'appareil, ni le bloc complet de métadonnées de l'original, et les spectateurs ne peuvent pas les récupérer depuis le fichier servi. Mais la plateforme ré-ajoute ses propres étiquettes de lieu, peut afficher les infos de capture de l'appareil, et votre original reste géolocalisé sur votre appareil. Supprimez avant de publier, gardez votre bibliothèque propre et contrôlez vous-même les images visibles.
 
-Vous voulez toute la chaîne propre ? [Supprimez les données EXIF et de position maintenant](/fr/photo-metadata-remover#tool).
+Vous voulez toute la chaîne propre ? [Supprimez les données EXIF et de position maintenant](/fr/#tool).

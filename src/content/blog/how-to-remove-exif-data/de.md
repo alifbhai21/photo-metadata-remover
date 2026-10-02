@@ -21,7 +21,7 @@ Eine Entfernung, die Sie nicht überprüfen können, ist eine Entfernung, der Si
 
 ## Die schnellste kostenlose Methode: ein browserbasiertes Tool
 
-Keine Installation, kein Upload, funktioniert auf jeder Plattform. Der [kostenlose Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) verarbeitet JPG und PNG und erledigt die ganze Arbeit clientseitig:
+Keine Installation, kein Upload, funktioniert auf jeder Plattform. Der [kostenlose Foto-Metadaten-Entferner](/de/#tool) verarbeitet JPG und PNG und erledigt die ganze Arbeit clientseitig:
 
 1. **Foto laden** – per Drag & Drop oder Dateiauswahl.
 2. **Scan-Ergebnisse lesen** – das Tool zeigt die erkannten Kamera-, Software- und GPS-Felder.
@@ -79,4 +79,4 @@ Schließen Sie den Kreis so, wie Sie ihn geöffnet haben: Lassen Sie die Ausgabe
 
 EXIF-Daten zu entfernen ist kostenlos, schnell und qualitätsneutral: Bestätigen Sie ihre Existenz mit einem Checker, entfernen Sie sie mit einem browserbasierten Tool, das Ihre Datei nie hochlädt, und verifizieren Sie das Ergebnis vor dem Teilen. Unter Windows und macOS genügen die integrierten Export- und Eigenschafts-Pfade für einfache Fälle; auf Smartphones ist ein dedizierter Entferner die vorhersehbarste Option.
 
-Bereinigen Sie ein Foto in unter einer Minute: [EXIF und andere Metadaten jetzt entfernen](/de/photo-metadata-remover#tool).
+Bereinigen Sie ein Foto in unter einer Minute: [EXIF und andere Metadaten jetzt entfernen](/de/#tool).

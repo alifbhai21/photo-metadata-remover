@@ -54,7 +54,7 @@ Vor dem Posten zu bereinigen dient nicht dazu, Instagram auszutricksen, sondern 
 ## So bereinigen Sie Ihr Foto vor Instagram
 
 1. **Prüfen** – lassen Sie die Datei durch den [kostenlosen Foto-Metadaten-Checker](/de/view-photo-metadata) laufen, um zu sehen, was sie trägt.
-2. **Entfernen** – nutzen Sie den [Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool), um eine saubere Kopie zu erzeugen. Alles läuft lokal; Ihr Original verlässt Ihr Gerät nie.
+2. **Entfernen** – nutzen Sie den [Foto-Metadaten-Entferner](/de/#tool), um eine saubere Kopie zu erzeugen. Alles läuft lokal; Ihr Original verlässt Ihr Gerät nie.
 3. **Bild prüfen** – denken Sie vor dem Hinzufügen zu einem öffentlichen Raster an Spiegelungen, Wahrzeichen und Hausnummern.
 4. **Über Ortslabel entscheiden** – überspringen Sie das Feld „Standort hinzufügen" bei Posts, die nicht an einen Ort gebunden sein sollen.
 
@@ -64,4 +64,4 @@ Nichts davon beeinträchtigt die visuelle Qualität, die Instagrams Neu-Kodierun
 
 Ja, Instagram entfernt EXIF – der gespeicherte Post trägt weder das GPS, die Kamera-Seriennummer noch den vollständigen Metadaten-Block des Originals, und Zuschauer können sie aus der ausgelieferten Datei nicht wiederherstellen. Aber die Plattform fügt eigene Ortslabel hinzu, kann Kamera-Aufnahme-Infos rendern, und Ihr Original bleibt auf Ihrem Gerät geotaggt. Entfernen Sie vor dem Posten, halten Sie Ihre Bibliothek sauber und kontrollieren Sie die sichtbaren Bilder selbst.
 
-Möchten Sie die ganze Kette bereinigen? [EXIF- und Standortdaten jetzt entfernen](/de/photo-metadata-remover#tool).
+Möchten Sie die ganze Kette bereinigen? [EXIF- und Standortdaten jetzt entfernen](/de/#tool).

@@ -55,10 +55,6 @@
       "description": "Contact the team behind Photo Metadata Remover â€“ a free, private tool that strips EXIF, GPS, and XMP metadata from your photos in your browser."
     },
     "tools": {
-      "photo-metadata-remover": {
-        "title": "Photo Metadata Remover â€“ Remove EXIF & GPS Data Online",
-        "description": "Remove EXIF, GPS location, camera, and device data from your photos online for free. 100% private â€“ everything happens in your browser."
-      },
       "remove-exif-data": {
         "title": "Remove EXIF Data from Photos Online â€“ Free EXIF Stripper",
         "description": "Strip EXIF data from your photos online for free. Remove camera model, lens, settings, and timestamps â€“ privately, in your browser."
@@ -883,53 +879,6 @@
     "eyebrow": "Tool"
   },
   "tools": {
-    "photo-metadata-remover": {
-      "title": "Photo Metadata Remover",
-      "subtitle": "Remove EXIF, GPS, and other hidden camera data from your images â€“ free and private.",
-      "intro": "Every photo stores hidden information called metadata. It records the camera, lens, settings, and often the exact GPS location where the photo was taken. Our free photo metadata remover strips all of this in seconds â€“ directly in your browser. Your images never leave your device, so removing metadata stays 100% private.",
-      "features_title": "Why remove photo metadata?",
-      "how_title": "How to remove metadata from your photos",
-      "faq_title": "Photo Metadata FAQ",
-      "features": {
-        "1": {
-          "title": "Removes all metadata",
-          "text": "EXIF, GPS, and XMP data including the camera model, lens, settings, and timestamps."
-        },
-        "2": {
-          "title": "100% private",
-          "text": "Everything happens locally in your browser. No file is ever uploaded to a server."
-        },
-        "3": {
-          "title": "Free and unlimited",
-          "text": "Clean as many photos as you want â€“ no watermarks, accounts, or fees."
-        }
-      },
-      "how_steps": {
-        "1": {
-          "text": "Upload your photo or drag it into the drop zone. Your image never leaves your device."
-        },
-        "2": {
-          "text": "Review the detected metadata in the preview. All of it will be stripped."
-        },
-        "3": {
-          "text": "Download the cleaned image. The new file is free of EXIF, GPS, and XMP data."
-        }
-      },
-      "faq": {
-        "1": {
-          "question": "Does removing metadata reduce image quality?",
-          "answer": "No. Removing metadata only deletes the hidden information block of the file. The pixels, resolution, and quality of your photo remain exactly the same."
-        },
-        "2": {
-          "question": "Is it really private?",
-          "answer": "Yes. The tool runs entirely in your browser and never sends your photos to a server. You don't need to register or share any personal data."
-        },
-        "3": {
-          "question": "Which formats are supported?",
-          "answer": "The tool supports JPG, PNG, WebP, HEIC, and TIFF. Batch support for additional formats is being expanded."
-        }
-      }
-    },
     "remove-exif-data": {
       "title": "Remove EXIF Data",
       "subtitle": "Strip the hidden camera information from your photos â€“ model, settings, and timestamps.",

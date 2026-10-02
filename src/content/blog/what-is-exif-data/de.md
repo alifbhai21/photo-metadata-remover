@@ -58,7 +58,7 @@ Viele gehen davon aus, dass die Bearbeitung eines Fotos dessen EXIF entfernt. Me
 
 ## So entfernen Sie EXIF-Daten
 
-Das Entfernen ist einfach: Die Datei wird ohne den Metadaten-Block neu geschrieben. Der [kostenlose Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) erledigt das in wenigen Sekunden:
+Das Entfernen ist einfach: Die Datei wird ohne den Metadaten-Block neu geschrieben. Der [kostenlose Foto-Metadaten-Entferner](/de/#tool) erledigt das in wenigen Sekunden:
 
 1. Öffnen Sie das Tool und laden Sie Ihr Foto – alles läuft lokal in Ihrem Browser.
 2. Prüfen Sie die erkannten Felder, damit Sie wissen, was entfernt wird.
@@ -74,4 +74,4 @@ EXIF ist der bekannteste Metadaten-Block, aber nicht der einzige. **IPTC** enth�
 
 EXIF ist der versteckte Bericht, den Ihre Kamera zu jedem Foto schreibt – und er reist mit der Datei, wohin immer sie geht. Das meiste davon ist nützlich zum Sortieren, aber die GPS- und Zeitstempelfelder können Details preisgeben, die Sie nie teilen wollten. Vor dem Versenden zu prüfen, was ein Foto enthält, und bei sensiblen Inhalten die Metadaten zu entfernen, dauert Sekunden und gehört zu den wirksamsten Datenschutz-Gewohnheiten überhaupt.
 
-Neugierig, was Ihre Fotos verbergen? [Jetzt ein Foto prüfen](/de/view-photo-metadata) oder direkt mit dem [Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) bereinigen.
+Neugierig, was Ihre Fotos verbergen? [Jetzt ein Foto prüfen](/de/view-photo-metadata) oder direkt mit dem [Foto-Metadaten-Entferner](/de/#tool) bereinigen.

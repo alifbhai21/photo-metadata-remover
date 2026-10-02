@@ -58,7 +58,7 @@ Many people assume that editing a photo removes its EXIF. Usually it does not. C
 
 ## How to remove EXIF data
 
-Removing EXIF is straightforward: rewrite the file without the metadata block. The free [photo metadata remover](/en/photo-metadata-remover#tool) does this in a few seconds:
+Removing EXIF is straightforward: rewrite the file without the metadata block. The free [photo metadata remover](/en/#tool) does this in a few seconds:
 
 1. Open the tool and load your photo — everything runs locally in your browser.
 2. Review the detected fields so you know what will be gone.
@@ -74,4 +74,4 @@ EXIF is the best-known metadata block, but not the only one. **IPTC** holds desc
 
 EXIF is the hidden report your camera writes about every photo — and it travels with the file wherever it goes. Most of it is useful for organizing pictures, but the GPS and timestamp fields can leak details you never intended to share. Checking what a photo contains before you send it, and stripping the metadata when the content is sensitive, takes seconds and is one of the most effective privacy habits available.
 
-Curious what your photos hide? [Check a photo now](/en/view-photo-metadata) or clean it up straight away with the [photo metadata remover](/en/photo-metadata-remover#tool).
+Curious what your photos hide? [Check a photo now](/en/view-photo-metadata) or clean it up straight away with the [photo metadata remover](/en/#tool).

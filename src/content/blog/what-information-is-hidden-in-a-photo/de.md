@@ -72,7 +72,7 @@ Das Risiko ist nicht, dass ein einzelnes Feld gefährlich ist; es ist die Kombin
 
 1. **Scannen** – den [Foto-Metadaten-Checker](/de/view-photo-metadata) ausführen und die Feld-für-Feld-Ausgabe lesen.
 2. **Entscheiden** – trennen, was Sie behalten wollen (üblicherweise nichts) von dem, was weg muss.
-3. **Entfernen** – den [Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) nutzen, um EXIF, GPS, IPTC, XMP und eingebettete Vorschauen zu entfernen.
+3. **Entfernen** – den [Foto-Metadaten-Entferner](/de/#tool) nutzen, um EXIF, GPS, IPTC, XMP und eingebettete Vorschauen zu entfernen.
 4. **Erneut scannen** – die bereinigte Kopie verifizieren, bevor sie irgendwohin geht.
 
 Alles läuft lokal in Ihrem Browser; Ihre Originale verlassen Ihr Gerät nie.
@@ -81,4 +81,4 @@ Alles läuft lokal in Ihrem Browser; Ihre Originale verlassen Ihr Gerät nie.
 
 In einem Foto verstecken sich die Kamera und ihr Einstellungsprofil, der exakte Aufnahmezeitpunkt, Ihre Koordinaten, redaktionelle Namen, Software-Historie und eingebettete Vorschauen. Techniker nutzen diese Felder, um Dateien zu organisieren und zu verifizieren; Fremde nutzen sie, um herauszufinden, wer Sie sind und wo Sie wohnen. Scannen Sie Ihre Dateien, entfernen Sie die Felder und verifizieren Sie das Ergebnis – genauso, wie Sie ein Tor vor dem Verlassen prüfen würden.
 
-Sehen Sie exakt, was Ihre Dateien tragen: [Foto-Metadaten prüfen](/de/view-photo-metadata), dann [EXIF, GPS und versteckte Daten entfernen](/de/photo-metadata-remover#tool).
+Sehen Sie exakt, was Ihre Dateien tragen: [Foto-Metadaten prüfen](/de/view-photo-metadata), dann [EXIF, GPS und versteckte Daten entfernen](/de/#tool).

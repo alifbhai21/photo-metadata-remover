@@ -72,7 +72,7 @@ Ein leeres Ergebnis ist kein Fehler. Es bedeutet, dass die Datei kein für den P
 
 Alles, was Sie aus der Prüfung lernen, sagt Ihnen, was als Nächstes zu tun ist:
 
-- **Bereinigen** – wenn Kamera-, GPS- oder Software-Felder erscheinen, den [Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) nutzen, um eine saubere Kopie zu erzeugen.
+- **Bereinigen** – wenn Kamera-, GPS- oder Software-Felder erscheinen, den [Foto-Metadaten-Entferner](/de/#tool) nutzen, um eine saubere Kopie zu erzeugen.
 - **Verifizieren** – nach dem Entfernen den Checker erneut über die Ausgabe laufen lassen und bestätigen, dass die Felder verschwunden sind.
 - **Vor jeder Freigabe wiederholen** – eine 10-Sekunden-Prüfung nimmt das Rätseln über sämtliche Kanäle hinweg.
 
@@ -80,4 +80,4 @@ Alles, was Sie aus der Prüfung lernen, sagt Ihnen, was als Nächstes zu tun ist
 
 Foto-Metadaten zu prüfen ist schnell und kostenlos: Dateieigenschaften unter Windows, der Inspektor in Preview unter macOS, Detailfenster am Handy und eine vollständige Feld-für-Feld-Ausgabe durch einen browserbasierten Checker. Lesen Sie GPS-, Kamera- und Software-Felder kritisch, entfernen Sie, was nicht geteilt werden soll, und verifizieren Sie die bereinigte Datei vor dem Versand.
 
-Beginnen Sie mit einem Scan: [Foto-Metadaten online prüfen](/de/view-photo-metadata) oder [EXIF und GPS jetzt entfernen](/de/photo-metadata-remover#tool).
+Beginnen Sie mit einem Scan: [Foto-Metadaten online prüfen](/de/view-photo-metadata) oder [EXIF und GPS jetzt entfernen](/de/#tool).

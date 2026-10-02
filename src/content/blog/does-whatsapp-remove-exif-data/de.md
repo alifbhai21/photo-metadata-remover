@@ -55,7 +55,7 @@ Bereinigen dient nicht dazu, WhatsApp auszutricksen; es stellt sicher, dass jede
 ## So senden Sie ein Foto bei WhatsApp ohne Metadaten-Leak
 
 1. **Datei prüfen** – mit dem [Foto-Metadaten-Checker](/de/view-photo-metadata) scannen und sehen, was sie trägt.
-2. **Entfernen** – den [Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) ausführen, um eine saubere Kopie zu erzeugen. Alles läuft lokal; Ihr Original verlässt Ihr Gerät nie.
+2. **Entfernen** – den [Foto-Metadaten-Entferner](/de/#tool) ausführen, um eine saubere Kopie zu erzeugen. Alles läuft lokal; Ihr Original verlässt Ihr Gerät nie.
 3. **Verifizieren** – die bereinigte Ausgabe erneut scannen und bestätigen, dass GPS-, Kamera- und Software-Felder verschwunden sind.
 4. **Dann senden** – die saubere Kopie über jeden beliebigen Kanal teilen, auch im Dokument-Modus.
 
@@ -65,4 +65,4 @@ Sie verlieren nichts: Die Qualität steuert ohnehin WhatsApps Komprimierung, und
 
 WhatsApp komprimiert und kodiert Standard-Foto-Sendungen neu, wodurch im üblichen Fall das ursprüngliche EXIF und GPS entfernt werden – aber es ist kein Sanitizer. Dokument-Sendungen können die vollständigen Metadaten tragen, zwischengespeicherte Kopien bleiben auf Ihrem Gerät, und jede Weiterleitung hängt davon ab, was die Zwischendatei enthielt. Prüfen, im Browser entfernen, verifizieren, dann senden. Diese eine Gewohnheit schützt jedes Foto auf jeder Plattform, nicht nur in WhatsApp-Chats.
 
-Bereit für sicheres Senden? [Metadaten Ihres Fotos prüfen](/de/view-photo-metadata) und [EXIF, GPS und versteckte Daten entfernen](/de/photo-metadata-remover#tool) in einem Durchgang.
+Bereit für sicheres Senden? [Metadaten Ihres Fotos prüfen](/de/view-photo-metadata) und [EXIF, GPS und versteckte Daten entfernen](/de/#tool) in einem Durchgang.

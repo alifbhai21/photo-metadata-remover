@@ -61,7 +61,7 @@ Before sharing, run the file through a metadata viewer. The free [photo metadata
 
 ## How to remove location from a photo
 
-The trustworthy method is to rewrite the file without the metadata block. The free [photo metadata remover](/en/photo-metadata-remover#tool) strips EXIF, GPS, IPTC, and XMP in one pass:
+The trustworthy method is to rewrite the file without the metadata block. The free [photo metadata remover](/en/#tool) strips EXIF, GPS, IPTC, and XMP in one pass:
 
 1. Load the photo into the tool — everything runs locally on your device.
 2. Confirm the detected GPS and camera fields in the scan results.
@@ -77,4 +77,4 @@ Turning off GPS in your camera app prevents *new* location tags, but it does not
 
 Photos can reveal your location through hidden EXIF GPS, platform tags, filenames, and the image content itself. The hidden channel is easy to close: strip metadata before you share, and confirm nothing was missed with a quick metadata check. The visible channel is a habit of judgement — think about what a stranger could infer from the picture as well as the file.
 
-Check your images before you post: [scan a photo for GPS](/en/view-photo-metadata) or [remove the location data now](/en/photo-metadata-remover#tool).
+Check your images before you post: [scan a photo for GPS](/en/view-photo-metadata) or [remove the location data now](/en/#tool).

@@ -6,13 +6,15 @@ import { getTranslations, t } from '../../i18n/index';
 
 export function getStaticPaths() {
   const langs = ['en', 'de', 'fr'] as const;
-  const TOOLS = [
-    'photo-metadata-remover',
-    'remove-exif-data',
-    'remove-gps-data',
-    'view-photo-metadata',
-    'remove-metadata-heic',
-  ];
+  // All four secondary tools now have dedicated pages whose visual
+  // language is aligned with the Photo Metadata Remover homepage:
+  //   - remove-exif-data     → src/pages/[lang]/remove-exif-data.astro
+  //   - view-photo-metadata  → src/pages/[lang]/view-photo-metadata.astro
+  //   - remove-gps-data      → src/pages/[lang]/remove-gps-data.astro
+  //   - remove-metadata-heic → src/pages/[lang]/remove-metadata-heic.astro
+  // This generic template is intentionally left in place as a fallback
+  // but generates no routes.
+  const TOOLS: string[] = [];
   const paths = [];
   for (const lang of langs) {
     for (const tool of TOOLS) {

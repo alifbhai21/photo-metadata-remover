@@ -39,10 +39,6 @@
       "description": "Contactez l'équipe derrière Suppresseur de Métadonnées Photo, un outil gratuit et privé qui supprime les métadonnées EXIF, GPS et XMP de vos photos dans votre navigateur."
     },
     "tools": {
-      "photo-metadata-remover": {
-        "title": "Suppresseur de Métadonnées Photo – Supprimer EXIF et GPS en ligne",
-        "description": "Supprimez gratuitement en ligne les données EXIF, de localisation GPS, d'appareil et d'équipement de vos photos. 100 % privé – tout se passe dans votre navigateur."
-      },
       "remove-exif-data": {
         "title": "Supprimer les données EXIF des photos en ligne – Suppresseur EXIF gratuit",
         "description": "Supprimez gratuitement en ligne les données EXIF de vos photos. Modèle d'appareil, objectif, réglages et horodatages – en privé, dans votre navigateur."
@@ -756,53 +752,6 @@
     "eyebrow": "Outil"
   },
   "tools": {
-    "photo-metadata-remover": {
-      "title": "Suppresseur de Métadonnées Photo",
-      "subtitle": "Supprimez les données EXIF, GPS et autres données cachées d'appareil de vos images – gratuitement et en toute confidentialité.",
-      "intro": "Chaque photo stocke des informations cachées appelées métadonnées. Elles enregistrent l'appareil, l'objectif, les réglages et souvent la localisation GPS exacte de la prise de vue. Notre suppresseur de métadonnées photo gratuit retire tout cela en quelques secondes – directement dans votre navigateur. Vos images ne quittent jamais votre appareil, donc la suppression des métadonnées reste 100 % privée.",
-      "features_title": "Pourquoi supprimer les métadonnées photo ?",
-      "how_title": "Comment supprimer les métadonnées de vos photos",
-      "faq_title": "FAQ Métadonnées Photo",
-      "features": {
-        "1": {
-          "title": "Supprime toutes les métadonnées",
-          "text": "Les données EXIF, GPS et XMP, y compris le modèle d'appareil, l'objectif, les réglages et les horodatages."
-        },
-        "2": {
-          "title": "100 % privé",
-          "text": "Tout se passe localement dans votre navigateur. Aucun fichier n'est jamais envoyé à un serveur."
-        },
-        "3": {
-          "title": "Gratuit et illimité",
-          "text": "Nettoyez autant de photos que vous voulez – sans filigrane, compte ni frais."
-        }
-      },
-      "how_steps": {
-        "1": {
-          "text": "Téléchargez votre photo ou glissez-la dans la zone de dépôt. Votre image ne quitte jamais votre appareil."
-        },
-        "2": {
-          "text": "Vérifiez les métadonnées détectées dans l'aperçu. Toutes seront supprimées."
-        },
-        "3": {
-          "text": "Téléchargez l'image nettoyée. Le nouveau fichier est libre de toute donnée EXIF, GPS et XMP."
-        }
-      },
-      "faq": {
-        "1": {
-          "question": "La suppression des métadonnées réduit-elle la qualité de l'image ?",
-          "answer": "Non. Supprimer les métadonnées ne fait qu'effacer le bloc d'informations cachées du fichier. Les pixels, la résolution et la qualité de votre photo restent exactement les mêmes."
-        },
-        "2": {
-          "question": "Est-ce vraiment privé ?",
-          "answer": "Oui. L'outil fonctionne entièrement dans votre navigateur et n'envoie jamais vos photos à un serveur. Vous n'avez pas besoin de vous inscrire ni de partager des données personnelles."
-        },
-        "3": {
-          "question": "Quels formats sont pris en charge ?",
-          "answer": "L'outil prend en charge JPG, PNG, WebP, HEIC et TIFF. La prise en charge d'autres formats est en cours d'extension."
-        }
-      }
-    },
     "remove-exif-data": {
       "title": "Supprimer les données EXIF",
       "subtitle": "Retirez les informations cachées d'appareil de vos photos – modèle, réglages et horodatages.",

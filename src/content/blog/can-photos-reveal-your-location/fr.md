@@ -61,7 +61,7 @@ Avant de partager, faites passer le fichier dans une visionneuse de métadonnée
 
 ## Comment supprimer la position d'une photo
 
-La méthode fiable consiste à réécrire le fichier sans le bloc de métadonnées. Le [suppresseur de métadonnées photo gratuit](/fr/photo-metadata-remover#tool) retire EXIF, GPS, IPTC et XMP en un seul passage :
+La méthode fiable consiste à réécrire le fichier sans le bloc de métadonnées. Le [suppresseur de métadonnées photo gratuit](/fr/#tool) retire EXIF, GPS, IPTC et XMP en un seul passage :
 
 1. Chargez la photo dans l'outil – tout s'exécute localement sur votre appareil.
 2. Confirmez les champs GPS et caméra détectés dans les résultats du scan.
@@ -77,4 +77,4 @@ Comme le fichier ne quitte jamais votre navigateur, vos originaux restent privé
 
 Les photos peuvent révéler votre position via le GPS EXIF caché, les balises de plateforme, les noms de fichiers et le contenu de l'image. Le canal caché est facile à fermer : supprimez les métadonnées avant de partager et confirmez qu'aucun reste n'a été oublié avec un contrôle rapide. Le canal visible relève du jugement – réfléchissez à ce qu'un étranger pourrait déduire aussi bien de l'image que du fichier.
 
-Vérifiez vos images avant de publier : [analysez une photo pour le GPS](/fr/view-photo-metadata) ou [supprimez les données de position maintenant](/fr/photo-metadata-remover#tool).
+Vérifiez vos images avant de publier : [analysez une photo pour le GPS](/fr/view-photo-metadata) ou [supprimez les données de position maintenant](/fr/#tool).

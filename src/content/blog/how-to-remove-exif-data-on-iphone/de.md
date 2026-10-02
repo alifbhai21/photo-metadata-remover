@@ -41,7 +41,7 @@ Das iOS-Share-Sheet zeigt ein Menü „Optionen" mit einem **Standort**-Schalter
 
 ## Schritt 4: Die zuverlässige Methode – Metadaten lokal mit einem browserbasierten Tool entfernen
 
-Wenn die Datei selbst bereinigt werden muss – jeder EXIF-Feldwert, GPS-Block, jede IPTC- und XMP-Daten entfernt – ist der direkteste Weg der [Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool):
+Wenn die Datei selbst bereinigt werden muss – jeder EXIF-Feldwert, GPS-Block, jede IPTC- und XMP-Daten entfernt – ist der direkteste Weg der [Foto-Metadaten-Entferner](/de/#tool):
 
 1. Das Tool in Safari auf dem iPhone öffnen.
 2. Das Foto laden, das bereinigt werden soll. Das Tool liest und verarbeitet es vollständig in Ihrem Browser.
@@ -79,6 +79,6 @@ Nur der vollständige Entferner löscht jeden Metadaten-Container in der tatsäc
 
 ## Das Fazit
 
-Um EXIF-Daten aus Fotos auf dem iPhone zu entfernen, beginnen Sie mit den Einstellungen – die Kamera daran hindern, Standorte aufzuzeichnen, dann den sichtbaren Standort bestehender Fotos entfernen. Für eine vollständig saubere Datei den [Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) im Browser ausführen: Er löscht jedes Feld auf dem Gerät, und der [Metadaten-Checker](/de/view-photo-metadata) bestätigt das Ergebnis. Vorbeugung, Bereinigung und Verifikation dauern zusammen unter einer Minute.
+Um EXIF-Daten aus Fotos auf dem iPhone zu entfernen, beginnen Sie mit den Einstellungen – die Kamera daran hindern, Standorte aufzuzeichnen, dann den sichtbaren Standort bestehender Fotos entfernen. Für eine vollständig saubere Datei den [Foto-Metadaten-Entferner](/de/#tool) im Browser ausführen: Er löscht jedes Feld auf dem Gerät, und der [Metadaten-Checker](/de/view-photo-metadata) bestätigt das Ergebnis. Vorbeugung, Bereinigung und Verifikation dauern zusammen unter einer Minute.
 
-Ihre iPhone-Fotos jetzt bereinigen: [EXIF, GPS und versteckte Daten entfernen](/de/photo-metadata-remover#tool).
+Ihre iPhone-Fotos jetzt bereinigen: [EXIF, GPS und versteckte Daten entfernen](/de/#tool).

@@ -83,7 +83,7 @@ Avant de partager, il suffit de quelques secondes pour voir ce que contient votr
 
 ## Comment supprimer les métadonnées photo
 
-La méthode la plus fiable consiste à réécrire le fichier sans les blocs cachés. Le [suppresseur de métadonnées photo gratuit](/fr/photo-metadata-remover#tool) fait exactement cela – entièrement dans votre navigateur :
+La méthode la plus fiable consiste à réécrire le fichier sans les blocs cachés. Le [suppresseur de métadonnées photo gratuit](/fr/#tool) fait exactement cela – entièrement dans votre navigateur :
 
 1. Chargez votre photo dans l'outil.
 2. Examinez les résultats du scan pour confirmer ce qui sera supprimé.
@@ -95,4 +95,4 @@ Vos images sont traitées localement sur votre appareil et ne sont jamais télé
 
 Les métadonnées photo sont un enregistrement caché de la manière, du moment et du lieu où chaque image a été créée. La plupart sont utiles, mais les champs de localisation et d'horodatage peuvent divulguer silencieusement plus que vous ne le souhaitez. Savoir ce qui est stocké dans vos photos – et les nettoyer avant de les partager – est l'une des habitudes de confidentialité les plus simples et les plus efficaces qui soient.
 
-Prêt à nettoyer une image ? [Ouvrez le suppresseur de métadonnées photo gratuit](/fr/photo-metadata-remover#tool).
+Prêt à nettoyer une image ? [Ouvrez le suppresseur de métadonnées photo gratuit](/fr/#tool).

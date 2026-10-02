@@ -72,7 +72,7 @@ Un résultat vide n'est pas un échec. Cela signifie que le fichier ne porte pas
 
 Tout ce que vous apprenez du contrôle vous dit quoi faire ensuite :
 
-- **Nettoyez** – si des champs appareil, GPS ou logiciel apparaissent, utilisez le [suppresseur de métadonnées photo](/fr/photo-metadata-remover#tool) pour produire une copie propre.
+- **Nettoyez** – si des champs appareil, GPS ou logiciel apparaissent, utilisez le [suppresseur de métadonnées photo](/fr/#tool) pour produire une copie propre.
 - **Vérifiez** – après le retrait, relancez le vérificateur sur la sortie et confirmez la disparition des champs.
 - **Répétez avant chaque partage** – un contrôle de 10 secondes élimine les conjectures sur tous vos canaux.
 
@@ -80,4 +80,4 @@ Tout ce que vous apprenez du contrôle vous dit quoi faire ensuite :
 
 Vérifier les métadonnées photo est rapide et gratuit : propriétés du fichier sous Windows, inspecteur d'Aperçu sous macOS, panneaux de détails sur téléphone et lecture complète champ par champ avec un vérificateur basé navigateur. Lisez les champs GPS, appareil et logiciel de façon critique, supprimez ce qui ne doit pas être partagé et vérifiez le fichier nettoyé avant de l'envoyer où que ce soit.
 
-Commencez par un scan : [vérifiez les métadonnées photo en ligne](/fr/view-photo-metadata) ou [supprimez EXIF et GPS maintenant](/fr/photo-metadata-remover#tool).
+Commencez par un scan : [vérifiez les métadonnées photo en ligne](/fr/view-photo-metadata) ou [supprimez EXIF et GPS maintenant](/fr/#tool).

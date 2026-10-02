@@ -61,7 +61,7 @@ Lassen Sie die Datei vor dem Teilen durch eine Metadaten-Ansicht laufen. Die [ko
 
 ## So entfernen Sie den Standort aus einem Foto
 
-Die vertrauenswürdige Methode ist, die Datei ohne den Metadaten-Block neu zu schreiben. Der [kostenlose Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) entfernt EXIF, GPS, IPTC und XMP in einem Durchgang:
+Die vertrauenswürdige Methode ist, die Datei ohne den Metadaten-Block neu zu schreiben. Der [kostenlose Foto-Metadaten-Entferner](/de/#tool) entfernt EXIF, GPS, IPTC und XMP in einem Durchgang:
 
 1. Laden Sie das Foto in das Tool – alles läuft lokal auf Ihrem Gerät.
 2. Bestätigen Sie die erkannten GPS- und Kamera-Felder in den Scan-Ergebnissen.
@@ -77,4 +77,4 @@ GPS in der Kamera-App auszuschalten verhindert *neue* Ortsangaben, hilft aber ni
 
 Fotos können Ihren Standort durch verstecktes EXIF-GPS, Plattform-Tags, Dateinamen und den Bildinhalt selbst verraten. Der versteckte Kanal ist leicht zu schließen: Entfernen Sie die Metadaten vor dem Teilen und bestätigen Sie mit einer schnellen Metadaten-Prüfung, dass nichts übersehen wurde. Der sichtbare Kanal ist eine Frage des Urteilsvermögens – überlegen Sie auch, was ein Fremder aus dem Bild selbst schließen könnte.
 
-Prüfen Sie Ihre Bilder vor dem Posten: [Foto auf GPS scannen](/de/view-photo-metadata) oder [Standortdaten jetzt entfernen](/de/photo-metadata-remover#tool).
+Prüfen Sie Ihre Bilder vor dem Posten: [Foto auf GPS scannen](/de/view-photo-metadata) oder [Standortdaten jetzt entfernen](/de/#tool).

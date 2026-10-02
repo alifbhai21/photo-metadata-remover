@@ -83,7 +83,7 @@ Bevor Sie teilen, dauert es nur Sekunden, um zu sehen, was in der Datei steckt:
 
 ## So entfernen Sie Foto-Metadaten
 
-Die zuverlässigste Methode ist, die Datei ohne die versteckten Blöcke neu zu schreiben. Der kostenlose [Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool) erledigt genau das – vollständig in Ihrem Browser:
+Die zuverlässigste Methode ist, die Datei ohne die versteckten Blöcke neu zu schreiben. Der kostenlose [Foto-Metadaten-Entferner](/de/#tool) erledigt genau das – vollständig in Ihrem Browser:
 
 1. Laden Sie Ihr Foto in das Tool.
 2. Prüfen Sie die Scan-Ergebnisse, um zu bestätigen, was entfernt wird.
@@ -95,4 +95,4 @@ Ihre Bilder werden lokal auf Ihrem Gerät verarbeitet und nie an einen Server ü
 
 Foto-Metadaten sind ein verstecktes Protokoll darüber, wie, wann und wo jedes Bild entstanden ist. Das meiste davon ist nützlich, doch die Orts- und Zeitstempelfelder können lautlos mehr preisgeben, als Sie beabsichtigen. Zu wissen, was in Ihren Fotos steckt – und sie vor dem Teilen zu bereinigen – ist eine der einfachsten und wirksamsten Datenschutz-Gewohnheiten überhaupt.
 
-Bereit, ein Bild zu bereinigen? [Öffnen Sie den kostenlosen Foto-Metadaten-Entferner](/de/photo-metadata-remover#tool).
+Bereit, ein Bild zu bereinigen? [Öffnen Sie den kostenlosen Foto-Metadaten-Entferner](/de/#tool).
