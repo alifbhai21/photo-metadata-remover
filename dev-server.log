@@ -2,14 +2,4 @@
 > dev
 > astro dev
 
-Another astro dev server is already running.
-
-  URL:  http://localhost:4321
-  PID:  6376
-
-Run `astro dev stop` to stop it, or use `astro dev --force` to replace it.
-  [1mLocation:[22m
-    [4mD:\photo metadata remover\node_modules\astro\dist\cli\dev\index.js:157:13[24m
-  [1mStack trace:[22m
-[2m    at dev (file:///D:/photo%20metadata%20remover/node_modules/astro/dist/cli/dev/index.js:157:13)
-    at async runCommand (file:///D:/photo%20metadata%20remover/node_modules/astro/dist/cli/index.js:183:22)[22m
+{"message":"Dev server running at http://localhost:4321 (pid 20376)\n  Stop:   astro dev stop\n  Status: astro dev status\n  Logs:   astro dev logs","label":"SKIP_FORMAT","level":"info"}
