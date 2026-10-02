@@ -84,7 +84,7 @@ Datenschutzlich: EXIF priorisieren. Für totale Bereinigung: alle drei löschen.
 Sie müssen beim Bereinigen nicht zwischen Standards wählen. Der [Foto-Metadaten-Entferner](/de/#tool) entfernt EXIF, IPTC und XMP in einem einzigen lokalen Durchgang:
 
 1. Das Foto laden – es wird vollständig in Ihrem Browser verarbeitet.
-2. Die entfernten Felder vorher und nachher mit dem [Foto-Metadaten-Checker](/de/view-photo-metadata) bestätigen.
+2. Die entfernten Felder vorher und nachher mit dem Foto-Metadaten-Checker bestätigen.
 3. Die saubere Kopie herunterladen und überall teilen.
 
 Alles läuft auf Ihrem Gerät, sodass selbst rechtebelastete Presse-Dateien bleiben, wo sie hingehören.

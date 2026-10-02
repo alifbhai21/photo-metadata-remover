@@ -17,7 +17,7 @@ Jedes Foto, das Sie mit einem Smartphone oder einer Kamera aufnehmen, trägt ein
 
 ## Zuerst bestätigen, dass das EXIF wirklich da ist
 
-Eine Entfernung, die Sie nicht überprüfen können, ist eine Entfernung, der Sie nicht vertrauen können. Lassen Sie das Foto durch den [kostenlosen Foto-Metadaten-Checker](/de/view-photo-metadata) laufen – er listet Kamera-, Software-, Zeitstempel- und GPS-Felder in Sekunden auf, alles in Ihrem Browser. Dieser Blick zeigt, wie viel Kontext die Datei trägt, und liefert eine Basislinie für die spätere Verifikation.
+Eine Entfernung, die Sie nicht überprüfen können, ist eine Entfernung, der Sie nicht vertrauen können. Lassen Sie das Foto durch den kostenlosen Foto-Metadaten-Checker laufen – er listet Kamera-, Software-, Zeitstempel- und GPS-Felder in Sekunden auf, alles in Ihrem Browser. Dieser Blick zeigt, wie viel Kontext die Datei trägt, und liefert eine Basislinie für die spätere Verifikation.
 
 ## Die schnellste kostenlose Methode: ein browserbasiertes Tool
 
@@ -73,7 +73,7 @@ Seriennummernbedingte Kamerafelder, Ihr Gerätetyp und Ihre Aufnahmeorte sind ge
 
 ## Verifizieren, dann teilen
 
-Schließen Sie den Kreis so, wie Sie ihn geöffnet haben: Lassen Sie die Ausgabe durch den [Metadaten-Checker](/de/view-photo-metadata) laufen und bestätigen Sie, dass GPS- und Kamera-Felder verschwunden sind. Wenn ein Tag überlebt hat, brauchte das Format den vollständigen Strip. Eine verifizierte saubere Datei ist die einzige Datei, die es wert ist, geteilt zu werden.
+Schließen Sie den Kreis so, wie Sie ihn geöffnet haben: Lassen Sie die Ausgabe durch den Metadaten-Checker laufen und bestätigen Sie, dass GPS- und Kamera-Felder verschwunden sind. Wenn ein Tag überlebt hat, brauchte das Format den vollständigen Strip. Eine verifizierte saubere Datei ist die einzige Datei, die es wert ist, geteilt zu werden.
 
 ## Das Fazit
 

@@ -77,7 +77,7 @@ Da das Verhalten so stark variiert, ist der zuverlässige Weg, die Metadaten sel
 
 Bevor Sie teilen, dauert es nur Sekunden, um zu sehen, was in der Datei steckt:
 
-1. Öffnen Sie die Datei in einer Metadaten-Ansicht – die [kostenlose Metadaten-Prüfung](/de/view-photo-metadata) erreichen Sie direkt von dieser Seite aus.
+1. Öffnen Sie die Datei in einer Metadaten-Ansicht – die kostenlose Metadaten-Prüfung erreichen Sie direkt von dieser Seite aus.
 2. Prüfen Sie die erkannten Felder: Kamera, Software, Zeitstempel und etwaige GPS-Koordinaten.
 3. Entscheiden Sie, ob Sie die Datei unverändert teilen oder zuerst bereinigen.
 

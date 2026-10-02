@@ -17,7 +17,7 @@ Les données de position se cachent dans plus de photos que la plupart des gens 
 
 ## Avant de commencer : vérifier ce que contient une photo
 
-Supprimer les données de position n'a de sens que si vous pouvez confirmer qu'elles existent. Faites d'abord passer le fichier dans la [vérification des métadonnées photo](/fr/view-photo-metadata) : elle liste les coordonnées GPS et tous les autres champs détectés en quelques secondes, entièrement dans votre navigateur. Si latitude et longitude apparaissent, le fichier divulgue votre position et doit être nettoyé.
+Supprimer les données de position n'a de sens que si vous pouvez confirmer qu'elles existent. Faites d'abord passer le fichier dans la vérification des métadonnées photo : elle liste les coordonnées GPS et tous les autres champs détectés en quelques secondes, entièrement dans votre navigateur. Si latitude et longitude apparaissent, le fichier divulgue votre position et doit être nettoyé.
 
 ## Méthode 1 : supprimer les métadonnées avec un outil navigateur (recommandé)
 
@@ -69,7 +69,7 @@ L'habitude compte plus que l'outil : ne publiez jamais un fichier non vérifié.
 
 ## Vérifier le résultat
 
-Après nettoyage, relancez la [vérification des métadonnées](/fr/view-photo-metadata) sur le fichier de sortie. Les champs GPS devraient avoir disparu – idéalement tout le bloc EXIF. Si une balise avec une chaîne de position survit, votre méthode était trop douce pour ce type de fichier – passez à la suppression complète des métadonnées.
+Après nettoyage, relancez la vérification des métadonnées sur le fichier de sortie. Les champs GPS devraient avoir disparu – idéalement tout le bloc EXIF. Si une balise avec une chaîne de position survit, votre méthode était trop douce pour ce type de fichier – passez à la suppression complète des métadonnées.
 
 ## L'essentiel
 

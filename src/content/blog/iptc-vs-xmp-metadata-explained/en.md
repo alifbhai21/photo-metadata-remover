@@ -84,7 +84,7 @@ Privacy-wise, prioritize EXIF; for total cleaning, clear all three. The visual q
 You do not need to pick between standards when you clean. The [photo metadata remover](/en/#tool) strips EXIF, IPTC, and XMP in a single local pass:
 
 1. Load the photo — it is processed entirely in your browser.
-2. Confirm the removed fields with the [photo metadata checker](/en/view-photo-metadata) before and after.
+2. Confirm the removed fields with the photo metadata checker before and after.
 3. Download the clean copy and share it anywhere.
 
 Everything runs on your device, so even rights-bearing press files stay where they belong.

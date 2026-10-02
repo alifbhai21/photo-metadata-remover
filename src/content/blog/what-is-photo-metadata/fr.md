@@ -77,7 +77,7 @@ Comme les comportements varient fortement, l'approche fiable consiste à supprim
 
 Avant de partager, il suffit de quelques secondes pour voir ce que contient votre photo :
 
-1. Ouvrez le fichier dans une visionneuse de métadonnées – la [vérification gratuite des métadonnées](/fr/view-photo-metadata) est accessible depuis cette page.
+1. Ouvrez le fichier dans une visionneuse de métadonnées – la vérification gratuite des métadonnées est accessible depuis cette page.
 2. Examinez les champs détectés : appareil, logiciel, horodatages et éventuelles coordonnées GPS.
 3. Décidez de partager le fichier tel quel ou de le nettoyer d'abord.
 

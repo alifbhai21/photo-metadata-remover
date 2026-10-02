@@ -51,7 +51,7 @@ Rien ne téléverse vers un serveur, donc les images privées restent sur votre 
 
 ## Étape 5 : toujours vérifier avant et après
 
-Le nettoyage n'est fiable qu'avec une preuve. Utilisez le [vérificateur de métadonnées photo](/fr/view-photo-metadata) gratuit comme second cerveau :
+Le nettoyage n'est fiable qu'avec une preuve. Utilisez le vérificateur de métadonnées photo gratuit comme second cerveau :
 
 - **Avant** — listez les champs GPS, caméra et logiciel à supprimer.
 - **Après** — re-scannez le fichier nettoyé et confirmez leur disparition.
@@ -79,6 +79,6 @@ Seul le suppresseur basé navigateur efface chaque conteneur de métadonnées da
 
 ## L'essentiel
 
-La suppression des données EXIF des photos sur Android commence par vos réglages de caméra — désactivez la position pour les nouvelles prises et masquez la position des photos existantes dans Google Photos. Pour un fichier réellement propre, exécutez le [suppresseur de métadonnées photo](/fr/#tool) dans votre navigateur : il supprime chaque champ sur l'appareil, et le [vérificateur de métadonnées](/fr/view-photo-metadata) prouve le résultat. Prévention, nettoyage et vérification prennent environ une minute par photo.
+La suppression des données EXIF des photos sur Android commence par vos réglages de caméra — désactivez la position pour les nouvelles prises et masquez la position des photos existantes dans Google Photos. Pour un fichier réellement propre, exécutez le [suppresseur de métadonnées photo](/fr/#tool) dans votre navigateur : il supprime chaque champ sur l'appareil, et le vérificateur de métadonnées prouve le résultat. Prévention, nettoyage et vérification prennent environ une minute par photo.
 
 Nettoyez vos photos Android maintenant : [supprimez EXIF, GPS et données cachées](/fr/#tool).

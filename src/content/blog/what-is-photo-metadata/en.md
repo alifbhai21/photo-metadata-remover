@@ -77,7 +77,7 @@ Because behavior varies so widely, the reliable approach is to remove the metada
 
 Before sharing, it takes only seconds to see what is inside:
 
-1. Open the file in a metadata viewer — the page you are on now offers the [free metadata checker](/en/view-photo-metadata).
+1. Open the file in a metadata viewer — the page you are on now offers the free metadata checker.
 2. Review the detected fields: camera, software, timestamps, and any GPS coordinates.
 3. Decide whether to share the file as-is or clean it first.
 

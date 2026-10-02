@@ -84,7 +84,7 @@ En confidentialité : priorisez EXIF. Pour un nettoyage total : supprimez les tr
 Vous n'avez pas à choisir entre les normes pour nettoyer. Le [suppresseur de métadonnées photo](/fr/#tool) retire EXIF, IPTC et XMP en une seule passe locale :
 
 1. Chargez la photo — elle est traitée entièrement dans votre navigateur.
-2. Confirmez les champs supprimés avec le [vérificateur de métadonnées photo](/fr/view-photo-metadata) avant et après.
+2. Confirmez les champs supprimés avec le vérificateur de métadonnées photo avant et après.
 3. Téléchargez la copie propre et partagez-la partout.
 
 Tout s'exécute sur votre appareil, donc même les fichiers de presse avec droits restent là où ils doivent être.

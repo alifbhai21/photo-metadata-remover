@@ -51,7 +51,7 @@ Your original never uploads to a server, so you can clean private images without
 
 ## Step 5: check photographs before and after
 
-Cleaning without proof is guessing. Use the free [photo metadata checker](/en/view-photo-metadata) to verify:
+Cleaning without proof is guessing. Use the free photo metadata checker to verify:
 
 - **Before** — confirm the GPS, camera, and software fields you want gone.
 - **After** — re-scan the cleaned file and confirm the fields disappeared.
@@ -79,6 +79,6 @@ Only the full remover clears every metadata container in the actual file, and it
 
 ## The bottom line
 
-To remove EXIF data from photos on iPhone, start with Settings — stop the camera recording location, then strip the visible location on existing photos. For a fully clean file, run the [photo metadata remover](/en/#tool) in your browser: it clears every field on-device, and the [metadata checker](/en/view-photo-metadata) confirms the result. Prevention, cleaning, and verification take under a minute once you have the loop.
+To remove EXIF data from photos on iPhone, start with Settings — stop the camera recording location, then strip the visible location on existing photos. For a fully clean file, run the [photo metadata remover](/en/#tool) in your browser: it clears every field on-device, and the metadata checker confirms the result. Prevention, cleaning, and verification take under a minute once you have the loop.
 
 Clean your iPhone photos now: [remove EXIF, GPS, and hidden data](/en/#tool).

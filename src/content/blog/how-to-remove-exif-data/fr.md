@@ -17,7 +17,7 @@ Chaque photo prise avec un téléphone ou un appareil photo porte une traîne ca
 
 ## D'abord, confirmez que l'EXIF est vraiment là
 
-Une suppression que vous ne pouvez pas vérifier est une suppression à laquelle vous ne pouvez pas faire confiance. Faites passer la photo dans le [vérificateur de métadonnées photo gratuit](/fr/view-photo-metadata) – il liste les champs appareil, logiciel, horodatage et GPS en quelques secondes, entièrement dans votre navigateur. Ce coup d'œil indique la quantité de contexte transportée par le fichier et fournit une référence pour les vérifications ultérieures.
+Une suppression que vous ne pouvez pas vérifier est une suppression à laquelle vous ne pouvez pas faire confiance. Faites passer la photo dans le vérificateur de métadonnées photo gratuit – il liste les champs appareil, logiciel, horodatage et GPS en quelques secondes, entièrement dans votre navigateur. Ce coup d'œil indique la quantité de contexte transportée par le fichier et fournit une référence pour les vérifications ultérieures.
 
 ## Le moyen gratuit le plus rapide : un suppresseur basé navigateur
 
@@ -73,7 +73,7 @@ Les champs dérivés du numéro de série de votre appareil, votre type d'appare
 
 ## Vérifiez, puis partagez
 
-Bouclez la boucle comme vous l'avez ouverte : faites passer le résultat dans le [vérificateur de métadonnées](/fr/view-photo-metadata) et confirmez que les champs GPS et appareil ont disparu. Si une balise a survécu, le format exigeait le retrait complet. Un fichier propre vérifié est le seul fichier digne d'être partagé.
+Bouclez la boucle comme vous l'avez ouverte : faites passer le résultat dans le vérificateur de métadonnées et confirmez que les champs GPS et appareil ont disparu. Si une balise a survécu, le format exigeait le retrait complet. Un fichier propre vérifié est le seul fichier digne d'être partagé.
 
 ## L'essentiel
 

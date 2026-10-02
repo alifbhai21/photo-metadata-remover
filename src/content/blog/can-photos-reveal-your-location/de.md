@@ -57,7 +57,7 @@ Metadaten-Entfernung behandelt den versteckten Kanal. Ihr Urteilsvermögen behan
 
 ## So prüfen Sie, ob ein Foto Standortdaten enthält
 
-Lassen Sie die Datei vor dem Teilen durch eine Metadaten-Ansicht laufen. Die [kostenlose Foto-Metadaten-Prüfung](/de/view-photo-metadata) auf dieser Seite listet GPS-Koordinaten und jedes andere erkennbare Feld in Sekunden auf – vollständig im Browser. Wenn Sie Längen- und Breitengrad sehen – oder die Begriffe GPS, GPSInfo oder „location" in der Tag-Liste – leakt die Datei Ihren Standort.
+Lassen Sie die Datei vor dem Teilen durch eine Metadaten-Ansicht laufen. Die kostenlose Foto-Metadaten-Prüfung auf dieser Seite listet GPS-Koordinaten und jedes andere erkennbare Feld in Sekunden auf – vollständig im Browser. Wenn Sie Längen- und Breitengrad sehen – oder die Begriffe GPS, GPSInfo oder „location" in der Tag-Liste – leakt die Datei Ihren Standort.
 
 ## So entfernen Sie den Standort aus einem Foto
 
@@ -77,4 +77,4 @@ GPS in der Kamera-App auszuschalten verhindert *neue* Ortsangaben, hilft aber ni
 
 Fotos können Ihren Standort durch verstecktes EXIF-GPS, Plattform-Tags, Dateinamen und den Bildinhalt selbst verraten. Der versteckte Kanal ist leicht zu schließen: Entfernen Sie die Metadaten vor dem Teilen und bestätigen Sie mit einer schnellen Metadaten-Prüfung, dass nichts übersehen wurde. Der sichtbare Kanal ist eine Frage des Urteilsvermögens – überlegen Sie auch, was ein Fremder aus dem Bild selbst schließen könnte.
 
-Prüfen Sie Ihre Bilder vor dem Posten: [Foto auf GPS scannen](/de/view-photo-metadata) oder [Standortdaten jetzt entfernen](/de/#tool).
+Prüfen Sie Ihre Bilder vor dem Posten: Foto auf GPS scannen oder [Standortdaten jetzt entfernen](/de/#tool).

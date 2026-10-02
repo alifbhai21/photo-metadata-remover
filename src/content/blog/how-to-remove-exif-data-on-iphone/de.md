@@ -51,7 +51,7 @@ Ihr Original wird nie auf einen Server hochgeladen, sodass Sie private Bilder re
 
 ## Schritt 5: Fotos vorher und nachher prüfen
 
-Bereinigen ohne Beweis ist Raten. Mit dem kostenlosen [Foto-Metadaten-Checker](/de/view-photo-metadata) verifizieren:
+Bereinigen ohne Beweis ist Raten. Mit dem kostenlosen Foto-Metadaten-Checker verifizieren:
 
 - **Vorher** – bestätigen, welche GPS-, Kamera- und Software-Felder entfernt werden sollen.
 - **Nachher** – die bereinigte Datei erneut scannen und das Verschwinden der Felder bestätigen.
@@ -79,6 +79,6 @@ Nur der vollständige Entferner löscht jeden Metadaten-Container in der tatsäc
 
 ## Das Fazit
 
-Um EXIF-Daten aus Fotos auf dem iPhone zu entfernen, beginnen Sie mit den Einstellungen – die Kamera daran hindern, Standorte aufzuzeichnen, dann den sichtbaren Standort bestehender Fotos entfernen. Für eine vollständig saubere Datei den [Foto-Metadaten-Entferner](/de/#tool) im Browser ausführen: Er löscht jedes Feld auf dem Gerät, und der [Metadaten-Checker](/de/view-photo-metadata) bestätigt das Ergebnis. Vorbeugung, Bereinigung und Verifikation dauern zusammen unter einer Minute.
+Um EXIF-Daten aus Fotos auf dem iPhone zu entfernen, beginnen Sie mit den Einstellungen – die Kamera daran hindern, Standorte aufzuzeichnen, dann den sichtbaren Standort bestehender Fotos entfernen. Für eine vollständig saubere Datei den [Foto-Metadaten-Entferner](/de/#tool) im Browser ausführen: Er löscht jedes Feld auf dem Gerät, und der Metadaten-Checker bestätigt das Ergebnis. Vorbeugung, Bereinigung und Verifikation dauern zusammen unter einer Minute.
 
 Ihre iPhone-Fotos jetzt bereinigen: [EXIF, GPS und versteckte Daten entfernen](/de/#tool).

@@ -17,7 +17,7 @@ Before you share a photo, it helps to know what is hidden inside it. Metadata ca
 
 ## The fastest way: a browser-based metadata checker
 
-No install, no upload — the free [photo metadata checker](/en/view-photo-metadata) on this site reads the file in your browser and lists every detectable field in seconds:
+No install, no upload — the free photo metadata checker on this site reads the file in your browser and lists every detectable field in seconds:
 
 - **Camera** — make, model, lens, serial-derived identifiers.
 - **Capture settings** — aperture, shutter speed, ISO, focal length.
@@ -80,4 +80,4 @@ Everything you learn from the check tells you what to do next:
 
 Checking photo metadata is quick and free: file properties on Windows, Preview's inspector on macOS, detail panels on phones, and a full field-by-field readout from a browser-based checker. Read the GPS, camera, and software fields critically, strip what should not be shared, and verify the cleaned file before you send it anywhere.
 
-Start with a scan: [check photo metadata online](/en/view-photo-metadata) or [remove EXIF and GPS now](/en/#tool).
+Start with a scan: check photo metadata online or [remove EXIF and GPS now](/en/#tool).

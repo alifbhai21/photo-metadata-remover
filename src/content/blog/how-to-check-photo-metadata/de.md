@@ -17,7 +17,7 @@ Bevor Sie ein Foto teilen, hilft es zu wissen, was darin versteckt ist. Metadate
 
 ## Der schnellste Weg: ein browserbasiertes Metadaten-Checker-Tool
 
-Keine Installation, kein Upload – der [kostenlose Foto-Metadaten-Checker](/de/view-photo-metadata) auf dieser Seite liest die Datei in Ihrem Browser und listet jedes erkennbare Feld in Sekunden auf:
+Keine Installation, kein Upload – der kostenlose Foto-Metadaten-Checker auf dieser Seite liest die Datei in Ihrem Browser und listet jedes erkennbare Feld in Sekunden auf:
 
 - **Kamera** – Hersteller, Modell, Objektiv, seriennummernabgeleitete Kennungen.
 - **Aufnahme-Einstellungen** – Blende, Belichtungszeit, ISO, Brennweite.
@@ -80,4 +80,4 @@ Alles, was Sie aus der Prüfung lernen, sagt Ihnen, was als Nächstes zu tun ist
 
 Foto-Metadaten zu prüfen ist schnell und kostenlos: Dateieigenschaften unter Windows, der Inspektor in Preview unter macOS, Detailfenster am Handy und eine vollständige Feld-für-Feld-Ausgabe durch einen browserbasierten Checker. Lesen Sie GPS-, Kamera- und Software-Felder kritisch, entfernen Sie, was nicht geteilt werden soll, und verifizieren Sie die bereinigte Datei vor dem Versand.
 
-Beginnen Sie mit einem Scan: [Foto-Metadaten online prüfen](/de/view-photo-metadata) oder [EXIF und GPS jetzt entfernen](/de/#tool).
+Beginnen Sie mit einem Scan: Foto-Metadaten online prüfen oder [EXIF und GPS jetzt entfernen](/de/#tool).

@@ -51,7 +51,7 @@ Nichts wird auf einen Server hochgeladen, sodass private Bilder auf Ihrem Telefo
 
 ## Schritt 5: Immer vorher und nachher verifizieren
 
-Bereinigen ist nur mit Beweis vertrauenswürdig. Den kostenlosen [Foto-Metadaten-Checker](/de/view-photo-metadata) als zweites Gedächtnis nutzen:
+Bereinigen ist nur mit Beweis vertrauenswürdig. Den kostenlosen Foto-Metadaten-Checker als zweites Gedächtnis nutzen:
 
 - **Vorher** – die GPS-, Kamera- und Software-Felder auflisten, die entfernt werden sollen.
 - **Nachher** – die bereinigte Datei erneut scannen und bestätigen, dass sie verschwunden sind.
@@ -79,6 +79,6 @@ Nur der browserbasierte Entferner löscht jeden Metadaten-Container in der tats�
 
 ## Das Fazit
 
-Die Entfernung von EXIF-Daten aus Fotos auf Android beginnt mit Ihren Kamera-Einstellungen – Standort für neue Aufnahmen deaktivieren und den Standort bestehender Fotos in Google Fotos ausblenden. Für eine tatsächlich saubere Datei den [Foto-Metadaten-Entferner](/de/#tool) im Browser ausführen: Er entfernt jedes Feld auf dem Gerät, und der [Metadaten-Checker](/de/view-photo-metadata) belegt das Ergebnis. Vorbeugung, Bereinigung und Verifikation dauern etwa eine Minute pro Foto.
+Die Entfernung von EXIF-Daten aus Fotos auf Android beginnt mit Ihren Kamera-Einstellungen – Standort für neue Aufnahmen deaktivieren und den Standort bestehender Fotos in Google Fotos ausblenden. Für eine tatsächlich saubere Datei den [Foto-Metadaten-Entferner](/de/#tool) im Browser ausführen: Er entfernt jedes Feld auf dem Gerät, und der Metadaten-Checker belegt das Ergebnis. Vorbeugung, Bereinigung und Verifikation dauern etwa eine Minute pro Foto.
 
 Ihre Android-Fotos jetzt bereinigen: [EXIF, GPS und versteckte Daten entfernen](/de/#tool).

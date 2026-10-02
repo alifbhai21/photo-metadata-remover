@@ -51,7 +51,7 @@ Nothing uploads to a server, so private images stay on your phone while the tool
 
 ## Step 5: always verify before and after
 
-Cleaning is only trustworthy with proof. Use the free [photo metadata checker](/en/view-photo-metadata) as your second brain:
+Cleaning is only trustworthy with proof. Use the free photo metadata checker as your second brain:
 
 - **Before** — list the GPS, camera, and software fields you want gone.
 - **After** — re-scan the cleaned file and confirm they are gone.
@@ -79,6 +79,6 @@ Only the browser-based remover clears every metadata container in the actual fil
 
 ## The bottom line
 
-Removing EXIF data from photos on Android starts with your Camera settings — turn off location for new shots, and hide location in Google Photos for existing ones. For a file that is actually clean, run the [photo metadata remover](/en/#tool) in your browser: it strips every field on-device, and the [metadata checker](/en/view-photo-metadata) proves the result. Prevention, cleaning, and verification take about a minute per photo.
+Removing EXIF data from photos on Android starts with your Camera settings — turn off location for new shots, and hide location in Google Photos for existing ones. For a file that is actually clean, run the [photo metadata remover](/en/#tool) in your browser: it strips every field on-device, and the metadata checker proves the result. Prevention, cleaning, and verification take about a minute per photo.
 
 Clean your Android photos now: [remove EXIF, GPS, and hidden data](/en/#tool).

@@ -48,7 +48,7 @@ Ce n'est pas un risque théorique. Les bibliothèques photo partagées, les plac
 
 ## Comment consulter les données EXIF
 
-Vous n'avez besoin d'aucune compétence particulière pour lire l'EXIF. Le plus rapide est de charger la photo dans une visionneuse qui expose tous les onglets. Sur ce site, la [vérification gratuite des métadonnées photo](/fr/view-photo-metadata) liste chaque champ détectable en quelques secondes, entièrement dans votre navigateur.
+Vous n'avez besoin d'aucune compétence particulière pour lire l'EXIF. Le plus rapide est de charger la photo dans une visionneuse qui expose tous les onglets. Sur ce site, la vérification gratuite des métadonnées photo liste chaque champ détectable en quelques secondes, entièrement dans votre navigateur.
 
 Sur un téléphone, la galerie intégrée masque généralement la plupart des onglets, et sur un ordinateur, le système d'exploitation n'affiche que des champs de base comme la date et les dimensions. Une visionneuse dédiée fait la différence entre voir un résumé et voir le rapport complet.
 
@@ -74,4 +74,4 @@ EXIF est le bloc de métadonnées le plus connu, mais pas le seul. **IPTC** cont
 
 EXIF est le rapport caché que votre appareil écrit sur chaque photo – et il voyage avec le fichier où qu'il aille. La plupart sont utiles pour organiser vos images, mais les champs GPS et d'horodatage peuvent fuiter des détails que vous n'avez jamais voulu partager. Vérifier ce qu'une photo contient avant de l'envoyer, et supprimer les métadonnées lorsque le contenu est sensible, prend quelques secondes et constitue l'une des habitudes de confidentialité les plus efficaces.
 
-Curieux de savoir ce que vos photos cachent ? [Vérifiez une photo maintenant](/fr/view-photo-metadata) ou nettoyez-la directement avec le [suppresseur de métadonnées photo](/fr/#tool).
+Curieux de savoir ce que vos photos cachent ? Vérifiez une photo maintenant ou nettoyez-la directement avec le [suppresseur de métadonnées photo](/fr/#tool).

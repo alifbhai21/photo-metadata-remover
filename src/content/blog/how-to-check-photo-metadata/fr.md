@@ -17,7 +17,7 @@ Avant de partager une photo, il est utile de savoir ce qui se cache dedans. Les 
 
 ## Le moyen le plus rapide : un vérificateur basé navigateur
 
-Aucune installation, aucun téléversement – le [vérificateur de métadonnées photo gratuit](/fr/view-photo-metadata) de ce site lit le fichier dans votre navigateur et liste chaque champ détectable en quelques secondes :
+Aucune installation, aucun téléversement – le vérificateur de métadonnées photo gratuit de ce site lit le fichier dans votre navigateur et liste chaque champ détectable en quelques secondes :
 
 - **Appareil** – marque, modèle, objectif, identifiants dérivés du numéro de série.
 - **Réglages de prise de vue** – ouverture, vitesse, ISO, focale.
@@ -80,4 +80,4 @@ Tout ce que vous apprenez du contrôle vous dit quoi faire ensuite :
 
 Vérifier les métadonnées photo est rapide et gratuit : propriétés du fichier sous Windows, inspecteur d'Aperçu sous macOS, panneaux de détails sur téléphone et lecture complète champ par champ avec un vérificateur basé navigateur. Lisez les champs GPS, appareil et logiciel de façon critique, supprimez ce qui ne doit pas être partagé et vérifiez le fichier nettoyé avant de l'envoyer où que ce soit.
 
-Commencez par un scan : [vérifiez les métadonnées photo en ligne](/fr/view-photo-metadata) ou [supprimez EXIF et GPS maintenant](/fr/#tool).
+Commencez par un scan : vérifiez les métadonnées photo en ligne ou [supprimez EXIF et GPS maintenant](/fr/#tool).

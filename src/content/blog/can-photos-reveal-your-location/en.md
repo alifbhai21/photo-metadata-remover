@@ -57,7 +57,7 @@ Metadata removal handles the hidden channel. Judgement handles the visible one.
 
 ## How to check whether a photo has location data
 
-Before sharing, run the file through a metadata viewer. The free [photo metadata checker](/en/view-photo-metadata) on this site lists GPS coordinates and every other detectable field in seconds, entirely in the browser. If you see latitude and longitude — or the words GPS, GPSInfo, or "location" in the tag list — the file leaks your position.
+Before sharing, run the file through a metadata viewer. The free photo metadata checker on this site lists GPS coordinates and every other detectable field in seconds, entirely in the browser. If you see latitude and longitude — or the words GPS, GPSInfo, or "location" in the tag list — the file leaks your position.
 
 ## How to remove location from a photo
 
@@ -77,4 +77,4 @@ Turning off GPS in your camera app prevents *new* location tags, but it does not
 
 Photos can reveal your location through hidden EXIF GPS, platform tags, filenames, and the image content itself. The hidden channel is easy to close: strip metadata before you share, and confirm nothing was missed with a quick metadata check. The visible channel is a habit of judgement — think about what a stranger could infer from the picture as well as the file.
 
-Check your images before you post: [scan a photo for GPS](/en/view-photo-metadata) or [remove the location data now](/en/#tool).
+Check your images before you post: scan a photo for GPS or [remove the location data now](/en/#tool).

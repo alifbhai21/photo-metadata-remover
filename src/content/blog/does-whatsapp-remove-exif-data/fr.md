@@ -54,7 +54,7 @@ Nettoyer ne vise pas à déjouer WhatsApp ; il s'agit de garantir que chaque cop
 
 ## Comment envoyer une photo sur WhatsApp sans fuite de métadonnées
 
-1. **Contrôlez le fichier** – scannez-le avec le [vérificateur de métadonnées photo](/fr/view-photo-metadata) et voyez ce qu'il porte.
+1. **Contrôlez le fichier** – scannez-le avec le vérificateur de métadonnées photo et voyez ce qu'il porte.
 2. **Supprimez** – exécutez le [suppresseur de métadonnées photo](/fr/#tool) pour produire une copie propre. Tout se passe en local ; votre original ne quitte jamais votre appareil.
 3. **Vérifiez** – re-scannez la sortie nettoyée et confirmez la disparition des champs GPS, appareil et logiciel.
 4. **Puis envoyez** – partagez la copie propre via le canal de votre choix, y compris le mode document.
@@ -65,4 +65,4 @@ Vous ne perdez rien : la qualité est de toute façon contrôlée par la compres
 
 WhatsApp compresse et ré-encode les envois de photos standard, ce qui supprime l'EXIF et le GPS d'origine dans le cas courant – mais ce n'est pas un assainisseur. Les envois document peuvent porter les métadonnées complètes, les copies en cache restent sur votre appareil, et chaque transfert dépend de ce que contenait le fichier intermédiaire. Contrôlez, supprimez dans votre navigateur, vérifiez, puis envoyez. Cette seule habitude protège chaque photo sur chaque plateforme, pas seulement dans les chats WhatsApp.
 
-Prêt à envoyer en toute sécurité ? [Contrôlez les métadonnées de votre photo](/fr/view-photo-metadata) et [supprimez EXIF, GPS et données cachées](/fr/#tool) en une seule passe.
+Prêt à envoyer en toute sécurité ? Contrôlez les métadonnées de votre photo et [supprimez EXIF, GPS et données cachées](/fr/#tool) en une seule passe.

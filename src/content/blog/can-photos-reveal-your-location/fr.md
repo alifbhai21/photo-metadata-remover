@@ -57,7 +57,7 @@ La suppression des métadonnées traite le canal caché. Le jugement traite le c
 
 ## Comment vérifier si une photo contient des données de position
 
-Avant de partager, faites passer le fichier dans une visionneuse de métadonnées. La [vérification gratuite des métadonnées photo](/fr/view-photo-metadata) de ce site liste les coordonnées GPS et tous les autres champs détectables en quelques secondes, entièrement dans le navigateur. Si vous voyez latitude et longitude – ou les mots GPS, GPSInfo, ou « location » dans la liste des balises – le fichier divulgue votre position.
+Avant de partager, faites passer le fichier dans une visionneuse de métadonnées. La vérification gratuite des métadonnées photo de ce site liste les coordonnées GPS et tous les autres champs détectables en quelques secondes, entièrement dans le navigateur. Si vous voyez latitude et longitude – ou les mots GPS, GPSInfo, ou « location » dans la liste des balises – le fichier divulgue votre position.
 
 ## Comment supprimer la position d'une photo
 
@@ -77,4 +77,4 @@ Comme le fichier ne quitte jamais votre navigateur, vos originaux restent privé
 
 Les photos peuvent révéler votre position via le GPS EXIF caché, les balises de plateforme, les noms de fichiers et le contenu de l'image. Le canal caché est facile à fermer : supprimez les métadonnées avant de partager et confirmez qu'aucun reste n'a été oublié avec un contrôle rapide. Le canal visible relève du jugement – réfléchissez à ce qu'un étranger pourrait déduire aussi bien de l'image que du fichier.
 
-Vérifiez vos images avant de publier : [analysez une photo pour le GPS](/fr/view-photo-metadata) ou [supprimez les données de position maintenant](/fr/#tool).
+Vérifiez vos images avant de publier : analysez une photo pour le GPS ou [supprimez les données de position maintenant](/fr/#tool).

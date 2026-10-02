@@ -48,7 +48,7 @@ Das ist kein theoretisches Risiko. Geteilte Fotobibliotheken, Online-Marktplätz
 
 ## So sehen Sie EXIF-Daten
 
-Sie brauchen kein Fachwissen, um EXIF zu lesen. Am schnellsten laden Sie das Foto in eine Ansicht, die alle Tags offenlegt. Auf dieser Seite listet die [kostenlose Foto-Metadaten-Prüfung](/de/view-photo-metadata) jedes erkennbare Feld in Sekunden auf – vollständig in Ihrem Browser.
+Sie brauchen kein Fachwissen, um EXIF zu lesen. Am schnellsten laden Sie das Foto in eine Ansicht, die alle Tags offenlegt. Auf dieser Seite listet die kostenlose Foto-Metadaten-Prüfung jedes erkennbare Feld in Sekunden auf – vollständig in Ihrem Browser.
 
 Auf dem Smartphone versteckt die integrierte Galerie die meisten Tags, und auf dem Desktop zeigt das Betriebssystem nur Basisfelder wie Datum und Abmessungen. Eine eigene Ansicht ist der Unterschied zwischen einer Zusammenfassung und dem vollständigen Bericht.
 
@@ -74,4 +74,4 @@ EXIF ist der bekannteste Metadaten-Block, aber nicht der einzige. **IPTC** enth�
 
 EXIF ist der versteckte Bericht, den Ihre Kamera zu jedem Foto schreibt – und er reist mit der Datei, wohin immer sie geht. Das meiste davon ist nützlich zum Sortieren, aber die GPS- und Zeitstempelfelder können Details preisgeben, die Sie nie teilen wollten. Vor dem Versenden zu prüfen, was ein Foto enthält, und bei sensiblen Inhalten die Metadaten zu entfernen, dauert Sekunden und gehört zu den wirksamsten Datenschutz-Gewohnheiten überhaupt.
 
-Neugierig, was Ihre Fotos verbergen? [Jetzt ein Foto prüfen](/de/view-photo-metadata) oder direkt mit dem [Foto-Metadaten-Entferner](/de/#tool) bereinigen.
+Neugierig, was Ihre Fotos verbergen? Jetzt ein Foto prüfen oder direkt mit dem [Foto-Metadaten-Entferner](/de/#tool) bereinigen.

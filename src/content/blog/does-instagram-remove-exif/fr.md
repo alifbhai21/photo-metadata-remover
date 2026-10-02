@@ -53,7 +53,7 @@ Nettoyer avant de publier ne vise pas à déjouer Instagram ; il s'agit de garan
 
 ## Comment nettoyer votre photo avant Instagram
 
-1. **Vérifiez** – faites passer le fichier dans le [vérificateur de métadonnées photo gratuit](/fr/view-photo-metadata) pour voir ce qu'il transporte.
+1. **Vérifiez** – faites passer le fichier dans le vérificateur de métadonnées photo gratuit pour voir ce qu'il transporte.
 2. **Supprimez** – utilisez le [suppresseur de métadonnées photo](/fr/#tool) pour produire une copie propre. Tout s'exécute en local ; votre original ne quitte jamais votre appareil.
 3. **Examinez l'image** – pensez aux reflets, points de repère et numéros de maisons avant de l'ajouter à une grille publique.
 4. **Décidez des étiquettes de lieu** – sautez le champ « ajouter un lieu » pour les publications qui ne doivent pas être liées à un endroit.

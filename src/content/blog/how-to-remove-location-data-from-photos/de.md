@@ -17,7 +17,7 @@ Standortdaten verstecken sich in mehr Fotos, als die meisten Menschen glauben: I
 
 ## Vor dem Start: prüfen, was ein Foto enthält
 
-Das Entfernen von Standortdaten ist nur sinnvoll, wenn Sie bestätigen können, dass sie existieren. Lassen Sie die Datei zuerst durch die [Foto-Metadaten-Prüfung](/de/view-photo-metadata) laufen: Sie listet GPS-Koordinaten und jedes andere erkannte Feld in Sekunden auf – vollständig in Ihrem Browser. Wenn Längen- und Breitengrad erscheinen, leakt die Datei Ihre Position und muss bereinigt werden.
+Das Entfernen von Standortdaten ist nur sinnvoll, wenn Sie bestätigen können, dass sie existieren. Lassen Sie die Datei zuerst durch die Foto-Metadaten-Prüfung laufen: Sie listet GPS-Koordinaten und jedes andere erkannte Feld in Sekunden auf – vollständig in Ihrem Browser. Wenn Längen- und Breitengrad erscheinen, leakt die Datei Ihre Position und muss bereinigt werden.
 
 ## Methode 1: Metadaten mit einem Browser-Tool entfernen (empfohlen)
 
@@ -69,7 +69,7 @@ Die Gewohnheit zählt mehr als das Tool: Posten Sie niemals eine Datei, die unge
 
 ## Das Ergebnis verifizieren
 
-Lassen Sie nach dem Bereinigen die [Metadaten-Prüfung](/de/view-photo-metadata) erneut über die Ausgabedatei laufen. Die GPS-Felder sollten verschwunden sein – idealerweise der gesamte EXIF-Block. Übersteht ein Tag mit Standort-String die Bereinigung, war Ihre Methode für diesen Dateityp zu sanft – wechseln Sie zum vollständigen Metadaten-Stripping.
+Lassen Sie nach dem Bereinigen die Metadaten-Prüfung erneut über die Ausgabedatei laufen. Die GPS-Felder sollten verschwunden sein – idealerweise der gesamte EXIF-Block. Übersteht ein Tag mit Standort-String die Bereinigung, war Ihre Methode für diesen Dateityp zu sanft – wechseln Sie zum vollständigen Metadaten-Stripping.
 
 ## Das Fazit
 

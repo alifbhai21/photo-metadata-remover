@@ -17,7 +17,7 @@ Location data hides inside more photos than most people realize: your phone writ
 
 ## Before you start: check what a photo contains
 
-Removing location data is only meaningful if you can confirm it existed. Run the file through a [photo metadata checker](/en/view-photo-metadata) first: it lists GPS coordinates and every other detected field in seconds, entirely in your browser. If latitude and longitude appear, the file leaks your position and needs cleaning.
+Removing location data is only meaningful if you can confirm it existed. Run the file through a photo metadata checker first: it lists GPS coordinates and every other detected field in seconds, entirely in your browser. If latitude and longitude appear, the file leaks your position and needs cleaning.
 
 ## Method 1: Strip metadata with a browser tool (recommended)
 
@@ -69,7 +69,7 @@ The habit matters more than the tool: never post a file that remains unverified.
 
 ## Verify the result
 
-After cleaning, re-run the [metadata checker](/en/view-photo-metadata) on the output file. The GPS fields should be gone, and ideally the entire EXIF block too. If any tag with a location string survives, your method was too gentle for that file type — switch to full metadata stripping.
+After cleaning, re-run the metadata checker on the output file. The GPS fields should be gone, and ideally the entire EXIF block too. If any tag with a location string survives, your method was too gentle for that file type — switch to full metadata stripping.
 
 ## The bottom line
 

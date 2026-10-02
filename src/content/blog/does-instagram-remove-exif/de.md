@@ -53,7 +53,7 @@ Vor dem Posten zu bereinigen dient nicht dazu, Instagram auszutricksen, sondern 
 
 ## So bereinigen Sie Ihr Foto vor Instagram
 
-1. **Prüfen** – lassen Sie die Datei durch den [kostenlosen Foto-Metadaten-Checker](/de/view-photo-metadata) laufen, um zu sehen, was sie trägt.
+1. **Prüfen** – lassen Sie die Datei durch den kostenlosen Foto-Metadaten-Checker laufen, um zu sehen, was sie trägt.
 2. **Entfernen** – nutzen Sie den [Foto-Metadaten-Entferner](/de/#tool), um eine saubere Kopie zu erzeugen. Alles läuft lokal; Ihr Original verlässt Ihr Gerät nie.
 3. **Bild prüfen** – denken Sie vor dem Hinzufügen zu einem öffentlichen Raster an Spiegelungen, Wahrzeichen und Hausnummern.
 4. **Über Ortslabel entscheiden** – überspringen Sie das Feld „Standort hinzufügen" bei Posts, die nicht an einen Ort gebunden sein sollen.

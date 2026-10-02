@@ -1,0 +1,487 @@
+{
+  "summary": {
+    "totalRenders": 36,
+    "failures": 0,
+    "overflows": 0,
+    "consoleErrors": 36,
+    "non200": 0,
+    "robotsByRoute": [
+      "en/ -> index, follow",
+      "en/blog/how-to-remove-exif-data -> index, follow",
+      "en/formats -> index, follow",
+      "en/faq -> index, follow",
+      "en/view-photo-metadata -> noindex, nofollow",
+      "de/blog/what-is-exif-data -> index, follow"
+    ]
+  },
+  "results": [
+    {
+      "route": "en/",
+      "vp": "375x667",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "robots": "index, follow",
+      "h1": "Keep Your Photos Private",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/",
+      "vp": "390x844",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "robots": "index, follow",
+      "h1": "Keep Your Photos Private",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/",
+      "vp": "768x1024",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "robots": "index, follow",
+      "h1": "Keep Your Photos Private",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/",
+      "vp": "820x1180",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "robots": "index, follow",
+      "h1": "Keep Your Photos Private",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/",
+      "vp": "1280x800",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "robots": "index, follow",
+      "h1": "Keep Your Photos Private",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/",
+      "vp": "1440x900",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "robots": "index, follow",
+      "h1": "Keep Your Photos Private",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/blog/how-to-remove-exif-data",
+      "vp": "375x667",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "robots": "index, follow",
+      "h1": "How to Remove EXIF Data from Photos (Free, Step by Step)",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/blog/how-to-remove-exif-data",
+      "vp": "390x844",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "robots": "index, follow",
+      "h1": "How to Remove EXIF Data from Photos (Free, Step by Step)",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/blog/how-to-remove-exif-data",
+      "vp": "768x1024",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "robots": "index, follow",
+      "h1": "How to Remove EXIF Data from Photos (Free, Step by Step)",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/blog/how-to-remove-exif-data",
+      "vp": "820x1180",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "robots": "index, follow",
+      "h1": "How to Remove EXIF Data from Photos (Free, Step by Step)",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/blog/how-to-remove-exif-data",
+      "vp": "1280x800",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "robots": "index, follow",
+      "h1": "How to Remove EXIF Data from Photos (Free, Step by Step)",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/blog/how-to-remove-exif-data",
+      "vp": "1440x900",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "robots": "index, follow",
+      "h1": "How to Remove EXIF Data from Photos (Free, Step by Step)",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/formats",
+      "vp": "375x667",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "robots": "index, follow",
+      "h1": "Supported Formats",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/formats",
+      "vp": "390x844",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "robots": "index, follow",
+      "h1": "Supported Formats",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/formats",
+      "vp": "768x1024",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "robots": "index, follow",
+      "h1": "Supported Formats",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/formats",
+      "vp": "820x1180",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "robots": "index, follow",
+      "h1": "Supported Formats",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/formats",
+      "vp": "1280x800",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "robots": "index, follow",
+      "h1": "Supported Formats",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/formats",
+      "vp": "1440x900",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "robots": "index, follow",
+      "h1": "Supported Formats",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/faq",
+      "vp": "375x667",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "robots": "index, follow",
+      "h1": "Frequently Asked Questions",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/faq",
+      "vp": "390x844",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "robots": "index, follow",
+      "h1": "Frequently Asked Questions",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/faq",
+      "vp": "768x1024",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "robots": "index, follow",
+      "h1": "Frequently Asked Questions",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/faq",
+      "vp": "820x1180",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "robots": "index, follow",
+      "h1": "Frequently Asked Questions",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/faq",
+      "vp": "1280x800",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "robots": "index, follow",
+      "h1": "Frequently Asked Questions",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/faq",
+      "vp": "1440x900",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "robots": "index, follow",
+      "h1": "Frequently Asked Questions",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "375x667",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "robots": "noindex, nofollow",
+      "h1": "View Photo Metadata",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "390x844",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "robots": "noindex, nofollow",
+      "h1": "View Photo Metadata",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "768x1024",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "robots": "noindex, nofollow",
+      "h1": "View Photo Metadata",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "820x1180",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "robots": "noindex, nofollow",
+      "h1": "View Photo Metadata",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "1280x800",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "robots": "noindex, nofollow",
+      "h1": "View Photo Metadata",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "en/view-photo-metadata",
+      "vp": "1440x900",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "robots": "noindex, nofollow",
+      "h1": "View Photo Metadata",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "de/blog/what-is-exif-data",
+      "vp": "375x667",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "robots": "index, follow",
+      "h1": "Was sind EXIF-Daten? Fotos tragen einen versteckten Kamera-B",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "de/blog/what-is-exif-data",
+      "vp": "390x844",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "robots": "index, follow",
+      "h1": "Was sind EXIF-Daten? Fotos tragen einen versteckten Kamera-B",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "de/blog/what-is-exif-data",
+      "vp": "768x1024",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "robots": "index, follow",
+      "h1": "Was sind EXIF-Daten? Fotos tragen einen versteckten Kamera-B",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "de/blog/what-is-exif-data",
+      "vp": "820x1180",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 820,
+      "clientWidth": 820,
+      "robots": "index, follow",
+      "h1": "Was sind EXIF-Daten? Fotos tragen einen versteckten Kamera-B",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "de/blog/what-is-exif-data",
+      "vp": "1280x800",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "robots": "index, follow",
+      "h1": "Was sind EXIF-Daten? Fotos tragen einen versteckten Kamera-B",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    },
+    {
+      "route": "de/blog/what-is-exif-data",
+      "vp": "1440x900",
+      "status": 200,
+      "overflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "robots": "index, follow",
+      "h1": "Was sind EXIF-Daten? Fotos tragen einen versteckten Kamera-B",
+      "errors": [
+        "console.error: Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ]
+    }
+  ]
+}

@@ -17,7 +17,7 @@ Every photo you take with a phone or camera carries a hidden trailer: EXIF data 
 
 ## First, confirm the EXIF is actually there
 
-Removal you cannot verify is removal you cannot trust. Run the photo through the free [photo metadata checker](/en/view-photo-metadata) — it lists camera, software, timestamp, and GPS fields in seconds, all inside your browser. That glance tells you how much context the file is carrying and gives you a baseline for later verification.
+Removal you cannot verify is removal you cannot trust. Run the photo through the free photo metadata checker — it lists camera, software, timestamp, and GPS fields in seconds, all inside your browser. That glance tells you how much context the file is carrying and gives you a baseline for later verification.
 
 ## The fastest free method: a browser-based stripper
 
@@ -73,7 +73,7 @@ Your camera's serial-derived fields, your device type, and your captured locatio
 
 ## Verify, then share
 
-Close the loop the same way you opened it: run the output through the [metadata checker](/en/view-photo-metadata) and confirm the GPS and camera fields are gone. If any tag survived, the format needed the full-strip path. A verified clean file is the only file worth sharing.
+Close the loop the same way you opened it: run the output through the metadata checker and confirm the GPS and camera fields are gone. If any tag survived, the format needed the full-strip path. A verified clean file is the only file worth sharing.
 
 ## The bottom line
 

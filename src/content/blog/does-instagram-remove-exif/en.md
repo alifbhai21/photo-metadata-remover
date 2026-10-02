@@ -53,7 +53,7 @@ Cleaning before posting is not about outsmarting Instagram; it is about making s
 
 ## How to clean your photo before Instagram
 
-1. **Check** — run the file through the free [photo metadata checker](/en/view-photo-metadata) to see what it carries.
+1. **Check** — run the file through the free photo metadata checker to see what it carries.
 2. **Strip** — use the [photo metadata remover](/en/#tool) to produce a clean copy. Everything runs locally; your original never leaves your device.
 3. **Review the picture** — consider reflections, landmarks, and house numbers before you add them to a public grid.
 4. **Decide on location labels** — skip the "add location" field for posts that should not be tied to a place.

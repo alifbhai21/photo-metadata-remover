@@ -51,7 +51,7 @@ Votre original ne téléverse jamais vers un serveur, donc vous pouvez nettoyer 
 
 ## Étape 5 : vérifier les photos avant et après
 
-Nettoyer sans preuve, c'est deviner. Utilisez le [vérificateur de métadonnées photo](/fr/view-photo-metadata) gratuit pour vérifier :
+Nettoyer sans preuve, c'est deviner. Utilisez le vérificateur de métadonnées photo gratuit pour vérifier :
 
 - **Avant** — confirmez les champs GPS, appareil et logiciel que vous voulez voir disparaître.
 - **Après** — re-scannez le fichier nettoyé et confirmez la disparition des champs.
@@ -79,6 +79,6 @@ Seul le suppresseur complet efface chaque conteneur de métadonnées dans le fic
 
 ## L'essentiel
 
-Pour supprimer les données EXIF des photos sur iPhone, commencez par les Réglages — empêchez la caméra d'enregistrer la position, puis supprimez la position visible des photos existantes. Pour un fichier entièrement propre, exécutez le [suppresseur de métadonnées photo](/fr/#tool) dans votre navigateur : il efface chaque champ sur l'appareil, et le [vérificateur de métadonnées](/fr/view-photo-metadata) confirme le résultat. Prévention, nettoyage et vérification prennent moins d'une minute une fois la boucle en place.
+Pour supprimer les données EXIF des photos sur iPhone, commencez par les Réglages — empêchez la caméra d'enregistrer la position, puis supprimez la position visible des photos existantes. Pour un fichier entièrement propre, exécutez le [suppresseur de métadonnées photo](/fr/#tool) dans votre navigateur : il efface chaque champ sur l'appareil, et le vérificateur de métadonnées confirme le résultat. Prévention, nettoyage et vérification prennent moins d'une minute une fois la boucle en place.
 
 Nettoyez vos photos iPhone maintenant : [supprimez EXIF, GPS et données cachées](/fr/#tool).
