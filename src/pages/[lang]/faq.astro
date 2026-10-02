@@ -16,13 +16,13 @@ const { lang } = Astro.params;
 const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
 const translations = getTranslations(currentLang);
 
-const ALL_QUESTIONS = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13'];
+const ALL_QUESTIONS = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q13'];
 
 const catOrder = [
   { id: 'understanding', icon: 'device' },
   { id: 'privacy', icon: 'lock' },
   { id: 'formats', icon: 'palette' },
-  { id: 'trust', icon: 'github' },
+  { id: 'trust', icon: 'verified' },
 ];
 
 const groups = catOrder.map((cat) => ({
@@ -176,10 +176,6 @@ const faqJsonLd = {
             <a href={`/${currentLang}/security`} class="h-11 px-4 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-medium inline-flex items-center justify-center gap-2">
               <Icon name="lock" class="w-[18px] h-[18px]" />
               {t(translations, 'faq_page.cta_secondary')}
-            </a>
-            <a href={`/${currentLang}/open-source`} class="w-full sm:w-auto h-11 px-4 rounded-lg bg-primary text-on-primary font-medium inline-flex items-center justify-center gap-2 hover:bg-primary-container">
-              <Icon name="github" class="w-[18px] h-[18px]" />
-              {t(translations, 'faq_page.cta_tertiary')}
             </a>
           </div>
         </div>

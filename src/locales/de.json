@@ -11,7 +11,7 @@
       "description": "Entfernen Sie GPS-Koordinaten, Kamera-Seriennummern, Zeitstempel und andere versteckte EXIF-Daten aus Ihren Fotos. Kostenlos, privat und 100 % in Ihrem Browser – nichts wird hochgeladen."
     },
     "about": {
-      "description": "Foto-Metadaten-Entferner ist ein kostenloses Open-Source-Tool mit Datenschutz im Fokus. Erfahren Sie, wie wir Ihnen helfen, Ihren digitalen Fußabdruck zu kontrollieren."
+      "description": "Foto-Metadaten-Entferner ist ein kostenloses Werkzeug mit Datenschutz im Fokus. Erfahren Sie, wie wir Ihnen helfen, Ihren digitalen Fußabdruck zu kontrollieren."
     },
     "faq": {
       "description": "Antworten auf häufige Fragen zum Entfernen von EXIF-, GPS-, IPTC- und XMP-Metadaten aus Ihren Fotos – alles in Ihrem Browser, ohne Uploads."
@@ -64,13 +64,9 @@
       "title": "Datenschutz-Architektur & Bedrohungsmodell",
       "description": "So hält der Photo Metadata Remover Ihre Fotos privat: clientseitige Verarbeitung, flüchtiger Speicher, keine Server-Uploads und ein prüfbares Bedrohungsmodell."
     },
-    "open_source": {
-      "title": "Open Source & per Design überprüfbar",
-      "description": "Der Photo Metadata Remover ist kostenlos und Open Source. Prüfen Sie den Code, betreiben Sie eine eigene Instanz und verifizieren Sie, dass Ihre Fotos den Browser nie verlassen."
-    },
     "legal": {
       "title": "Rechtliche Informationen & Hinweise",
-      "description": "Nutzungsbedingungen, Datenschutzerklärung, Impressum und Open-Source-Lizenzierung für den Photo Metadata Remover – ein kostenloses, clientseitiges Werkzeug zum Entfernen von Foto-Metadaten."
+      "description": "Nutzungsbedingungen, Datenschutzerklärung, Impressum und rechtliche Hinweise für den Photo Metadata Remover – ein kostenloses, clientseitiges Werkzeug zum Entfernen von Foto-Metadaten."
     }
   },
   "nav": {
@@ -89,7 +85,6 @@
     "remove_now_short": "Entfernen",
     "client_side_badge": "100 % im Browser",
     "metadata": "Metadaten",
-    "open_source": "Open Source",
     "privacy": "Datenschutz",
     "how_it_works": "So funktioniert's",
     "security": "Sicherheit",
@@ -124,10 +119,6 @@
       "fast": {
         "title": "Schnell & sicher",
         "sub": "In Ihrem Browser"
-      },
-      "open": {
-        "title": "Open Source",
-        "sub": "Transparenz"
       }
     },
     "mock": {
@@ -226,8 +217,7 @@
       "bullets": {
         "no_server": "Keine Server-Uploads",
         "no_account": "Kein Konto erforderlich",
-        "network_tab": "Im Netzwerk-Tab überprüfbar",
-        "open_source": "Offen und prüfbar"
+        "network_tab": "Im Netzwerk-Tab überprüfbar"
       }
     },
     "complete": {
@@ -504,8 +494,8 @@
   "about": {
     "title": "Über uns",
     "eyebrow": "Über uns",
-    "subtitle": "Ein kostenloses Open-Source-Werkzeug, damit jeder Fotos teilen kann, ohne preiszugeben, wo er wohnt, womit er fotografiert oder wann er den Moment festgehalten hat.",
-    "content": "Foto-Metadaten-Entferner ist ein kostenloses, Open-Source-Werkzeug, das mit Datenschutz im Sinn gebaut wurde. Wir glauben, dass jeder die Kontrolle über seinen digitalen Fußabdruck haben sollte.",
+    "subtitle": "Ein kostenloses Werkzeug, damit jeder Fotos teilen kann, ohne preiszugeben, wo er wohnt, womit er fotografiert oder wann er den Moment festgehalten hat.",
+    "content": "Foto-Metadaten-Entferner ist ein kostenloses Werkzeug, das mit Datenschutz im Sinn gebaut wurde. Wir glauben, dass jeder die Kontrolle über seinen digitalen Fußabdruck haben sollte.",
     "hero_badge": "100 % Client-Datenschutz",
     "hero_title_1": "Über den Photo",
     "hero_title_2": "Metadata Remover",
@@ -513,7 +503,7 @@
     "chips": {
       "1": "100 % im Browser",
       "2": "Keine Server-Uploads",
-      "3": "Open Source & überprüfbar"
+      "3": "Privat & sicher"
     },
     "cta_primary": "Foto-Metadaten entfernen",
     "cta_secondary": "So funktioniert's ansehen",
@@ -692,9 +682,8 @@
       "4": "Beobachten Sie: Es gehen null ausgehende Anfragen raus – alle Bytes werden lokal gelesen."
     },
     "links_title": "Fragen zu unseren Datenschutz-Praktiken?",
-    "links_text": "Lesen Sie die vollständige Sicherheitsarchitektur oder prüfen Sie den Open-Source-Code.",
-    "links_primary": "Sicherheitsarchitektur",
-    "links_secondary": "Open-Source-Verifizierung"
+    "links_text": "Lesen Sie die vollständige Sicherheitsarchitektur oder erfahren Sie, wie die Verifizierung funktioniert.",
+    "links_primary": "Sicherheitsarchitektur"
   },
   "terms": {
     "eyebrow": "Bedingungen",
@@ -1073,10 +1062,6 @@
         "title": "100 % Client-seitig",
         "description": "Ihre Fotos verlassen nie Ihr Gerät"
       },
-      "open_source": {
-        "title": "Open Source",
-        "description": "Prüfen Sie den Code auf GitHub"
-      },
       "built_for": {
         "title": "Für Datenschutz gebaut",
         "description": "Weil Ihre Fotos Ihnen gehören"
@@ -1091,7 +1076,7 @@
         "Keine Server-Uploads",
         "Keine Datenspeicherung",
         "Kein Tracking",
-        "100 % Open Source"
+        "Kein Konto erforderlich"
       ]
     },
     "removed": {
@@ -1216,9 +1201,8 @@
       "4": "Beobachten Sie: Es gehen null ausgehende Anfragen raus – alles Lesen passiert über lokale Datei-Pointer."
     },
     "cta_title": "Prüfen Sie den Code, dann bereinigen Sie Ihre Fotos",
-    "cta_text": "Auditieren Sie das Open-Source-Repository, betreiben Sie eine eigene Instanz oder nutzen Sie einfach das Tool – jedes Byte bleibt auf Ihrem Gerät.",
+    "cta_text": "Prüfen Sie die Sicherheitsarchitektur, lesen Sie die vollständige FAQ oder nutzen Sie einfach das Tool – jedes Byte bleibt auf Ihrem Gerät.",
     "cta_primary": "Metadaten-Entferner öffnen",
-    "cta_secondary": "Open-Source-Code prüfen",
     "pillar_prefix": "Pfeiler"
   },
   "faq_page": {
@@ -1235,7 +1219,7 @@
       "understanding": "Foto-Metadaten",
       "privacy": "Datenschutz & Sicherheit",
       "formats": "Formate & Qualität",
-      "trust": "Open Source & Recht"
+      "trust": "Vertrauen & Prüfung"
     },
     "questions": {
       "q1": {
@@ -1293,11 +1277,6 @@
         "question": "Kann ich mehrere Bilder gleichzeitig verarbeiten?",
         "answer": "Ja. Legen Sie mehrere Dateien gleichzeitig ab, entfernen Sie die Metadaten aus allen und laden Sie sie einzeln oder als ZIP-Archiv herunter – alles lokal in Ihrem Browser erzeugt."
       },
-      "q12": {
-        "category": "trust",
-        "question": "Ist der Photo Metadata Remover kostenlos und Open Source?",
-        "answer": "Ja. Das Tool ist ohne Obergrenzen oder Registrierung kostenlos nutzbar und das Projekt ist Open Source – jede und jeder kann den Code prüfen oder eine eigene Kopie betreiben."
-      },
       "q13": {
         "category": "trust",
         "question": "Kann ich verifizieren, dass nichts hochgeladen wird?",
@@ -1305,98 +1284,16 @@
       }
     },
     "cta_title": "Noch Fragen?",
-    "cta_text": "Entdecken Sie den Architektur-Bauplan, lesen Sie die ausführliche FAQ oder prüfen Sie den Open-Source-Code.",
+    "cta_text": "Entdecken Sie den Architektur-Bauplan, lesen Sie die ausführliche FAQ oder erfahren Sie, wie die Verifizierung funktioniert.",
     "cta_primary": "So funktioniert's",
     "cta_secondary": "Sicherheitsarchitektur",
-    "cta_tertiary": "Open-Source-Repository",
     "items_suffix": "Einträge"
-  },
-  "open_source_page": {
-    "title": "Open Source",
-    "title_2": "Per Design überprüfbar",
-    "eyebrow": "Open Source",
-    "hero_badge": "Transparenz & Verifizierbarkeit",
-    "subtitle": "Echter Datenschutz erfordert überprüfbare Transparenz. Jede Zeile Code, die Ihre Fotos berührt, ist Open Source, auditierbar und läuft vollständig in Ihrem Browser.",
-    "cta_primary": "Sicherheitsarchitektur",
-    "cta_secondary": "Metadaten-Entferner öffnen",
-    "principles_eyebrow": "Grundlage des Datenschutzes",
-    "principles_title": "Warum Open Source wichtig ist",
-    "principles_intro": "Geschlossene Tools, die Datenschutz versprechen, verlangen blindes Vertrauen. Open Source ersetzt Annahmen durch öffentlichen, prüfbaren Code.",
-    "principles": {
-      "1": {
-        "title": "Keine versteckte Logik",
-        "text": "Keine verschleierten Pakete, Tracking-Pixel oder heimlichen Fingerprinting-Routinen. Jede Transformation ist im Quelltext deklariert.",
-        "note": "Auf Telemetrie-Beacons geprüft"
-      },
-      "2": {
-        "title": "Von der Community geprüft",
-        "text": "Unabhängige Forscherinnen und Forscher sowie Sicherheitsteams können den Code prüfen und verifizieren, wie sich das Tool tatsächlich verhält.",
-        "note": "Kryptografische Commit-Signaturen"
-      },
-      "3": {
-        "title": "Selbst hostbar & offline",
-        "text": "Klonen Sie das Repository, betreiben Sie eine eigene Kopie oder setzen Sie es auf einem luftgetrennten System ein. Keine Remote-API nötig.",
-        "note": "100 % offlinefähig"
-      }
-    },
-    "code_eyebrow": "Deterministische Bereinigungs-Engine",
-    "code_title": "Den Client-Code prüfen",
-    "code_intro": "Das Tool entfernt binäre Segment-Marker (z. B. 0xFFE1 für EXIF) direkt, ohne das Bild neu zu komprimieren.",
-    "code_note": "Kein Qualitätsverlust durch Re-Encoding",
-    "code_block": "export async function stripExifInMemory(file: File): Promise<Blob> {\n  const buffer = await file.arrayBuffer();\n  const view = new DataView(buffer);\n  if (view.getUint16(0) !== 0xFFD8) throw new Error(\"UNSUPPORTED_OR_CORRUPT_SOI_HEADER\");\n  let offset = 2;\n  const segments: ArrayBuffer[] = [buffer.slice(0, 2)];\n  while (offset < buffer.byteLength) {\n    const marker = view.getUint16(offset);\n    if (marker === 0xFFDA) { segments.push(buffer.slice(offset)); break; }\n    const length = view.getUint16(offset + 2);\n    if (marker !== 0xFFE1) segments.push(buffer.slice(offset, offset + 2 + length));\n    offset += 2 + length;\n  }\n  return new Blob(segments, { type: file.type });\n}",
-    "verify_eyebrow": "Unabhängiges Audit",
-    "verify_title": "In 5 Sekunden ohne Code prüfen",
-    "verify_intro": "Jeder moderne Browser enthält die Werkzeuge, um zu beweisen, dass kein einziges Byte Ihr Gerät verlässt.",
-    "verify_steps": {
-      "1": {
-        "title": "DevTools öffnen",
-        "text": "Drücken Sie F12 oder Cmd+Option+I in Ihrem Browser."
-      },
-      "2": {
-        "title": "Tab „Netzwerk“",
-        "text": "Öffnen Sie den Tab „Netzwerk“ und drücken Sie auf „Leeren“."
-      },
-      "3": {
-        "title": "Offline gehen",
-        "text": "Aktivieren Sie den Flugmodus oder den Offline-Modus."
-      },
-      "4": {
-        "title": "Fotos ablegen",
-        "text": "Ziehen Sie Fotos in das Tool und entfernen Sie die Metadaten."
-      },
-      "5": {
-        "title": "Null Abfluss",
-        "text": "Das Netzwerkprotokoll bleibt völlig leer. Sicher bestätigt."
-      }
-    },
-    "contribute_eyebrow": "Community & Governance",
-    "contribute_title": "Mitmachen",
-    "contribute_intro": "Beiträge sind willkommen – von Entwicklerinnen und Entwicklern, Übersetzenden und Datenschutz-Enthusiasten.",
-    "contribute": {
-      "1": {
-        "title": "Fehler melden",
-        "text": "Auf ein ungewöhnliches Kamerapformat oder einen Parsing-Sonderfall gestoßen? Eröffnen Sie ein Issue mit einer Beispieldatei, damit es behoben werden kann.",
-        "link": "Issue auf GitHub öffnen"
-      },
-      "2": {
-        "title": "Parser verbessern",
-        "text": "Helfen Sie mit, die Unterstützung für herstellerspezifische Tags und Containerformate auszubauen.",
-        "link": "Spezifikations-Guide ansehen"
-      },
-      "3": {
-        "title": "Übersetzen & verfeinern",
-        "text": "Helfen Sie, Oberfläche und Dokumentation in weitere Sprachen zu übersetzen.",
-        "link": "Sprachdateien übersetzen"
-      }
-    },
-    "cta_title": "Gemeinsam ein privateres Internet aufbauen",
-    "cta_text": "Entdecken Sie den Code, lernen Sie die Architektur kennen oder nutzen Sie einfach das Tool – jedes Byte bleibt auf Ihrem Gerät."
   },
   "legal_page": {
     "title": "Rechtliche Informationen & Hinweise",
     "eyebrow": "Rechtliches",
     "hero_badge": "Regularien- & Compliance-Hub",
-    "subtitle": "Überblick über Nutzungsbedingungen, Datenschutzerklärung, Open-Source-Lizenzierung und gesetzliche Herausgeberhinweise.",
+    "subtitle": "Überblick über Nutzungsbedingungen, Datenschutzerklärung und gesetzliche Herausgeberhinweise.",
     "cards": {
       "terms": {
         "title": "Nutzungsbedingungen",
@@ -1418,13 +1315,6 @@
         "text": "Formale Angaben, die von europäischen und nationalen Telemediengesetzen verlangt werden, gefüllt aus der konfigurierten Rechtsidentität.",
         "link": "Impressum ansehen",
         "badge": "§ 5 DDG"
-      },
-      "licenses": {
-        "title": "Lizenzierung & Quellenangaben",
-        "sub": "Open-Source-Lizenz & Abhängigkeiten",
-        "text": "Das Projekt ist kostenlos und Open Source. Erfahren Sie mehr über die Lizenzbedingungen und die Wiederverwendung des Codes.",
-        "link": "Lizenzbedingungen prüfen",
-        "badge": "Open-Source-Software"
       }
     },
     "warranty_eyebrow": "Null Datenspeicherung",
