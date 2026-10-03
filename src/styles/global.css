@@ -506,14 +506,18 @@ a:focus-visible {
 }
 
 /* ---------------------------------------------------------------------------
- * Responsive adaptation — one compact Stitch navbar, every viewport.
+ * Responsive adaptation — the Stitch navbar, every viewport.
  *
- * The navbar is ALWAYS the same single horizontal Stitch row
- * (brand · navigation · controls) at every viewport size. It never wraps
- * and never re-stacks: when the viewport is narrower than the row's natural
- * width the row pans horizontally inside the sticky header so the compact
- * composition (~80px tall, same as desktop) is preserved everywhere.
- * All interactive controls keep a >= 44px physical touch target.
+ * Desktop (lg and up, i.e. 1280/1440): one single horizontal Stitch row
+ * (brand · navigation · controls). It never wraps and never re-stacks: when
+ * the viewport is narrower than the row's natural width the row pans
+ * horizontally inside the sticky header so the compact composition (~80px
+ * tall, same as desktop) is preserved everywhere.
+ *
+ * Phone + tablet (below lg, i.e. 375/390/768/820): this row is switched off
+ * (`hidden lg:flex`) and replaced by the Stitch mobile/tablet header +
+ * navigation drawer in Layout.astro. All interactive controls keep a
+ * >= 44px physical touch target.
  * ------------------------------------------------------------------------- */
 #nav-fit {
   overflow-x: auto;

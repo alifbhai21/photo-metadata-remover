@@ -53,6 +53,32 @@ const jsonLdBlocks = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
 // Privacy badge copy — localized, with a safe fallback
 const privacyBadgeText = t(translations, 'nav.client_side_badge');
+
+/* ---------------------------------------------------------------------------
+ * Mobile / tablet drawer navigation (Google Stitch export).
+ *
+ * Visual source of truth: the provided Stitch mobile/tablet exports.
+ * Functional source of truth: this project. The entries below reuse the
+ * project's existing public routes and existing localized labels — no new
+ * routes, no new pages. The hidden secondary tools (view-photo-metadata,
+ * remove-exif-data, remove-gps-data, remove-metadata-heic) are deliberately
+ * NOT listed here, exactly as they are absent from the desktop navbar.
+ * --------------------------------------------------------------------- */
+const normalizePath = (p: string) => p.replace(/\/+$/, '') || '/';
+const currentPath = normalizePath(Astro.url.pathname);
+
+const drawerNav = [
+  { label: t(translations, 'nav.home'), href: `/${lang}/` },
+  { label: t(translations, 'nav.metadata'), href: `/${lang}/formats` },
+  { label: t(translations, 'nav.guides'), href: `/${lang}/guides` },
+  { label: t(translations, 'nav.faq'), href: `/${lang}/faq` },
+  { label: t(translations, 'nav.about'), href: `/${lang}/about` },
+  { label: t(translations, 'nav.privacy'), href: `/${lang}/privacy` },
+  { label: t(translations, 'nav.security'), href: `/${lang}/security` },
+].map((item) => ({ ...item, active: normalizePath(item.href) === currentPath }));
+
+/** Language section label — reuse the existing localized footer string. */
+const drawerLanguageLabel = t(translations, 'footer.languages');
 ---
 
 <!doctype html>
@@ -128,7 +154,10 @@ const privacyBadgeText = t(translations, 'nav.client_side_badge');
       class="sticky top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30 relative"
       aria-label="Primary"
     >
-      <div id="nav-fit" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 min-h-20 flex flex-nowrap items-center justify-between gap-2 sm:gap-4">
+      <!-- Desktop navigation row. Below the `lg` breakpoint this whole row is
+           replaced by the Stitch mobile/tablet header + drawer below, so the
+           desktop composition at 1280/1440 is left exactly as it was. -->
+      <div id="nav-fit" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 min-h-20 hidden lg:flex flex-nowrap items-center justify-between gap-2 sm:gap-4">
         <!-- Brand logo & title -->
         <a href={`/${lang}`} class="flex items-center gap-3.5 group shrink max-w-[45%]" aria-label={t(translations, 'site.name')}>
           <span
@@ -197,8 +226,43 @@ const privacyBadgeText = t(translations, 'nav.client_side_badge');
           </div>
       </div>
 
-      <!-- Language dropdown — kept outside the scrollable navbar row so it is
-           never clipped by the internal scroll container -->
+      <!-- ============ Mobile / tablet header (Google Stitch) ============
+           Phone 375/390 and tablet 768/820 only. `lg:hidden` keeps it out of
+           the 1280/1440 desktop composition entirely. Brand lockup, routes and
+           labels come from the existing project data; the bar itself follows
+           the provided Stitch export (64px phone, 68px tablet, logo left,
+           hamburger right). The sticky <nav> already supplies the translucent
+           background + bottom hairline, so the bar does not add its own. -->
+      <div class="lg:hidden h-16 md:h-[68px] px-4 md:px-6 flex items-center justify-between gap-3">
+        <a href={`/${lang}`} class="flex items-center gap-3 min-w-0" aria-label={t(translations, 'site.name')}>
+          <span class="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary shrink-0" aria-hidden="true">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
+            </svg>
+          </span>
+          <span class="flex flex-col min-w-0">
+            <span class="text-[15px] md:text-[17px] font-semibold text-on-surface leading-tight truncate">
+              {t(translations, 'site.name')}
+            </span>
+            <span class="text-[9px] md:text-[10px] font-mono font-medium uppercase tracking-[0.08em] text-zinc-500 leading-tight truncate">
+              {privacyBadgeText}
+            </span>
+          </span>
+        </a>
+
+        <button
+          id="mobile-menu-toggle"
+          type="button"
+          class="w-11 h-11 md:w-12 md:h-12 rounded-lg bg-zinc-100 flex flex-col items-center justify-center gap-1.5 shrink-0 hover:bg-zinc-200 transition-colors active:scale-[0.98]"
+          aria-label={t(translations, 'nav.menu')}
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="block w-[18px] md:w-5 h-[1.5px] rounded-full bg-on-surface" aria-hidden="true"></span>
+          <span class="block w-[18px] md:w-5 h-[1.5px] rounded-full bg-on-surface" aria-hidden="true"></span>
+          <span class="block w-[18px] md:w-5 h-[1.5px] rounded-full bg-on-surface" aria-hidden="true"></span>
+        </button>
+      </div>
       <div
         id="lang-dropdown"
         class="hidden absolute right-0 top-full mt-2 w-40 bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant/50 py-1.5 z-50 pmr-elev-2"
@@ -219,7 +283,114 @@ const privacyBadgeText = t(translations, 'nav.client_side_badge');
           </a>
         ))}
       </div>
+
     </nav>
+
+      <!-- ============ Mobile / tablet drawer (Google Stitch) ============
+           Right-side slide-in panel: 300px on phones, 360px on tablets, over a
+           40% near-black scrim with a 2px backdrop blur. Hidden by default and
+           `lg:hidden`, so it can never affect the desktop viewport. -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden fixed inset-0 z-[60]"
+        role="dialog"
+        aria-modal="true"
+        aria-label={t(translations, 'nav.menu')}
+      >
+        <div class="pmr-drawer-backdrop absolute inset-0 bg-zinc-950/40 backdrop-blur-[2px]"></div>
+
+        <div class="pmr-drawer-panel relative ml-auto w-[300px] md:w-[360px] h-full bg-surface-container-lowest border-l border-zinc-200 shadow-[-16px_0_24px_rgba(9,9,11,0.10)] md:shadow-[-20px_0_25px_-5px_rgba(9,9,11,0.12)] flex flex-col overflow-hidden">
+          <!-- Drawer header row: brand + close -->
+          <div class="flex items-center justify-between gap-3 h-14 md:h-16 px-5 md:px-6 pb-4 border-b border-zinc-200 shrink-0">
+            <a href={`/${lang}`} class="flex items-center gap-3 min-w-0" aria-label={t(translations, 'site.name')}>
+              <span class="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary shrink-0" aria-hidden="true">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
+                </svg>
+              </span>
+              <span class="flex flex-col min-w-0">
+                <span class="text-[15px] md:text-[17px] font-semibold text-on-surface leading-tight truncate">
+                  {t(translations, 'site.name')}
+                </span>
+                <span class="text-[9px] md:text-[10px] font-mono font-medium uppercase tracking-[0.08em] text-zinc-500 leading-tight truncate">
+                  {privacyBadgeText}
+                </span>
+              </span>
+            </a>
+            <button
+              type="button"
+              class="pmr-drawer-close w-11 h-11 md:w-12 md:h-12 rounded-lg bg-zinc-100 flex items-center justify-center text-on-surface hover:bg-zinc-200 transition-colors shrink-0"
+              aria-label={t(translations, 'nav.menu')}
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Navigation list -->
+          <nav class="flex-1 py-4 md:py-6 flex flex-col gap-1 overflow-y-auto" aria-label={t(translations, 'nav.menu')}>
+            {drawerNav.map((item) => (
+              <a
+                data-nav-item
+                href={item.href}
+                aria-current={item.active ? 'page' : undefined}
+                class={`relative flex items-center h-12 md:h-14 px-3 md:px-4 rounded-lg text-[15px] md:text-[16px] transition-colors ${
+                  item.active
+                    ? 'bg-emerald-50 text-emerald-600 font-semibold'
+                    : 'text-on-surface hover:bg-zinc-100'
+                }`}
+              >
+                {item.active && (
+                  <span class="absolute left-0 top-2 bottom-2 w-[3px] bg-emerald-500 rounded-r" aria-hidden="true"></span>
+                )}
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <!-- Language section — existing project language logic:
+               switchHref() keeps the localized path, data-lang-switch is
+               already bound to saveLang() + analytics by the script below. -->
+          <div class="px-5 md:px-6 py-4 border-t border-zinc-200 shrink-0">
+            <span class="block mb-3 text-[11px] font-mono font-medium uppercase tracking-[0.06em] text-zinc-500">
+              {drawerLanguageLabel}
+            </span>
+            <div class="grid grid-cols-3 gap-2">
+              {SUPPORTED_LANGS.map((l) => (
+                <a
+                  href={switchHref(l)}
+                  hreflang={l}
+                  lang={l}
+                  data-lang-switch={l}
+                  aria-current={currentLang === l ? 'page' : undefined}
+                  class={`flex items-center justify-center h-11 md:h-12 rounded-lg border border-zinc-200 text-[14px] md:text-[15px] transition-colors ${
+                    currentLang === l
+                      ? 'bg-zinc-100 text-on-surface font-semibold'
+                      : 'bg-surface-container-lowest text-on-surface md:text-zinc-500 hover:bg-zinc-100'
+                  }`}
+                >
+                  {LANG_LABELS[l]}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Primary CTA — same destination as the existing desktop #nav-cta -->
+          <div class="px-5 md:px-6 pt-4 pb-5 md:pb-6 border-t border-zinc-200 shrink-0">
+            <a
+              id="mobile-nav-cta"
+              class="pmr-drawer-cta flex items-center justify-center gap-2 w-full h-[52px] md:h-14 rounded-lg bg-primary text-on-primary text-[15px] md:text-[16px] font-semibold hover:bg-primary-container transition-colors"
+              href={`/${lang}/`}
+            >
+              <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+              </svg>
+              {t(translations, 'nav.remove_now')}
+            </a>
+          </div>
+        </div>
+      </div>
 
     <main id="main" tabindex="-1" class="flex-1">
       <slot />
@@ -383,6 +554,114 @@ const privacyBadgeText = t(translations, 'nav.client_side_badge');
           langToggle?.focus();
         }
       });
+
+      /* ------------------------------------------------------------------
+       * Mobile / tablet navigation drawer (Google Stitch).
+       * Phone + tablet only. The trigger is `lg:hidden`, so on desktop this
+       * block can never run. Language switching is NOT reimplemented: the
+       * drawer reuses switchHref() hrefs and the data-lang-switch hooks bound
+       * above, so localStorage.pmr_lang, the cookie and analytics behave
+       * exactly as they already do.
+       * --------------------------------------------------------------- */
+      const drawer = document.getElementById('mobile-menu');
+      const drawerToggle = document.getElementById('mobile-menu-toggle');
+      const drawerClose = drawer?.querySelector<HTMLElement>('.pmr-drawer-close');
+      const drawerBackdrop = drawer?.querySelector<HTMLElement>('.pmr-drawer-backdrop');
+
+      const drawerIsOpen = () => !!drawer && !drawer.classList.contains('hidden');
+
+      const setDrawer = (open: boolean) => {
+        if (!drawer || !drawerToggle) return;
+        drawer.classList.toggle('hidden', !open);
+        drawerToggle.setAttribute('aria-expanded', String(open));
+        // Freeze the page behind the drawer; released again on close.
+        document.body.style.overflow = open ? 'hidden' : '';
+        if (open) {
+          drawerClose?.focus();
+        } else {
+          drawerToggle.focus();
+        }
+      };
+
+      drawerToggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setDrawer(!drawerIsOpen());
+      });
+
+      drawerClose?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setDrawer(false);
+      });
+
+      drawerBackdrop?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setDrawer(false);
+      });
+
+      // Drawer links.
+      //
+      // CRITICAL: the browser's default navigation (the anchor's "activation
+      // behaviour") must be left completely undisturbed. Hiding the drawer
+      // synchronously inside this handler sets `display: none` on #mobile-menu
+      // — the very container of the anchor being activated — which cancels
+      // that activation on some browsers/devices, so the tap silently does
+      // nothing. Calling .focus() at the same time also fights the click.
+      //
+      // Page links navigate away, so the whole document (drawer included) is
+      // replaced by the browser anyway — no close is required. We therefore
+      // never touch the drawer during the click itself.
+      drawer?.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          if (!drawerIsOpen()) return;
+          const href = link.getAttribute('href') ?? '';
+          if (!href.startsWith('#')) return; // real page: let the browser navigate
+          // Same-document link: no navigation to wait for, so close immediately.
+          e.preventDefault();
+          setDrawer(false);
+          const target = document.getElementById(href.slice(1));
+          if (target) {
+            target.scrollIntoView();
+            history.replaceState(null, '', href);
+          }
+        });
+      });
+
+      // Escape closes the drawer and returns focus to the hamburger.
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape' || !drawerIsOpen()) return;
+        setDrawer(false);
+      });
+
+      // Keep Tab focus inside the drawer while it is open.
+      drawer?.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab' || !drawerIsOpen()) return;
+        const focusables = Array.from(
+          drawer.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+        ).filter((el) => el.offsetParent !== null);
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      // Leaving the mobile/tablet range (or arriving at desktop) closes the
+      // drawer, so the desktop navbar is never left covered or scroll-locked.
+      const desktopRange = window.matchMedia('(min-width: 1024px)');
+      const closeOnDesktop = (e: MediaQueryList | MediaQueryListEvent) => {
+        if (e.matches && drawerIsOpen()) {
+          drawer?.classList.add('hidden');
+          drawerToggle?.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+      };
+      desktopRange.addEventListener('change', closeOnDesktop);
+      closeOnDesktop(desktopRange);
     </script>
   </body>
 </html>
