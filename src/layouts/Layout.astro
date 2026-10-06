@@ -11,6 +11,17 @@ interface Props {
   ogType?: 'website' | 'article';
   jsonLd?: object | object[];
   noindex?: boolean;
+  /**
+   * Optional verbatim `<title>`. Used by the homepage, whose SEO title is
+   * already fully qualified ("Photo Metadata Remover Online — Remove EXIF &
+   * GPS Data") and must not get the generic " | <site name>" suffix appended.
+   * Omit everywhere else to keep the existing suffix behaviour.
+   */
+  fullTitle?: string;
+  /** Optional OG description override (falls back to `description`). */
+  ogDescription?: string;
+  /** Optional Twitter description override (falls back to `description`). */
+  twitterDescription?: string;
 }
 
 const {
@@ -20,6 +31,9 @@ const {
   ogType = 'website',
   jsonLd,
   noindex = false,
+  fullTitle,
+  ogDescription,
+  twitterDescription,
 } = Astro.props;
 
 const currentLang = ((SUPPORTED_LANGS as readonly string[]).includes(lang) ? lang : 'en') as 'en' | 'de' | 'fr';
@@ -40,7 +54,11 @@ const pathWithoutLocale = Astro.url.pathname
 
 const switchHref = (l: string) => `/${l}${pathWithoutLocale === '/' ? '/' : pathWithoutLocale}`;
 
-const fullTitle = `${title} | ${siteName}`;
+// `fullTitle` (verbatim, homepage SEO title) wins when supplied; otherwise keep
+// the historical "<title> | <site name>" pattern used by every other page.
+const resolvedTitle = fullTitle ?? `${title} | ${siteName}`;
+const resolvedOgDescription = ogDescription ?? description;
+const resolvedTwitterDescription = twitterDescription ?? description;
 
 const localize = (l: string) => `${SITE_URL}/${l}${pathWithoutLocale === '/' ? '/' : pathWithoutLocale}`;
 const canonicalUrl = localize(currentLang);
@@ -99,13 +117,13 @@ const drawerLanguageLabel = t(translations, 'footer.languages');
     <link rel="alternate" hreflang="fr" href={localize('fr')} />
     <link rel="alternate" hreflang="x-default" href={localize('en')} />
 
-    <title>{fullTitle}</title>
+    <title>{resolvedTitle}</title>
 
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={resolvedTitle} />
+    <meta property="og:description" content={resolvedOgDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
@@ -114,8 +132,8 @@ const drawerLanguageLabel = t(translations, 'footer.languages');
     <meta property="og:image:alt" content={t(translations, 'seo.og_image_alt')} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={resolvedTitle} />
+    <meta name="twitter:description" content={resolvedTwitterDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={t(translations, 'seo.og_image_alt')} />
 
@@ -289,7 +307,14 @@ const drawerLanguageLabel = t(translations, 'footer.languages');
       <!-- ============ Mobile / tablet drawer (Google Stitch) ============
            Right-side slide-in panel: 300px on phones, 360px on tablets, over a
            40% near-black scrim with a 2px backdrop blur. Hidden by default and
-           `lg:hidden`, so it can never affect the desktop viewport. -->
+           `lg:hidden`, so it can never affect the desktop viewport.
+
+           `hidden` is load-bearing, not vestigial: `setDrawer()` toggles this very
+           class to open and close the drawer and `drawerIsOpen()` reads it back to
+           decide whether the drawer is currently open. Removing the class would
+           also defeat the Tailwind `hidden` utility, leaving the drawer pinned
+           open over the whole viewport and the page-scroll lock unreachable. It
+           must stay. -->
       <div
         id="mobile-menu"
         class="hidden lg:hidden fixed inset-0 z-[60]"

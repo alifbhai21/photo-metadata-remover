@@ -1,0 +1,910 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation "Primary" [ref=e3]:
+    - generic [ref=e4]:
+      - link "Photo Metadata Remover" [ref=e5] [cursor=pointer]:
+        - /url: /en
+        - generic [ref=e9]:
+          - generic [ref=e10]: Photo Metadata Remover
+          - generic [ref=e11]: Remove EXIF data from your photos. Privacy-first, free, no uploads.
+      - generic [ref=e12]:
+        - link "Home" [ref=e13] [cursor=pointer]:
+          - /url: /en/
+        - link "Metadata" [ref=e14] [cursor=pointer]:
+          - /url: /en/formats
+        - link "Guides" [ref=e15] [cursor=pointer]:
+          - /url: /en/guides
+        - link "FAQ" [ref=e16] [cursor=pointer]:
+          - /url: /en/faq
+        - link "About" [ref=e17] [cursor=pointer]:
+          - /url: /en/about
+        - link "Privacy" [ref=e18] [cursor=pointer]:
+          - /url: /en/privacy
+      - generic [ref=e19]:
+        - button "Change language" [ref=e21]:
+          - generic [ref=e24]: en
+        - link "Remove now" [ref=e25] [cursor=pointer]:
+          - /url: /en/
+  - main [ref=e29]:
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]: 100% Client-Side Processing
+        - heading "Photo Metadata Remover" [level=1] [ref=e38]
+        - paragraph [ref=e39]: Remove hidden metadata from your photos before you share them. Scan and clean EXIF, GPS location, camera information, timestamps and other embedded photo data directly in your browser — no uploads, nothing leaves your device.
+        - generic [ref=e40]:
+          - generic [ref=e45]:
+            - paragraph [ref=e46]: 100% local
+            - paragraph [ref=e47]: No uploads
+          - generic [ref=e52]:
+            - paragraph [ref=e53]: Fast & secure
+            - paragraph [ref=e54]: In your browser
+      - generic [ref=e56]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: Camera Model
+          - generic [ref=e69]: Location
+          - generic [ref=e77]: Date & Time
+          - generic [ref=e85]: Software
+          - generic [ref=e93]: And more hidden data...
+        - generic [ref=e103]:
+          - img "The same photo card after metadata removal, showing the cleaned image with a confirmed no-metadata badge" [ref=e105]
+          - generic [ref=e110]:
+            - paragraph [ref=e111]: Clean Photo
+            - paragraph [ref=e112]: No metadata
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - generic [ref=e116]:
+          - generic "Upload" [ref=e117]
+          - generic "Scan" [ref=e122]
+          - generic "Remove" [ref=e128]
+          - generic "Download" [ref=e133]
+        - generic [ref=e139]:
+          - status [ref=e140]
+          - button "Upload photos - click or press Enter to browse" [ref=e141] [cursor=pointer]:
+            - button "Choose File" [ref=e142]
+            - generic [ref=e143]:
+              - heading "Drag & drop your photos here" [level=3] [ref=e148]
+              - paragraph [ref=e149]: or click to browse files
+              - paragraph [ref=e150]: Supports JPG, JPEG, PNG, WEBP, HEIC (Max 40MB each)
+              - generic [ref=e154]: Choose Photos
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - heading "Your Privacy, Our Priority" [level=3] [ref=e161]
+          - paragraph [ref=e162]: All processing happens in your browser. Your photos never leave your device.
+          - list [ref=e163]:
+            - listitem [ref=e164]:
+              - generic [aria-hidden] [ref=e165]: ✓
+              - generic [ref=e166]: No server uploads
+            - listitem [ref=e167]:
+              - generic [aria-hidden] [ref=e168]: ✓
+              - generic [ref=e169]: No data storage
+            - listitem [ref=e170]:
+              - generic [aria-hidden] [ref=e171]: ✓
+              - generic [ref=e172]: No tracking
+            - listitem [ref=e173]:
+              - generic [aria-hidden] [ref=e174]: ✓
+              - generic [ref=e175]: No account required
+        - generic [ref=e176]:
+          - heading "What Gets Removed?" [level=3] [ref=e182]
+          - paragraph [ref=e183]: "We remove EXIF, IPTC, XMP and other metadata that can reveal:"
+          - list [ref=e184]:
+            - listitem [ref=e185]:
+              - generic [aria-hidden] [ref=e186]: ✓
+              - generic [ref=e187]: Location (GPS coordinates)
+            - listitem [ref=e188]:
+              - generic [aria-hidden] [ref=e189]: ✓
+              - generic [ref=e190]: Camera/device information
+            - listitem [ref=e191]:
+              - generic [aria-hidden] [ref=e192]: ✓
+              - generic [ref=e193]: Date and time
+            - listitem [ref=e194]:
+              - generic [aria-hidden] [ref=e195]: ✓
+              - generic [ref=e196]: Software used
+            - listitem [ref=e197]:
+              - generic [aria-hidden] [ref=e198]: ✓
+              - generic [ref=e199]: And many other hidden details
+    - generic [ref=e201]:
+      - generic [ref=e202]:
+        - generic [ref=e203]:
+          - heading "How It Works" [level=4] [ref=e210]
+          - paragraph [ref=e211]: Upload â†’ Analyze â†’ Remove â†’ Download. Simple, fast, and secure. All in your browser.
+        - link "Learn more" [ref=e212] [cursor=pointer]:
+          - /url: "#how-it-works"
+          - generic [aria-hidden] [ref=e214]: →
+      - generic [ref=e215]:
+        - generic [ref=e216]:
+          - heading "Privacy Risk Audit" [level=4] [ref=e221]
+          - paragraph [ref=e222]: See what hidden data your photos contain and why it matters.
+        - link "Explore risks" [ref=e223] [cursor=pointer]:
+          - /url: "#privacy-risk"
+          - generic [aria-hidden] [ref=e225]: →
+      - generic [ref=e226]:
+        - generic [ref=e227]:
+          - heading "Perceptual Fidelity" [level=4] [ref=e234]
+          - paragraph [ref=e235]: Your photos remain visually identical. Only metadata is removed.
+        - link "See comparison" [ref=e236] [cursor=pointer]:
+          - /url: "#fidelity"
+          - generic [aria-hidden] [ref=e238]: →
+      - generic [ref=e239]:
+        - generic [ref=e240]:
+          - heading "Technical Information" [level=4] [ref=e246]
+          - paragraph [ref=e247]: Learn about EXIF, IPTC, XMP and how metadata works.
+        - link "Read the guide" [ref=e248] [cursor=pointer]:
+          - /url: /en/guides/what-is-exif
+          - generic [aria-hidden] [ref=e250]: →
+    - generic [ref=e252]:
+      - generic [ref=e253]:
+        - generic [ref=e254]: Workflow
+        - heading "How it works" [level=2] [ref=e256]
+        - paragraph [ref=e257]: Four short steps. Nothing leaves your browser, and your pixels stay exactly as captured.
+      - list [ref=e258]:
+        - listitem [ref=e259]:
+          - generic [ref=e261]: "01"
+          - heading "Upload" [level=3] [ref=e266]
+          - paragraph [ref=e267]: Drag a photo from your desktop or click to browse. We detect the format automatically.
+        - listitem [ref=e268]:
+          - generic [ref=e270]: "02"
+          - heading "Scan" [level=3] [ref=e275]
+          - paragraph [ref=e276]: We show every metadata field found â€” GPS, camera info, timestamps, software.
+        - listitem [ref=e277]:
+          - generic [ref=e279]: "03"
+          - heading "Remove" [level=3] [ref=e284]
+          - paragraph [ref=e285]: Click once to strip all privacy-sensitive metadata from your file.
+        - listitem [ref=e286]:
+          - generic [ref=e287]: "04"
+          - heading "Download" [level=3] [ref=e292]
+          - paragraph [ref=e293]: Save the cleaned image. The pixels are identical to your original â€” only the metadata is gone.
+    - generic [ref=e295]:
+      - generic [ref=e296]:
+        - generic [ref=e297]: Risk audit
+        - heading "What your photos are quietly leaking" [level=2] [ref=e299]
+        - paragraph [ref=e300]: A typical phone photo carries dozens of hidden fields. This is what we scan for â€” and remove.
+      - generic [ref=e301]:
+        - generic [aria-hidden] [ref=e302]:
+          - generic [ref=e303]: Item
+          - generic [ref=e304]: What it exposes
+          - generic [ref=e305]: Our action
+        - list [ref=e306]:
+          - listitem [ref=e307]:
+            - generic [ref=e308]: GPS coordinates
+            - generic [ref=e309]: The exact place where the photo was taken
+            - generic [ref=e310]: Removed
+          - listitem [ref=e313]:
+            - generic [ref=e314]: Camera & lens info
+            - generic [ref=e315]: Device model, serial number, lens and settings
+            - generic [ref=e316]: Removed
+          - listitem [ref=e319]:
+            - generic [ref=e320]: Timestamps
+            - generic [ref=e321]: When the photo was originally captured and edited
+            - generic [ref=e322]: Removed
+          - listitem [ref=e325]:
+            - generic [ref=e326]: Author & copyright tags
+            - generic [ref=e327]: Your name, the software used, editing history
+            - generic [ref=e328]: Removed
+          - listitem [ref=e331]:
+            - generic [ref=e332]: Embedded previews
+            - generic [ref=e333]: Thumbnails inside the file can retain the original frame
+            - generic [ref=e334]: Removed
+          - listitem [ref=e337]:
+            - generic [ref=e338]: Image pixels
+            - generic [ref=e339]: The visible picture itself
+            - generic [ref=e340]: Preserved
+    - generic [ref=e344]:
+      - generic [ref=e345]:
+        - generic [ref=e346]: Perceptual fidelity
+        - heading "Same pixels. Zero metadata." [level=2] [ref=e348]
+        - paragraph [ref=e349]: "Cleaning is byte-level surgery, not re-compression: your image data passes through untouched and only the metadata blocks are cut away."
+      - generic [ref=e350]:
+        - article [ref=e351]:
+          - heading "Visually identical output" [level=3] [ref=e355]
+          - paragraph [ref=e356]: JPG, PNG, WebP, and TIFF files are cleaned without re-encoding or re-compressing the picture â€” quality loss is impossible.
+        - article [ref=e357]:
+          - heading "Byte-level removal" [level=3] [ref=e361]
+          - paragraph [ref=e362]: We split the file and delete only the metadata segments, keeping the image stream exactly as it was.
+        - article [ref=e363]:
+          - heading "Verify it yourself" [level=3] [ref=e367]
+          - paragraph [ref=e368]: Open the cleaned file in any metadata viewer â€” the privacy fields are gone while dimensions and quality stay the same.
+        - article [ref=e369]:
+          - heading "One honest exception" [level=3] [ref=e373]
+          - paragraph [ref=e374]: HEIC/HEIF photos are re-encoded to a clean JPEG at maximum quality, because browsers cannot strip HEIC in place.
+    - generic [ref=e375]:
+      - generic [ref=e376]:
+        - generic [ref=e377]: Selected reading
+        - heading "Learn more about photo metadata" [level=2] [ref=e379]
+        - paragraph [ref=e380]: Five practical guides on what metadata reveals and how to remove it before you share.
+      - navigation "Table of contents" [ref=e381]:
+        - paragraph [ref=e382]: Table of contents
+        - list [ref=e383]:
+          - listitem [ref=e384]:
+            - link "What Is Photo Metadata? The Complete Guide to Hidden Image Data" [ref=e385] [cursor=pointer]:
+              - /url: "#what-is-photo-metadata"
+          - listitem [ref=e386]:
+            - link "What Information Is Hidden in a Photo? The Full Breakdown" [ref=e387] [cursor=pointer]:
+              - /url: "#what-information-is-hidden-in-a-photo"
+          - listitem [ref=e388]:
+            - link "How to Remove EXIF Data from Photos (Free, Step by Step)" [ref=e389] [cursor=pointer]:
+              - /url: "#how-to-remove-exif-data"
+          - listitem [ref=e390]:
+            - link "What Is EXIF Data? Photos Carry a Hidden Camera Report" [ref=e391] [cursor=pointer]:
+              - /url: "#what-is-exif-data"
+          - listitem [ref=e392]:
+            - link "Can Photos Reveal Your Location? Yes — Here's How" [ref=e393] [cursor=pointer]:
+              - /url: "#can-photos-reveal-your-location"
+      - generic [ref=e394]:
+        - article [ref=e395]:
+          - heading "What Is Photo Metadata? The Complete Guide to Hidden Image Data" [level=3] [ref=e396]
+          - paragraph [ref=e397]:
+            - text: Updated
+            - time [ref=e398]: August 15, 2026
+          - generic [ref=e399]:
+            - paragraph [ref=e400]:
+              - text: "Every digital photo is actually two files bundled into one. The first is the image you see: the pixels, colors, and composition. The second is a block of hidden data called"
+              - strong [ref=e401]: photo metadata
+              - text: — technical information that records how, when, and often where the picture was taken. It is invisible in the image itself, but it is stored inside every photo you take and often inside every photo you receive.
+            - paragraph [ref=e402]: This guide explains what photo metadata is, what kinds exist, what information it can reveal, and how to strip it from your images before you share them.
+            - heading "What is photo metadata?" [level=4] [ref=e403]
+            - paragraph [ref=e404]: "Photo metadata is structured information embedded inside an image file. When a camera or smartphone captures a frame, it writes a series of fields alongside the pixel data: the make and model of the camera, the exposure settings, the date and time, and in many cases the GPS coordinates of the shot."
+            - paragraph [ref=e405]: Because this data is stored inside the file, it travels with the image wherever it goes. Renaming a file, moving it to a new folder, or sending it as an attachment does nothing to remove it.
+            - heading "The three main types of photo metadata" [level=4] [ref=e406]
+            - paragraph [ref=e407]: "There are three standards that cover most of the metadata found in modern photos:"
+            - list [ref=e408]:
+              - listitem [ref=e409]:
+                - strong [ref=e410]: EXIF
+                - text: "— the Exchangeable Image File Format. This block holds camera and technical data: make, model, lens, aperture, shutter speed, ISO, focal length, orientation, flash, and timestamps."
+              - listitem [ref=e411]:
+                - strong [ref=e412]: IPTC
+                - text: — originally developed for news agencies, this standard stores descriptive information such as captions, keywords, bylines, and copyright.
+              - listitem [ref=e413]:
+                - strong [ref=e414]: XMP
+                - text: — the Extensible Metadata Platform, an Adobe-created XML standard now used across many applications. It can combine technical and descriptive fields and is often the container where modern editors write data.
+            - paragraph [ref=e415]: The words “photo metadata” usually mean the combined set of all three.
+            - heading "What information hides inside a photo?" [level=4] [ref=e416]
+            - paragraph [ref=e417]: "The exact fields depend on the device and software, but a typical photo contains some or all of the following:"
+            - list [ref=e418]:
+              - listitem [ref=e419]:
+                - strong [ref=e420]: Camera make and model
+                - text: — the specific device used for the shot.
+              - listitem [ref=e421]:
+                - strong [ref=e422]: Lens details
+                - text: — focal length, aperture, and the lens model if it is exchangeable.
+              - listitem [ref=e423]:
+                - strong [ref=e424]: Exposure settings
+                - text: — shutter speed, ISO, and metering mode.
+              - listitem [ref=e425]:
+                - strong [ref=e426]: Date and time
+                - text: — often accurate to the second.
+              - listitem [ref=e427]:
+                - strong [ref=e428]: GPS coordinates
+                - text: — latitude and longitude, recorded when location services are active.
+              - listitem [ref=e429]:
+                - strong [ref=e430]: Orientation
+                - text: — how the camera was held, used to display the image upright.
+              - listitem [ref=e431]:
+                - strong [ref=e432]: Software and editing history
+                - text: — the application that created or modified the file, sometimes including a profile or username.
+              - listitem [ref=e433]:
+                - strong [ref=e434]: Embedded thumbnail
+                - text: — a small preview stored inside the file that can survive certain editing operations.
+            - paragraph [ref=e435]: None of this is visible on screen, which is why the majority of people never realise it is there.
+            - heading "How does metadata get into a photo?" [level=4] [ref=e436]
+            - paragraph [ref=e437]: Cameras and phones add metadata automatically at the moment of capture. Smartphone location metadata appears only when the camera app has permission to use GPS, but the rest — model, settings, timestamp — is written automatically every time.
+            - paragraph [ref=e438]: Photo-editing software can then rewrite or extend these blocks. Cropping, color grading, and format conversion frequently preserve most of the original metadata and add their own tag for the software used. Some applications even embed a copy of the owner’s name in the metadata of purchased templates or edited files.
+            - heading "Why photo metadata matters for privacy" [level=4] [ref=e439]
+            - paragraph [ref=e440]:
+              - text: "Most metadata is harmless, but two fields deserve special attention:"
+              - strong [ref=e441]: GPS coordinates
+              - text: and
+              - strong [ref=e442]: timestamps
+              - text: .
+            - paragraph [ref=e443]:
+              - text: If you take a photo at home and share the untouched file, the embedded location can point at your address. Timestamps tell people
+              - emphasis [ref=e444]: when
+              - text: you were there. Taken together, they can reveal a great deal about your routine, and they make targeted social engineering easier. This is why security-conscious photographers and privacy guides almost always recommend cleaning metadata before publishing images.
+            - paragraph [ref=e445]: It is worth being precise about the risk. Metadata removal reduces exposure, but it does not make you anonymous on its own. Platforms you upload to may add their own metadata, and other clues in the image content itself can still reveal location. Treat metadata removal as one layer of privacy hygiene, not a magic guarantee.
+            - heading "When is metadata removed automatically?" [level=4] [ref=e446]
+            - paragraph [ref=e447]: "Some channels strip metadata for you, and many do not:"
+            - list [ref=e448]:
+              - listitem [ref=e449]:
+                - strong [ref=e450]: Message apps
+                - text: — behavior varies. Some remove EXIF, others preserve it for hours until you share a “compressed” copy. Never assume.
+              - listitem [ref=e451]:
+                - strong [ref=e452]: Social platforms
+                - text: — most social networks re-encode uploads and usually drop the original EXIF/GPS block, but the safest assumption is that nothing is guaranteed.
+              - listitem [ref=e453]:
+                - strong [ref=e454]: Email and file transfer
+                - text: — sending the original file preserves everything.
+              - listitem [ref=e455]:
+                - strong [ref=e456]: Screenshots
+                - text: — a screenshot carries none of the source camera metadata, only the screen’s own details.
+            - paragraph [ref=e457]: Because behavior varies so widely, the reliable approach is to remove the metadata yourself before you send the file anywhere.
+            - heading "How to check what your photo contains" [level=4] [ref=e458]
+            - paragraph [ref=e459]: "Before sharing, it takes only seconds to see what is inside:"
+            - list [ref=e460]:
+              - listitem [ref=e461]: Open the file in a metadata viewer — the page you are on now offers the free metadata checker.
+              - listitem [ref=e462]: "Review the detected fields: camera, software, timestamps, and any GPS coordinates."
+              - listitem [ref=e463]: Decide whether to share the file as-is or clean it first.
+            - heading "How to remove photo metadata" [level=4] [ref=e464]
+            - paragraph [ref=e465]:
+              - text: The most reliable way to remove metadata is to rewrite the file without the hidden blocks. The free
+              - link "photo metadata remover" [ref=e466] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: "does exactly that — entirely in your browser:"
+            - list [ref=e467]:
+              - listitem [ref=e468]: Load your photo into the tool.
+              - listitem [ref=e469]: Review the scan results to confirm what will be removed.
+              - listitem [ref=e470]: Download a clean copy with no EXIF, GPS, or XMP data.
+            - paragraph [ref=e471]: Your images are processed locally on your device and are never uploaded to a server, so the original never leaves your computer or phone.
+            - heading "The bottom line" [level=4] [ref=e472]
+            - paragraph [ref=e473]: Photo metadata is a hidden record of how, when, and where every image was made. Most of it is useful, but the location and timestamp fields can quietly leak more than you intend. Knowing what is stored inside your photos — and cleaning them before you share — is one of the simplest and most effective privacy habits you can adopt.
+            - paragraph [ref=e474]:
+              - text: Ready to clean an image?
+              - link "Open the free photo metadata remover" [ref=e475] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: .
+          - generic [ref=e476]:
+            - generic [ref=e477]:
+              - link "Try the tool" [ref=e478] [cursor=pointer]:
+                - /url: "#top"
+              - link "Read the full article" [ref=e479] [cursor=pointer]:
+                - /url: /en/blog/what-is-photo-metadata
+            - generic [ref=e480]:
+              - generic [ref=e481]: Related articles
+              - list [ref=e482]:
+                - listitem [ref=e483]:
+                  - 'link "IPTC vs XMP Metadata Explained: What''s in Your Photo?" [ref=e484] [cursor=pointer]':
+                    - /url: /en/blog/iptc-vs-xmp-metadata-explained
+                - listitem [ref=e485]:
+                  - link "How to Remove EXIF Data from Photos on Android" [ref=e486] [cursor=pointer]:
+                    - /url: /en/blog/how-to-remove-exif-data-on-android
+        - article [ref=e487]:
+          - heading "What Information Is Hidden in a Photo? The Full Breakdown" [level=3] [ref=e488]
+          - paragraph [ref=e489]:
+            - text: Updated
+            - time [ref=e490]: August 31, 2026
+          - generic [ref=e491]:
+            - paragraph [ref=e492]: "Every photo is two files: the pixels you see and the metadata you do not. Hidden in the bytes are the camera that took the shot, the exact moment of capture, the coordinates of where you stood, and the chain of software that touched the result. This guide breaks down every category of hidden data — what each field is, what it reveals, and what it means for your privacy."
+            - 'heading "EXIF: the technical record" [level=4] [ref=e493]'
+            - paragraph [ref=e494]: EXIF (Exchangeable Image File) is the largest block of hidden data, written by the camera at the moment of capture.
+            - list [ref=e495]:
+              - listitem [ref=e496]:
+                - strong [ref=e497]: Camera identity
+                - text: — make, model, and (in some files) serial-derived identifiers that are unique to your device.
+              - listitem [ref=e498]:
+                - strong [ref=e499]: Capture settings
+                - text: — aperture, shutter speed, ISO, exposure compensation, focal length, and metering mode.
+              - listitem [ref=e500]:
+                - strong [ref=e501]: Timestamps
+                - text: — the exact date and time the photo was taken.
+              - listitem [ref=e502]:
+                - strong [ref=e503]: Lens and flash data
+                - text: — what glass you used and whether flash fired.
+              - listitem [ref=e504]:
+                - strong [ref=e505]: Orientation and color info
+                - text: — how the image should be displayed and its color matrix.
+            - paragraph [ref=e506]: When someone reads EXIF, they can often identify your exact camera, your editing history, and exactly when you pressed the shutter.
+            - 'heading "GPS: where you were" [level=4] [ref=e507]'
+            - paragraph [ref=e508]: GPS fields store the coordinates recorded by your phone or camera-shutter location.
+            - list [ref=e509]:
+              - listitem [ref=e510]:
+                - strong [ref=e511]: Latitude and longitude
+                - text: — precise to within metres of where you stood.
+              - listitem [ref=e512]:
+                - strong [ref=e513]: Altitude and heading
+                - text: — how high you were and your direction of travel.
+              - listitem [ref=e514]:
+                - strong [ref=e515]: Geotags in platform copies
+                - text: — some apps re-add where-you-were labels that sit side-by-side with the raw fields.
+            - paragraph [ref=e516]: Coordinates alone are a pinpoint. Combined with the timestamp, they place you at a specific place at a specific moment.
+            - 'heading "IPTC and XMP: editorial and workflow data" [level=4] [ref=e517]'
+            - paragraph [ref=e518]: IPTC and XMP are second containers used by photographers, editors, and content platforms.
+            - list [ref=e519]:
+              - listitem [ref=e520]:
+                - strong [ref=e521]: IPTC
+                - text: — headline, caption, creator, copyright, keywords, and location fields entered by people.
+              - listitem [ref=e522]:
+                - strong [ref=e523]: XMP
+                - text: — the modern standard that carries equivalent fields plus workflow state, edit history, and rating.
+              - listitem [ref=e524]:
+                - strong [ref=e525]: Creator rights
+                - text: — names, e-mails, and agency contact details are common here.
+            - paragraph [ref=e526]: For personal photos these boxes are usually empty, but a copied template or an editing suite can fill them without you noticing.
+            - heading "Software trails and thumbnails" [level=4] [ref=e527]
+            - paragraph [ref=e528]: The hidden data does not stop at the registered fields.
+            - list [ref=e529]:
+              - listitem [ref=e530]:
+                - strong [ref=e531]: Software tags
+                - text: — every editor writes its name and version; the most recent one usually wins, but history often remains readable.
+              - listitem [ref=e532]:
+                - strong [ref=e533]: Embedded thumbnails
+                - text: — a small preview inside the file (for example, inside EXIF sub-blocks) that survives in some tools when the main image is cleared.
+              - listitem [ref=e534]:
+                - strong [ref=e535]: Hidden previews in proprietary formats
+                - text: — RAW, HEIC, and PNG can carry extra structures beyond the visible frame.
+            - paragraph [ref=e536]: These trails tell a viewer which programs you used and can survive partial cleaning.
+            - heading "Why hidden data matters to you" [level=4] [ref=e537]
+            - paragraph [ref=e538]: "Each category is useful — and each is a risk in the wrong hands:"
+            - list [ref=e539]:
+              - listitem [ref=e540]:
+                - strong [ref=e541]: Identity
+                - text: — camera serial-derived fields and software tags narrow who you are.
+              - listitem [ref=e542]:
+                - strong [ref=e543]: Physical safety
+                - text: — GPS plus timestamps reveal routines, homes, and workplaces.
+              - listitem [ref=e544]:
+                - strong [ref=e545]: Social engineering
+                - text: — editing history is perfect material for targeted manipulation.
+              - listitem [ref=e546]:
+                - strong [ref=e547]: Unexpected exposure
+                - text: — metadata rides along silently in every email, forum post, and marketplace listing.
+            - paragraph [ref=e548]: The risk is not that one field is dangerous; it is the combination of location, time, identity, and behavior in a single small file.
+            - heading "How to find what is hidden in a photo" [level=4] [ref=e549]
+            - list [ref=e550]:
+              - listitem [ref=e551]:
+                - strong [ref=e552]: Scan
+                - text: — run the photo metadata checker and read the field-by-field output.
+              - listitem [ref=e553]:
+                - strong [ref=e554]: Decide
+                - text: — separate what you want to keep (usually nothing) from what must go.
+              - listitem [ref=e555]:
+                - strong [ref=e556]: Strip
+                - text: — use the
+                - link "photo metadata remover" [ref=e557] [cursor=pointer]:
+                  - /url: /en/#tool
+                - text: to remove EXIF, GPS, IPTC, XMP, and embedded previews.
+              - listitem [ref=e558]:
+                - strong [ref=e559]: Re-scan
+                - text: — verify the cleaned copy is truly empty before it goes anywhere.
+            - paragraph [ref=e560]: Everything runs locally in your browser; your originals never leave your device.
+            - heading "The bottom line" [level=4] [ref=e561]
+            - paragraph [ref=e562]: Hidden in a photo are the camera and its settings profile, the exact capture time, your coordinates, editorial names, software history, and embedded previews. Technicians use these fields to organize and verify files; strangers use them to find out who you are and where you live. Scan your files, strip the fields, and verify the result — the same way you would check a gate before leaving it unlocked.
+            - paragraph [ref=e563]:
+              - text: "See exactly what your files carry: check photo metadata, then"
+              - link "remove EXIF, GPS, and hidden data" [ref=e564] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: .
+          - generic [ref=e565]:
+            - generic [ref=e566]:
+              - link "Try the tool" [ref=e567] [cursor=pointer]:
+                - /url: "#top"
+              - link "Read the full article" [ref=e568] [cursor=pointer]:
+                - /url: /en/blog/what-information-is-hidden-in-a-photo
+            - generic [ref=e569]:
+              - generic [ref=e570]: Related articles
+              - list [ref=e571]:
+                - listitem [ref=e572]:
+                  - 'link "IPTC vs XMP Metadata Explained: What''s in Your Photo?" [ref=e573] [cursor=pointer]':
+                    - /url: /en/blog/iptc-vs-xmp-metadata-explained
+                - listitem [ref=e574]:
+                  - link "How to Remove EXIF Data from Photos on Android" [ref=e575] [cursor=pointer]:
+                    - /url: /en/blog/how-to-remove-exif-data-on-android
+        - article [ref=e576]:
+          - heading "How to Remove EXIF Data from Photos (Free, Step by Step)" [level=3] [ref=e577]
+          - paragraph [ref=e578]:
+            - text: Updated
+            - time [ref=e579]: August 25, 2026
+          - generic [ref=e580]:
+            - paragraph [ref=e581]: "Every photo you take with a phone or camera carries a hidden trailer: EXIF data documenting the camera model, exposure settings, the exact moment it was shot and — whenever permission allowed — the GPS coordinates. This guide shows every practical way to remove EXIF data for free, on any device, so the files you share stop leaking details about you and your equipment."
+            - heading "First, confirm the EXIF is actually there" [level=4] [ref=e582]
+            - paragraph [ref=e583]: Removal you cannot verify is removal you cannot trust. Run the photo through the free photo metadata checker — it lists camera, software, timestamp, and GPS fields in seconds, all inside your browser. That glance tells you how much context the file is carrying and gives you a baseline for later verification.
+            - 'heading "The fastest free method: a browser-based stripper" [level=4] [ref=e584]'
+            - paragraph [ref=e585]:
+              - text: No install, no upload, works on every platform. The free
+              - link "photo metadata remover" [ref=e586] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: "handles JPG and PNG and does the whole job client-side:"
+            - list [ref=e587]:
+              - listitem [ref=e588]:
+                - strong [ref=e589]: Load the photo
+                - text: — drag and drop or pick it from disk.
+              - listitem [ref=e590]:
+                - strong [ref=e591]: Read the scan results
+                - text: — the tool surfaces the detected camera, software, and GPS fields.
+              - listitem [ref=e592]:
+                - strong [ref=e593]: Download the output
+                - text: — a copy with no EXIF, GPS, IPTC, or XMP data at all.
+            - paragraph [ref=e594]: Because the processing happens locally on your device, your original file never leaves your control. This makes it hard to beat for privacy-sensitive sharing.
+            - heading "Removing EXIF on Windows" [level=4] [ref=e595]
+            - paragraph [ref=e596]: "Windows offers a native path for Microsoft-supported image formats:"
+            - list [ref=e597]:
+              - listitem [ref=e598]:
+                - text: Right-click the file →
+                - strong [ref=e599]: Properties
+                - text: .
+              - listitem [ref=e600]:
+                - text: Open the
+                - strong [ref=e601]: Details
+                - text: tab and select
+                - strong [ref=e602]: Remove Properties and Personal Information
+                - text: .
+              - listitem [ref=e603]: Choose to remove from this file only, or from all files in the folder.
+            - paragraph [ref=e604]: This works well for JPG on stock installs, but keep in mind it is format-dependent and does not alter the photo pixels. For other formats or a more predictable result, use a dedicated stripper.
+            - heading "Removing EXIF on macOS" [level=4] [ref=e605]
+            - paragraph [ref=e606]: "Preview can show you metadata but does not reliably strip it — you need to export:"
+            - list [ref=e607]:
+              - listitem [ref=e608]:
+                - text: Open the image in
+                - strong [ref=e609]: Preview
+                - text: .
+              - listitem [ref=e610]:
+                - text: Select
+                - strong [ref=e611]: File → Export
+                - text: .
+              - listitem [ref=e612]: In the export dialog, choose a format that allows metadata removal; some builds offer a “without metadata” option or write clean output by default.
+            - paragraph [ref=e613]: Where the export path is insufficient, the browser tool above is the more dependable route.
+            - heading "Removing EXIF on iPhone and Android" [level=4] [ref=e614]
+            - paragraph [ref=e615]: "Built-in stripping on phones is rare and varies by manufacturer. The options that exist:"
+            - list [ref=e616]:
+              - listitem [ref=e617]:
+                - strong [ref=e618]: iPhone
+                - text: — choose
+                - strong [ref=e619]: Most Compatible
+                - text: when sharing (iOS re-encodes and drops much of the metadata), or screenshot the photo to produce a clean copy fast.
+              - listitem [ref=e620]:
+                - strong [ref=e621]: Android (stock and most skins)
+                - text: — share “without location” if your gallery offers it, otherwise strip in the browser tool.
+              - listitem [ref=e622]:
+                - strong [ref=e623]: Samsung / Pixel
+                - text: — the gallery apps expose a “Share without location” or “Remove location” action for single images.
+            - paragraph [ref=e624]: None of these are as thorough or predictable as a dedicated stripper, so treat the browser method as the consistent cross-device answer.
+            - 'heading "Method that avoids the problem entirely: screenshots" [level=4] [ref=e625]'
+            - paragraph [ref=e626]: A screenshot captures pixels, not metadata. The result carries no source EXIF or GPS. Use it for a quick, clean share — just remember the resolution now equals your screen, and the screen itself can add its own filename or tag. It is a tactical shortcut, not a metadata strategy.
+            - heading "What actually gets removed" [level=4] [ref=e627]
+            - paragraph [ref=e628]: "A full strip removes the informational block: camera make and model, lens and focal length, aperture, shutter speed, ISO, software and processing history, capture timestamp, and — crucially — GPS coordinates. The pixels are untouched. That means you lose nothing you would notice visually while removing the exact data that identifies you and your equipment."
+            - heading "The privacy payoff" [level=4] [ref=e629]
+            - paragraph [ref=e630]: Your camera’s serial-derived fields, your device type, and your captured locations are the exact ammunition used in stalking, targeted scams, and doxing. Removing EXIF before you send a file to someone — a buyer, a forum, a support chat, a dating profile — removes that ammunition with one step. And since the tool is local, there is no third-party copy of your image to worry about.
+            - heading "Verify, then share" [level=4] [ref=e631]
+            - paragraph [ref=e632]: "Close the loop the same way you opened it: run the output through the metadata checker and confirm the GPS and camera fields are gone. If any tag survived, the format needed the full-strip path. A verified clean file is the only file worth sharing."
+            - heading "The bottom line" [level=4] [ref=e633]
+            - paragraph [ref=e634]: "Removing EXIF data is free, fast, and quality-neutral: confirm it is present with a checker, strip it with a browser-based tool that never uploads your file, and verify the result before sharing. On Windows and macOS the built-in export and property paths work for simple cases; on phones a dedicated stripper is the most predictable option."
+            - paragraph [ref=e635]:
+              - text: "Clean a photo in under a minute:"
+              - link "remove EXIF and other metadata now" [ref=e636] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: .
+          - generic [ref=e637]:
+            - generic [ref=e638]:
+              - link "Try the tool" [ref=e639] [cursor=pointer]:
+                - /url: "#top"
+              - link "Read the full article" [ref=e640] [cursor=pointer]:
+                - /url: /en/blog/how-to-remove-exif-data
+            - generic [ref=e641]:
+              - generic [ref=e642]: Related articles
+              - list [ref=e643]:
+                - listitem [ref=e644]:
+                  - 'link "IPTC vs XMP Metadata Explained: What''s in Your Photo?" [ref=e645] [cursor=pointer]':
+                    - /url: /en/blog/iptc-vs-xmp-metadata-explained
+                - listitem [ref=e646]:
+                  - link "How to Remove EXIF Data from Photos on Android" [ref=e647] [cursor=pointer]:
+                    - /url: /en/blog/how-to-remove-exif-data-on-android
+        - article [ref=e648]:
+          - heading "What Is EXIF Data? Photos Carry a Hidden Camera Report" [level=3] [ref=e649]
+          - paragraph [ref=e650]:
+            - text: Updated
+            - time [ref=e651]: August 18, 2026
+          - generic [ref=e652]:
+            - paragraph [ref=e653]:
+              - text: Every photo you take carries a secret report about itself. Alongside the pixels, the file stores a block of data called
+              - strong [ref=e654]: EXIF
+              - text: ", and it records far more than most people expect: the exact camera body, the lens, the aperture and shutter speed, the second the photo was taken, and often the precise GPS location. This guide explains what EXIF data is, what it contains, how to read it, and how to strip it from your images."
+            - heading "What does EXIF mean?" [level=4] [ref=e655]
+            - paragraph [ref=e656]:
+              - text: EXIF stands for
+              - strong [ref=e657]: Exchangeable Image File Format
+              - text: . It is a specification that camera manufacturers, smartphone makers, and photo software use to store technical and descriptive information inside an image file, usually a JPEG or TIFF.
+            - paragraph [ref=e658]: The format was introduced in the 1990s to help cameras and printers exchange information automatically. Today it is the reason your photo management app can sort thousands of pictures by date, camera, lens, or even GPS location without you entering a single detail by hand.
+            - heading "What information does EXIF actually store?" [level=4] [ref=e659]
+            - paragraph [ref=e660]: "EXIF is a collection of tagged fields. A typical photo written by a modern camera contains many of the following:"
+            - list [ref=e661]:
+              - listitem [ref=e662]:
+                - strong [ref=e663]: Camera make and model
+                - text: — the brand and exact device, such as a specific smartphone model or camera body.
+              - listitem [ref=e664]:
+                - strong [ref=e665]: Lens and focal data
+                - text: — the lens model, focal length, and aperture.
+              - listitem [ref=e666]:
+                - strong [ref=e667]: Exposure information
+                - text: — shutter speed, ISO sensitivity, exposure compensation, and metering mode.
+              - listitem [ref=e668]:
+                - strong [ref=e669]: Flash data
+                - text: — whether the flash fired and its mode.
+              - listitem [ref=e670]:
+                - strong [ref=e671]: Date and time
+                - text: — the capture time, often to the second and sometimes including the timezone.
+              - listitem [ref=e672]:
+                - strong [ref=e673]: GPS coordinates
+                - text: — latitude and longitude, plus sometimes altitude and direction, when location services are enabled.
+              - listitem [ref=e674]:
+                - strong [ref=e675]: Orientation and dimensions
+                - text: — how the camera was held and the image width and height.
+              - listitem [ref=e676]:
+                - strong [ref=e677]: Software tag
+                - text: — the application that created or last edited the file.
+              - listitem [ref=e678]:
+                - strong [ref=e679]: Thumbnail
+                - text: — a small embedded preview.
+            - paragraph [ref=e680]: Some cameras add even more specialist fields, such as lens serial numbers, focusing distance, or a count of how many times the shutter has been pressed.
+            - heading "Why does EXIF matter for privacy?" [level=4] [ref=e681]
+            - paragraph [ref=e682]:
+              - text: The two fields that create most privacy concern are
+              - strong [ref=e683]: GPS coordinates
+              - text: and
+              - strong [ref=e684]: timestamps
+              - text: ":"
+            - list [ref=e685]:
+              - listitem [ref=e686]: A photo taken in your living room can embed your home’s coordinates, showing anyone with the file exactly where you live.
+              - listitem [ref=e687]: Timestamps add a “when” to the “where,” letting someone map out habits, schedules, or travel patterns.
+            - paragraph [ref=e688]: "This is not a theoretical risk. Shared photo libraries, online marketplaces, and photography forums routinely strip EXIF for exactly this reason, and journalists and activists in sensitive situations go to great lengths to remove location data before publishing. The risk is real but proportional: EXIF removal removes a specific layer of exposure, and it should be combined with sensible behavior (for example, not publishing images whose content itself reveals your address)."
+            - heading "How to view EXIF data" [level=4] [ref=e689]
+            - paragraph [ref=e690]: You do not need specialist knowledge to read EXIF. The quickest way is to load the photo into a viewer that exposes all tags. On this site, the free photo metadata checker lists every detectable field in seconds, entirely in your browser.
+            - paragraph [ref=e691]: On a phone, the built-in gallery usually hides most tags, and on a desktop the operating system shows only basic fields such as date and dimensions. A dedicated viewer is the difference between seeing a summary and seeing the full report.
+            - heading "Why can EXIF survive editing?" [level=4] [ref=e692]
+            - paragraph [ref=e693]: Many people assume that editing a photo removes its EXIF. Usually it does not. Cropping, rotating, color correction, and converting between common formats like JPEG and WebP preserve most of the original tags, and the editor often adds a new software tag on top. Only operations that explicitly rebuild the file without metadata — like a metadata-stripping tool or saving as a “clean” export — remove it reliably.
+            - heading "How to remove EXIF data" [level=4] [ref=e694]
+            - paragraph [ref=e695]:
+              - text: "Removing EXIF is straightforward: rewrite the file without the metadata block. The free"
+              - link "photo metadata remover" [ref=e696] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: "does this in a few seconds:"
+            - list [ref=e697]:
+              - listitem [ref=e698]: Open the tool and load your photo — everything runs locally in your browser.
+              - listitem [ref=e699]: Review the detected fields so you know what will be gone.
+              - listitem [ref=e700]: Download a clean copy with no EXIF, GPS, or IPTC/XMP data.
+            - paragraph [ref=e701]: Because the processing happens on your own device, the original never leaves your computer or phone and no upload is involved.
+            - heading "EXIF is only part of the story" [level=4] [ref=e702]
+            - paragraph [ref=e703]:
+              - text: EXIF is the best-known metadata block, but not the only one.
+              - strong [ref=e704]: IPTC
+              - text: holds descriptive fields such as keywords and copyright, and
+              - strong [ref=e705]: XMP
+              - text: is the modern XML standard that many applications write today, often duplicating EXIF values. A thorough cleaner removes all three, not just the EXIF section. Our guide on
+              - link "IPTC vs XMP metadata" [ref=e706] [cursor=pointer]:
+                - /url: /en/blog/iptc-vs-xmp-metadata-explained
+              - text: covers the difference in depth.
+            - heading "The bottom line" [level=4] [ref=e707]
+            - paragraph [ref=e708]: EXIF is the hidden report your camera writes about every photo — and it travels with the file wherever it goes. Most of it is useful for organizing pictures, but the GPS and timestamp fields can leak details you never intended to share. Checking what a photo contains before you send it, and stripping the metadata when the content is sensitive, takes seconds and is one of the most effective privacy habits available.
+            - paragraph [ref=e709]:
+              - text: Curious what your photos hide? Check a photo now or clean it up straight away with the
+              - link "photo metadata remover" [ref=e710] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: .
+          - generic [ref=e711]:
+            - generic [ref=e712]:
+              - link "Try the tool" [ref=e713] [cursor=pointer]:
+                - /url: "#top"
+              - link "Read the full article" [ref=e714] [cursor=pointer]:
+                - /url: /en/blog/what-is-exif-data
+            - generic [ref=e715]:
+              - generic [ref=e716]: Related articles
+              - list [ref=e717]:
+                - listitem [ref=e718]:
+                  - 'link "IPTC vs XMP Metadata Explained: What''s in Your Photo?" [ref=e719] [cursor=pointer]':
+                    - /url: /en/blog/iptc-vs-xmp-metadata-explained
+                - listitem [ref=e720]:
+                  - link "How to Remove EXIF Data from Photos on Android" [ref=e721] [cursor=pointer]:
+                    - /url: /en/blog/how-to-remove-exif-data-on-android
+        - article [ref=e722]:
+          - heading "Can Photos Reveal Your Location? Yes — Here's How" [level=3] [ref=e723]
+          - paragraph [ref=e724]:
+            - text: Updated
+            - time [ref=e725]: August 20, 2026
+          - generic [ref=e726]:
+            - paragraph [ref=e727]: Yes, photos can absolutely reveal your location — and often far more precisely than you would expect. The location can travel in the file’s hidden metadata, in third-party platform tags, in the filename, or simply in what the image shows. This guide explains every way a photo can leak your location and how to stop each one before you share.
+            - heading "How location gets into a photo" [level=4] [ref=e728]
+            - paragraph [ref=e729]: "There are several paths, and most of them run automatically:"
+            - list [ref=e730]:
+              - listitem [ref=e731]:
+                - strong [ref=e732]: EXIF GPS coordinates
+                - text: — smartphones embed latitude and longitude into the file whenever the camera has location permission. This is the most common and the most precise leak, often accurate to a few meters.
+              - listitem [ref=e733]:
+                - strong [ref=e734]: Wi-Fi and cellular positioning
+                - text: — even when the GPS chip appears “off,” some apps resolve location from nearby networks and cell towers when writing metadata.
+              - listitem [ref=e735]:
+                - strong [ref=e736]: Manufacturer records
+                - text: — cloud backup services, camera timestamps, and app-derived location data can combine with the image data in ways that are invisible inside the file itself.
+              - listitem [ref=e737]:
+                - strong [ref=e738]: Platform tags
+                - text: — photo-sharing apps may retain or re-add location as a keyword or a service-side field even when the file’s EXIF was stripped.
+              - listitem [ref=e739]:
+                - strong [ref=e740]: Filenames and titles
+                - text: — “IMG_4792_Hamburg.jpg” or a caption naming the place reveals location trivially.
+            - paragraph [ref=e741]: Of these, EXIF GPS is the one that matters most, because it is embedded in the file itself and survives copying, renaming, and most transfer methods.
+            - heading "How precise is the location data?" [level=4] [ref=e742]
+            - paragraph [ref=e743]: Very. A smartphone’s GPS fix is usually accurate to a few meters — enough to identify not just the city and street, but often the specific building. Indoor shots taken near a window frequently carry indoor-grade precision. Adding the timestamp, a person with the file can place you at that exact spot at that exact time.
+            - paragraph [ref=e744]: "This precision is exactly why shared images keep causing real-world incidents: home photos that point at an address, marketplaces that expose seller locations, and social posts that locate a person’s workplace or children’s school."
+            - heading "Which apps keep or strip location?" [level=4] [ref=e745]
+            - paragraph [ref=e746]: "Behavior varies wildly across channels:"
+            - list [ref=e747]:
+              - listitem [ref=e748]:
+                - strong [ref=e749]: Direct file transfer, email, cloud backups, and USB copies
+                - text: preserve every byte of EXIF, GPS included.
+              - listitem [ref=e750]:
+                - strong [ref=e751]: Most social networks
+                - text: re-encode images and typically drop the original GPS block — but not all do, and third-party sharing tools, messaging apps that compress, or platform-side “camera roll” features can behave differently.
+              - listitem [ref=e752]:
+                - strong [ref=e753]: Screenshots
+                - text: strip the source image’s GPS entirely, but a screenshot of a map or a photo with visible landmarks can still reveal location.
+              - listitem [ref=e754]:
+                - strong [ref=e755]: Message apps
+                - text: have changed behavior over time; never assume the current version strips anything.
+            - paragraph [ref=e756]: "The only reliable rule: assume nothing is removed until you remove it yourself."
+            - heading "Location leaks beyond metadata" [level=4] [ref=e757]
+            - paragraph [ref=e758]: "Even a perfectly clean file can still reveal where it was taken:"
+            - list [ref=e759]:
+              - listitem [ref=e760]:
+                - strong [ref=e761]: Visible clues
+                - text: — landmarks, street names, shop fronts, house numbers, license plates, reflections in windows, and mountain silhouettes.
+              - listitem [ref=e762]:
+                - strong [ref=e763]: Image artifacts
+                - text: — lens bokeh shapes, elevation of the sun in shadows, vegetation, and weather can narrow the place and date.
+              - listitem [ref=e764]:
+                - strong [ref=e765]: Filenames and captions
+                - text: — location strings in names or “shot at X” captions leak as loudly as any GPS tag.
+              - listitem [ref=e766]:
+                - strong [ref=e767]: Sequential IDs
+                - text: — numbering patterns across a shared series can reveal cleanup gaps or device habits.
+            - paragraph [ref=e768]: Metadata removal handles the hidden channel. Judgement handles the visible one.
+            - heading "How to check whether a photo has location data" [level=4] [ref=e769]
+            - paragraph [ref=e770]: Before sharing, run the file through a metadata viewer. The free photo metadata checker on this site lists GPS coordinates and every other detectable field in seconds, entirely in the browser. If you see latitude and longitude — or the words GPS, GPSInfo, or “location” in the tag list — the file leaks your position.
+            - heading "How to remove location from a photo" [level=4] [ref=e771]
+            - paragraph [ref=e772]:
+              - text: The trustworthy method is to rewrite the file without the metadata block. The free
+              - link "photo metadata remover" [ref=e773] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: "strips EXIF, GPS, IPTC, and XMP in one pass:"
+            - list [ref=e774]:
+              - listitem [ref=e775]: Load the photo into the tool — everything runs locally on your device.
+              - listitem [ref=e776]: Confirm the detected GPS and camera fields in the scan results.
+              - listitem [ref=e777]: Download a clean copy that contains no location data at all.
+            - paragraph [ref=e778]:
+              - text: Because the file never leaves your browser, your originals stay private while you produce as many clean copies as you need. Need to undo an embarrassing trail you already shared? See
+              - link "how to remove location data from photos" [ref=e779] [cursor=pointer]:
+                - /url: /en/blog/how-to-remove-location-data-from-photos
+              - text: for the wider cleanup story.
+            - heading "Why ‘disable location on your camera’ is not enough" [level=4] [ref=e780]
+            - paragraph [ref=e781]:
+              - text: Turning off GPS in your camera app prevents
+              - emphasis [ref=e782]: new
+              - text: location tags, but it does nothing about photos already in your library, photos taken by other people’s devices, or the existing EXIF inside files you are about to send. Disabling the feature is a good forward-looking habit; cleaning existing files requires a removal step.
+            - heading "The bottom line" [level=4] [ref=e783]
+            - paragraph [ref=e784]: "Photos can reveal your location through hidden EXIF GPS, platform tags, filenames, and the image content itself. The hidden channel is easy to close: strip metadata before you share, and confirm nothing was missed with a quick metadata check. The visible channel is a habit of judgement — think about what a stranger could infer from the picture as well as the file."
+            - paragraph [ref=e785]:
+              - text: "Check your images before you post: scan a photo for GPS or"
+              - link "remove the location data now" [ref=e786] [cursor=pointer]:
+                - /url: /en/#tool
+              - text: .
+          - generic [ref=e787]:
+            - generic [ref=e788]:
+              - link "Try the tool" [ref=e789] [cursor=pointer]:
+                - /url: "#top"
+              - link "Read the full article" [ref=e790] [cursor=pointer]:
+                - /url: /en/blog/can-photos-reveal-your-location
+            - generic [ref=e791]:
+              - generic [ref=e792]: Related articles
+              - list [ref=e793]:
+                - listitem [ref=e794]:
+                  - 'link "IPTC vs XMP Metadata Explained: What''s in Your Photo?" [ref=e795] [cursor=pointer]':
+                    - /url: /en/blog/iptc-vs-xmp-metadata-explained
+                - listitem [ref=e796]:
+                  - link "How to Remove EXIF Data from Photos on Android" [ref=e797] [cursor=pointer]:
+                    - /url: /en/blog/how-to-remove-exif-data-on-android
+      - link "View all articles" [ref=e799] [cursor=pointer]:
+        - /url: /en/blog
+        - generic [aria-hidden] [ref=e801]: →
+    - generic [ref=e802]:
+      - generic [ref=e803]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e804]
+        - link "Still have questions? Visit our full FAQ" [ref=e805] [cursor=pointer]:
+          - /url: /en/faq
+          - generic [aria-hidden] [ref=e807]: →
+      - generic [ref=e808]:
+        - group [ref=e809] [cursor=pointer]:
+          - generic "What metadata is removed?" [ref=e810]:
+            - generic [aria-hidden] [ref=e812]: +
+        - group [ref=e813] [cursor=pointer]:
+          - generic "Does this reduce image quality?" [ref=e814]:
+            - generic [aria-hidden] [ref=e816]: +
+        - group [ref=e817] [cursor=pointer]:
+          - generic "Is anything uploaded to a server?" [ref=e818]:
+            - generic [aria-hidden] [ref=e820]: +
+        - group [ref=e821] [cursor=pointer]:
+          - generic "What about social networks?" [ref=e822]:
+            - generic [aria-hidden] [ref=e824]: +
+    - generic [ref=e825]:
+      - generic [ref=e826]:
+        - generic [ref=e827]: Trust & transparency
+        - heading "Private by architecture, not by promise" [level=2] [ref=e829]
+        - paragraph [ref=e830]: Everything runs inside your browser tab. There is no server that could receive your photos â€” you can watch it happen in your browser's network tab.
+      - generic [ref=e831]:
+        - generic [ref=e837]:
+          - heading "100% Client-Side" [level=4] [ref=e838]
+          - paragraph [ref=e839]: Your photos never leave your device
+        - generic [ref=e844]:
+          - heading "Built for Privacy" [level=4] [ref=e845]
+          - paragraph [ref=e846]: Because your photos are yours
+      - generic [ref=e847]:
+        - link "See how it works" [ref=e848] [cursor=pointer]:
+          - /url: "#how-it-works"
+        - link "Read the FAQ" [ref=e849] [cursor=pointer]:
+          - /url: "#faq"
+  - contentinfo [ref=e850]:
+    - generic [ref=e851]:
+      - generic [ref=e852]:
+        - generic [ref=e853]:
+          - link "Photo Metadata Remover" [ref=e854] [cursor=pointer]:
+            - /url: /en
+            - generic [ref=e858]:
+              - generic [ref=e859]: Photo Metadata Remover
+              - generic [ref=e860]: Remove EXIF data from your photos. Privacy-first, free, no uploads.
+          - paragraph [ref=e861]: Remove EXIF and GPS metadata from your photos. Everything runs in your browser — nothing leaves your device.
+          - generic [ref=e862]: 100% client-side Â· nothing uploaded
+        - generic [ref=e865]:
+          - heading "Product" [level=4] [ref=e866]
+          - list [ref=e867]:
+            - listitem [ref=e868]:
+              - link "Metadata Remover (Main Tool)" [ref=e869] [cursor=pointer]:
+                - /url: /en/
+            - listitem [ref=e870]:
+              - link "Metadata" [ref=e871] [cursor=pointer]:
+                - /url: /en/formats
+            - listitem [ref=e872]:
+              - link "Guides" [ref=e873] [cursor=pointer]:
+                - /url: /en/guides
+            - listitem [ref=e874]:
+              - link "FAQ" [ref=e875] [cursor=pointer]:
+                - /url: /en/faq
+        - generic [ref=e876]:
+          - heading "Information" [level=4] [ref=e877]
+          - list [ref=e878]:
+            - listitem [ref=e879]:
+              - link "About" [ref=e880] [cursor=pointer]:
+                - /url: /en/about
+            - listitem [ref=e881]:
+              - link "How It Works" [ref=e882] [cursor=pointer]:
+                - /url: /en/how-it-works
+            - listitem [ref=e883]:
+              - link "Privacy Policy" [ref=e884] [cursor=pointer]:
+                - /url: /en/privacy
+            - listitem [ref=e885]:
+              - link "Security" [ref=e886] [cursor=pointer]:
+                - /url: /en/security
+            - listitem [ref=e887]:
+              - link "Supported Formats" [ref=e888] [cursor=pointer]:
+                - /url: /en/formats
+            - listitem [ref=e889]:
+              - link "FAQ" [ref=e890] [cursor=pointer]:
+                - /url: /en/faq
+            - listitem [ref=e891]:
+              - link "Legal Hub" [ref=e892] [cursor=pointer]:
+                - /url: /en/legal
+        - generic [ref=e893]:
+          - heading "Trust & Privacy" [level=4] [ref=e894]
+          - list [ref=e895]:
+            - listitem [ref=e896]:
+              - generic [ref=e898]: 100% Client-Side Processing
+            - listitem [ref=e899]:
+              - generic [ref=e901]: Zero Cloud Storage
+            - listitem [ref=e902]:
+              - generic [ref=e904]: Volatile In-Memory Only
+            - listitem [ref=e905]:
+              - generic [ref=e907]: No Tracking or Telemetry
+          - generic [ref=e908]:
+            - generic [ref=e909]: Languages
+            - generic [ref=e910]:
+              - link "English" [ref=e911] [cursor=pointer]:
+                - /url: /en/
+              - link "Deutsch" [ref=e912] [cursor=pointer]:
+                - /url: /de/
+              - link "Français" [ref=e913] [cursor=pointer]:
+                - /url: /fr/
+      - generic [ref=e914]:
+        - link "Privacy Policy" [ref=e915] [cursor=pointer]:
+          - /url: /en/privacy
+        - link "Terms of Service" [ref=e916] [cursor=pointer]:
+          - /url: /en/terms
+        - link "Imprint" [ref=e917] [cursor=pointer]:
+          - /url: /en/impressum
+        - link "Contact" [ref=e918] [cursor=pointer]:
+          - /url: /en/contact
+      - generic [ref=e919]:
+        - paragraph [ref=e920]: Â© 2026 Photo Metadata Remover. All rights reserved.
+        - paragraph [ref=e921]: "Made with â\x9d¤ï¸\x8f for a more private internet."

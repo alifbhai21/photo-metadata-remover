@@ -603,4 +603,76 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/blog/iptc-vs-xmp-metadata-explained/" />
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://photometadataremover.com/en/how-it-works/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/how-it-works/" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://photometadataremover.com/de/how-it-works/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/how-it-works/" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://photometadataremover.com/fr/how-it-works/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/how-it-works/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/how-it-works/" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://photometadataremover.com/en/legal/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/legal/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/legal/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/legal/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/legal/" />
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://photometadataremover.com/de/legal/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/legal/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/legal/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/legal/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/legal/" />
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://photometadataremover.com/fr/legal/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/legal/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/legal/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/legal/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/legal/" />
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://photometadataremover.com/en/security/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/security/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/security/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/security/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/security/" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://photometadataremover.com/de/security/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/security/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/security/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/security/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/security/" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://photometadataremover.com/fr/security/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photometadataremover.com/en/security/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://photometadataremover.com/de/security/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photometadataremover.com/fr/security/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://photometadataremover.com/en/security/" />
+    <priority>0.6</priority>
+  </url>
 </urlset>

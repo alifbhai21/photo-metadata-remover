@@ -410,6 +410,7 @@ test.describe('Post-removal verification of the generated output', () => {
       await uploadAndAwait(page, trailerJpegPath, 'Verification failed');
       const dirtyStatus = statusOf(page, 1);
       await expect(dirtyStatus).toBeVisible();
+      await dirtyStatus.scrollIntoViewIfNeeded();
       await expect(dirtyStatus).toBeInViewport();
       await expect(dirtyStatus).not.toContainText('Privacy metadata remaining: 0');
       await expect(page.locator('#download-1')).toBeDisabled();

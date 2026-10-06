@@ -2,13 +2,15 @@
   "site": {
     "name": "Foto-Metadaten-Entferner",
     "tagline": "EXIF-Daten aus Ihren Fotos entfernen. Datenschutz-first, kostenlos, ohne Uploads.",
-    "description": "Entfernen Sie GPS-Koordinaten, Kamera-Seriennummern, Zeitstempel und andere versteckte Metadaten aus Ihren Fotos. Alles läuft in Ihrem Browser – nichts verlässt Ihr Gerät."
+    "description": "EXIF- und GPS-Metadaten aus Ihren Fotos entfernen. Alles läuft in Ihrem Browser – nichts verlässt Ihr Gerät."
   },
   "seo": {
-    "og_image_alt": "Foto-Metadaten-Entferner – EXIF- und GPS-Daten direkt im Browser aus Ihren Fotos entfernen. Kostenlos, privat, ohne Uploads.",
+    "og_image_alt": "Foto-Metadaten-Entferner online – EXIF- und GPS-Daten direkt im Browser aus Ihren Fotos entfernen. Kostenlos, privat, ohne Uploads.",
     "home": {
-      "title": "Metadaten online aus Ihren Fotos entfernen",
-      "description": "Entfernen Sie GPS-Koordinaten, Kamera-Seriennummern, Zeitstempel und andere versteckte EXIF-Daten aus Ihren Fotos. Kostenlos, privat und 100 % in Ihrem Browser – nichts wird hochgeladen."
+      "title": "Foto-Metadaten-Entferner online – EXIF- & GPS-Daten entfernen",
+      "description": "Metadaten aus Fotos online entfernen. EXIF-, GPS-, Kamera- und Zeitstempel-Daten direkt im Browser prüfen und löschen.",
+      "og_description": "Metadaten aus Fotos online entfernen. EXIF-, GPS- und andere versteckte Bilddaten direkt im Browser bereinigen.",
+      "twitter_description": "Entfernen Sie versteckte Fotometadaten wie EXIF- und GPS-Daten direkt in Ihrem Browser."
     },
     "about": {
       "description": "Foto-Metadaten-Entferner ist ein kostenloses Werkzeug mit Datenschutz im Fokus. Erfahren Sie, wie wir Ihnen helfen, Ihren digitalen Fußabdruck zu kontrollieren."
@@ -108,9 +110,9 @@
       "free": "Für immer kostenlos"
     },
     "pill": "100 % Client-seitige Verarbeitung",
-    "title_a": "Behalten Sie Ihre Fotos",
-    "title_b": "privat",
-    "tagline": "Entfernen Sie versteckte Metadaten aus Ihren Fotos, bevor Sie sie teilen. Ihre Privatsphäre zählt.",
+    "title_a": "Foto-Metadaten",
+    "title_b": "Entferner",
+    "tagline": "Entfernen Sie versteckte Metadaten aus Ihren Fotos, bevor Sie sie teilen. Prüfen und bereinigen Sie EXIF-Daten, GPS-Standort, Kamerainformationen, Zeitstempel und weitere eingebettete Bilddaten direkt in Ihrem Browser – ohne Uploads, nichts verlässt Ihr Gerät.",
     "props": {
       "local": {
         "title": "100 % lokal",
@@ -129,7 +131,10 @@
       "more": "Und weitere versteckte Daten...",
       "clean_title": "Sauberes Foto",
       "clean_sub": "Keine Metadaten"
-    }
+    },
+    "h1_sep": " ",
+    "img_before_alt": "Beispiel-Fotokarte vor der Bereinigung mit erkannten EXIF-Metadaten wie Kameramodell, GPS-Standort, Datum und Software",
+    "img_after_alt": "Dieselbe Fotokarte nach der Metadatenbereinigung mit dem sauberen Bild und einer bestätigten Keine-Metadaten-Anzeige"
   },
   "tool": {
     "upload_title": "Ziehen Sie Ihre Fotos hierher",
@@ -158,6 +163,7 @@
     "no_metadata": "Keine privaten Metadaten gefunden",
     "error": "Fehler bei der Verarbeitung",
     "unsupported_file": "Nicht unterstützter Dateityp: {{name}}",
+    "dismiss_error": "Fehlermeldung schließen",
     "file_too_large": "{{name}} ist zu groß (max. {{size}})",
     "reset": "Alles löschen",
     "drag_active": "Fotos hier ablegen",
@@ -1472,5 +1478,209 @@
     "step_prefix": "Schritt",
     "remove_badge": "Entfernt",
     "keep_badge": "Erhalten"
+  },
+  "notfound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die Seite, die Sie suchen, existiert nicht oder wurde möglicherweise verschoben.",
+    "eyebrow": "404",
+    "heading": "Seite nicht gefunden",
+    "body": "Die Seite, die Sie suchen, existiert nicht oder wurde möglicherweise verschoben.",
+    "back_home": "Zur Startseite",
+    "open_tool": "Photo Metadata Remover öffnen"
+  },
+  "home_seo": {
+    "eyebrow": "Leitfaden zu Fotometadaten",
+    "intro": "Jedes Foto trägt eine verborgene Datenschicht, die die meisten Bildanzeigen nie anzeigen: GPS-Koordinaten Ihres Aufenthaltsorts, die genaue Kamera und das Objektiv, der Aufnahmezeitpunkt und die zuletzt bearbeitende Software. Ein Foto-Metadaten-Entferner entfernt diese Schicht, sodass das Bild ohne die Spur dahinter weitergeht.",
+    "sections": [
+      {
+        "id": "was-ist-ein-foto-metadaten-entferner",
+        "h2": "Was ist ein Foto-Metadaten-Entferner?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Metadaten sind beschreibende Informationen, die in einer Bilddatei gespeichert sind, nicht im sichtbaren Bild. Kameras und Smartphones schreiben sie automatisch, in drei Hauptfamilien: EXIF (Aufnahmedatum und -uhrzeit, Kamerahersteller und -modell, Objektiv- und Belichtungsdaten, häufig GPS-Koordinaten), IPTC (Bildunterschriften, Schlagwörter, Credits) und XMP (Bearbeitungshistorie)."
+          },
+          {
+            "type": "p",
+            "text": "Nichts davon ist beim Betrachten des Bildes sichtbar, und genau deshalb ist es relevant. Ein Familienfoto in einer Kleinanzeige kann weiterhin die Koordinaten Ihres Zuhauses enthalten, und eine Seriennummer kann zwei vermeintlich unabhängige Fotos mit demselben Gerät verknüpfen."
+          },
+          {
+            "type": "p",
+            "text": "Ein Metadaten-Entferner liest diese Felder, zeigt, welche gefunden wurden, und entfernt anschließend die unterstützten – das Bild bleibt unberührt. Die Entfernung erfolgt auf Dateiebene, das Bild wird also nicht neu komprimiert, was bei Originalen wichtig ist, die Sie nicht qualitätsmindernd verändern dürfen. Unser [Leitfaden zum Prüfen von Fotometadaten](blog_check) zeigt die wichtigsten Felder."
+          }
+        ]
+      },
+      {
+        "id": "metadaten-online-entfernen-ohne-hochladen",
+        "h2": "Metadaten online entfernen – ohne Ihre Fotos hochzuladen",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Online bedeutet normalerweise einen Server: Sie senden ein Foto, es wird verarbeitet, es kommt zurück. So arbeiten die meisten gehosteten Reinigungsdienste, und das erzeugt ein unbequemes Problem – genau die Datei mit Ihrem Standort wird auf Hardware kopiert, die Sie nicht kontrollieren."
+          },
+          {
+            "type": "p",
+            "text": "Dieser Foto-Metadaten-Entferner online geht einen anderen Weg. Ihr Browser liest die Datei direkt vom Gerät, wertet die Metadaten lokal aus und übergibt eine bereinigte Kopie als Download. Es wird nichts übertragen – öffnen Sie währenddessen die Netzwerkanalyse Ihres Browsers: Kein Request trägt Ihr Bild."
+          },
+          {
+            "type": "h3",
+            "text": "Der Ablauf in fünf Schritten"
+          },
+          {
+            "type": "ol",
+            "items": [
+              "Foto hochladen oder ablegen. Mehrere Dateien lassen sich als Stapel einreihen.",
+              "Scannen. Der Browser wertet die Datei aus und listet die erkannten Felder.",
+              "Entfernen. Unterstützte Metadaten werden entfernt, Bilddaten bleiben erhalten.",
+              "Prüfen. Die Ausgabe wird erneut gelesen und nur dann als sauber angezeigt, wenn sie es ist.",
+              "Herunterladen. Bild speichern oder den Stapel als ZIP holen."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Da alles lokal läuft, funktioniert dasselbe Werkzeug am Smartphone im Mobilfunknetz wie am Desktop im Firmennetz. Unsere [Datenschutzseite](privacy) beschreibt die Architektur, die [Sicherheitsseite](security) das Bedrohungsmodell."
+          }
+        ]
+      },
+      {
+        "id": "welche-metadaten-entfernt-werden-koennen",
+        "h2": "Welche Metadaten aus einem Foto entfernt werden können",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Welche Felder entfernt werden können, hängt vom Format und vom schreibenden Gerät ab. Über die unterstützten Formate hinweg:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "GPS- und Standortdaten – Koordinaten, Höhe und Ortsangaben.",
+              "Kamerahersteller und -modell, Seriennummern, Gerätekennungen.",
+              "Objektivinformationen, darunter Name, Brennweite und Blende.",
+              "Aufnahmedatum und -uhrzeit sowie Origin- und Digitalisierungszeitstempel.",
+              "Urheber- und Erstellerfelder, Copyright, IPTC-Bildunterschriften und Schlagwörter.",
+              "Software- und Bearbeitungsinformationen einschließlich XMP-Historie.",
+              "Kommentare und weitere eingebettete Texte wie UserComment."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Das sichtbare Bild wird nie angefasst. Bei JPEG, PNG, WebP und TIFF bleiben die Bilddaten erhalten, statt neu kodiert zu werden – Sie tauschen also nicht Datenschutz gegen Qualität. HEIC ist das einzige Format, das Browser nicht direkt bearbeiten können; diese Dateien werden zu sauberem JPEG zurückgeschrieben (siehe [Formate](formats)). Eine Datei zeigt zudem nur, was hineingeschrieben wurde: Fotos aus Messengern sind meist schon bereinigt."
+          }
+        ]
+      },
+      {
+        "id": "foto-metadaten-entferner-fuer-android-iphone-und-windows",
+        "h2": "Foto-Metadaten-Entferner für Android, iPhone und Windows",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Dies ist ein browserbasiertes Werkzeug und keine installierbare Anwendung: nichts herunterzuladen, nichts zu aktualisieren, keine Berechtigungsdialoge. Jedes Gerät mit einem aktuellen Browser kann es ausführen."
+          },
+          {
+            "type": "h3",
+            "text": "Verwendung auf einem Android-Smartphone"
+          },
+          {
+            "type": "p",
+            "text": "Sie suchen eine Foto-Metadaten-Entferner-App für Android? Sie können dieses browserbasierte Werkzeug direkt im Android-Browser verwenden, ohne eine separate Anwendung zu installieren. Öffnen Sie die Seite in Chrome, tippen Sie auf den Upload-Bereich, wählen Sie ein Foto aus der Galerie und laden Sie die bereinigte Datei herunter."
+          },
+          {
+            "type": "h3",
+            "text": "Verwendung auf einem iPhone"
+          },
+          {
+            "type": "p",
+            "text": "Wenn Sie einen iPhone-Foto-Metadaten-Entferner benötigen, öffnen Sie das Werkzeug im mobilen Browser und verarbeiten Sie Ihr Bild direkt auf dem Gerät. Safari wird unterstützt, und HEIC-Fotos der Standardkamera-App kommen als saubere JPEGs zurück – die [iPhone-Anleitung](blog_iphone) erklärt warum."
+          },
+          {
+            "type": "h3",
+            "text": "Verwendung unter Windows und macOS"
+          },
+          {
+            "type": "p",
+            "text": "Für Windows-Nutzer funktioniert der Online-Foto-Metadaten-Entferner direkt in einem modernen Desktop-Browser wie Edge, Chrome oder Firefox – kein Installationsprogramm und keine separate Windows-Anwendung. Unter macOS gilt dasselbe. Da das Werkzeug nicht an ein Gerät gebunden ist, ist die Foto-Metadaten-Entferner-App, die Sie nutzen, schlicht Ihr Browser."
+          }
+        ]
+      },
+      {
+        "id": "metadaten-vor-dem-entfernen-ansehen",
+        "h2": "Metadaten ansehen, bevor Sie sie entfernen",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Ein Blick vor dem Löschen lohnt sich. Der Scan-Schritt dient zugleich als Metadaten-Viewer: Er listet die gefundenen Felder auf, bevor etwas geändert wird. So sehen Sie, ob eine Datei GPS-Koordinaten trägt, welche Kamera sie schrieb oder ob sie anderswo bereits bereinigt wurde."
+          },
+          {
+            "type": "p",
+            "text": "Sieht ein Foto bei Ihnen ein, sagen die Metadaten online, wann und wo es aufgenommen wurde. Bei eigenen Veröffentlichungen bestätigen sie, dass keine Koordinaten oder Seriennummern mitgehen. Da Scan und Entfernung denselben Parser nutzen, gibt es keine Lücke zwischen [Vorschau und Ergebnis](formats)."
+          }
+        ]
+      },
+      {
+        "id": "ki-foto-metadaten-entferner",
+        "h2": "KI-Foto-Metadaten-Entferner: Was bedeutet das?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Manche suchen nach einem KI-Foto-Metadaten-Entferner, wenn sie versteckte Bildinformationen automatisiert erkennen und entfernen wollen. Dieses Werkzeug setzt auf lokales Scannen und Entfernen im Browser, statt einen KI-Dienst zu benötigen oder Ihr Foto hochzuladen."
+          },
+          {
+            "type": "p",
+            "text": "Das ist eine bewusste Entscheidung, keine fehlende Funktion. Metadaten liegen in dokumentierten Strukturen, sodass ein deterministischer Parser genau das entfernt, was er findet – ohne Raten, ohne Drittanbieter, und offline nutzbar. [Was EXIF-Daten sind](guide_exif) und [wie GPS-Tags den Standort verraten](guide_gps) sind die besten Einstiegspunkte."
+          }
+        ]
+      },
+      {
+        "id": "warum-vor-dem-teilen-metadaten-entfernen",
+        "h2": "Warum Sie Metadaten vor dem Teilen entfernen sollten",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Die meisten denken erst an Metadaten, wenn bereits etwas durchgesickert ist. Ein Foto vorher zu bereinigen ist günstiger als hinterher aufzuräumen und dauert Sekunden."
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Soziale Medien. Nicht jede Plattform entfernt GPS-Daten beim Upload.",
+              "Marktplätze und Kleinanzeigen. Verkäuferfotos kommen vom Smartphone und verraten Ihren Ort.",
+              "Foren und Boards. Langlebige Threads sind durchsuchbar und oft archiviert.",
+              "Messenger-Apps. Als Datei gesendete Bilder kommen mit Metadaten an.",
+              "E-Mail-Anhänge. Das Original wird oft unverändert weitergeleitet.",
+              "Websites und Portfolios. Originalauflösungen gehen oft unbereinigt hoch.",
+              "Professionelle Arbeit. Freigaben können Aufnahmedaten und Studio-Details zeigen."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Nichts davon soll verschleiern, dass Sie ein Foto aufgenommen haben – es geht darum zu entscheiden, welche nebenbei entstandenen Details mitreisen. Unser [Leitfaden zu sozialen Medien](guide_social) betrachtet, wie Plattformen mit Uploads umgehen."
+          }
+        ]
+      },
+      {
+        "id": "metadaten-aus-foto-entfernen",
+        "h2": "So entfernen Sie Metadaten aus einem Foto",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Der Vorgang dauert unter einer Minute. Er eignet sich für Einsteiger und technisch Versierte gleichermaßen, weil jeder Schritt meldet, was er getan hat."
+          },
+          {
+            "type": "ol",
+            "items": [
+              "Foto auswählen oder ablegen. Mehrere Dateien sind möglich.",
+              "Vom Browser scannen lassen. Das Auswerten erfolgt lokal.",
+              "Erkannte Metadaten prüfen, insbesondere GPS-Koordinaten.",
+              "Unterstützte Metadaten entfernen. Bilddaten bleiben erhalten.",
+              "Bereinigte Ausgabe prüfen. Sie wird nur als sauber angezeigt, wenn sie es ist.",
+              "Bereinigtes Bild herunterladen und das Original privat aufbewahren."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Bei größeren Mengen verarbeiten Sie alles als Stapel und laden die ZIP-Datei. Eine Datei ohne entfernbare Metadaten meldet einfach, dass nichts zu entfernen ist."
+          }
+        ]
+      }
+    ]
   }
 }

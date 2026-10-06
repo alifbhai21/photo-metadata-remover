@@ -17,7 +17,7 @@ const translations = getTranslations(currentLang);
         <span>{t(translations, 'hero.pill')}</span>
       </div>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-        {t(translations, 'hero.title_a')} <span class="text-brand-700">{t(translations, 'hero.title_b')}</span>
+        {t(translations, 'hero.title_a')}{t(translations, 'hero.h1_sep')}<span class="text-brand-700">{t(translations, 'hero.title_b')}</span>
       </h1>
       <p class="text-base sm:text-lg text-slate-600 max-w-lg leading-relaxed font-normal">
         {t(translations, 'hero.tagline')}
@@ -59,7 +59,7 @@ const translations = getTranslations(currentLang);
               src="/hero-before.webp"
               width="900"
               height="633"
-              alt=""
+              alt={t(translations, 'hero.img_before_alt')}
               aria-hidden="true"
               class="w-full h-full object-cover"
               loading="eager"
@@ -144,7 +144,7 @@ const translations = getTranslations(currentLang);
               src="/hero-after.webp"
               width="1200"
               height="734"
-              alt=""
+              alt={t(translations, 'hero.img_after_alt')}
               class="w-full h-full object-cover"
             />
           </div>

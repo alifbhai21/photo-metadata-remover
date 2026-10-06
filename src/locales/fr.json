@@ -2,13 +2,15 @@
   "site": {
     "name": "Suppresseur de Métadonnées Photo",
     "tagline": "Supprimez les données EXIF de vos photos. Respectueux de la vie privée, gratuit, sans téléchargement.",
-    "description": "Supprimez les coordonnées GPS, numéros de série des appareils photo, horodatages et autres métadonnées cachées de vos photos. Tout s'exécute dans votre navigateur – rien ne quitte votre appareil."
+    "description": "Supprimez les métadonnées EXIF et GPS de vos photos. Tout se passe dans votre navigateur – rien ne quitte votre appareil."
   },
   "seo": {
-    "og_image_alt": "Suppresseur de Métadonnées Photo – supprimez les données EXIF et GPS de vos photos dans votre navigateur. Gratuit, privé, aucun envoi.",
+    "og_image_alt": "Suppresseur de Métadonnées Photo en ligne – supprimez les données EXIF et GPS de vos photos dans votre navigateur. Gratuit, privé, aucun envoi.",
     "home": {
-      "title": "Supprimer les métadonnées de vos photos en ligne",
-      "description": "Supprimez les coordonnées GPS, numéros de série des appareils photo, horodatages et autres données EXIF cachées de vos photos. Gratuit, privé et 100 % dans votre navigateur – rien n'est téléchargé."
+      "title": "Suppresseur de Métadonnées Photo en ligne – Supprimer les données EXIF et GPS",
+      "description": "Supprimez les métadonnées de vos photos en ligne. Analysez et supprimez les données EXIF, GPS, appareil, horodatage et autres données cachées, directement dans votre navigateur.",
+      "og_description": "Supprimez les métadonnées de vos photos en ligne. Nettoyez les données EXIF, GPS et autres données cachées directement dans votre navigateur.",
+      "twitter_description": "Supprimez les métadonnées cachées de vos photos, comme les données EXIF et GPS, directement dans votre navigateur."
     },
     "about": {
       "description": "Suppresseur de Métadonnées Photo est un outil gratuit conçu avec la vie privée à l'esprit. Découvrez comment nous vous aidons à contrôler votre empreinte numérique."
@@ -108,9 +110,9 @@
       "free": "Gratuit pour toujours"
     },
     "pill": "Traitement 100 % côté client",
-    "title_a": "Gardez vos photos",
-    "title_b": "privées",
-    "tagline": "Supprimez les métadonnées cachées de vos photos avant de les partager. Votre vie privée compte.",
+    "title_a": "Suppresseur de Métadonnées",
+    "title_b": "Photo",
+    "tagline": "Supprimez les métadonnées cachées de vos photos avant de les partager. Analysez et nettoyez les données EXIF, la localisation GPS, les informations d'appareil, les horodatages et les autres données intégrées directement dans votre navigateur — aucun envoi, rien ne quitte votre appareil.",
     "props": {
       "local": {
         "title": "100 % local",
@@ -129,7 +131,10 @@
       "more": "Et plus de données cachées...",
       "clean_title": "Photo propre",
       "clean_sub": "Aucune métadonnée"
-    }
+    },
+    "h1_sep": " ",
+    "img_before_alt": "Exemple de carte photo avant le nettoyage, listant les métadonnées EXIF détectées comme le modèle de l'appareil, la localisation GPS, la date et le logiciel",
+    "img_after_alt": "La même carte photo après la suppression des métadonnées, montrant l'image nettoyée avec un badge confirmant l'absence de métadonnées"
   },
   "tool": {
     "upload_title": "Glissez-déposez vos photos ici",
@@ -158,6 +163,7 @@
     "no_metadata": "Aucune métadonnée privée trouvée",
     "error": "Erreur lors du traitement",
     "unsupported_file": "Type de fichier non pris en charge : {{name}}",
+    "dismiss_error": "Fermer le message d'erreur",
     "file_too_large": "{{name}} est trop volumineux (max {{size}})",
     "reset": "Tout effacer",
     "drag_active": "Déposez vos photos ici",
@@ -1472,5 +1478,209 @@
     "step_prefix": "Étape",
     "remove_badge": "Purgé",
     "keep_badge": "Conservé"
+  },
+  "notfound": {
+    "title": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a peut-être été déplacée.",
+    "eyebrow": "404",
+    "heading": "Page introuvable",
+    "body": "La page que vous recherchez n'existe pas ou a peut-être été déplacée.",
+    "back_home": "Retour à l'accueil",
+    "open_tool": "Ouvrir Photo Metadata Remover"
+  },
+  "home_seo": {
+    "eyebrow": "Guide des métadonnées photo",
+    "intro": "Chaque photo contient des données cachées que la plupart des visionneuses n'affichent jamais : les coordonnées GPS de votre position, l'appareil et l'objectif exacts, l'instant de la prise de vue et le dernier logiciel à avoir touché le fichier. Un suppresseur de métadonnées photo retire cette couche.",
+    "sections": [
+      {
+        "id": "quest-ce-quun-supprimeur-de-metadonnees",
+        "h2": "Qu'est-ce qu'un suppresseur de métadonnées photo ?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Les métadonnées sont des informations descriptives stockées dans un fichier image, et non dans l'image visible. Les appareils photo et les smartphones les écrivent automatiquement, en trois grandes familles : EXIF (date et heure de prise de vue, marque et modèle de l'appareil, informations d'objectif et d'exposition, souvent les coordonnées GPS), IPTC (légendes, mots-clés, crédits) et XMP (historique de modification)."
+          },
+          {
+            "type": "p",
+            "text": "Rien de tout cela n'est visible lorsqu'on regarde la photo, et c'est précisément ce qui compte. Une photo de famille publiée dans une annonce peut encore contenir les coordonnées de votre domicile, et un numéro de série peut relier deux photos sans rapport au même appareil."
+          },
+          {
+            "type": "p",
+            "text": "Un suppresseur de métadonnées lit ces champs, vous montre ceux qu'il a trouvés, puis supprime ceux qui sont pris en charge tout en laissant l'image intacte. La suppression s'effectue au niveau du fichier : l'image n'est donc pas recompressée, ce qui compte pour des originaux à ne pas dégrader. Notre [guide pour vérifier les métadonnées photo](blog_check) présente les champs courants."
+          }
+        ]
+      },
+      {
+        "id": "supprimer-des-metadonnees-en-ligne-sans-televersement",
+        "h2": "Supprimer des métadonnées en ligne sans téléverser vos photos",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Le mot en ligne suppose généralement un serveur : vous envoyez une photo, elle est traitée, elle revient. C'est le fonctionnement de la plupart des nettoyeurs hébergés, et cela pose un problème gênant — le fichier qui porte vos coordonnées est recopié sur du matériel que vous ne contrôlez pas."
+          },
+          {
+            "type": "p",
+            "text": "Ce suppresseur de métadonnées photo en ligne adopte une autre approche. Votre navigateur lit le fichier directement sur votre appareil, analyse les métadonnées localement et vous remet une copie nettoyée en téléchargement. Rien n'est transmis : l'analyse réseau de votre navigateur ne montre aucune requête transportant votre image."
+          },
+          {
+            "type": "h3",
+            "text": "Le déroulement en cinq étapes"
+          },
+          {
+            "type": "ol",
+            "items": [
+              "Téléversez ou déposez une photo, ou plusieurs par lot.",
+              "Analysez. Le navigateur liste les champs détectés.",
+              "Supprimez. Métadonnées retirées, image conservée.",
+              "Contrôlez. La sortie est relue avant d'être affichée comme propre.",
+              "Téléchargez l'image, ou le lot au format ZIP."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Comme tout s'exécute localement, le même outil fonctionne sur un smartphone comme sur un ordinateur. Notre [page sur la confidentialité](privacy) décrit l'architecture, la [page sécurité](security) le modèle de menace."
+          }
+        ]
+      },
+      {
+        "id": "quelles-metadonnees-peuvent-etre-supprimees",
+        "h2": "Quelles métadonnées peuvent être supprimées d'une photo ?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Les champs supprimables dépendent du format et de ce que l'appareil auteur a enregistré. Sur l'ensemble des formats pris en charge :"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Données GPS et de localisation — coordonnées, altitude, balises.",
+              "Marque et modèle de l'appareil, numéros de série, identifiants.",
+              "Informations d'objectif : nom, focale, ouverture.",
+              "Date et heure de prise de vue, horodatages d'origine.",
+              "Champs d'auteur, droits d'auteur, légendes et mots-clés IPTC.",
+              "Informations de logiciel et de modification, dont l'historique XMP.",
+              "Commentaires et autres textes intégrés, comme UserComment."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "L'image visible n'est jamais touchée. Pour JPEG, PNG, WebP et TIFF, les données d'image sont préservées plutôt que réencodées : vous n'échangez pas confidentialité contre qualité. HEIC est le seul format que les navigateurs ne peuvent pas modifier sur place ; ces fichiers sont réécrits en JPEG propre (voir les [formats pris en charge](formats)). Un fichier n'expose de surcroît que ce qui y a été écrit."
+          }
+        ]
+      },
+      {
+        "id": "suppresseur-de-metadonnees-android-iphone-windows",
+        "h2": "Un suppresseur de métadonnées photo pour Android, iPhone et Windows",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Il s'agit d'un outil basé sur le navigateur, et non d'une application à installer : rien à télécharger, rien à mettre à jour, aucune demande de permission. Tout appareil doté d'un navigateur récent peut l'exécuter."
+          },
+          {
+            "type": "h3",
+            "text": "Sur un téléphone Android"
+          },
+          {
+            "type": "p",
+            "text": "Vous cherchez une application de suppression de métadonnées photo pour Android ? Vous pouvez utiliser cet outil directement depuis le navigateur Android, sans installer d'application séparée. Ouvrez la page dans Chrome, touchez la zone de dépôt, choisissez une photo dans votre galerie et téléchargez le fichier nettoyé."
+          },
+          {
+            "type": "h3",
+            "text": "Sur un iPhone"
+          },
+          {
+            "type": "p",
+            "text": "Si vous avez besoin d'un suppresseur de métadonnées sur iPhone, ouvrez l'outil dans votre navigateur mobile et traitez votre image directement sur votre appareil. Safari est pris en charge, et les photos HEIC de l'application Appareil photo reviennent en JPEG propres — le [guide iPhone](blog_iphone) explique pourquoi."
+          },
+          {
+            "type": "h3",
+            "text": "Sous Windows et macOS"
+          },
+          {
+            "type": "p",
+            "text": "Pour les utilisateurs Windows, le suppresseur de métadonnées photo en ligne fonctionne directement dans un navigateur de bureau moderne comme Edge, Chrome ou Firefox — aucun installeur, aucune application Windows distincte. Il en va de même sous macOS. L'outil n'étant lié à aucun appareil, l'application que vous utilisez est simplement votre navigateur."
+          }
+        ]
+      },
+      {
+        "id": "visualiser-les-metadonnees-avant-de-supprimer",
+        "h2": "Visualiser les métadonnées avant de les supprimer",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Regarder avant de supprimer vaut la peine. L'étape d'analyse sert aussi de visionneuse de métadonnées : elle affiche les champs détectés avant toute modification. Vous voyez ainsi si un fichier contient des coordonnées GPS, quel appareil l'a écrit, ou s'il a déjà été nettoyé ailleurs."
+          },
+          {
+            "type": "p",
+            "text": "Si une photo vous est envoyée, voir les métadonnées en ligne vous indique quand et où elle a été prise. Si vous publiez vos propres travaux, cela confirme qu'aucune coordonnée ni numéro de série ne part avec. L'analyse et la suppression partageant le même analyseur, il n'y a aucun écart entre [l'aperçu et le résultat](formats)."
+          }
+        ]
+      },
+      {
+        "id": "suppresseur-de-metadonnees-photo-par-ia",
+        "h2": "Suppresseur de métadonnées photo par IA : qu'est-ce que cela signifie ?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Certaines personnes recherchent un suppresseur de métadonnées photo par IA pour identifier et supprimer automatiquement les informations cachées d'une image. Cet outil mise sur l'analyse et la suppression locales dans le navigateur, plutôt que sur un service d'IA ou le téléversement de votre photo."
+          },
+          {
+            "type": "p",
+            "text": "C'est un choix délibéré et non une fonctionnalité manquante. Les métadonnées se trouvent dans des structures documentées : un analyseur déterministe supprime exactement ce qu'il a trouvé — sans approximation ni dépendance à un tiers, et il fonctionne hors ligne une fois chargé. [Ce que sont les données EXIF](guide_exif) et [la façon dont les balises GPS révèlent la position](guide_gps) sont les meilleurs points de départ."
+          }
+        ]
+      },
+      {
+        "id": "pourquoi-supprimer-les-metadonnees-avant-de-partager",
+        "h2": "Pourquoi supprimer les métadonnées avant de partager",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "La plupart des gens ne pensent aux métadonnées qu'après une fuite. Nettoyer une photo avant de l'envoyer coûte moins cher que réparer les dégâts ensuite."
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Réseaux sociaux. Toutes les plateformes ne suppriment pas les GPS.",
+              "Places de marché. Les photos de vendeurs révèlent votre lieu.",
+              "Forums. Les fils durables sont consultables et archivés.",
+              "Messagerie. Les images envoyées comme fichier gardent leurs métadonnées.",
+              "Pièces jointes. Le fichier original est transféré tel quel.",
+              "Sites et portfolios. Les originaux montent non nettoyés.",
+              "Travail pro. Les partages révèlent dates et détails de studio."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Nul ne s'agit de masquer que vous avez pris une photographie — il s'agit de décider quels détails annexes l'accompagnent. Notre [guide sur les réseaux sociaux](guide_social) examine le traitement des téléversements."
+          }
+        ]
+      },
+      {
+        "id": "comment-supprimer-les-metadonnees-dune-photo",
+        "h2": "Comment supprimer les métadonnées d'une photo",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Le processus prend moins d'une minute. Il convient aussi bien aux débutants qu'aux utilisateurs avertis, car chaque étape indique ce qu'elle a fait."
+          },
+          {
+            "type": "ol",
+            "items": [
+              "Sélectionnez ou déposez une photo. Plusieurs fichiers sont possibles.",
+              "Laissez le navigateur analyser le fichier. L'analyse a lieu localement.",
+              "Vérifiez les métadonnées détectées, notamment les coordonnées GPS.",
+              "Supprimez les métadonnées prises en charge. L’image reste intacte.",
+              "Contrôlez le résultat. Il n'est présenté comme propre que s'il l'est.",
+              "Téléchargez l'image nettoyée et conservez l'original en lieu privé."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Pour un grand nombre de fichiers, lancez le traitement par lot et téléchargez le ZIP. Un fichier sans métadonnée supprimable indique simplement qu'il n'y a rien à retirer."
+          }
+        ]
+      }
+    ]
   }
 }

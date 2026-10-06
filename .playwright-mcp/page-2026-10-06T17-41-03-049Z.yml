@@ -1,0 +1,103 @@
+- generic [active] [ref=f3e1]:
+  - link "Skip to content" [ref=f3e2] [cursor=pointer]:
+    - /url: "#main"
+  - navigation "Primary" [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - link "Photo Metadata Remover" [ref=f3e5] [cursor=pointer]:
+        - /url: /en
+        - generic [ref=f3e9]:
+          - generic [ref=f3e10]: Photo Metadata Remover
+          - generic [ref=f3e11]: 100% Client-Side
+      - button "Menu" [ref=f3e12]
+  - main [ref=f3e16]:
+    - generic [ref=f3e17]:
+      - paragraph [ref=f3e21]: "404"
+      - heading "Page not found" [level=1] [ref=f3e22]
+      - paragraph [ref=f3e23]: The page you're looking for doesn't exist or may have been moved.
+      - generic [ref=f3e24]:
+        - link "Back to Home" [ref=f3e25] [cursor=pointer]:
+          - /url: /en/
+        - link "Open Photo Metadata Remover" [ref=f3e26] [cursor=pointer]:
+          - /url: /en/
+  - contentinfo [ref=f3e27]:
+    - generic [ref=f3e28]:
+      - generic [ref=f3e29]:
+        - generic [ref=f3e30]:
+          - link "Photo Metadata Remover" [ref=f3e31] [cursor=pointer]:
+            - /url: /en
+            - generic [ref=f3e35]:
+              - generic [ref=f3e36]: Photo Metadata Remover
+              - generic [ref=f3e37]: Remove EXIF data from your photos. Privacy-first, free, no uploads.
+          - paragraph [ref=f3e38]: Remove EXIF and GPS metadata from your photos. Everything runs in your browser — nothing leaves your device.
+          - generic [ref=f3e39]: 100% client-side Â· nothing uploaded
+        - generic [ref=f3e42]:
+          - heading "Product" [level=4] [ref=f3e43]
+          - list [ref=f3e44]:
+            - listitem [ref=f3e45]:
+              - link "Metadata Remover (Main Tool)" [ref=f3e46] [cursor=pointer]:
+                - /url: /en/
+            - listitem [ref=f3e47]:
+              - link "Metadata" [ref=f3e48] [cursor=pointer]:
+                - /url: /en/formats
+            - listitem [ref=f3e49]:
+              - link "Guides" [ref=f3e50] [cursor=pointer]:
+                - /url: /en/guides
+            - listitem [ref=f3e51]:
+              - link "FAQ" [ref=f3e52] [cursor=pointer]:
+                - /url: /en/faq
+        - generic [ref=f3e53]:
+          - heading "Information" [level=4] [ref=f3e54]
+          - list [ref=f3e55]:
+            - listitem [ref=f3e56]:
+              - link "About" [ref=f3e57] [cursor=pointer]:
+                - /url: /en/about
+            - listitem [ref=f3e58]:
+              - link "How It Works" [ref=f3e59] [cursor=pointer]:
+                - /url: /en/how-it-works
+            - listitem [ref=f3e60]:
+              - link "Privacy Policy" [ref=f3e61] [cursor=pointer]:
+                - /url: /en/privacy
+            - listitem [ref=f3e62]:
+              - link "Security" [ref=f3e63] [cursor=pointer]:
+                - /url: /en/security
+            - listitem [ref=f3e64]:
+              - link "Supported Formats" [ref=f3e65] [cursor=pointer]:
+                - /url: /en/formats
+            - listitem [ref=f3e66]:
+              - link "FAQ" [ref=f3e67] [cursor=pointer]:
+                - /url: /en/faq
+            - listitem [ref=f3e68]:
+              - link "Legal Hub" [ref=f3e69] [cursor=pointer]:
+                - /url: /en/legal
+        - generic [ref=f3e70]:
+          - heading "Trust & Privacy" [level=4] [ref=f3e71]
+          - list [ref=f3e72]:
+            - listitem [ref=f3e73]:
+              - generic [ref=f3e75]: 100% Client-Side Processing
+            - listitem [ref=f3e76]:
+              - generic [ref=f3e78]: Zero Cloud Storage
+            - listitem [ref=f3e79]:
+              - generic [ref=f3e81]: Volatile In-Memory Only
+            - listitem [ref=f3e82]:
+              - generic [ref=f3e84]: No Tracking or Telemetry
+          - generic [ref=f3e85]:
+            - generic [ref=f3e86]: Languages
+            - generic [ref=f3e87]:
+              - link "English" [ref=f3e88] [cursor=pointer]:
+                - /url: /en/
+              - link "Deutsch" [ref=f3e89] [cursor=pointer]:
+                - /url: /de/
+              - link "Français" [ref=f3e90] [cursor=pointer]:
+                - /url: /fr/
+      - generic [ref=f3e91]:
+        - link "Privacy Policy" [ref=f3e92] [cursor=pointer]:
+          - /url: /en/privacy
+        - link "Terms of Service" [ref=f3e93] [cursor=pointer]:
+          - /url: /en/terms
+        - link "Imprint" [ref=f3e94] [cursor=pointer]:
+          - /url: /en/impressum
+        - link "Contact" [ref=f3e95] [cursor=pointer]:
+          - /url: /en/contact
+      - generic [ref=f3e96]:
+        - paragraph [ref=f3e97]: Â© 2026 Photo Metadata Remover. All rights reserved.
+        - paragraph [ref=f3e98]: "Made with â\x9d¤ï¸\x8f for a more private internet."

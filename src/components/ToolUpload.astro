@@ -77,13 +77,33 @@ const translations = getTranslations(currentLang);
       </div>
     </div>
 
-    <!-- Upload validation errors (invalid/oversized files shown when rejected) -->
+    <!-- Upload validation errors (invalid/oversized files shown when rejected).
+
+         The message box carries its own dismiss control. #reset-btn lives inside
+         #results-panel, which stays hidden while every selected file was
+         rejected, so without this the error could not be cleared from the UI.
+         The button calls the existing resetTool() rather than a second reset
+         implementation, so there is still exactly one reset routine. -->
     <div
       id="upload-error"
       role="alert"
       tabindex="-1"
-      class="hidden mt-4 px-4 py-3 bg-danger-bg border border-danger-border text-[13.5px] text-danger-text rounded-xl whitespace-pre-line"
-    ></div>
+      class="hidden mt-4 px-4 py-3 bg-danger-bg border border-danger-border text-[13.5px] text-danger-text rounded-xl"
+    >
+      <div class="flex items-start gap-3">
+        <span id="upload-error-text" class="flex-1 whitespace-pre-line"></span>
+        <button
+          id="dismiss-upload-error-btn"
+          type="button"
+          class="shrink-0 -mt-0.5 -mr-1 inline-flex items-center justify-center w-7 h-7 rounded-md hover:bg-danger-border/40 transition-colors"
+          aria-label={t(translations, 'tool.dismiss_error')}
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
 
     <!-- Processing status — calm indeterminate indicator -->
     <div id="processing-status" class="hidden mt-6 p-4 sm:p-5 bg-surface rounded-xl border border-border pmr-elev-1">
@@ -274,6 +294,7 @@ const translations = getTranslations(currentLang);
 
 <script>
   import { trackEvent } from '../lib/analytics';
+  import { readJpegPrivacySegments } from '../lib/jpeg';
   import { readPngMetadataChunks, stripPngMetadata } from '../lib/png';
   import { stripTiffMetadata } from '../lib/tiff';
   import { findOutputPrivacyFindings } from '../lib/verify';
@@ -319,6 +340,8 @@ const translations = getTranslations(currentLang);
   const resetBtn = document.getElementById('reset-btn');
   const globalStatusEl = document.getElementById('global-status');
   const uploadErrorEl = document.getElementById('upload-error');
+  const uploadErrorTextEl = document.getElementById('upload-error-text');
+  const dismissUploadErrorBtn = document.getElementById('dismiss-upload-error-btn');
   const showMetadataBtn = document.getElementById('show-metadata-btn');
   const metadataViewerPanel = document.getElementById('metadata-viewer-panel');
   const metadataViewerContent = document.getElementById('metadata-viewer-content');
@@ -343,6 +366,21 @@ const translations = getTranslations(currentLang);
     return /\.(tif|tiff)$/i.test(file.name);
   }
 
+  /**
+   * Does a file that reached the HEIC branch actually contain AVIF bytes?
+   *
+   * AVIF is NOT a supported format: it is absent from VALID_TYPES and from the
+   * `accept` attribute, and no .avif file can pass validateUploadFile(), so a
+   * normal AVIF upload is rejected as unsupported before any of this runs.
+   *
+   * This check is therefore not AVIF support and must not be read as such. It is
+   * a mislabel guard that IS reachable: iOS/macOS tooling and some downloaders
+   * hand out AVIF-encoded files under a .heic/.heif name, and those DO pass
+   * isHeicFile() on the extension alone. Feeding such bytes to heic2any fails,
+   * so this detects them and lets them fall through to the generic decode path
+   * instead. Only the extension-or-MIME family is treated as HEIC; the brand in
+   * the ISO-BMFF `ftyp` box decides what the bytes really are.
+   */
   async function isAvifFile(file: File): Promise<boolean> {
     try {
       const head = new Uint8Array(await withTimeout(file.slice(0, 16).arrayBuffer(), STRIP_TIMEOUT_MS));
@@ -397,6 +435,7 @@ const translations = getTranslations(currentLang);
   function showUploadErrors(rejections: UploadRejection[]) {
     if (!uploadErrorEl) return;
     if (rejections.length === 0) {
+      if (uploadErrorTextEl) uploadErrorTextEl.textContent = '';
       uploadErrorEl.textContent = '';
       uploadErrorEl.classList.add('hidden');
       return;
@@ -411,7 +450,11 @@ const translations = getTranslations(currentLang);
       const template = ds.unsupportedFile || 'Unsupported file type: {{name}}';
       return template.replace('{{name}}', r.name);
     });
-    uploadErrorEl.textContent = messages.join('\n');
+    // The message goes into the inner text span so the dismiss button (a child of
+    // #upload-error) survives; writing textContent on the container would delete
+    // the button and re-create exactly the unreachable-reset problem.
+    const target = uploadErrorTextEl || uploadErrorEl;
+    target.textContent = messages.join('\n');
     uploadErrorEl.classList.remove('hidden');
     uploadErrorEl.focus();
   }
@@ -769,6 +812,9 @@ const translations = getTranslations(currentLang);
     }
 
     refreshActions();
+    // Keep the already-open metadata overview in step with the batch state, so
+    // it never shows a stale file list after an upload, removal or reset.
+    if (metadataViewerOpen) renderMetadataViewer();
   }
 
   const previewUrls = new Set<string>();
@@ -1515,6 +1561,13 @@ const translations = getTranslations(currentLang);
 
   resetBtn?.addEventListener('click', resetTool);
 
+  // The error banner is the only reset affordance reachable while EVERY selected
+  // file was rejected (the results panel, and therefore #reset-btn, stays
+  // hidden). It delegates to the same resetTool(), so there is exactly one reset
+  // implementation and the banner, the file list and the progress stepper are
+  // always cleared together.
+  dismissUploadErrorBtn?.addEventListener('click', resetTool);
+
   function setGlobalStatus(status: typeof globalStatus, data?: { success: number; total: number }) {
     globalStatus = status;
     if (!globalStatusEl) return;
@@ -1560,6 +1613,7 @@ const translations = getTranslations(currentLang);
   function toggleMetadataViewer() {
     metadataViewerOpen = !metadataViewerOpen;
     metadataViewerPanel?.classList.toggle('hidden', !metadataViewerOpen);
+    if (metadataViewerOpen) renderMetadataViewer();
     if (showMetadataBtn) {
       showMetadataBtn.setAttribute('aria-expanded', String(metadataViewerOpen));
       showMetadataBtn.textContent = metadataViewerOpen
@@ -1596,30 +1650,84 @@ const translations = getTranslations(currentLang);
     if (filtered.length === 0) {
       newPanel.innerHTML = `<p class="text-[13px] text-text-muted">${filesList?.dataset.noMetadataFound || 'No metadata found'}</p>`;
     } else {
-      const table = document.createElement('div');
-      table.className = 'space-y-2';
-      for (const entry of filtered) {
-        const row = document.createElement('div');
-        row.className = 'flex items-start justify-between gap-3 text-[12.5px]';
-        const label = document.createElement('span');
-        label.className = 'text-text-muted font-medium';
-        label.textContent = entry.label;
-        const value = document.createElement('span');
-        value.className = 'text-text text-right';
-        value.textContent = entry.value;
-        if (entry.privacy) {
-          row.className += ' bg-warning-bg/50 -mx-2 px-2 py-1 rounded';
-        }
-        row.appendChild(label);
-        row.appendChild(value);
-        table.appendChild(row);
-      }
-      newPanel.appendChild(table);
+      renderMetadataRows(newPanel, filtered);
     }
 
     el.after(newPanel);
     const btn = document.getElementById(`meta-toggle-${id}`);
     if (btn) btn.setAttribute('aria-expanded', 'true');
+  }
+
+  /**
+   * Render classified metadata entries as the label/value rows shared by the
+   * per-file panel and the "Show image metadata" overview. Single source of
+   * truth for the row markup, so both surfaces highlight privacy fields
+   * identically (bg-warning-bg/50) and cannot drift apart.
+   */
+  function renderMetadataRows(container: HTMLElement, entries: Array<{ label: string; value: string; privacy: boolean }>) {
+    const table = document.createElement('div');
+    table.className = 'space-y-2';
+    for (const entry of entries) {
+      const row = document.createElement('div');
+      row.className = 'flex items-start justify-between gap-3 text-[12.5px]';
+      const label = document.createElement('span');
+      label.className = 'text-text-muted font-medium';
+      label.textContent = entry.label;
+      const value = document.createElement('span');
+      value.className = 'text-text text-right';
+      value.textContent = entry.value;
+      if (entry.privacy) {
+        row.className += ' bg-warning-bg/50 -mx-2 px-2 py-1 rounded';
+      }
+      row.appendChild(label);
+      row.appendChild(value);
+      table.appendChild(row);
+    }
+    container.appendChild(table);
+  }
+
+  /**
+   * Fill the "Show image metadata" overview with every scanned file's detected
+   * metadata, reusing `filterMetadata()` and `renderMetadataRows()` so the
+   * overview can never disagree with the per-file panels.
+   *
+   * This panel and its button already existed and were already wired to
+   * `toggleMetadataViewer()`, but nothing ever wrote to `#metadata-viewer-content`,
+   * so opening it produced an empty box. No new panel and no new component is
+   * introduced here — the existing panel is simply given the data it was
+   * designed to show.
+   */
+  function renderMetadataViewer() {
+    if (!metadataViewerContent) return;
+    metadataViewerContent.textContent = '';
+
+    const scannable = fileItems.filter((item) => !item.error && item.metadata);
+    if (scannable.length === 0) {
+      const empty = document.createElement('p');
+      empty.className = 'text-[13px] text-text-muted';
+      empty.textContent = filesList?.dataset.metadataEmpty || 'No metadata detected in this image.';
+      metadataViewerContent.appendChild(empty);
+      return;
+    }
+
+    for (const item of scannable) {
+      const block = document.createElement('div');
+      const heading = document.createElement('p');
+      heading.className = 'text-[12px] font-semibold text-text mb-1.5 break-all';
+      heading.textContent = item.file.name;
+      block.appendChild(heading);
+
+      const entries = filterMetadata(item.metadata);
+      if (entries.length === 0) {
+        const none = document.createElement('p');
+        none.className = 'text-[12.5px] text-text-muted';
+        none.textContent = filesList?.dataset.noMetadataFound || 'No metadata found';
+        block.appendChild(none);
+      } else {
+        renderMetadataRows(block, entries);
+      }
+      metadataViewerContent.appendChild(block);
+    }
   }
 
   /**
@@ -1631,18 +1739,165 @@ const translations = getTranslations(currentLang);
    */
   const PNG_CHUNK_METADATA_KEY = /^PNG (?:eXIf|tEXt|zTXt|iTXt|tIME)(?: \(\d+\))?$/;
 
+  /**
+   * Chunk-scoped keys the JPEG scan adds for the metadata containers exifr
+   * cannot surface (it has no XMP or IPTC parser and ignores COM comments).
+   * Same convention as the PNG keys above: a "JPEG " prefix keeps this
+   * vocabulary out of the EXIF namespace, so no other format's classification
+   * can change, and repeated containers are numbered ("JPEG XMP (2)").
+   */
+  const JPEG_SEGMENT_METADATA_KEY = /^JPEG (?:EXIF|XMP|IPTC|COM)(?: \(\d+\))?$/;
+
+  /**
+   * Chunk-scoped keys the WebP scan adds for the metadata chunks exifr cannot
+   * surface. exifr parses the EXIF chunk only; the XMP chunk the stripper
+   * removes was invisible to the scan.
+   */
+  const WEBP_CHUNK_METADATA_KEY = /^WebP XMP(?: \(\d+\))?$/;
+
+  /**
+   * Chunk-scoped keys that prove the file really carried an XMP packet or an
+   * IPTC/Photoshop block.
+   *
+   * exifr 7.x DOES parse both containers: this component calls
+   * `exifr.parse(arrayBuffer, true)`, and that `true` enables every segment
+   * rather than just merging output, so XMP and IPTC fields reach the classifier
+   * as ordinary top-level keys. exifr has no XMP key dictionary, so an XMP
+   * attribute surfaces under its bare local name (`xmp:CreatorTool` ->
+   * "CreatorTool", `dc:creator` -> "creator") and an IPTC dataset surfaces under
+   * the name from exifr's IPTC table (dataset 2:05 -> "ObjectName"). Nothing
+   * in that result says which container produced a key.
+   *
+   * Gating on these markers is what keeps the vocabulary below from leaking
+   * into other formats: a PNG tEXt keyword such as "Description" or "Keywords"
+   * is the same word an XMP dc:description / IPTC Keywords would produce, but a
+   * PNG carrying only tEXt has no XMP/IPTC marker, so those keywords keep the
+   * technical classification the existing PNG behaviour requires. The
+   * chunk-scoped entry for the same container still reports it as privacy.
+   */
+  const XMP_IPTC_CONTAINER_KEY = /^(?:JPEG XMP|JPEG IPTC|WebP XMP|PNG iTXt)(?: \(\d+\))?$/;
+
+  /**
+   * XMP / IPTC field names exifr surfaces verbatim for those two containers.
+   *
+   * Selection rule - a field belongs here only when it names or locates a
+   * person, an organisation, a place or a moment:
+   *   - authorship / byline / contact
+   *   - editorial description (title, caption, headline, keywords, category)
+   *   - rights and copyright
+   *   - place names and coordinates
+   *   - capture, release and expiry dates
+   *   - editing software and workflow provenance (document ids, history)
+   *
+   * Deliberately NOT included, because removal preserves them and they describe
+   * the image rather than the person:
+   *   'format', 'colorMode', 'orientation', 'ICCProfile', 'rating',
+   *   'applicationRecordVersion', 'imageOrientation', 'languageIdentifier',
+   *   'objectPreviewFileFormat', 'objectPreviewFileVersion'
+   *
+   * Stored lower-cased and matched case-insensitively because the two
+   * containers spell the same concept differently: XMP uses lower-case local
+   * names (`dc:creator` -> "creator") while exifr's IPTC table uses PascalCase
+   * ("ObjectName"), and `xmp:Creator` vs `dc:creator` differ only by case. The
+   * base EXIF vocabulary stays case-sensitive on purpose.
+   */
+  const XMP_IPTC_PRIVACY_KEYS: ReadonlySet<string> = new Set([
+    // Authorship / identity.
+    'creatortool', 'creator', 'authors', 'author', 'nickname', 'ownerid',
+    'byline', 'bylinetitle', 'writer', 'contact',
+    // Editorial description.
+    'title', 'description', 'headline', 'caption', 'localcaption',
+    'rasterizedcaption', 'instructions', 'specialinstructions', 'actionadvised',
+    'keywords', 'category', 'supplementalcategories', 'subjectreference',
+    'objectname', 'objecttypereference', 'objectattributereference',
+    'urgency', 'editstatus', 'editorialupdate', 'classifystate',
+    // Rights and copyright.
+    'rights', 'copyrightnotice',
+    // Source provenance and credit.
+    'credit', 'source', 'originaltransmissionreference',
+    'referenceservice', 'referencedate', 'referencenumber',
+    // Places.
+    'city', 'state', 'country', 'countrycode', 'sublocation',
+    'contentlocationcode', 'contentlocationname',
+    // Provenance timestamps and source locations.
+    'metadatadate', 'baseurl',
+    // Coordinates: deliberately NOT repeated here. exifr emits latitude /
+    // longitude / altitude both from an XMP exif:latitude and from the GPS
+    // IFD, so they live in the ungated base vocabulary instead, which also
+    // covers a photo whose only coordinates are in its GPS block.
+    // Dates.
+    'datecreated', 'timecreated', 'digitalcreationdate', 'digitalcreationtime',
+    'releasedate', 'releasetime', 'expirationdate', 'expirationtime',
+    // Editing software and workflow provenance.
+    'originatingprogram', 'programversion', 'documentid', 'instanceid',
+    'originaldocumentid', 'derivedfrom', 'uniquedocumentid', 'masterdocumentid',
+    'shortdocumentid', 'documenthistory', 'documentnotes', 'jobid',
+    'catalogsets', 'exifcamerainfo',
+  ]);
+
+  /** Does this metadata object carry an XMP packet or an IPTC block? */
+  function hasXmpOrIptcContainer(metadata: Record<string, unknown>): boolean {
+    for (const key of Object.keys(metadata)) {
+      if (XMP_IPTC_CONTAINER_KEY.test(key)) return true;
+    }
+    return false;
+  }
+
+  function isXmpIptcPrivacyKey(key: string): boolean {
+    return XMP_IPTC_PRIVACY_KEYS.has(key.toLowerCase());
+  }
+
   function filterMetadata(metadata: Record<string, unknown>): Array<{ label: string; value: string; privacy: boolean }> {
     const result: Array<{ label: string; value: string; privacy: boolean }> = [];
+    // Every key below is BOTH surfaced by the existing parsers AND actually
+    // deleted by the existing strippers (JPEG drops the whole APP1/APP13/COM,
+    // TIFF keeps only its KEPT_TAGS, WebP drops the EXIF/XMP chunks, PNG drops
+    // eXIf). Adding a key here therefore makes the reported privacy count agree
+    // with what removal really does.
+    //
+    // Deliberately absent, because they are structural / must stay preserved and
+    // are NOT privacy metadata: dimensions, colour type, bit depth, compression,
+    // ICC profile fields, orientation, and the resolution/unit tags.
     const privacyKeys = ['GPSLatitude', 'GPSLongitude', 'GPSAltitude', 'GPSDateStamp',
       'GPSTimeStamp', 'GPSLatitudeRef', 'GPSLongitudeRef', 'GPSAltitudeRef',
       'UserComment', 'ImageDescription', 'XPAuthor', 'XPTitle', 'XPComment',
       'XPKeywords', 'Artist', 'Copyright', 'Make', 'Model', 'Software',
-      'DateTimeOriginal', 'DateTimeDigitized', 'DateTime'];
+      'DateTimeOriginal', 'DateTimeDigitized', 'DateTime',
+      // Lens identification.
+      'Lens', 'LensMake', 'LensModel', 'LensSerialNumber', 'LensInfo', 'LensType',
+      // Device serial identifiers.
+      'BodySerialNumber', 'CameraSerialNumber', 'SerialNumber', 'InternalSerialNumber',
+      // Capture / exposure provenance.
+      'ExposureTime', 'ExposureBiasValue', 'ExposureCompensation', 'ExposureMode',
+      'ExposureProgram', 'FNumber', 'ApertureValue', 'ShutterSpeedValue',
+      'BrightnessValue', 'MaxApertureValue', 'MeteringMode', 'LightSource', 'Flash',
+      'FocalLength', 'FocalLengthIn35mmFormat', 'FocalPlaneXResolution',
+      'FocalPlaneYResolution', 'FocalPlaneResolutionUnit', 'DigitalZoomRatio',
+      'WhiteBalance', 'ISO', 'ISOSpeedRatings', 'ISOSpeed', 'SensitivityType',
+      // Every remaining timestamp the parser can expose.
+      'CreateDate', 'ModifyDate', 'OffsetTime', 'OffsetTimeOriginal',
+      'OffsetTimeDigitized', 'SubSecTime', 'SubSecTimeOriginal', 'SubSecTimeDigitized',
+      'GPSProcessingMethod', 'GPSAreaInformation', 'GPSSatellites', 'GPSStatus',
+      'GPSImgDirection', 'GPSImgDirectionRef', 'GPSMapDatum', 'GPSVersionID',
+      'GPSDifferential', 'GPSHPositioningError',
+      // Normalised GPS coordinates. exifr's GPS reviver emits these lower-case
+      // aliases (latitude/longitude/altitude) alongside the capitalised GPS*
+      // tags for the very same GPS IFD values, so they are gated by nothing and
+      // must stay privacy everywhere a GPS block exists.
+      'latitude', 'longitude', 'altitude'];
+
+    // XMP/IPTC fields count as privacy only when this file actually carried one
+    // of those containers. See XMP_IPTC_CONTAINER_KEY for why the gate is needed.
+    const xmpIptcPresent = hasXmpOrIptcContainer(metadata);
 
     for (const [key, val] of Object.entries(metadata)) {
       if (val === undefined || val === null) continue;
       const str = typeof val === 'object' ? JSON.stringify(val) : String(val);
-      const isPrivacy = privacyKeys.includes(key) || PNG_CHUNK_METADATA_KEY.test(key);
+      const isPrivacy = privacyKeys.includes(key)
+        || (xmpIptcPresent && isXmpIptcPrivacyKey(key))
+        || PNG_CHUNK_METADATA_KEY.test(key)
+        || JPEG_SEGMENT_METADATA_KEY.test(key)
+        || WEBP_CHUNK_METADATA_KEY.test(key);
       result.push({ label: key, value: str.length > 100 ? str.substring(0, 100) + '...' : str, privacy: isPrivacy });
     }
     return result;
@@ -1715,7 +1970,132 @@ const translations = getTranslations(currentLang);
     if (fileType === 'image/png') {
       return addPngChunkMetadata(detached, arrayBuffer);
     }
+    // JPEG: exifr reports the EXIF block only. It has no XMP/IPTC parser and
+    // ignores COM comments, so a JPEG carrying only those was reported as clean
+    // even though removal deleted them (see addJpegSegmentMetadata).
+    if (fileType === 'image/jpeg' || fileType === 'image/jpg' || fileType === 'image/pjpeg') {
+      return addJpegSegmentMetadata(detached, arrayBuffer);
+    }
     return detached;
+  }
+
+  /**
+   * Supplement the JPEG scan with the privacy-bearing segments exifr cannot
+   * surface.
+   *
+   * exifr's JPEG reader returns the EXIF block and nothing else: it has no XMP
+   * or IPTC parser (both disabled by default and absent from the default build)
+   * and never reports a COM comment. So a JPEG whose only metadata was an XMP
+   * packet, an IPTC/Photoshop block or a COM comment came back as `{}` and was
+   * shown as "No privacy metadata found" — while `stripJpegPrivacySegments()`
+   * deleted exactly those bytes and `findOutputPrivacyFindings()` re-checked
+   * them after removal. The scan and the strip disagreed about the same file.
+   *
+   * Each remaining container becomes one chunk-scoped entry ("JPEG XMP",
+   * "JPEG IPTC (2)", ...) that the classifier treats as privacy metadata. Only
+   * the PRESENCE of a container is reported; the existing parser cannot read
+   * XMP/IPTC content, and this module does not pretend to.
+   *
+   * Double counting: the EXIF block is normally already represented by exifr's
+   * EXIF fields, so the chunk-scoped "JPEG EXIF" entry is only added when exifr
+   * produced nothing at all — the same rule the PNG scan uses for eXIf. That
+   * keeps the privacy count for an ordinary camera JPEG unchanged.
+   */
+  /**
+   * Keys exifr derives from a JPEG's JFIF APP0 container rather than from EXIF.
+   * Measured, not assumed: stripping the APP1 segment off the repo's fixtures
+   * yields exactly these and nothing else. They describe the image (version,
+   * units, pixel density, JFIF thumbnail) and are structural, so their presence
+   * must never be mistaken for "exifr parsed the EXIF block".
+   */
+  const JFIF_STRUCTURAL_KEYS: ReadonlySet<string> = new Set([
+    'JFIFVersion', 'ResolutionUnit', 'XResolution', 'YResolution',
+    'ThumbnailWidth', 'ThumbnailHeight',
+  ]);
+
+  /**
+   * Keys exifr derives from an embedded ICC profile (APP2, or TIFF tag 0x8773).
+   * ICC is colour information that removal deliberately preserves, so it is
+   * structural too. Matched by pattern because the concrete key set depends on
+   * which tags a given profile happens to carry.
+   */
+  function isIccProfileKey(key: string): boolean {
+    return (
+      key.startsWith('Profile') ||
+      /^(ColorSpaceData|PrimaryPlatform|DeviceManufacturer|DeviceModel|RenderingIntent|MediaWhitePoint|ChromaticAdaptation|SpectralSensitivity)$/.test(key) ||
+      /^(Red|Green|Blue|Yellow|Cyan|Magenta|Gray)/.test(key)
+    );
+  }
+
+  /**
+   * exifr's own diagnostics, not image metadata.
+   *
+   * exifr runs with its default `silentErrors: true`, so a segment it cannot
+   * decode does not throw - it appends an `errors` entry and carries on. That
+   * entry is the opposite of an EXIF tag: it is proof that EXIFr failed to read
+   * the block. Counting it as a "surfaced EXIF field" would silently disable
+   * the container fallback below and re-open the exact blind spot being fixed.
+   */
+  const EXIFR_DIAGNOSTIC_KEYS: ReadonlySet<string> = new Set(['errors']);
+
+  /** The chunk-scoped keys this component adds itself (never exifr output). */
+  function isChunkScopedKey(key: string): boolean {
+    return JPEG_SEGMENT_METADATA_KEY.test(key) || PNG_CHUNK_METADATA_KEY.test(key) || WEBP_CHUNK_METADATA_KEY.test(key);
+  }
+
+  /**
+   * Did exifr actually surface at least one tag that can only have come from
+   * the EXIF IFD?
+   *
+   * This is the precise question the fallback needs. The previous test was
+   * `Object.keys(metadata).length === 0`, i.e. "exifr returned nothing at all",
+   * which is wrong twice over: any JFIF or ICC field makes the result non-empty,
+   * and an `errors` entry makes it non-empty while meaning the opposite. So a
+   * JPEG carrying an APP1 EXIF block that exifr could not decode was reported as
+   * "No privacy metadata found" even though the block physically exists and
+   * `stripJpegPrivacySegments()` deletes it.
+   */
+  function exifrSurfacedExifFields(metadata: Record<string, unknown>): boolean {
+    return Object.keys(metadata).some(
+      (key) =>
+        !JFIF_STRUCTURAL_KEYS.has(key) &&
+        !EXIFR_DIAGNOSTIC_KEYS.has(key) &&
+        !isIccProfileKey(key) &&
+        !isChunkScopedKey(key),
+    );
+  }
+
+  function addJpegSegmentMetadata(metadata: Record<string, unknown>, arrayBuffer: ArrayBuffer): Record<string, unknown> {
+    let segments;
+    try {
+      segments = readJpegPrivacySegments(new Uint8Array(arrayBuffer));
+    } catch {
+      return metadata;
+    }
+    if (segments.length === 0) return metadata;
+
+    // Measured before the loop, while `metadata` still holds only exifr's output.
+    const exifrReadExif = exifrSurfacedExifFields(metadata);
+
+    const seen: Record<string, number> = {};
+    for (const segment of segments) {
+      if (segment.kind === 'exif') {
+        // exifr owns the EXIF fields whenever it managed to read them. Only when
+        // it surfaced none does the container itself become the finding - the
+        // bytes are still there and removal will still delete them, so the file
+        // must not be presented as clean. No individual tag is invented: the
+        // finding is the container, which is all the parser could prove.
+        if (!exifrReadExif) {
+          metadata['JPEG EXIF'] = 'EXIF block present (no readable EXIF tags)';
+        }
+        continue;
+      }
+      const name = segment.kind === 'comment' ? 'COM' : segment.kind.toUpperCase();
+      seen[name] = (seen[name] || 0) + 1;
+      const key = seen[name] === 1 ? `JPEG ${name}` : `JPEG ${name} (${seen[name]})`;
+      metadata[key] = segment.summary;
+    }
+    return metadata;
   }
 
   /**
@@ -1777,6 +2157,7 @@ const translations = getTranslations(currentLang);
     if (view.getUint32(8) !== 0x57454250) return result; // 'WEBP'
     const fileLength = Math.min(view.getUint32(4, true) + 8, arrayBuffer.byteLength);
     let offset = 12;
+    const xmpChunks: number[] = [];
     while (offset + 8 <= fileLength) {
       const chunkId = String.fromCharCode(view.getUint8(offset), view.getUint8(offset + 1), view.getUint8(offset + 2), view.getUint8(offset + 3));
       const chunkSize = view.getUint32(offset + 4, true);
@@ -1789,11 +2170,21 @@ const translations = getTranslations(currentLang);
         // reports "no metadata", and the file takes the wrong removal path.
         const parsed = await parseExifFromBytes(normalizeWebpExifPayload(exifData), exifr);
         Object.assign(result, parsed);
-        if (Object.keys(result).length > 0) return result;
+      } else if (chunkId === 'XMP ' || chunkId === 'XMP\u0000') {
+        // exifr parses the EXIF chunk only. stripWebpMetadata() drops the XMP
+        // chunk as well, so record its presence here — otherwise a WebP whose
+        // only metadata was XMP was reported as "No privacy metadata found"
+        // while removal silently deleted the packet. Only the PRESENCE of the
+        // chunk is reported: the existing parser cannot read XMP content.
+        xmpChunks.push(chunkSize);
       }
       offset += 8 + chunkSize;
       if (chunkSize % 2 !== 0) offset++;
     }
+    xmpChunks.forEach((size, index) => {
+      const key = xmpChunks.length === 1 ? 'WebP XMP' : `WebP XMP (${index + 1})`;
+      result[key] = `XMP chunk (${size} bytes)`;
+    });
     return result;
   }
 

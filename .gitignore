@@ -22,3 +22,21 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Test artifacts
+test-results/
+debug-after-upload.png
+debug-before.png
+debug-dom.html
+dev-server.log
+
+# Temporary debug scripts
+.tmp-*
+tmp-debug-*
+tmp-script-check.mjs
+
+# Local editor config
+.claude/settings.local.json
+
+# Audit fixtures output (regenerated each run)
+audit-fixtures-out/

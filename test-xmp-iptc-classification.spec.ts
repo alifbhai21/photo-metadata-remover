@@ -1,0 +1,320 @@
+/**
+ * Focused coverage for the XMP / IPTC privacy-classification fix.
+ *
+ * Background (measured, not assumed): ToolUpload calls
+ * `exifr.parse(arrayBuffer, true)`. That second argument is NOT "merge output" -
+ * it is truthy, so exifr enables EVERY segment, including XMP and IPTC, which
+ * are disabled by default. The XMP/IPTC fields therefore reach filterMetadata()
+ * as ordinary top-level keys (exifr has no XMP key dictionary, so
+ * `xmp:CreatorTool` surfaces as "CreatorTool" and `dc:creator` as "creator"; an
+ * IPTC dataset surfaces under exifr's IPTC table name, dataset 2:05 ->
+ * "ObjectName").
+ *
+ * Before the fix none of those names were in the privacy vocabulary, so a photo
+ * whose author, title and location lived in XMP/IPTC was reported as carrying no
+ * privacy metadata. These tests pin the corrected classification.
+ *
+ * The vocabulary is deliberately gated on the chunk-scoped container markers
+ * ("JPEG XMP" / "JPEG IPTC" / "WebP XMP" / "PNG iTXt"). A PNG tEXt keyword such
+ * as "Description" or "Keywords" is the SAME word and must stay technical, so a
+ * future refactor cannot silently widen the rule to every field in the file.
+ */
+import { test, expect, type Page } from '@playwright/test';
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+// @ts-expect-error - plain ESM fixture builder shared with the Node harness
+import { buildPlainPng, rebuildPng, textChunkPayload } from './test-png-fixture.mjs';
+
+const TMP = join(process.cwd(), 'audit-fixtures-out');
+mkdirSync(TMP, { recursive: true });
+
+const fileInput = (page: Page) => page.locator('input[type="file"]');
+
+function save(name: string, bytes: Buffer): string {
+  const p = join(TMP, name);
+  writeFileSync(p, bytes);
+  return p;
+}
+
+async function openHome(page: Page): Promise<void> {
+  await page.goto('http://localhost:4321/en/');
+  await page.waitForLoadState('networkidle');
+  await page.waitForSelector('body[data-pmr-ready]', { timeout: 20000 });
+}
+
+async function rows(page: Page, id = 1): Promise<Array<{ label: string; value: string; isPrivacy: boolean }>> {
+  const panel = page.locator(`#metadata-panel-${id}`);
+  if ((await panel.count()) === 0) {
+    await page.locator(`#meta-toggle-${id}`).click();
+    await panel.waitFor({ state: 'visible', timeout: 15000 });
+  }
+  return page.evaluate((i) => {
+    const p = document.getElementById(`metadata-panel-${i}`);
+    if (!p) return [];
+    const out: Array<{ label: string; value: string; isPrivacy: boolean }> = [];
+    for (const row of p.querySelectorAll('div > div')) {
+      const cells = row.children;
+      if (cells.length < 2) continue;
+      out.push({
+        label: (cells[0] as HTMLElement).textContent?.trim() ?? '',
+        value: (cells[1] as HTMLElement).textContent?.trim() ?? '',
+        isPrivacy: row.className.includes('bg-warning-bg'),
+      });
+    }
+    return out;
+  }, id);
+}
+
+// Real JPEG/XMP/IPTC bytes, assembled from the same marker-segment structure the
+// existing audit fixtures use. audit-clean.jpg carries no metadata at all, so any
+// key that appears can only have come from the container under test.
+const latin = (s: string) => Buffer.from(s, 'latin1');
+function seg(marker: number, payload: Buffer): Buffer {
+  const len = Buffer.alloc(2);
+  len.writeUInt16BE(payload.length + 2, 0);
+  return Buffer.concat([Buffer.from([0xff, marker]), len, payload]);
+}
+function xmpSeg(body: string): Buffer {
+  const xml = '<?xpacket begin="\uFEFF" id="W5M0MpCehiHzreSzNTczkc9d"?>'
+    + '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF '
+    + 'xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description '
+    + 'xmlns:xmp="http://ns.adobe.com/xap/1.0/" '
+    + 'xmlns:dc="http://purl.org/dc/elements/1.1/" '
+    + 'xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"'
+    + body
+    + '</rdf:Description></rdf:RDF></x:xmpmeta><?xpacket end="w"?>';
+  return seg(0xe1, Buffer.concat([latin('http://ns.adobe.com/xap/1.0/\0'), latin(xml)]));
+}
+function iptcDataset(record: number, dataset: number, text: string): Buffer {
+  const b = Buffer.from(text, 'latin1');
+  return Buffer.concat([
+    Buffer.from([0x1c, record, dataset, (b.length >> 8) & 0xff, b.length & 0xff]),
+    b,
+  ]);
+}
+function iptcSeg(datasets: Buffer[]): Buffer {
+  const payload = Buffer.concat(datasets);
+  const size = Buffer.alloc(4);
+  size.writeUInt32BE(payload.length, 0);
+  const padded = payload.length % 2 === 0 ? payload : Buffer.concat([payload, Buffer.alloc(1)]);
+  return seg(0xed, Buffer.concat([
+    latin('Photoshop 3.0\0'), latin('8BIM'),
+    Buffer.from([0x04, 0x04, 0x00, 0x00]), size, padded,
+  ]));
+}
+function inject(base: Buffer, segments: Buffer[]): Buffer {
+  return Buffer.concat([base.subarray(0, 2), ...segments, base.subarray(2)]);
+}
+
+let cachedClean: Buffer | null = null;
+/** The metadata-free audit JPEG; generated by the existing audit fixture suite. */
+function readCleanJpeg(): Buffer {
+  if (!cachedClean) cachedClean = readFileSync(join(TMP, 'audit-clean.jpg'));
+  return cachedClean;
+}
+
+/** Use an existing audit fixture if a prior run produced it, else skip. */
+function auditFixture(name: string): string {
+  const p = join(TMP, name);
+  if (!existsSync(p)) test.skip(true, `${name} not generated - run the audit fixture suite first`);
+  return p;
+}
+test.describe('XMP / IPTC privacy classification', () => {
+  test('XMP identity and description fields are classified as privacy', async ({ page }) => {
+    const path = save('classify-xmp.jpg', inject(readCleanJpeg(), [xmpSeg(
+      ' xmp:CreatorTool="CLS-CREATOR-TOOL"'
+      + ' xmp:Creator="CLS-CREATOR"'
+      + ' xmp:Authors="CLS-AUTHORS"'
+      + ' xmp:MetadataDate="2024-01-15T12:30:45"'
+      + ' xmp:DocumentID="CLS-DOCID"'
+      + ' xmp:BaseURL="http://example.invalid/x"'
+      + ' xmp:Format="image/jpeg"'
+      + ' xmp:ColorMode="3"'
+      + ' xmp:Rating="3"'
+      + '><dc:creator><rdf:Seq><rdf:li>CLS-DC-CREATOR</rdf:li></rdf:Seq></dc:creator>'
+      + '<dc:title><rdf:Alt><rdf:li xml:lang="x-default">CLS-TITLE</rdf:li></rdf:Alt></dc:title>'
+      + '<dc:description><rdf:Alt><rdf:li xml:lang="x-default">CLS-DESCRIPTION</rdf:li></rdf:Alt></dc:description>'
+      + '<dc:rights><rdf:Alt><rdf:li xml:lang="x-default">CLS-RIGHTS</rdf:li></rdf:Alt></dc:rights>'
+      + '<photoshop:City>CLS-CITY</photoshop:City>'
+      + '<photoshop:Country>CLS-COUNTRY</photoshop:Country>'
+    )]));
+
+    await openHome(page);
+    await fileInput(page).setInputFiles(path);
+    const all = await rows(page);
+    const byLabel = new Map(all.map((x) => [x.label, x]));
+
+    // The four XMP fields named by the audit.
+    for (const k of ['CreatorTool', 'creator', 'title', 'description']) {
+      expect(byLabel.has(k), `XMP field ${k} must be surfaced by exifr`).toBe(true);
+      expect(byLabel.get(k)!.isPrivacy, `${k} must be classified privacy`).toBe(true);
+    }
+    // Values are surfaced from the real packet, not invented.
+    expect(byLabel.get('CreatorTool')!.value).toBe('CLS-CREATOR-TOOL');
+    expect(byLabel.get('creator')!.value).toBe('CLS-DC-CREATOR');
+
+    // Casing variants of the same concept are privacy too.
+    for (const k of ['Creator', 'Authors', 'rights', 'City', 'Country',
+      'MetadataDate', 'DocumentID', 'BaseURL']) {
+      expect(byLabel.get(k)!.isPrivacy, `${k} must be classified privacy`).toBe(true);
+    }
+
+    // XMP fields that describe the IMAGE stay technical - the fix must not turn
+    // every XMP property into privacy.
+    for (const k of ['Format', 'ColorMode', 'Rating']) {
+      expect(byLabel.has(k), `XMP field ${k} must be surfaced`).toBe(true);
+      expect(byLabel.get(k)!.isPrivacy, `${k} must stay technical`).toBe(false);
+    }
+
+    // Container detection is unchanged.
+    const xmpRow = all.find((x) => /^JPEG XMP( \(\d+\))?$/.test(x.label));
+    expect(xmpRow, 'the XMP container must still be reported').toBeTruthy();
+    expect(xmpRow!.isPrivacy, 'the XMP container must be privacy').toBe(true);
+  });
+
+  test('IPTC datasets are classified as privacy', async ({ page }) => {
+    const path = save('classify-iptc.jpg', inject(readCleanJpeg(), [iptcSeg([
+      iptcDataset(2, 0x05, 'CLS-OBJECTNAME'),
+      iptcDataset(2, 0x50, 'CLS-BYLINE'),
+      iptcDataset(2, 0x55, 'CLS-BYLINETITLE'),
+      iptcDataset(2, 0x69, 'CLS-HEADLINE'),
+      iptcDataset(2, 0x78, 'CLS-CAPTION'),
+      iptcDataset(2, 0x74, 'CLS-COPYRIGHT'),
+      iptcDataset(2, 0x19, 'CLS-KEYWORDS'),
+      iptcDataset(2, 0x5a, 'CLS-CITY'),
+      iptcDataset(2, 0x65, 'CLS-COUNTRY'),
+      iptcDataset(2, 0x37, '20240115'),
+      iptcDataset(2, 0xbb, 'CLS-UNIQUEID'),
+    ])]));
+
+    await openHome(page);
+    await fileInput(page).setInputFiles(path);
+    const all = await rows(page);
+    const byLabel = new Map(all.map((x) => [x.label, x]));
+
+    // ObjectName is explicitly named by the audit.
+    expect(byLabel.get('ObjectName')!.isPrivacy, 'ObjectName must be privacy').toBe(true);
+    expect(byLabel.get('ObjectName')!.value).toBe('CLS-OBJECTNAME');
+
+    for (const k of ['Byline', 'BylineTitle', 'Headline', 'Caption', 'CopyrightNotice',
+      'Keywords', 'City', 'Country', 'DateCreated', 'UniqueDocumentID']) {
+      expect(byLabel.has(k), `IPTC dataset ${k} must be surfaced`).toBe(true);
+      expect(byLabel.get(k)!.isPrivacy, `${k} must be privacy`).toBe(true);
+    }
+
+    const iptcRow = all.find((x) => /^JPEG IPTC( \(\d+\))?$/.test(x.label));
+    expect(iptcRow, 'the IPTC container must still be reported').toBeTruthy();
+    expect(iptcRow!.isPrivacy, 'the IPTC container must be privacy').toBe(true);
+  });
+test.describe('classification must not leak across containers', () => {
+  test('a PNG tEXt keyword that collides with the XMP vocabulary stays technical', async ({ page }) => {
+    // "Description" / "Keywords" are in the XMP/IPTC privacy vocabulary, but a
+    // PNG carrying only tEXt has no XMP/IPTC container marker, so they must keep
+    // the technical classification the existing PNG behaviour requires. The
+    // chunk itself is still reported and removed as "PNG tEXt".
+    const plain = await buildPlainPng({ width: 64, height: 48 });
+    const path = save('classify-collision.png', rebuildPng(plain, {
+      insert: [
+        { type: 'tEXt', payload: textChunkPayload('Description', 'CLS-PNG-DESC') },
+        { type: 'tEXt', payload: textChunkPayload('Keywords', 'CLS-PNG-KEYWORDS') },
+        { type: 'tEXt', payload: textChunkPayload('Author', 'CLS-PNG-AUTHOR') },
+      ],
+    }));
+
+    await openHome(page);
+    await fileInput(page).setInputFiles(path);
+    const all = await rows(page);
+    const byLabel = new Map(all.map((x) => [x.label, x]));
+
+    for (const k of ['Description', 'Keywords', 'Author']) {
+      expect(byLabel.has(k), `PNG tEXt keyword ${k} must be surfaced`).toBe(true);
+      expect(byLabel.get(k)!.isPrivacy, `${k} must stay technical for PNG`).toBe(false);
+    }
+    const texRow = all.find((x) => /^PNG tEXt( \(\d+\))?$/.test(x.label));
+    expect(texRow, 'the PNG tEXt container must be reported').toBeTruthy();
+    expect(texRow!.isPrivacy, 'the PNG tEXt container must be privacy').toBe(true);
+  });
+
+  test('normalised GPS latitude/longitude remain privacy from the GPS IFD alone', async ({ page }) => {
+    // exifr's GPS reviver emits lower-case latitude/longitude next to the
+    // capitalised GPS* tags for the SAME GPS IFD. These must be privacy even
+    // though no XMP/IPTC container exists in the file.
+    await openHome(page);
+    await fileInput(page).setInputFiles(auditFixture('audit-gps.jpg'));
+    const byLabel = new Map((await rows(page)).map((x) => [x.label, x]));
+
+    for (const k of ['latitude', 'longitude', 'GPSLatitude', 'GPSLongitude',
+      'GPSLatitudeRef', 'GPSLongitudeRef', 'GPSAltitude', 'GPSAltitudeRef', 'GPSTimeStamp']) {
+      expect(byLabel.has(k), `${k} must be surfaced`).toBe(true);
+      expect(byLabel.get(k)!.isPrivacy, `${k} must be privacy`).toBe(true);
+    }
+  });
+
+  test('existing EXIF/GPS privacy fields and technical fields are unaffected', async ({ page }) => {
+    await openHome(page);
+    await fileInput(page).setInputFiles(auditFixture('audit-comprehensive.jpg'));
+    const all = await rows(page);
+    const byLabel = new Map(all.map((x) => [x.label, x]));
+
+    for (const k of ['Make', 'Model', 'Software', 'Artist', 'Copyright', 'ImageDescription',
+      'LensModel', 'FocalLength', 'ExposureTime', 'FNumber', 'ISO', 'SerialNumber',
+      'DateTimeOriginal', 'ModifyDate', 'GPSLatitude', 'GPSLongitude', 'GPSAltitude']) {
+      expect(byLabel.has(k), `${k} must be surfaced`).toBe(true);
+      expect(byLabel.get(k)!.isPrivacy, `${k} must remain privacy`).toBe(true);
+    }
+    // Ordinary technical metadata stays technical.
+    for (const k of ['XResolution', 'YResolution', 'ResolutionUnit']) {
+      expect(byLabel.has(k), `technical field ${k} must be surfaced`).toBe(true);
+      expect(byLabel.get(k)!.isPrivacy, `${k} must stay technical`).toBe(false);
+    }
+    // And the XMP/IPTC fields this fixture also carries are now privacy.
+    for (const k of ['CreatorTool', 'creator', 'title', 'description', 'ObjectName']) {
+      expect(byLabel.get(k)!.isPrivacy, `${k} must be privacy`).toBe(true);
+    }
+  });
+
+  test('removal stays 100% successful and the cleaned file re-uploads clean', async ({ page }) => {
+    test.setTimeout(120000);
+    const original = save('classify-roundtrip.jpg', inject(readCleanJpeg(), [
+      xmpSeg(' xmp:CreatorTool="RT-CREATOR-TOOL"'
+        + '><dc:creator><rdf:Seq><rdf:li>RT-CREATOR</rdf:li></rdf:Seq></dc:creator>'
+        + '<dc:title><rdf:Alt><rdf:li xml:lang="x-default">RT-TITLE</rdf:li></rdf:Alt></dc:title>'),
+      iptcSeg([iptcDataset(2, 0x05, 'RT-OBJECTNAME')]),
+    ]));
+
+    await openHome(page);
+    await fileInput(page).setInputFiles(original);
+    await expect(page.locator('#remove-1')).toHaveText('Remove metadata', { timeout: 30000 });
+    await page.locator('#remove-1').click();
+    await expect(page.locator('[data-id="1"] .text-xs.mt-1'))
+      .toContainText('Privacy metadata remaining: 0', { timeout: 40000 });
+    await expect(page.locator('#download-1')).toBeEnabled({ timeout: 20000 });
+
+    const dl = page.waitForEvent('download', { timeout: 30000 });
+    await page.locator('#download-1').click();
+    const download = await dl;
+    const cleanPath = join(TMP, 'classify-roundtrip-clean.jpg');
+    await download.saveAs(cleanPath);
+
+    // No planted XMP/IPTC payload may survive in the generated bytes.
+    const outBytes = readFileSync(cleanPath);
+    for (const marker of ['RT-CREATOR-TOOL', 'RT-CREATOR', 'RT-TITLE', 'RT-OBJECTNAME']) {
+      expect(outBytes.toString('latin1'), `${marker} must not survive`).not.toContain(marker);
+    }
+
+    // Re-upload the cleaned file: it must report no privacy metadata.
+    await page.locator('#reset-btn').click();
+    await fileInput(page).setInputFiles(cleanPath);
+    // A structurally-stripped JPEG keeps its JFIF/app fields, so a fresh scan
+    // finds technical properties only: it must report zero privacy, never a
+    // stale "Privacy metadata found" warning.
+    await expect(page.locator('[data-id="1"] .text-xs.mt-1'))
+      .toContainText('No privacy metadata found', { timeout: 30000 });
+    const panelVisible = await page.locator('#metadata-panel-1').count();
+    if (panelVisible > 0) {
+      const panel = await page.locator('#metadata-panel-1').innerText();
+      expect(panel).not.toContain('found (');
+    }
+  });
+});
+});

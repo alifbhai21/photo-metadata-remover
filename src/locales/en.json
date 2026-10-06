@@ -2,13 +2,15 @@
   "site": {
     "name": "Photo Metadata Remover",
     "tagline": "Remove EXIF data from your photos. Privacy-first, free, no uploads.",
-    "description": "Strip GPS coordinates, camera serial numbers, timestamps, and other hidden metadata from your photos. Everything runs in your browser â€” nothing leaves your device."
+    "description": "Remove EXIF and GPS metadata from your photos. Everything runs in your browser — nothing leaves your device."
   },
   "seo": {
-    "og_image_alt": "Photo Metadata Remover â€“ remove EXIF and GPS data from your photos in your browser. Free, private, no uploads.",
+    "og_image_alt": "Photo Metadata Remover online tool — remove EXIF and GPS data from your photos in your browser. Free, private, no uploads.",
     "home": {
-      "title": "Remove Metadata from Your Photos Online",
-      "description": "Strip GPS coordinates, camera serial numbers, timestamps, and other hidden EXIF data from your photos. Free, private, and 100% in your browser â€” nothing is ever uploaded."
+      "title": "Photo Metadata Remover Online — Remove EXIF & GPS Data",
+      "description": "Remove metadata from photos online for free. Scan and remove EXIF, GPS, camera, timestamp and other hidden data directly in your browser.",
+      "og_description": "Remove metadata from photos online for free. Scan and clean EXIF, GPS and other hidden photo data directly in your browser.",
+      "twitter_description": "Remove hidden photo metadata such as EXIF and GPS data directly in your browser."
     },
     "about": {
       "description": "Photo Metadata Remover is a free, privacy-first tool. Learn how we help you control your digital footprint."
@@ -108,9 +110,12 @@
       "free": "Free forever"
     },
     "pill": "100% Client-Side Processing",
-    "title_a": "Keep Your Photos",
-    "title_b": "Private",
-    "tagline": "Remove hidden metadata from your photos before sharing. Your privacy matters.",
+    "h1_sep": " ",
+    "title_a": "Photo Metadata",
+    "title_b": "Remover",
+    "tagline": "Remove hidden metadata from your photos before you share them. Scan and clean EXIF, GPS location, camera information, timestamps and other embedded photo data directly in your browser — no uploads, nothing leaves your device.",
+    "img_before_alt": "Example photo card before cleaning, listing detected EXIF metadata such as camera model, GPS location, date and software",
+    "img_after_alt": "The same photo card after metadata removal, showing the cleaned image with a confirmed no-metadata badge",
     "props": {
       "local": {
         "title": "100% local",
@@ -160,6 +165,7 @@
     "no_metadata": "No privacy metadata found",
     "error": "Error processing file",
     "unsupported_file": "Unsupported file type: {{name}}",
+    "dismiss_error": "Dismiss error message",
     "file_too_large": "{{name}} is too large (max {{size}})",
     "reset": "Clear all",
     "drag_active": "Drop your photos here",
@@ -1472,5 +1478,209 @@
     "contact_text": "For legal or regulatory requests, use the official contact channels. The imprint page lists the responsible entity once configured.",
     "contact_primary": "Go to the FAQ",
     "contact_secondary": "Contact & Imprint"
+  },
+  "notfound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or may have been moved.",
+    "eyebrow": "404",
+    "heading": "Page not found",
+    "body": "The page you're looking for doesn't exist or may have been moved.",
+    "back_home": "Back to Home",
+    "open_tool": "Open Photo Metadata Remover"
+  },
+  "home_seo": {
+    "eyebrow": "Photo metadata guide",
+    "intro": "Every photo carries hidden data that most image viewers never show you: GPS coordinates of where you stood, the exact camera and lens, the moment it was taken, and the software that last touched the file. A photo metadata remover strips that layer so the picture travels without the trail behind it.",
+    "sections": [
+      {
+        "id": "what-is-a-photo-metadata-remover",
+        "h2": "What Is a Photo Metadata Remover?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Photo metadata is descriptive information stored inside an image file rather than inside the visible picture. Cameras and phones write it automatically, in three main families: EXIF (capture date and time, camera make and model, lens and exposure settings, often GPS coordinates), IPTC (captions, keywords, credits) and XMP (editing history)."
+          },
+          {
+            "type": "p",
+            "text": "None of this is visible when you look at the photo, which is why it matters: a family photo in a listing can still carry the coordinates of your home, and a serial number can tie two unrelated photos to the same device."
+          },
+          {
+            "type": "p",
+            "text": "A metadata remover reads those fields, shows you which it found, and removes the supported ones while leaving the picture untouched. Removal happens at file level, so the image is not recompressed — which matters with originals you cannot afford to degrade. Our [guide to checking photo metadata](blog_check) walks through the common fields."
+          }
+        ]
+      },
+      {
+        "id": "remove-metadata-online-without-uploading",
+        "h2": "Remove Photo Metadata Online Without Uploading Your Photos",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Online usually implies a server: you send a photo, it is processed, it comes back. That is how most hosted cleaners work, and it creates an awkward problem — the file carrying your location is copied onto hardware you do not control."
+          },
+          {
+            "type": "p",
+            "text": "This photo metadata remover online takes a different approach. Your browser reads the file directly from your device, parses the metadata locally and hands back a clean copy as a download. Nothing is transmitted — open your browser network panel while it runs and you will see no request carrying your image."
+          },
+          {
+            "type": "h3",
+            "text": "The five-step workflow"
+          },
+          {
+            "type": "ol",
+            "items": [
+              "Upload or drop a photo, or queue several as a batch.",
+              "Scan. The browser parses the file and lists detected fields.",
+              "Remove. Supported metadata is stripped, image data preserved.",
+              "Verify. The output is re-read before being shown as clean.",
+              "Download. Save the image, or the batch as a ZIP."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Because everything runs locally, the same tool works on a phone or a desktop alike. Our [privacy page](privacy) covers the architecture, the [security page](security) the threat model."
+          }
+        ]
+      },
+      {
+        "id": "what-metadata-can-be-removed",
+        "h2": "What Metadata Can Be Removed From a Photo?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "The removable fields depend on the format and on what the writing device recorded. Across the formats we handle:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "GPS and location data — coordinates, altitude and location tags.",
+              "Camera make and model, serial numbers, device identifiers.",
+              "Lens information, including name, focal length and aperture.",
+              "Capture date and time, plus original and digitised timestamps.",
+              "Author and creator fields, copyright, IPTC captions and keywords.",
+              "Software and editing information, including XMP history.",
+              "Comments and other embedded text such as UserComment."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "The visible picture is never touched. For JPEG, PNG, WebP and TIFF the image data is preserved rather than re-encoded, so you do not trade privacy for quality. HEIC is the one format browsers cannot edit in place, so those files are decoded and written back as a clean JPEG — see the [supported formats page](formats). A file only exposes what was written to it: a photo from a messaging app has usually been stripped by the platform already."
+          }
+        ]
+      },
+      {
+        "id": "photo-metadata-remover-for-android-iphone-and-windows",
+        "h2": "Photo Metadata Remover for Android, iPhone and Windows",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "This is a browser-based tool rather than an installable application: nothing to download, nothing to update, no permission prompts. Any device with a current browser can run it."
+          },
+          {
+            "type": "h3",
+            "text": "Using it on an Android phone"
+          },
+          {
+            "type": "p",
+            "text": "Looking for a photo metadata remover Android app? You can use this browser-based tool directly from an Android browser without installing a separate application. Open the page in Chrome, tap the upload area, choose a photo from your gallery and download the cleaned file."
+          },
+          {
+            "type": "h3",
+            "text": "Using it on an iPhone"
+          },
+          {
+            "type": "p",
+            "text": "If you need an iPhone photo metadata remover, open the tool in your mobile browser and process your image directly on your device. Safari is supported, and HEIC photos from the default camera app come back as clean JPEGs — the [iPhone guide](blog_iphone) explains why."
+          },
+          {
+            "type": "h3",
+            "text": "Using it on Windows and macOS"
+          },
+          {
+            "type": "p",
+            "text": "For Windows users, the online photo metadata remover works directly in a modern desktop browser such as Edge, Chrome or Firefox — no installer and no separate Windows application. The same applies on macOS. Because the tool is not tied to a device, the photo metadata remover app you use is simply your browser."
+          }
+        ]
+      },
+      {
+        "id": "photo-metadata-viewer-before-you-remove",
+        "h2": "Photo Metadata Viewer Before You Remove Metadata",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Looking before you delete is worthwhile. The scan step doubles as a photo metadata viewer: it lists the fields it found before anything changes, so you can see whether a file carries GPS coordinates, which camera wrote it, or whether it was already cleaned elsewhere."
+          },
+          {
+            "type": "p",
+            "text": "If a photo arrives from someone else, seeing the metadata online tells you when and where it was taken. If you publish your own work, it confirms no coordinates or serial numbers go out with it. Because scan and removal share one parser, there is no gap between the [preview and the result](formats)."
+          }
+        ]
+      },
+      {
+        "id": "ai-photo-metadata-remover",
+        "h2": "AI Photo Metadata Remover: What Does That Mean?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Some people search for an AI photo metadata remover when they want an automated way to identify and remove hidden image information. This tool focuses on local browser-based metadata scanning and removal rather than requiring an AI service or uploading your photo."
+          },
+          {
+            "type": "p",
+            "text": "That is a deliberate choice, not a missing feature. Metadata sits in documented structures, so a deterministic parser removes exactly what it found — no guesswork, no third-party dependency, and it works offline once loaded. [What EXIF data is](guide_exif) and [how GPS tags reveal location](guide_gps) are the best starting points."
+          }
+        ]
+      },
+      {
+        "id": "why-remove-metadata-before-sharing",
+        "h2": "Why Remove Metadata From Photos Before Sharing?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Most people only think about metadata after something has leaked. Cleaning a photo first is cheaper than cleaning up afterwards."
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Social media. Not every platform strips GPS data on upload.",
+              "Marketplaces and listings. Seller photos can reveal where you live.",
+              "Forums and message boards. Long-lived threads are searchable and archived.",
+              "Messaging apps. Images shared as files keep their metadata.",
+              "Email attachments. The original is often forwarded untouched.",
+              "Websites and portfolios. Full-resolution originals go up uncleaned.",
+              "Professional work. Shared drafts can expose dates and studio details."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "None of this is about hiding that you took a photograph — it is about deciding which incidental details travel with it. Our [social media guide](guide_social) looks at how platforms handle uploads."
+          }
+        ]
+      },
+      {
+        "id": "how-to-remove-metadata-from-a-photo",
+        "h2": "How to Remove Metadata From a Photo",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "The process takes under a minute. It suits beginners and technical users equally, because every step reports what it did rather than asking you to trust it."
+          },
+          {
+            "type": "ol",
+            "items": [
+              "Select or drop a photo. Multiple files can be queued at once.",
+              "Let the browser scan the file. Parsing happens locally.",
+              "Review the detected metadata, particularly GPS coordinates.",
+              "Remove the supported metadata. Image data stays intact.",
+              "Verify the cleaned output. It is only presented as clean if it is.",
+              "Download the clean image and keep your original somewhere private."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "For a large set, run it as a batch and download the ZIP. A file with no removable metadata simply reports nothing to strip."
+          }
+        ]
+      }
+    ]
   }
 }

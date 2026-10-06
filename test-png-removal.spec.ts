@@ -767,7 +767,7 @@ test.describe('PNG scan-side privacy detection', () => {
     // buildTextualPng carries eXIf + tEXt + zTXt + iTXt + tIME: 4 EXIF privacy
     // fields + one entry per textual/time chunk.
     const status = await scanStatusFor(page, textualPath);
-    expect(status).toContain('Privacy metadata found (8)');
+    expect(status).toContain('Privacy metadata found (9)');
 
     const rows = await openPanelRows(page);
     const labels = rows.filter((row) => row.privacy).map((row) => row.label);

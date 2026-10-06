@@ -1,0 +1,177 @@
+---
+/**
+ * Homepage SEO guide (EN / DE / FR).
+ *
+ * Content is fully data-driven from `home_seo` in src/locales/*.json so the
+ * three locales stay in sync without duplicating markup. Rendering rules:
+ *   - one <section>, one <h2> per entry in `sections`, <h3> for sub-blocks
+ *   - internal links are written inline as [label](route_key) and resolved
+ *     against the localized public routes below — no hidden/noindex tool
+ *     routes are linked, and no external URLs are emitted
+ *   - headings never skip a level (H1 lives in Hero.astro)
+ */
+import { getTranslations, t } from '../i18n/index';
+
+const { lang = 'en' } = Astro.props;
+const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
+const translations = getTranslations(currentLang);
+const homeSeo = translations.home_seo as {
+  eyebrow: string;
+  intro: string;
+  sections: Array<{
+    id: string;
+    h2: string;
+    blocks: Array<
+      | { type: 'p'; text: string }
+      | { type: 'h3'; text: string }
+      | { type: 'ul'; items: string[] }
+      | { type: 'ol'; items: string[] }
+    >;
+  }>;
+} | undefined;
+
+/** Public, localized routes that may be linked from homepage body copy. */
+const ROUTES: Record<string, string> = {
+  formats: `/${currentLang}/formats`,
+  guides: `/${currentLang}/guides`,
+  faq: `/${currentLang}/faq`,
+  privacy: `/${currentLang}/privacy`,
+  security: `/${currentLang}/security`,
+  about: `/${currentLang}/about`,
+  blog_what_is_exif: `/${currentLang}/blog/what-is-exif-data`,
+  blog_check: `/${currentLang}/blog/how-to-check-photo-metadata`,
+  blog_remove_exif: `/${currentLang}/blog/how-to-remove-exif-data`,
+  blog_android: `/${currentLang}/blog/how-to-remove-exif-data-on-android`,
+  blog_iphone: `/${currentLang}/blog/how-to-remove-exif-data-on-iphone`,
+  guide_exif: `/${currentLang}/guides/what-is-exif`,
+  guide_gps: `/${currentLang}/guides/gps-privacy`,
+  guide_social: `/${currentLang}/guides/social-media`,
+};
+
+const escapeHtml = (value: string) =>
+  value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+/**
+ * Turn "text with a [label](route_key) link" into safe HTML. Unknown route
+ * keys render as plain text so a typo can never produce a broken href.
+ */
+const inlineHtml = (raw: string) => {
+  const out: string[] = [];
+  const re = /\[([^\]]+)\]\(([a-z_]+)\)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(raw)) !== null) {
+    out.push(escapeHtml(raw.slice(last, m.index)));
+    const href = ROUTES[m[2]];
+    out.push(
+      href
+        ? `<a href="${href}" class="pmr-seo-link">${escapeHtml(m[1])}</a>`
+        : escapeHtml(m[1]),
+    );
+    last = m.index + m[0].length;
+  }
+  out.push(escapeHtml(raw.slice(last)));
+  return out.join('');
+};
+
+const listHtml = (items: string[]) => `<ul>${items.map((i) => `<li>${inlineHtml(i)}</li>`).join('')}</ul>`;
+const orderedHtml = (items: string[]) => `<ol>${items.map((i) => `<li>${inlineHtml(i)}</li>`).join('')}</ol>`;
+---
+
+{
+  homeSeo && (
+    <section id="photo-metadata-guide" class="py-16 sm:py-20 px-4 sm:px-6 border-t border-border scroll-mt-24" data-purpose="seo-content">
+      <div class="max-w-3xl mx-auto">
+        <span class="pmr-eyebrow">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent"></span>
+          {homeSeo.eyebrow}
+        </span>
+        <p class="mt-5 text-[15.5px] text-text-muted leading-relaxed">{homeSeo.intro}</p>
+
+        {homeSeo.sections.map((section) => (
+          <div class="mt-12">
+            <h2 class="text-[24px] sm:text-[30px] font-semibold tracking-tight text-text leading-[1.15] scroll-mt-24" id={section.id}>
+              {section.h2}
+            </h2>
+
+            {section.blocks.map((block) => {
+              if (block.type === 'h3') {
+                return <h3 class="mt-8 text-[17px] sm:text-[19px] font-semibold tracking-tight text-text leading-snug">{block.text}</h3>;
+              }
+              if (block.type === 'p') {
+                return <p class="mt-4 text-[15px] text-text-muted leading-relaxed" set:html={inlineHtml(block.text)} />;
+              }
+              if (block.type === 'ul') {
+                return <div class="pmr-seo-list mt-4" set:html={listHtml(block.items)} />;
+              }
+              return <div class="pmr-seo-list pmr-seo-list--ordered mt-4" set:html={orderedHtml(block.items)} />;
+            })}
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .pmr-seo-link {
+    color: var(--pmr-accent);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .pmr-seo-link:hover {
+    color: var(--pmr-accent-hover);
+  }
+
+  .pmr-seo-list :global(ul),
+  .pmr-seo-list :global(ol) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pmr-seo-list :global(ul > li),
+  .pmr-seo-list :global(ol > li) {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--pmr-text-muted);
+  }
+
+  /* Bulleted list: green dot marker. */
+  .pmr-seo-list :global(ul > li)::before {
+    content: '';
+    position: absolute;
+    left: 0.25rem;
+    top: 0.6em;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: var(--pmr-accent);
+    opacity: 0.65;
+  }
+
+  /* Numbered list: monospace counter, matching the stepper style. */
+  .pmr-seo-list--ordered :global(ol) {
+    counter-reset: pmr-step;
+  }
+
+  .pmr-seo-list--ordered :global(ol > li)::before {
+    counter-increment: pmr-step;
+    content: counter(pmr-step, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--pmr-accent);
+    opacity: 0.8;
+  }
+</style>
