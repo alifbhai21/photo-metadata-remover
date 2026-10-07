@@ -475,24 +475,52 @@
     "eyebrow": "FAQ",
     "questions": {
       "q1": {
-        "question": "Quelles métadonnées sont supprimées ?",
-        "answer": "Nous supprimons les données EXIF (coordonnées GPS, modèle d'appareil, numéro de série, horodatages), les données IPTC (légendes, mots-clés) et les données XMP. Les pixels de l'image restent intacts."
+        "question": "Qu'est-ce que les métadonnées photo ?",
+        "answer": "Les métadonnées photo sont des informations cachées stockées dans un fichier image. Elles contiennent des détails comme l'appareil utilisé, les horodatages, les paramètres de l'appareil photo et souvent la localisation GPS, sans apparaître dans l'image visible."
       },
       "q2": {
-        "question": "Cela réduit-il la qualité de l'image ?",
-        "answer": "Non. Les métadonnées sont séparées des données de l'image. Les supprimer ne recomprime ni n'altère les pixels."
+        "question": "Qu'est-ce que les données EXIF dans une photo ?",
+        "answer": "Les données EXIF sont un type standard de métadonnées écrites par les appareils photo et les téléphones. Elles stockent des détails techniques comme le modèle de l'appareil, les réglages d'exposition, la date de prise de vue, le logiciel utilisé et parfois les coordonnées GPS précises."
       },
       "q3": {
-        "question": "Quelque chose est-il téléchargé sur un serveur ?",
-        "answer": "Non. Tout s'exécute dans votre navigateur. Vos photos ne quittent jamais votre appareil – vous pouvez le vérifier dans l'onglet réseau de votre navigateur."
+        "question": "Pourquoi devrais-je supprimer les métadonnées de mes photos ?",
+        "answer": "Les métadonnées peuvent révéler des informations personnelles comme votre localisation, les détails de votre appareil et vos habitudes. Les supprimer avant de partager une photo protège votre vie privée et empêche de localiser l'endroit où elle a été prise."
       },
       "q4": {
-        "question": "Qu'en est-il des réseaux sociaux ?",
-        "answer": "Certains réseaux sociaux suppriment les métadonnées lors du téléchargement, mais pas tous. Les supprimer à la source signifie que vous ne comptez pas sur la politique d'une plateforme."
+        "question": "Les métadonnées photo peuvent-elles révéler ma localisation ?",
+        "answer": "Oui. De nombreuses photos intègrent des coordonnées GPS dans leurs métadonnées. Toute personne ayant accès au fichier original peut les extraire et localiser précisément l'endroit où la photo a été prise."
       },
       "q5": {
-        "question": "Puis-je nettoyer plusieurs photos en une fois ?",
-        "answer": "Oui. Déposez plusieurs fichiers et nous les traiterons tous. Téléchargez-les individuellement ou en un seul fichier ZIP."
+        "question": "Comment supprimer les métadonnées d'une photo ?",
+        "answer": "Utilisez notre Photo Metadata Remover gratuit. Téléversez votre image et l'outil supprime les données EXIF, IPTC et XMP directement dans votre navigateur. Téléchargez ensuite la version nettoyée instantanément."
+      },
+      "q6": {
+        "question": "Photo Metadata Remover téléverse-t-il mes photos sur un serveur ?",
+        "answer": "Non. Tout le traitement s'effectue localement dans votre navigateur. Vos photos ne quittent jamais votre appareil, vous pouvez utiliser l'outil hors ligne et garder le contrôle total de vos fichiers."
+      },
+      "q7": {
+        "question": "Photo Metadata Remover est-il gratuit ?",
+        "answer": "Oui. Photo Metadata Remover est totalement gratuit, sans inscription, sans filigrane et sans limite sur le nombre de photos à nettoyer."
+      },
+      "q8": {
+        "question": "Puis-je supprimer les métadonnées des photos sur iPhone et Android ?",
+        "answer": "Oui. L'outil fonctionne dans les navigateurs mobiles sur iPhone et Android. Ouvrez le site, téléversez vos photos, supprimez les métadonnées et enregistrez les fichiers nettoyés sur votre appareil."
+      },
+      "q9": {
+        "question": "Puis-je supprimer les métadonnées des photos sur Windows et Mac ?",
+        "answer": "Oui. Photo Metadata Remover fonctionne dans tout navigateur de bureau moderne sur Windows, macOS, Linux ou ChromeOS, sans installation de logiciel."
+      },
+      "q10": {
+        "question": "Quels formats d'image Photo Metadata Remover prend-il en charge ?",
+        "answer": "Il prend en charge les formats JPEG, PNG, WebP, TIFF et HEIC. Chaque format est traité pour supprimer les métadonnées EXIF, IPTC et XMP tout en préservant la qualité visuelle de l'image."
+      },
+      "q11": {
+        "question": "Puis-je vérifier que les métadonnées ont été supprimées ?",
+        "answer": "Oui. Après le traitement, vous pouvez utiliser le visualiseur intégré au site ou tout outil d'inspection EXIF pour confirmer que les champs de métadonnées ont disparu avant de partager la photo."
+      },
+      "q12": {
+        "question": "Quelle est la différence entre un visualiseur de métadonnées et un suppresseur de métadonnées ?",
+        "answer": "Un visualiseur de métadonnées lit et affiche les informations cachées d'un fichier. Un suppresseur de métadonnées supprime définitivement ces informations et produit une copie propre pouvant être partagée sans exposer de détails personnels."
       }
     },
     "more": "Encore des questions ? Consultez notre FAQ complète"

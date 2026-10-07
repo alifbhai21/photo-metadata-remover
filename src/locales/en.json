@@ -476,24 +476,52 @@
     "eyebrow": "FAQ",
     "questions": {
       "q1": {
-        "question": "What metadata is removed?",
-        "answer": "We remove EXIF data (GPS coordinates, camera make/model, serial number, timestamps), IPTC data (captions, keywords), and XMP data. The image pixels remain untouched."
+        "question": "What is photo metadata?",
+        "answer": "Photo metadata is hidden information stored inside an image file. It records details such as the device used, timestamps, camera settings, and often GPS location, without appearing in the visible picture."
       },
       "q2": {
-        "question": "Does this reduce image quality?",
-        "answer": "No. Metadata is separate from the image data. Removing it does not re-compress or alter the pixels in any way."
+        "question": "What is EXIF data in a photo?",
+        "answer": "EXIF data is a standard type of photo metadata written by cameras and phones. It stores technical details like camera model, exposure settings, date taken, software used, and sometimes precise location coordinates."
       },
       "q3": {
-        "question": "Is anything uploaded to a server?",
-        "answer": "No. Everything runs in your browser. Your photos never leave your device â€” you can verify this in your browser's network tab."
+        "question": "Why should I remove metadata from my photos?",
+        "answer": "Metadata can expose personal information such as your location, device details, and daily routines. Removing it before sharing a photo protects your privacy and prevents strangers from tracking where your pictures were taken."
       },
       "q4": {
-        "question": "What about social networks?",
-        "answer": "Some social networks strip metadata on upload, but not all. Stripping at the source means you're not relying on any platform's policy."
+        "question": "Can photo metadata reveal my location?",
+        "answer": "Yes. Many photos embed GPS coordinates in their metadata. Anyone with access to the original file can extract those coordinates and pinpoint the exact place where the photo was captured."
       },
       "q5": {
-        "question": "Can I clean multiple photos at once?",
-        "answer": "Yes. Drop multiple files and we'll process them all. Download them individually or as a single ZIP file."
+        "question": "How do I remove metadata from a photo?",
+        "answer": "Use our free Photo Metadata Remover. Upload your image, and the tool strips EXIF, IPTC, and XMP data directly in your browser. Then download the cleaned version of your photo instantly."
+      },
+      "q6": {
+        "question": "Does Photo Metadata Remover upload my photos to a server?",
+        "answer": "No. All processing happens locally in your browser. Your photos never leave your device, so you can use the tool offline and keep full control of your files."
+      },
+      "q7": {
+        "question": "Is Photo Metadata Remover free to use?",
+        "answer": "Yes. Photo Metadata Remover is completely free with no sign-up, no watermarks, and no limits on the number of photos you can clean."
+      },
+      "q8": {
+        "question": "Can I remove metadata from photos on iPhone and Android?",
+        "answer": "Yes. The tool works in mobile browsers on both iPhone and Android. Open the site, upload your photos, strip the metadata, and save the clean files back to your device."
+      },
+      "q9": {
+        "question": "Can I remove metadata from photos on Windows and Mac?",
+        "answer": "Yes. Photo Metadata Remover runs in any modern desktop browser on Windows, macOS, Linux, or ChromeOS, with no software installation required."
+      },
+      "q10": {
+        "question": "What image formats does Photo Metadata Remover support?",
+        "answer": "It supports JPEG, PNG, WebP, TIFF, and HEIC files. Each format is processed to remove EXIF, IPTC, and XMP metadata while preserving the visible image quality."
+      },
+      "q11": {
+        "question": "Can I check whether metadata was successfully removed?",
+        "answer": "Yes. After processing, you can use the built-in viewer on the site or any EXIF inspection tool to confirm that the metadata fields are gone before sharing the photo."
+      },
+      "q12": {
+        "question": "What is the difference between a metadata viewer and a metadata remover?",
+        "answer": "A metadata viewer reads and displays the hidden information stored in a file. A metadata remover permanently deletes that information, producing a clean copy that can be shared without exposing personal details."
       }
     }
   },

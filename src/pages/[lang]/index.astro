@@ -41,6 +41,16 @@ const softwareJsonLd = {
   },
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: Object.values(translations.faq?.questions ?? {}).map((q: any) => ({
+    '@type': 'Question',
+    name: q.question,
+    acceptedAnswer: { '@type': 'Answer', text: q.answer },
+  })),
+};
+
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -55,7 +65,7 @@ const websiteJsonLd = {
   lang={currentLang}
   title={t(translations, 'seo.home.title')}
   description={t(translations, 'seo.home.description')}
-  jsonLd={[websiteJsonLd, softwareJsonLd]}
+  jsonLd={[websiteJsonLd, softwareJsonLd, faqJsonLd]}
 >
   <span id="top" class="sr-only" aria-hidden="true"></span>
   <Hero lang={currentLang} />

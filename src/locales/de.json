@@ -475,24 +475,52 @@
     "eyebrow": "FAQ",
     "questions": {
       "q1": {
-        "question": "Welche Metadaten werden entfernt?",
-        "answer": "Wir entfernen EXIF-Daten (GPS-Koordinaten, Kamera-Modell, Seriennummer, Zeitstempel), IPTC-Daten (Beschreibungen, Schlagwörter) und XMP-Daten. Die Bildpixel bleiben unberührt."
+        "question": "Was sind Foto-Metadaten?",
+        "answer": "Foto-Metadaten sind versteckte Informationen, die in einer Bilddatei gespeichert werden. Sie enthalten Details wie Gerät, Zeitstempel, Kameraeinstellungen und oft auch GPS-Standort – ohne im sichtbaren Bild zu erscheinen."
       },
       "q2": {
-        "question": "Wird die Bildqualität reduziert?",
-        "answer": "Nein. Metadaten sind von den Bilddaten getrennt. Das Entfernen komprimiert oder ändert die Pixel in keiner Weise."
+        "question": "Was sind EXIF-Daten in einem Foto?",
+        "answer": "EXIF-Daten sind ein Standardtyp von Foto-Metadaten, die von Kameras und Handys geschrieben werden. Sie speichern technische Details wie Kamera-Modell, Belichtungseinstellungen, Aufnahmedatum, verwendete Software und manchmal genaue Standortkoordinaten."
       },
       "q3": {
-        "question": "Wird etwas auf einen Server hochgeladen?",
-        "answer": "Nein. Alles läuft in Ihrem Browser. Ihre Fotos verlassen Ihr Gerät nie – Sie können dies im Netzwerk-Tab Ihres Browsers überprüfen."
+        "question": "Warum sollte ich Metadaten aus meinen Fotos entfernen?",
+        "answer": "Metadaten können persönliche Informationen wie Ihren Standort, Gerätedetails und tägliche Routinen preisgeben. Entfernen Sie sie vor dem Teilen, um Ihre Privatsphäre zu schützen und das Tracking des Aufnahmeorts zu verhindern."
       },
       "q4": {
-        "question": "Was ist mit sozialen Netzwerken?",
-        "answer": "Einige soziale Netzwerke entfernen Metadaten beim Upload, aber nicht alle. Das Entfernen an der Quelle bedeutet, dass Sie sich nicht auf die Richtlinie einer Plattform verlassen müssen."
+        "question": "Können Foto-Metadaten meinen Standort verraten?",
+        "answer": "Ja. Viele Fotos enthalten GPS-Koordinaten in ihren Metadaten. Jeder mit Zugriff auf die Originaldatei kann diese extrahieren und den genauen Aufnahmeort bestimmen."
       },
       "q5": {
-        "question": "Kann ich mehrere Fotos auf einmal reinigen?",
-        "answer": "Ja. Legen Sie mehrere Dateien ab und wir verarbeiten sie alle. Laden Sie sie einzeln oder als eine einzige ZIP-Datei herunter."
+        "question": "Wie entferne ich Metadaten aus einem Foto?",
+        "answer": "Nutzen Sie unseren kostenlosen Photo Metadata Remover. Laden Sie Ihr Bild hoch, und das Tool entfernt EXIF-, IPTC- und XMP-Daten direkt im Browser. Dann laden Sie die bereinigte Version sofort herunter."
+      },
+      "q6": {
+        "question": "Lädt Photo Metadata Remover meine Fotos auf einen Server hoch?",
+        "answer": "Nein. Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser. Ihre Fotos verlassen nie Ihr Gerät – Sie können das Tool offline nutzen und behalten die volle Kontrolle."
+      },
+      "q7": {
+        "question": "Ist Photo Metadata Remover kostenlos?",
+        "answer": "Ja. Photo Metadata Remover ist völlig kostenlos – ohne Anmeldung, ohne Wasserzeichen und ohne Begrenzung der Anzahl der Bilder."
+      },
+      "q8": {
+        "question": "Kann ich Metadaten von Fotos auf iPhone und Android entfernen?",
+        "answer": "Ja. Das Tool funktioniert im mobilen Browser auf iPhone und Android. Öffnen Sie die Seite, laden Sie Ihre Fotos hoch, entfernen Sie die Metadaten und speichern Sie die sauberen Dateien auf Ihrem Gerät."
+      },
+      "q9": {
+        "question": "Kann ich Metadaten von Fotos auf Windows und Mac entfernen?",
+        "answer": "Ja. Photo Metadata Remover läuft in jedem modernen Desktop-Browser auf Windows, macOS, Linux oder ChromeOS – ohne Installation."
+      },
+      "q10": {
+        "question": "Welche Bildformate unterstützt Photo Metadata Remover?",
+        "answer": "Unterstützt werden JPEG, PNG, WebP, TIFF und HEIC. Jedes Format wird so verarbeitet, dass EXIF-, IPTC- und XMP-Metadaten entfernt werden, während die Bildqualität erhalten bleibt."
+      },
+      "q11": {
+        "question": "Kann ich prüfen, ob die Metadaten erfolgreich entfernt wurden?",
+        "answer": "Ja. Nach der Verarbeitung können Sie den integrierten Viewer auf der Seite oder ein beliebiges EXIF-Prüfwerkzeug verwenden, um zu bestätigen, dass die Metadaten entfernt wurden."
+      },
+      "q12": {
+        "question": "Was ist der Unterschied zwischen einem Metadaten-Viewer und einem Metadaten-Entferner?",
+        "answer": "Ein Metadaten-Viewer liest und zeigt die versteckten Informationen einer Datei an. Ein Metadaten-Entferner löscht diese Informationen dauerhaft und erstellt eine saubere Kopie zum sicheren Teilen."
       }
     },
     "more": "Noch Fragen? Besuchen Sie unsere vollständige FAQ"

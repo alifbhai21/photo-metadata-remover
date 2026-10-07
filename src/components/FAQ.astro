@@ -1,16 +1,13 @@
 ---
 import { getTranslations, t } from '../i18n/index';
 
-const { lang = 'en' } = Astro.props;
+const { lang = 'en', items } = Astro.props;
 const currentLang = (lang || 'en') as 'en' | 'de' | 'fr';
 const translations = getTranslations(currentLang);
 
-const faqs = [
-  { key: 'q1' },
-  { key: 'q2' },
-  { key: 'q3' },
-  { key: 'q4' },
-];
+const faqItems: { question: string; answer: string }[] = Array.isArray(items) && items.length > 0
+  ? items
+  : Object.values(translations.faq?.questions ?? {}).map((q: any) => ({ question: q.question, answer: q.answer }));
 ---
 
 <section id="faq" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 scroll-mt-24" data-purpose="faq-accordion">
@@ -23,14 +20,14 @@ const faqs = [
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    {faqs.map((faq) => (
+    {faqItems.map((faq) => (
       <details class="group bg-white rounded-2xl p-5 border border-slate-200/80 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
         <summary class="flex items-center justify-between gap-4 font-semibold text-sm text-slate-800 min-h-[44px]">
-          <span>{t(translations, 'faq.questions.' + faq.key + '.question')}</span>
+          <span>{faq.question}</span>
           <span class="text-slate-400 group-open:rotate-45 transition-transform text-lg leading-none" aria-hidden="true">+</span>
         </summary>
         <p class="mt-3 text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-3">
-          {t(translations, 'faq.questions.' + faq.key + '.answer')}
+          {faq.answer}
         </p>
       </details>
     ))}
