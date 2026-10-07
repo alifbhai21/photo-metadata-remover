@@ -227,6 +227,8 @@ const translations = getTranslations(currentLang);
         data-error-all={t(translations, 'tool.error_all')}
         data-try-again={t(translations, 'tool.try_again')}
         data-file-failed={t(translations, 'tool.file_failed')}
+        data-heic-failed={t(translations, 'tool.heic_failed')}
+        data-scan-failed={t(translations, 'tool.scan_failed')}
         data-files-cleaned={t(translations, 'tool.files_cleaned')}
         data-failed-to-remove={t(translations, 'tool.failed_to_remove')}
         data-unit-bytes={t(translations, 'units.bytes')}
@@ -483,6 +485,10 @@ const translations = getTranslations(currentLang);
     cleanExt: string;
     status: 'clean' | 'error';
     error?: boolean;
+    /** True when the metadata scan threw - distinct from "scan succeeded, found nothing". */
+    scanError?: boolean;
+    /** Per-item override for the status line when removal fails (e.g. HEIC conversion). */
+    errorMessage?: string;
     busy: boolean;
     verifyStatus: VerificationStatus;
     /**
@@ -675,6 +681,7 @@ const translations = getTranslations(currentLang);
       } catch (err) {
         console.error('Error parsing metadata:', err);
         item.metadata = {};
+        item.scanError = true;
       }
 
       if (thisBatchId !== batchId) return;
@@ -857,7 +864,7 @@ const translations = getTranslations(currentLang);
         setStatusLines(statusEl, lines);
         statusEl.className = 'text-xs mt-1 text-danger-text';
       } else {
-        statusEl.textContent = filesList?.dataset.fileFailed || 'Failed to remove metadata';
+        statusEl.textContent = item.errorMessage || filesList?.dataset.fileFailed || 'Failed to remove metadata';
         statusEl.className = 'text-xs mt-1 text-danger-text';
       }
       downloadBtn.disabled = true;
@@ -897,6 +904,15 @@ const translations = getTranslations(currentLang);
       downloadBtn.disabled = !isVerifiedClean(item);
       removeBtn.disabled = true;
       removeBtn.textContent = '✓ Success';
+      return;
+    }
+
+    if (item.scanError) {
+      statusEl.textContent = filesList?.dataset.scanFailed || 'Metadata scan failed';
+      statusEl.className = 'text-xs mt-1 text-danger-text';
+      downloadBtn.disabled = true;
+      removeBtn.disabled = false;
+      removeBtn.textContent = removeLabel;
       return;
     }
 
@@ -1257,6 +1273,7 @@ const translations = getTranslations(currentLang);
 
     item.cleanBlob = null;
     item.error = false;
+    item.errorMessage = undefined;
     item.verifyStatus = 'unverified';
     item.remainingPrivacyMetadata = 0;
     item.busy = true;
@@ -1381,11 +1398,20 @@ const translations = getTranslations(currentLang);
             // The converted JPEG bytes are re-scanned before success is claimed.
             await finishWithVerification(item, thisBatchId);
             return;
-          } catch (_heicErr) {
+          } catch (heicErr) {
             if (bitmap) {
               bitmap.close();
               bitmap = null;
             }
+            console.error('HEIC conversion failed:', heicErr);
+            // HEIC cannot be decoded by the generic canvas fallback below, so
+            // swallowing this and falling through would only misreport a HEIC
+            // conversion failure as a canvas/image-processing failure. Tag the
+            // error so the outer catch can surface the truthful message and
+            // the item enters a clear failed state with no clean output.
+            const tagged = new Error('HEIC conversion failed') as Error & { code?: string };
+            tagged.code = 'HEIC_CONVERSION_FAILED';
+            throw tagged;
           }
         }
       }
@@ -1424,6 +1450,9 @@ const translations = getTranslations(currentLang);
       }
       item.error = true;
       item.busy = false;
+      item.errorMessage = (err as { code?: string } | null)?.code === 'HEIC_CONVERSION_FAILED'
+        ? (filesList?.dataset.heicFailed || 'HEIC conversion failed')
+        : undefined;
       // No verified output exists: drop anything that was published mid-way so
       // an unverified blob can never reach the download / ZIP path.
       item.cleanBlob = null;
@@ -1701,13 +1730,29 @@ const translations = getTranslations(currentLang);
     if (!metadataViewerContent) return;
     metadataViewerContent.textContent = '';
 
-    const scannable = fileItems.filter((item) => !item.error && item.metadata);
-    if (scannable.length === 0) {
+    const failedItems = fileItems.filter((item) => item.error || item.scanError);
+    const scannable = fileItems.filter((item) => !item.error && !item.scanError && item.metadata);
+    if (scannable.length === 0 && failedItems.length === 0) {
       const empty = document.createElement('p');
       empty.className = 'text-[13px] text-text-muted';
       empty.textContent = filesList?.dataset.metadataEmpty || 'No metadata detected in this image.';
       metadataViewerContent.appendChild(empty);
       return;
+    }
+
+    for (const item of failedItems) {
+      const block = document.createElement('div');
+      const heading = document.createElement('p');
+      heading.className = 'text-[12px] font-semibold text-text mb-1.5 break-all';
+      heading.textContent = item.file.name;
+      block.appendChild(heading);
+      const failure = document.createElement('p');
+      failure.className = 'text-[12.5px] text-danger-text';
+      failure.textContent = item.scanError
+        ? (filesList?.dataset.scanFailed || 'Metadata scan failed')
+        : (item.errorMessage || filesList?.dataset.fileFailed || 'Failed to remove metadata');
+      block.appendChild(failure);
+      metadataViewerContent.appendChild(block);
     }
 
     for (const item of scannable) {

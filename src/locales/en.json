@@ -177,6 +177,8 @@
     "error_all": "Could not clean any files",
     "try_again": "Try again",
     "file_failed": "Failed to remove metadata",
+    "heic_failed": "HEIC conversion failed in this browser. The original file was not modified.",
+    "scan_failed": "Metadata scan failed — no reliable scan result for this file.",
     "files_cleaned": "{{count}} files cleaned successfully",
     "failed_to_remove": "✕ Failed to remove metadata",
     "show_metadata": "Show image metadata",

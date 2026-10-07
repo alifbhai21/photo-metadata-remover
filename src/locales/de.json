@@ -175,6 +175,8 @@
     "error_all": "Es konnten keine Dateien bereinigt werden",
     "try_again": "Erneut versuchen",
     "file_failed": "Metadaten konnten nicht entfernt werden",
+    "heic_failed": "HEIC-Konvertierung in diesem Browser fehlgeschlagen. Die Originaldatei wurde nicht verändert.",
+    "scan_failed": "Metadaten-Scan fehlgeschlagen — kein zuverlässiges Scan-Ergebnis für diese Datei.",
     "files_cleaned": "{{count}} Dateien erfolgreich bereinigt",
     "failed_to_remove": "✕ Metadaten konnten nicht entfernt werden",
     "show_metadata": "Bildmetadaten anzeigen",

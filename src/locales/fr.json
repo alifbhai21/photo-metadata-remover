@@ -175,6 +175,8 @@
     "error_all": "Impossible de nettoyer les fichiers",
     "try_again": "Réessayer",
     "file_failed": "Échec de la suppression des métadonnées",
+    "heic_failed": "Échec de la conversion HEIC dans ce navigateur. Le fichier original n'a pas été modifié.",
+    "scan_failed": "Échec de l'analyse des métadonnées — aucun résultat fiable pour ce fichier.",
     "files_cleaned": "{{count}} fichiers nettoyés avec succès",
     "failed_to_remove": "✕ Échec de la suppression des métadonnées",
     "show_metadata": "Afficher les métadonnées",
